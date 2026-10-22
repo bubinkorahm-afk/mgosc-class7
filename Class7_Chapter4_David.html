@@ -1,0 +1,448 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Class 7 Chapter 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column; sticky chapter bar; questions as numbered practice items, then reveal-answer cards */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:22px 16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between}
+.brand .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,5vw,34px);line-height:1.1;margin:4px 0 2px;text-wrap:balance}
+.brand p{margin:0;color:var(--muted);font-size:15px}
+
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 13px;border-radius:999px;cursor:pointer}
+.seg button.ml{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 15px var(--f-body);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:0;text-decoration:none}
+.tab small{font-weight:500;color:var(--muted);font-size:12px}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tab[aria-selected="true"] small{color:var(--accent-ink);opacity:.85}
+
+main .wrap{padding-block:26px 64px;display:flex;flex-direction:column;gap:28px}
+.chap-head .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.chap-head h2{font-family:var(--f-display);font-size:clamp(24px,4.5vw,30px);line-height:1.15;margin:4px 0 0;text-wrap:balance}
+.chap-head h2 .ml{display:block;font-size:.78em;font-weight:700;margin-top:4px;color:var(--muted)}
+
+.verse{background:var(--gold-soft);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.verse .lbl{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.verse q{quotes:none;font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.4}
+.verse .ml{font-size:16px}
+.verse cite{font-style:normal;color:var(--muted);font-size:14px}
+
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h3{margin:0;font-family:var(--f-display);font-size:21px}
+.sec-title h3 .ml{font-size:15px;font-weight:600;color:var(--muted);margin-left:6px}
+.score{font-variant-numeric:tabular-nums;font-size:15px;color:var(--muted)}
+.score b{color:var(--ink)}
+
+.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.q .n{font:700 15px var(--f-body);color:var(--accent);font-variant-numeric:tabular-nums;padding-top:1px;min-width:1.6em}
+.q .body{min-width:0;display:flex;flex-direction:column;gap:10px}
+.qtext{font-weight:700;font-size:17px}
+.qtext .ml{display:block;font-weight:600;font-size:15.5px;color:var(--ink)}
+.qtext .en + .ml{margin-top:2px;color:var(--muted)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:9px 12px;cursor:pointer;font:500 16px var(--f-body);display:flex;flex-direction:column;gap:1px;min-width:0}
+.opt .ml{font-size:14.5px;color:var(--muted)}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:focus-visible,.tab:focus-visible,.seg button:focus-visible,.btn:focus-visible,.reveal:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .ml{color:var(--ink)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .ml{color:var(--ink)}
+.opt.dim{opacity:.55}
+.fb{font-size:15px;border-radius:10px;padding:9px 12px;background:var(--sunk)}
+.fb b.ok{color:var(--ok)} .fb b.bad{color:var(--bad)}
+.fb .ml{display:block;font-size:14px}
+
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.reveal{align-self:flex-start;border:1.5px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:6px 14px;font:700 14px var(--f-body);cursor:pointer}
+.reveal .ml{font-weight:600;font-size:13px}
+.ans{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:16px}
+.ans ol,.ans ul{margin:0;padding-left:1.3em}
+.ans .ml{margin-top:8px;font-size:15px}
+.ans .ml:first-child{margin-top:0}
+
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:11px 18px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* Test mode */
+.test-intro{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.test-intro p{margin:0}
+.bar{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.test-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.result{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+.result .big{font-family:var(--f-display);font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.result .big small{font-size:24px;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 32px}
+</style>
+<style>
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;margin-bottom:6px}
+.back:hover{text-decoration:underline}
+.chapnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:0 18px}
+.chapnav a{color:var(--accent);font-weight:700;text-decoration:none;font-size:15px}
+.chapnav a:hover{text-decoration:underline}
+.pdf{display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.menu{grid-template-columns:1fr}}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}
+.mcard:hover{border-color:var(--accent)}
+.mcard:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mcard .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.mcard h2{font-family:var(--f-display);font-size:22px;line-height:1.2;margin:0}
+.mcard h2 .ml{display:block;font-size:.8em;color:var(--muted);margin-top:2px}
+.mcard .meta{font-size:14px;color:var(--muted)}
+.mcard.alt{background:var(--gold-soft);border-color:transparent}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a class="back" href="index.html">← <span class="en">All chapters</span><span class="ml">എല്ലാ പാഠങ്ങളും</span></a>
+      <div class="eyebrow">OSSAE · Galilee Division · Class 7</div>
+      <h1>Chapter 4: David, the King and Mellifluous Singer of Israel</h1>
+      <p><span class="ml">പാഠം 4 · യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്</span></p>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="ml" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Mode">
+  <div class="wrap" role="tablist" id="tabs"></div>
+</nav>
+
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">
+  <div class="chapnav"><a href="Class7_Chapter3_A_King_for_Israel.html">← Chapter 3</a><span></span></div>
+  Based on the OSSAE Class VII textbook (Third Edition, 2022)
+</div></footer>
+
+<script>
+/* ---------- DATA ---------- */
+/* mcq: [enQ, mlQ, [[en,ml] x4], correctIndex, enNote, mlNote] */
+const PDF = "Class7_Chapter4_David_QA.pdf";
+const CH = [
+{
+ id:"ch4", n:4, en:"David, the King and Mellifluous Singer of Israel", ml:"യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്",
+ verse:{en:"“As for God, his way is perfect; the word of the Lord is true. He shields all who hide behind him.”", ml:"“ദൈവത്തിന്റെ വഴി തികവുള്ളത്. യഹോവയുടെ വചനം ഊതിക്കഴിച്ചത്. തന്നെ ശരണമാക്കുന്ന ഏവർക്കും അവൻ പരിചയാകുന്നു”", ref:"2 Samuel 22:31 · 2 ശമു. 22:31"},
+ mcq:[
+  ["Name David’s father.","ദാവീദിന്റെ പിതാവ് ആര്?",
+   [["Jesse","യിശ്ശായി"],["Kish","കീശ്"],["Elkanah","എല്ക്കാനാ"],["Nathan","നാഥാൻ"]],0,"",""],
+  ["David’s family was from…","ദാവീദിന്റെ കുടുംബം എവിടെനിന്നായിരുന്നു?",
+   [["Bethlehem","ബേത്‌ലഹേം"],["Ramah","രാമാ"],["Shiloh","ശീലോ"],["Jerusalem","യെരുശലേം"]],0,"",""],
+  ["What was David doing when God called him?","ദൈവം വിളിച്ചപ്പോൾ ദാവീദ് എന്തു ചെയ്യുകയായിരുന്നു?",
+   [["Looking after his father’s sheep","പിതാവിന്റെ ആടുകളെ മേയ്ക്കുകയായിരുന്നു"],["Fighting the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യുകയായിരുന്നു"],["Playing the harp in the palace","കൊട്ടാരത്തിൽ കിന്നരം വായിക്കുകയായിരുന്നു"],["Threshing wheat","ഗോതമ്പ് മെതിക്കുകയായിരുന്നു"]],0,
+   "1 Samuel 16:11.","1 ശമു. 16:11."],
+  ["Which of Jesse’s sons was David?","യിശ്ശായിയുടെ മക്കളിൽ ദാവീദ് ആരായിരുന്നു?",
+   [["The youngest","ഇളയവൻ"],["The eldest","മൂത്തവൻ"],["The second","രണ്ടാമൻ"],["The only son","ഏകമകൻ"]],0,
+   "Samuel anointed him in the presence of his family (1 Sam. 16:12).","1 ശമു. 16:12."],
+  ["Which musical instrument did David play?","ദാവീദ് ഉപയോഗിച്ച സംഗീതോപകരണം?",
+   [["Harp","കിന്നരം"],["Trumpet","കാഹളം"],["Flute","കുഴൽ"],["Drum","തപ്പ്"]],0,
+   "He played to comfort Saul when an evil spirit troubled him (1 Sam. 16:23).","ദുരാത്മാവ് ശൗലിനെ ബാധിച്ചപ്പോൾ ദാവീദ് കിന്നരം വായിച്ചു (1 ശമു. 16:23)."],
+  ["David defeated Goliath using…","ദാവീദ് ഗോല്യാത്തിനെ തോല്പിച്ചത് എന്ത് ഉപയോഗിച്ച്?",
+   [["A sling and stones","കവിണയും കല്ലും"],["A sword and shield","വാളും പരിചയും"],["A spear","കുന്തം"],["A bow and arrows","വില്ലും അമ്പും"]],0,
+   "He relied on God and fought in the name of the Lord.","യഹോവയുടെ നാമത്തിൽ ആശ്രയിച്ചാണ് ദാവീദ് എതിരിട്ടത്."],
+  ["Who was Saul’s son and David’s best friend?","ദാവീദിന്റെ ഉറ്റസുഹൃത്തായിരുന്ന ശൗലിന്റെ മകൻ?",
+   [["Jonathan","യോനാഥാൻ"],["Absalom","അബ്ശാലോം"],["Joab","യോവാബ്"],["Uriah","ഊരീയാവ്"]],0,
+   "1 Samuel 20:17.","1 ശമു. 20:17."],
+  ["Which son of David rebelled and tried to kill him?","ദാവീദിനെതിരെ മത്സരിച്ച് കൊല്ലാൻ ശ്രമിച്ച മകൻ?",
+   [["Absalom","അബ്ശാലോം"],["Solomon","ശലോമോൻ"],["Jonathan","യോനാഥാൻ"],["Nathan","നാഥാൻ"]],0,
+   "2 Samuel 15:14.","2 ശമു. 15:14."],
+  ["Whose grain fields did Absalom destroy?","അബ്ശാലോം ആരുടെ കൃഷിയാണ് നശിപ്പിച്ചത്?",
+   [["Joab, David’s general","സേനാപതി യോവാബിന്റെ"],["Jonathan","യോനാഥാന്റെ"],["Jesse","യിശ്ശായിയുടെ"],["Uriah","ഊരീയാവിന്റെ"]],0,
+   "2 Samuel 14:30.","2 ശമു. 14:30."],
+  ["Which soldier was killed treacherously by David?","ദാവീദ് ചതിയിൽ കൊല്ലിച്ച യോദ്ധാവ്?",
+   [["Uriah","ഊരീയാവ്"],["Goliath","ഗോല്യാത്ത്"],["Joab","യോവാബ്"],["Jonathan","യോനാഥാൻ"]],0,
+   "2 Samuel chapters 10-12.","2 ശമു. 10-12 അദ്ധ്യായങ്ങൾ."],
+  ["Which Psalm is David’s song of repentance?","ദാവീദിന്റെ അനുതാപ സങ്കീർത്തനം ഏത്?",
+   [["Psalm 51","51-ാം സങ്കീർത്തനം"],["Psalm 23","23-ാം സങ്കീർത്തനം"],["Psalm 45","45-ാം സങ്കീർത്തനം"],["Psalm 91","91-ാം സങ്കീർത്തനം"]],0,"",""],
+  ["Through which prophet did David receive God’s promise of succession?","ഏത് പ്രവാചകനിലൂടെയാണ് ദാവീദിന് ദൈവത്തിന്റെ വാഗ്ദാനം ലഭിച്ചത്?",
+   [["Nathan","നാഥാൻ"],["Samuel","ശമുവേൽ"],["Elijah","ഏലിയാവ്"],["Isaiah","യെശയ്യാവ്"]],0,
+   "2 Samuel 7:8-17. It is fulfilled in Jesus Christ.","2 ശമു. 7:8-17. ഇതിന്റെ പൂർത്തീകരണം യേശുക്രിസ്തുവിൽ."],
+  ["How long did David reign as king?","ദാവീദ് എത്ര വർഷം ഭരിച്ചു?",
+   [["Forty years","നാല്പത് വർഷം"],["Twenty years","ഇരുപത് വർഷം"],["Seven years","ഏഴ് വർഷം"],["Two years","രണ്ട് വർഷം"]],0,
+   "His reign was a golden age for Israel.","അത് യിസ്രായേലിന്റെ സുവർണ്ണകാലമായിരുന്നു."],
+  ["What was the capital of King David?","ദാവീദ് രാജാവിന്റെ തലസ്ഥാനം?",
+   [["Jerusalem","യെരുശലേം"],["Bethlehem","ബേത്‌ലഹേം"],["Ramah","രാമാ"],["Shiloh","ശീലോ"]],0,"",""],
+  ["David’s empire stretched from…","ദാവീദിന്റെ സാമ്രാജ്യം വ്യാപിച്ചിരുന്നത്…",
+   [["The Mediterranean Sea to the Euphrates River","മധ്യധരണ്യാഴി മുതൽ യൂഫ്രട്ടീസ് നദി വരെ"],["The Nile to the Jordan","നീൽ മുതൽ യോർദ്ദാൻ വരെ"],["Bethlehem to Ramah","ബേത്‌ലഹേം മുതൽ രാമാ വരെ"],["Egypt to Babylon","മിസ്രയീം മുതൽ ബാബേൽ വരെ"]],0,"",""],
+  ["What did David bring to Jerusalem?","ദാവീദ് യെരുശലേമിലേക്ക് കൊണ്ടുവന്നത് എന്ത്?",
+   [["The Ark of the Lord","നിയമപെട്ടകം"],["Goliath’s sword","ഗോല്യാത്തിന്റെ വാൾ"],["The Temple","ദൈവാലയം"],["Saul’s crown","ശൗലിന്റെ കിരീടം"]],0,"",""],
+  ["Jesus Christ was called ‘Son of David’ because…","യേശുക്രിസ്തുവിനെ ‘ദാവീദിന്റെ പുത്രൻ’ എന്ന് വിളിച്ചത്…",
+   [["He was born in David’s royal lineage, fulfilling God’s promise","ദൈവവാഗ്ദാനപ്രകാരം ദാവീദിന്റെ രാജവംശത്തിൽ ജനിച്ചതിനാൽ"],["He was born in Jerusalem","യെരുശലേമിൽ ജനിച്ചതിനാൽ"],["He played the harp","കിന്നരം വായിച്ചതിനാൽ"],["He was a shepherd","ഇടയനായിരുന്നതിനാൽ"]],0,"",""],
+  ["David was the ___ king of Israel.","ദാവീദ് യിസ്രായേലിന്റെ ___ രാജാവായിരുന്നു.",
+   [["Second","രണ്ടാമത്തെ"],["First","ഒന്നാമത്തെ"],["Third","മൂന്നാമത്തെ"],["Last","അവസാനത്തെ"]],0,"",""],
+  ["Who said in his long discourse that God blessed David greatly (Acts 7:46)?","ദൈവം ദാവീദിനെ വളരെ അനുഗ്രഹിച്ചു എന്ന് തന്റെ പ്രസംഗത്തിൽ പറഞ്ഞത് ആര് (അപ്പൊ. 7:46)?",
+   [["St. Stephen the Martyr","സഹദാ സ്തേഫാനോസ്"],["St. Peter","പത്രോസ് ശ്ലീഹാ"],["St. Paul","പൗലോസ് ശ്ലീഹാ"],["St. John","യോഹന്നാൻ ശ്ലീഹാ"]],0,"",""]
+ ],
+ short:[
+  {en:"Write three lessons from the life of David.", ml:"ദാവീദിന്റെ ജീവിതത്തിൽനിന്നുള്ള മൂന്ന് പാഠങ്ങൾ എഴുതുക.",
+   aen:["The Lord may choose for His purpose even those neglected by people.","The Lord accepts true penitence (Ps. 51; St. Luke 15).","The Lord is faithful in His promises – Jesus was born in David’s line."],
+   aml:["മനുഷ്യർ അവഗണിക്കുന്നവരെയും ദൈവം തന്റെ ഉദ്ദേശ്യത്തിനായി തിരഞ്ഞെടുക്കും.","യഥാർത്ഥ അനുതാപം ദൈവം സ്വീകരിക്കുന്നു (സങ്കീ. 51; ലൂക്കോ. 15).","ദൈവം തന്റെ വാഗ്ദാനങ്ങളിൽ വിശ്വസ്തനാണ് – യേശു ദാവീദിന്റെ വംശത്തിൽ ജനിച്ചു."]},
+  {en:"How did Absalom trouble his father David?", ml:"അബ്ശാലോം തന്റെ പിതാവായ ദാവീദിനെ എങ്ങനെ ബുദ്ധിമുട്ടിച്ചു?",
+   aen:["He destroyed the grain fields of Joab, David’s faithful general (2 Sam. 14:30).","He stole the hearts of the people who came to the king for judgement (2 Sam. 15:1-6).","He tried to attack and kill the king, so David had to flee and hide (2 Sam. 15:14)."],
+   aml:["പിതാവിന്റെ വിശ്വസ്ത സേനാപതി യോവാബിന്റെ കൃഷി നശിപ്പിച്ചു (2 ശമു. 14:30).","ന്യായവിസ്താരത്തിന് വന്നവരുടെ ഹൃദയം വശീകരിച്ച് രാജാവിനെതിരാക്കി (2 ശമു. 15:1-6).","രാജാവിനെ നേരിട്ട് എതിർത്ത് കൊല്ലാൻ ശ്രമിച്ചു; ദാവീദിന് ഒളിച്ചോടേണ്ടിവന്നു (2 ശമു. 15:14)."]},
+  {en:"Write about the greatness of David.", ml:"ദാവീദിന്റെ മഹത്വത്തെക്കുറിച്ച് എഴുതുക.",
+   aen:["Though neglected among his brothers, the Lord anointed him the second king of Israel.","His 40-year reign was a golden age; his empire stretched from the Mediterranean Sea to the Euphrates.","He made Jerusalem the capital and brought the Ark of the Lord there.","Jesus Christ is called ‘Son of David’."],
+   aml:["സഹോദരന്മാർക്കിടയിൽ അവഗണിക്കപ്പെട്ടവനായിട്ടും ദൈവം അവനെ യിസ്രായേലിന്റെ രണ്ടാമത്തെ രാജാവായി അഭിഷേകം ചെയ്തു.","40 വർഷത്തെ ഭരണം സുവർണ്ണകാലം; സാമ്രാജ്യം മധ്യധരണ്യാഴി മുതൽ യൂഫ്രട്ടീസ് വരെ.","യെരുശലേം തലസ്ഥാനമാക്കി; നിയമപെട്ടകം അവിടേക്ക് കൊണ്ടുവന്നു.","യേശുക്രിസ്തു ‘ദാവീദിന്റെ പുത്രൻ’ എന്ന് വിളിക്കപ്പെട്ടു."]},
+  {en:"Resolution of this chapter", ml:"ഈ പാഠത്തിലെ നിശ്ചയം",
+   aen:["We will believe in and rely on God in our lives. We would do good even to those who do us harm. We would faithfully do the duties the Lord gives us."],
+   aml:["ഞങ്ങൾ ജീവിതത്തിൽ ദൈവത്തിൽ വിശ്വസിച്ച് ആശ്രയിക്കും. ഉപദ്രവിക്കുന്നവർക്കും നന്മ ചെയ്യും. ദൈവം ഏല്പിക്കുന്ന ചുമതലകൾ വിശ്വസ്തതയോടെ നിറവേറ്റും."]}
+ ]
+}
+];
+
+/* ---------- HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}>${ml ? `<${tag} class="ml">${esc(ml)}</${tag}>` : ""}`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ---------- LANGUAGE ---------- */
+function setLang(l){
+  document.body.dataset.lang = l;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  store.set("c7lang", l);
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+const C = CH[0], N = C.mcq.length;
+
+/* ---------- TABS ---------- */
+const TABS = [{id:"practice", label:"Practice", sub:"പരിശീലനം"}, {id:"test", label:"Chapter Test", sub:`${N} questions · പാഠ പരീക്ഷ`}];
+function renderTabs(active){
+  $("#tabs").innerHTML = TABS.map(t => `<a class="tab" role="tab" href="#${t.id}" aria-selected="${t.id === active}" data-id="${t.id}">${esc(t.label)}<small class="ml-small">${esc(t.sub)}</small></a>`).join("");
+}
+
+/* ---------- MCQ ---------- */
+function mcqHTML(q, idx, key){
+  const order = shuffle([0,1,2,3]);
+  return `<li class="q" data-key="${key}" data-correct="${q[3]}">
+    <span class="n">${idx}.</span>
+    <div class="body">
+      <div class="qtext">${bi(q[0], q[1])}</div>
+      <div class="opts">${order.map(i => `<button type="button" class="opt" data-i="${i}">${bi(q[2][i][0], q[2][i][1])}</button>`).join("")}</div>
+      <div class="fb" hidden></div>
+    </div>
+  </li>`;
+}
+function answerMCQ(li, btn, q, onDone){
+  const correct = +li.dataset.correct, pick = +btn.dataset.i, ok = pick === correct;
+  li.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true;
+    const i = +b.dataset.i;
+    if (i === correct) b.classList.add("correct");
+    else if (i === pick) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  const fb = li.querySelector(".fb");
+  const right = q[2][correct];
+  fb.innerHTML = ok
+    ? `<b class="ok">${bi("Correct!", "ശരിയാണ്!")}</b> ${q[4] ? bi(q[4], q[5]) : ""}`
+    : `<b class="bad">${bi("Not quite.", "തെറ്റി.")}</b> ${bi("Answer: " + right[0], "ഉത്തരം: " + right[1])} ${q[4] ? bi(q[4], q[5]) : ""}`;
+  fb.hidden = false;
+  onDone && onDone(ok, pick);
+}
+
+/* ---------- CHAPTER VIEW ---------- */
+function renderChapter(c){
+  const saved = store.get("c7-" + c.id, {});
+  const v = $("#view");
+  v.innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Chapter " + c.n, "പാഠം " + c.n)}</div>
+      <h2><span class="en">${esc(c.en)}</span><span class="ml">${esc(c.ml)}</span></h2>
+    </div>
+    <div class="verse">
+      <div class="lbl">${bi("Verse to be memorized", " · മനഃപാഠവാക്യം")}</div>
+      <q class="en">${esc(c.verse.en)}</q>
+      <q class="ml">${esc(c.verse.ml)}</q>
+      <cite>${esc(c.verse.ref)}</cite>
+    </div>
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div class="sec-title">
+        <h3><span class="en">Choose the correct answer</span><span class="ml">ശരിയുത്തരം തിരഞ്ഞെടുക്കുക</span></h3>
+        <span class="score" id="score"></span>
+      </div>
+      <ol class="qlist">${c.mcq.map((q, i) => mcqHTML(q, i + 1, i)).join("")}</ol>
+      <div class="btnrow"><button type="button" class="btn ghost" id="reset">${bi("Start again", " · വീണ്ടും തുടങ്ങുക")}</button></div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div class="sec-title">
+        <h3><span class="en">Answer these questions</span><span class="ml">ഉത്തരം എഴുതുക</span></h3>
+        <span class="score">${bi("Think first, then check", "ആലോചിച്ചശേഷം നോക്കുക")}</span>
+      </div>
+      <div class="cards">${c.short.map((s, i) => `
+        <div class="card">
+          <div class="qtext">${bi(s.en, s.ml)}</div>
+          <button type="button" class="reveal" aria-expanded="false" data-i="${i}">${bi("Show answer", " · ഉത്തരം കാണുക")}</button>
+          <div class="ans" hidden>
+            ${s.aen.length > 1 ? `<ol class="en">${s.aen.map(a => `<li>${esc(a)}</li>`).join("")}</ol>` : `<p class="en" style="margin:0">${esc(s.aen[0])}</p>`}
+            ${s.aml.length > 1 ? `<ol class="ml">${s.aml.map(a => `<li>${esc(a)}</li>`).join("")}</ol>` : `<p class="ml" style="margin:8px 0 0">${esc(s.aml[0])}</p>`}
+          </div>
+        </div>`).join("")}
+      </div>
+    </section>
+    <div class="btnrow"><a class="btn ghost pdf" href="${PDF}" target="_blank" rel="noopener">${bi("Open printable PDF", " · PDF തുറക്കുക")}</a></div>`;
+
+  const total = c.mcq.length;
+  const upd = () => {
+    const vals = Object.values(saved);
+    const right = vals.filter(x => x.ok).length;
+    $("#score").innerHTML = `<b>${right}</b> ${bi("correct", "ശരി")} · ${vals.length}/${total} ${bi("answered", "ചെയ്തു")}`;
+  };
+  v.querySelectorAll(".q").forEach(li => {
+    const k = li.dataset.key, q = c.mcq[k];
+    if (saved[k]) {
+      const btn = li.querySelector(`.opt[data-i="${saved[k].pick}"]`);
+      answerMCQ(li, btn, q);
+    }
+    li.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+      answerMCQ(li, btn, q, (ok, pick) => { saved[k] = {ok, pick}; store.set("c7-" + c.id, saved); upd(); });
+    }));
+  });
+  $("#reset").addEventListener("click", () => { store.set("c7-" + c.id, {}); renderChapter(c); });
+  v.querySelectorAll(".reveal").forEach(b => b.addEventListener("click", () => {
+    const a = b.nextElementSibling, open = a.hidden;
+    a.hidden = !open; b.setAttribute("aria-expanded", open);
+    b.innerHTML = open ? bi("Hide answer", " · ഉത്തരം മറയ്ക്കുക") : bi("Show answer", " · ഉത്തരം കാണുക");
+  }));
+  upd();
+}
+
+/* ---------- TEST VIEW ---------- */
+const BEST = "c7-best-" + C.id;
+function renderTestIntro(){
+  const best = store.get(BEST, null);
+  $("#view").innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Chapter " + C.n, "പാഠം " + C.n)}</div>
+      <h2><span class="en">Chapter Test</span><span class="ml">പാഠ പരീക്ഷ</span></h2>
+    </div>
+    <div class="test-intro">
+      <p>${bi(`All ${N} questions from this chapter in random order, one at a time. Your score is shown at the end, with every question you missed.`, `ഈ പാഠത്തിലെ ${N} ചോദ്യങ്ങളും, ഓരോന്നായി. അവസാനം മാർക്കും തെറ്റിയ ചോദ്യങ്ങളും കാണാം.`)}</p>
+      ${best !== null ? `<p class="score">${bi("Your best score on this device:", "ഈ ഫോണിലെ മികച്ച മാർക്ക്:")} <b>${best}/${N}</b></p>` : ""}
+      <div class="btnrow"><button type="button" class="btn" id="start">${bi("Start test", " · പരീക്ഷ തുടങ്ങുക")}</button></div>
+    </div>`;
+  $("#start").addEventListener("click", startTest);
+}
+function startTest(){
+  const qs = shuffle(C.mcq);
+  let i = 0, score = 0; const missed = [];
+  const step = () => {
+    if (i >= qs.length) return finish();
+    const q = qs[i];
+    $("#view").innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="test-meta"><span>${bi("Question " + (i + 1) + " of " + N, " · ചോദ്യം " + (i + 1) + "/" + N)}</span><span>${bi("Score " + score, " · മാർക്ക് " + score)}</span></div>
+        <div class="bar"><i style="width:${i / qs.length * 100}%"></i></div>
+      </div>
+      <ol class="qlist"><li class="q" data-correct="${q[3]}"><span class="n">${i + 1}.</span>
+        <div class="body">
+          <div class="qtext">${bi(q[0], q[1])}</div>
+          <div class="opts">${shuffle([0,1,2,3]).map(k => `<button type="button" class="opt" data-i="${k}">${bi(q[2][k][0], q[2][k][1])}</button>`).join("")}</div>
+          <div class="fb" hidden></div>
+        </div></li></ol>
+      <div class="btnrow"><button type="button" class="btn" id="next" hidden>${i === qs.length - 1 ? bi("See my score", " · മാർക്ക് കാണുക") : bi("Next question", " · അടുത്ത ചോദ്യം")}</button></div>`;
+    const li = $("#view .q");
+    li.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+      answerMCQ(li, btn, q, ok => { if (ok) score++; else missed.push(q); $("#next").hidden = false; $("#next").focus(); });
+    }));
+    $("#next").addEventListener("click", () => { i++; step(); window.scrollTo({top:0}); });
+  };
+  const finish = () => {
+    const best = store.get(BEST, 0);
+    if (score > best) store.set(BEST, score);
+    const pct = score / N;
+    const msg = pct >= .9 ? ["Excellent! Well prepared.", "മികച്ചത്! നന്നായി പഠിച്ചിട്ടുണ്ട്."]
+              : pct >= .7 ? ["Good work. Revise the ones you missed.", "നല്ലത്. തെറ്റിയവ ഒന്നുകൂടി പഠിക്കുക."]
+              : ["Keep practising. Go through the chapter again.", "പാഠം ഒന്നുകൂടി വായിച്ച് പരിശീലിക്കുക."];
+    $("#view").innerHTML = `
+      <div class="result">
+        <span class="chip">${bi("Your score", " · നിങ്ങളുടെ മാർക്ക്")}</span>
+        <div class="big">${score}<small>/${N}</small></div>
+        <p style="margin:0">${bi(msg[0], msg[1])}</p>
+        <div class="btnrow" style="justify-content:center;margin-top:8px">
+          <button type="button" class="btn" id="again">${bi("Try again", " · വീണ്ടും എഴുതുക")}</button>
+        </div>
+      </div>
+      ${missed.length ? `<section style="display:flex;flex-direction:column;gap:12px">
+        <div class="sec-title"><h3><span class="en">Questions to revise</span><span class="ml">വീണ്ടും പഠിക്കേണ്ടവ</span></h3></div>
+        <div class="cards">${missed.map(q => `<div class="card">
+          <div class="qtext">${bi(q[0], q[1])}</div>
+          <div class="ans">${bi("Answer: " + q[2][q[3]][0], "ഉത്തരം: " + q[2][q[3]][1], "div")}</div>
+        </div>`).join("")}</div></section>` : ""}`;
+    $("#again").addEventListener("click", startTest);
+  };
+  step();
+}
+
+/* ---------- ROUTING ---------- */
+function show(id){
+  renderTabs(id);
+  if (id === "test") renderTestIntro(); else renderChapter(C);
+}
+function route(){ show(location.hash === "#test" ? "test" : "practice"); }
+document.addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if (!t) return;
+  e.preventDefault();
+  try { history.replaceState(null, "", "#" + t.dataset.id); } catch(err) {}
+  show(t.dataset.id);
+  window.scrollTo({top:0});
+});
+window.addEventListener("hashchange", route);
+setLang(store.get("c7lang", "both"));
+route();
+</script>
+
+</body></html>

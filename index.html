@@ -1,0 +1,207 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Class 7 Chapters</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column; sticky chapter bar; questions as numbered practice items, then reveal-answer cards */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:22px 16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between}
+.brand .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,5vw,34px);line-height:1.1;margin:4px 0 2px;text-wrap:balance}
+.brand p{margin:0;color:var(--muted);font-size:15px}
+
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 13px;border-radius:999px;cursor:pointer}
+.seg button.ml{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 15px var(--f-body);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:0;text-decoration:none}
+.tab small{font-weight:500;color:var(--muted);font-size:12px}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tab[aria-selected="true"] small{color:var(--accent-ink);opacity:.85}
+
+main .wrap{padding-block:26px 64px;display:flex;flex-direction:column;gap:28px}
+.chap-head .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.chap-head h2{font-family:var(--f-display);font-size:clamp(24px,4.5vw,30px);line-height:1.15;margin:4px 0 0;text-wrap:balance}
+.chap-head h2 .ml{display:block;font-size:.78em;font-weight:700;margin-top:4px;color:var(--muted)}
+
+.verse{background:var(--gold-soft);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.verse .lbl{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.verse q{quotes:none;font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.4}
+.verse .ml{font-size:16px}
+.verse cite{font-style:normal;color:var(--muted);font-size:14px}
+
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h3{margin:0;font-family:var(--f-display);font-size:21px}
+.sec-title h3 .ml{font-size:15px;font-weight:600;color:var(--muted);margin-left:6px}
+.score{font-variant-numeric:tabular-nums;font-size:15px;color:var(--muted)}
+.score b{color:var(--ink)}
+
+.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.q .n{font:700 15px var(--f-body);color:var(--accent);font-variant-numeric:tabular-nums;padding-top:1px;min-width:1.6em}
+.q .body{min-width:0;display:flex;flex-direction:column;gap:10px}
+.qtext{font-weight:700;font-size:17px}
+.qtext .ml{display:block;font-weight:600;font-size:15.5px;color:var(--ink)}
+.qtext .en + .ml{margin-top:2px;color:var(--muted)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:9px 12px;cursor:pointer;font:500 16px var(--f-body);display:flex;flex-direction:column;gap:1px;min-width:0}
+.opt .ml{font-size:14.5px;color:var(--muted)}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:focus-visible,.tab:focus-visible,.seg button:focus-visible,.btn:focus-visible,.reveal:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .ml{color:var(--ink)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .ml{color:var(--ink)}
+.opt.dim{opacity:.55}
+.fb{font-size:15px;border-radius:10px;padding:9px 12px;background:var(--sunk)}
+.fb b.ok{color:var(--ok)} .fb b.bad{color:var(--bad)}
+.fb .ml{display:block;font-size:14px}
+
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.reveal{align-self:flex-start;border:1.5px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:6px 14px;font:700 14px var(--f-body);cursor:pointer}
+.reveal .ml{font-weight:600;font-size:13px}
+.ans{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:16px}
+.ans ol,.ans ul{margin:0;padding-left:1.3em}
+.ans .ml{margin-top:8px;font-size:15px}
+.ans .ml:first-child{margin-top:0}
+
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:11px 18px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* Test mode */
+.test-intro{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.test-intro p{margin:0}
+.bar{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.test-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.result{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+.result .big{font-family:var(--f-display);font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.result .big small{font-size:24px;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 32px}
+</style>
+<style>
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;margin-bottom:6px}
+.back:hover{text-decoration:underline}
+.chapnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:0 18px}
+.chapnav a{color:var(--accent);font-weight:700;text-decoration:none;font-size:15px}
+.chapnav a:hover{text-decoration:underline}
+.pdf{display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.menu{grid-template-columns:1fr}}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}
+.mcard:hover{border-color:var(--accent)}
+.mcard:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mcard .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.mcard h2{font-family:var(--f-display);font-size:22px;line-height:1.2;margin:0}
+.mcard h2 .ml{display:block;font-size:.8em;color:var(--muted);margin-top:2px}
+.mcard .meta{font-size:14px;color:var(--muted)}
+.mcard.alt{background:var(--gold-soft);border-color:transparent}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="eyebrow">OSSAE · Galilee Division</div>
+      <h1>Class 7 Revision</h1>
+      <p><span class="en">Choose a chapter to revise</span><span class="ml"> · പഠിക്കാനുള്ള പാഠം തിരഞ്ഞെടുക്കുക</span></p>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="ml" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+
+<main><div class="wrap">
+  <div class="menu">
+    <a class="mcard" href="Class7_Chapter1_Judges.html">
+      <span class="num"><span class="en">Chapter 1</span><span class="ml">പാഠം 1</span></span>
+      <h2><span class="en">Judges</span><span class="ml">ന്യായാധിപന്മാർ</span></h2>
+      <span class="meta"><span class="en">19 choose-the-answer · 4 written questions</span><span class="ml">19 ശരിയുത്തരം · 4 എഴുത്തുചോദ്യം</span></span>
+    </a>
+    <a class="mcard" href="Class7_Chapter2_Samuel.html">
+      <span class="num"><span class="en">Chapter 2</span><span class="ml">പാഠം 2</span></span>
+      <h2><span class="en">Samuel, the Priest and Prophet</span><span class="ml">പുരോഹിതനും പ്രവാചകനുമായ ശമുവേൽ</span></h2>
+      <span class="meta"><span class="en">15 choose-the-answer · 4 written questions</span><span class="ml">15 ശരിയുത്തരം · 4 എഴുത്തുചോദ്യം</span></span>
+    </a>
+    <a class="mcard" href="Class7_Chapter3_A_King_for_Israel.html">
+      <span class="num"><span class="en">Chapter 3</span><span class="ml">പാഠം 3</span></span>
+      <h2><span class="en">A King for Israel</span><span class="ml">യിസ്രായേലിന് ഒരു രാജാവ്</span></h2>
+      <span class="meta"><span class="en">16 choose-the-answer · 4 written questions</span><span class="ml">16 ശരിയുത്തരം · 4 എഴുത്തുചോദ്യം</span></span>
+    </a>
+    <a class="mcard" href="Class7_Chapter4_David.html">
+      <span class="num"><span class="en">Chapter 4</span><span class="ml">പാഠം 4</span></span>
+      <h2><span class="en">David, the King and Mellifluous Singer of Israel</span><span class="ml">യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്</span></h2>
+      <span class="meta"><span class="en">19 choose-the-answer · 4 written questions</span><span class="ml">19 ശരിയുത്തരം · 4 എഴുത്തുചോദ്യം</span></span>
+    </a>
+    <a class="mcard alt" href="Class 7 Revision Quiz.html#test">
+      <span class="num"><span class="en">All chapters</span><span class="ml">പാഠം 1–4</span></span>
+      <h2><span class="en">Mixed Revision Test</span><span class="ml">മിശ്ര പുനരവലോകന പരീക്ഷ</span></h2>
+      <span class="meta"><span class="en">20 random questions from chapters 1–4</span><span class="ml">നാല് പാഠങ്ങളിൽനിന്ന് 20 ചോദ്യങ്ങൾ</span></span>
+    </a>
+  </div>
+</div></main>
+<footer><div class="wrap">Based on the OSSAE Class VII textbook (Third Edition, 2022)</div></footer>
+
+<script>
+
+/* ---------- HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}>${ml ? `<${tag} class="ml">${esc(ml)}</${tag}>` : ""}`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ---------- LANGUAGE ---------- */
+function setLang(l){
+  document.body.dataset.lang = l;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  store.set("c7lang", l);
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+setLang(store.get("c7lang", "both"));
+</script>
+
+</body></html>

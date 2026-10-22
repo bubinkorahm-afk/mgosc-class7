@@ -1,0 +1,440 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Class 7 Chapter 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column; sticky chapter bar; questions as numbered practice items, then reveal-answer cards */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:22px 16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between}
+.brand .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,5vw,34px);line-height:1.1;margin:4px 0 2px;text-wrap:balance}
+.brand p{margin:0;color:var(--muted);font-size:15px}
+
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 13px;border-radius:999px;cursor:pointer}
+.seg button.ml{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 15px var(--f-body);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:0;text-decoration:none}
+.tab small{font-weight:500;color:var(--muted);font-size:12px}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tab[aria-selected="true"] small{color:var(--accent-ink);opacity:.85}
+
+main .wrap{padding-block:26px 64px;display:flex;flex-direction:column;gap:28px}
+.chap-head .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.chap-head h2{font-family:var(--f-display);font-size:clamp(24px,4.5vw,30px);line-height:1.15;margin:4px 0 0;text-wrap:balance}
+.chap-head h2 .ml{display:block;font-size:.78em;font-weight:700;margin-top:4px;color:var(--muted)}
+
+.verse{background:var(--gold-soft);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.verse .lbl{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.verse q{quotes:none;font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.4}
+.verse .ml{font-size:16px}
+.verse cite{font-style:normal;color:var(--muted);font-size:14px}
+
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h3{margin:0;font-family:var(--f-display);font-size:21px}
+.sec-title h3 .ml{font-size:15px;font-weight:600;color:var(--muted);margin-left:6px}
+.score{font-variant-numeric:tabular-nums;font-size:15px;color:var(--muted)}
+.score b{color:var(--ink)}
+
+.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.q .n{font:700 15px var(--f-body);color:var(--accent);font-variant-numeric:tabular-nums;padding-top:1px;min-width:1.6em}
+.q .body{min-width:0;display:flex;flex-direction:column;gap:10px}
+.qtext{font-weight:700;font-size:17px}
+.qtext .ml{display:block;font-weight:600;font-size:15.5px;color:var(--ink)}
+.qtext .en + .ml{margin-top:2px;color:var(--muted)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:9px 12px;cursor:pointer;font:500 16px var(--f-body);display:flex;flex-direction:column;gap:1px;min-width:0}
+.opt .ml{font-size:14.5px;color:var(--muted)}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:focus-visible,.tab:focus-visible,.seg button:focus-visible,.btn:focus-visible,.reveal:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .ml{color:var(--ink)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .ml{color:var(--ink)}
+.opt.dim{opacity:.55}
+.fb{font-size:15px;border-radius:10px;padding:9px 12px;background:var(--sunk)}
+.fb b.ok{color:var(--ok)} .fb b.bad{color:var(--bad)}
+.fb .ml{display:block;font-size:14px}
+
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.reveal{align-self:flex-start;border:1.5px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:6px 14px;font:700 14px var(--f-body);cursor:pointer}
+.reveal .ml{font-weight:600;font-size:13px}
+.ans{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:16px}
+.ans ol,.ans ul{margin:0;padding-left:1.3em}
+.ans .ml{margin-top:8px;font-size:15px}
+.ans .ml:first-child{margin-top:0}
+
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:11px 18px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* Test mode */
+.test-intro{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.test-intro p{margin:0}
+.bar{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.test-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.result{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+.result .big{font-family:var(--f-display);font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.result .big small{font-size:24px;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 32px}
+</style>
+<style>
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;margin-bottom:6px}
+.back:hover{text-decoration:underline}
+.chapnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:0 18px}
+.chapnav a{color:var(--accent);font-weight:700;text-decoration:none;font-size:15px}
+.chapnav a:hover{text-decoration:underline}
+.pdf{display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.menu{grid-template-columns:1fr}}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}
+.mcard:hover{border-color:var(--accent)}
+.mcard:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mcard .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.mcard h2{font-family:var(--f-display);font-size:22px;line-height:1.2;margin:0}
+.mcard h2 .ml{display:block;font-size:.8em;color:var(--muted);margin-top:2px}
+.mcard .meta{font-size:14px;color:var(--muted)}
+.mcard.alt{background:var(--gold-soft);border-color:transparent}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a class="back" href="index.html">← <span class="en">All chapters</span><span class="ml">എല്ലാ പാഠങ്ങളും</span></a>
+      <div class="eyebrow">OSSAE · Galilee Division · Class 7</div>
+      <h1>Chapter 3: A King for Israel</h1>
+      <p><span class="ml">പാഠം 3 · യിസ്രായേലിന് ഒരു രാജാവ്</span></p>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="ml" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Mode">
+  <div class="wrap" role="tablist" id="tabs"></div>
+</nav>
+
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">
+  <div class="chapnav"><a href="Class7_Chapter2_Samuel.html">← Chapter 2</a><a href="Class7_Chapter4_David.html">Chapter 4 →</a></div>
+  Based on the OSSAE Class VII textbook (Third Edition, 2022)
+</div></footer>
+
+<script>
+/* ---------- DATA ---------- */
+/* mcq: [enQ, mlQ, [[en,ml] x4], correctIndex, enNote, mlNote] */
+const PDF = "Class7_Chapter3_A_King_for_Israel_QA.pdf";
+const CH = [
+{
+ id:"ch3", n:3, en:"A King for Israel", ml:"യിസ്രായേലിന് ഒരു രാജാവ്",
+ verse:{en:"“Obedience is far better than sacrifice. He is much more interested in your listening to Him than in your offering the fat of rams to Him.”", ml:"“അനുസരിക്കുന്നത് യാഗത്തെക്കാളും ശ്രദ്ധിക്കുന്നത് മുട്ടാടുകളുടെ മേദസ്സിനെക്കാളും നല്ലത്”", ref:"1 Samuel 15:22 · 1 ശമു. 15:22"},
+ mcq:[
+  ["Who was the first king of Israel?","യിസ്രായേലിന്റെ ആദ്യ രാജാവ് ആര്?",
+   [["Saul","ശൗൽ"],["David","ദാവീദ്"],["Solomon","ശലോമോൻ"],["Samuel","ശമുവേൽ"]],0,"",""],
+  ["Name Saul’s father.","ശൗലിന്റെ പിതാവ് ആര്?",
+   [["Kish","കീശ്"],["Jesse","യിശ്ശായി"],["Elkanah","എല്ക്കാനാ"],["Eli","ഏലി"]],0,
+   "Kish was a rich, influential man.","ധനാഢ്യനായ കീശിന്റെ മകനായിരുന്നു ശൗൽ."],
+  ["Saul belonged to which tribe?","ശൗൽ ഏത് ഗോത്രക്കാരനായിരുന്നു?",
+   [["Benjamin","ബെന്യാമീൻ"],["Judah","യെഹൂദാ"],["Levi","ലേവി"],["Ephraim","എഫ്രയീം"]],0,"",""],
+  ["Why did Saul first go to meet Prophet Samuel at Ramah?","ശൗൽ ആദ്യമായി രാമായിൽ ശമുവേലിനെ കാണാൻ പോയത് എന്തിന്?",
+   [["To seek advice about his father’s lost donkeys","പിതാവിന്റെ കാണാതെപോയ കഴുതകളെ തേടി ഉപദേശം ചോദിക്കാൻ"],["To ask to be made king","രാജാവാക്കണമെന്ന് ആവശ്യപ്പെടാൻ"],["To offer a sacrifice","യാഗം അർപ്പിക്കാൻ"],["To fight the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യാൻ"]],0,
+   "1 Samuel 9:3 onwards.","1 ശമു. 9:3 മുതൽ."],
+  ["How many descriptions of Saul becoming king are given in 1 Samuel?","ശൗൽ രാജാവായതിനെക്കുറിച്ച് ശമുവേലിന്റെ പുസ്തകത്തിൽ എത്ര വിവരണങ്ങൾ ഉണ്ട്?",
+   [["Three","മൂന്ന്"],["Two","രണ്ട്"],["One","ഒന്ന്"],["Four","നാല്"]],0,"",""],
+  ["How was a person anointed for a position in those days?","അന്ന് ഒരാളെ പദവിയിലേക്ക് അഭിഷേകം ചെയ്തിരുന്നത് എങ്ങനെ?",
+   [["By pouring blessed olive oil on his head","വാഴ്ത്തിയ തൈലം തലയിൽ ഒഴിച്ച്"],["By placing a crown","കിരീടം വച്ച്"],["By giving him a sword","വാൾ നൽകി"],["By washing his feet","കാൽ കഴുകി"]],0,"",""],
+  ["In the second description (1 Sam. 10:17-24), how was Saul selected?","രണ്ടാമത്തെ വിവരണത്തിൽ (1 ശമു. 10:17-24) ശൗലിനെ തിരഞ്ഞെടുത്തത് എങ്ങനെ?",
+   [["Samuel drew lots","ശമുവേൽ നറുക്കിട്ടു"],["The people voted","ജനം വോട്ട് ചെയ്തു"],["He won a battle","യുദ്ധം ജയിച്ചു"],["Eli chose him","ഏലി തിരഞ്ഞെടുത്തു"]],0,"",""],
+  ["In the third description, Saul convinced the people by saving Israel from…","മൂന്നാമത്തെ വിവരണത്തിൽ ശൗൽ ആരിൽനിന്നാണ് യിസ്രായേലിനെ രക്ഷിച്ചത്?",
+   [["The Ammonites","അമ്മോന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Midianites","മിദ്യാന്യർ"],["The Canaanites","കനാന്യർ"]],0,
+   "1 Samuel 11:1-13.","1 ശമു. 11:1-13."],
+  ["Why did God not like the people’s demand for a king?","ജനം രാജാവിനെ ആവശ്യപ്പെട്ടത് ദൈവത്തിന് ഇഷ്ടമാകാതിരുന്നത് എന്തുകൊണ്ട്?",
+   [["Because God Himself was their king","ദൈവം തന്നെയായിരുന്നു അവരുടെ രാജാവ്"],["Because Saul was too young","ശൗൽ ചെറുപ്പമായിരുന്നു"],["Because they had no army","അവർക്ക് സൈന്യമില്ലായിരുന്നു"],["Because Samuel wanted to be king","ശമുവേലിന് രാജാവാകണമായിരുന്നു"]],0,
+   "1 Samuel 12:12-16.","1 ശമു. 12:12-16."],
+  ["How were Samuel’s sons as judges?","ന്യായാധിപന്മാരെന്ന നിലയിൽ ശമുവേലിന്റെ മക്കൾ എങ്ങനെയായിരുന്നു?",
+   [["Greedy and corrupt","ദുരാഗ്രഹികളും അന്യായം പ്രവർത്തിക്കുന്നവരും"],["Wise and just","ജ്ഞാനികളും നീതിമാന്മാരും"],["Brave warriors","ധീരയോദ്ധാക്കൾ"],["Faithful prophets","വിശ്വസ്ത പ്രവാചകർ"]],0,"",""],
+  ["Why was Saul rejected as king?","ശൗൽ രാജസ്ഥാനത്തുനിന്ന് തള്ളപ്പെട്ടത് എന്തുകൊണ്ട്?",
+   [["He disobeyed God and did not listen to the prophet","ദൈവത്തെ അനുസരിക്കാതെയും പ്രവാചകനെ കേൾക്കാതെയും പ്രവർത്തിച്ചു"],["He lost a war","യുദ്ധത്തിൽ തോറ്റു"],["He was too old","വളരെ വൃദ്ധനായി"],["The people chose David","ജനം ദാവീദിനെ തിരഞ്ഞെടുത്തു"]],0,
+   "He made the burnt offering himself and did not fulfil the vow (1 Sam. 13:8-14; 15:1-23).","ഹോമയാഗം താൻ തന്നെ അർപ്പിച്ചു; നേർച്ച നിറവേറ്റിയില്ല (1 ശമു. 13:8-14; 15:1-23)."],
+  ["Who was the Philistine giant killed by David?","ദാവീദ് കൊന്ന ഫെലിസ്ത്യ മല്ലൻ ആര്?",
+   [["Goliath","ഗോല്യാത്ത്"],["Absalom","അബ്ശാലോം"],["Uriah","ഊരീയാവ്"],["Joab","യോവാബ്"]],0,
+   "1 Samuel 17.","1 ശമു. 17."],
+  ["“Saul has slain thousands, and David ten thousands.” This song made Saul…","“ശൗൽ ആയിരത്തെ കൊന്നു, ദാവീദോ പതിനായിരത്തെ” – ഈ പാട്ട് ശൗലിനെ…",
+   [["Jealous of David","ദാവീദിനോട് അസൂയാലുവാക്കി"],["Happy and proud","സന്തോഷിപ്പിച്ചു"],["Afraid of the Philistines","ഫെലിസ്ത്യരെ ഭയപ്പെടുത്തി"],["Leave the palace","കൊട്ടാരം വിടുവിച്ചു"]],0,
+   "1 Samuel 18:7.","1 ശമു. 18:7."],
+  ["How was David related to Saul?","ദാവീദ് ശൗലിന്റെ ആരായിരുന്നു?",
+   [["Son-in-law","മരുമകൻ"],["Son","മകൻ"],["Brother","സഹോദരൻ"],["Nephew","അനന്തരവൻ"]],0,"",""],
+  ["How many times did David have the chance to kill Saul but spared him?","ശൗലിനെ കൊല്ലാൻ അവസരം ലഭിച്ചിട്ടും ദാവീദ് വെറുതെ വിട്ടത് എത്ര പ്രാവശ്യം?",
+   [["Twice","രണ്ടു പ്രാവശ്യം"],["Once","ഒരു പ്രാവശ്യം"],["Three times","മൂന്നു പ്രാവശ്യം"],["Never","ഒരിക്കലുമില്ല"]],0,
+   "David respected Saul as God’s anointed king.","ദൈവത്തിന്റെ അഭിഷിക്തനായ രാജാവിനോട് ദാവീദ് വിശ്വസ്തനായിരുന്നു."],
+  ["How is Saul described in 1 Samuel 9:2?","1 ശമു. 9:2-ൽ ശൗലിനെ വിവരിക്കുന്നത് എങ്ങനെ?",
+   [["Handsome, strong and agile","കോമളരൂപിയും ബലവാനും ചുറുചുറുക്കുള്ളവനും"],["Small and weak","ചെറുതും ബലഹീനനും"],["Old and wise","വൃദ്ധനും ജ്ഞാനിയും"],["A shepherd and singer","ഇടയനും ഗായകനും"]],0,"",""]
+ ],
+ short:[
+  {en:"Describe the three accounts of Saul becoming king.", ml:"ശൗൽ രാജാവായതിന്റെ മൂന്ന് വിവരണങ്ങൾ എഴുതുക.",
+   aen:["1 Sam. 9:1-10:16 – Searching for his father’s lost donkeys, Saul met Samuel at Ramah, who anointed him secretly with oil.","1 Sam. 10:17-24 – Samuel drew lots and Saul, son of Kish of Benjamin, was chosen.","1 Sam. 11:1-13 – After Saul saved Israel from the Ammonites, he was formally installed as king."],
+   aml:["1 ശമു. 9:1-10:16 – കാണാതെപോയ കഴുതകളെ തേടി രാമായിൽ എത്തിയ ശൗലിനെ ശമുവേൽ രഹസ്യമായി തൈലാഭിഷേകം ചെയ്തു.","1 ശമു. 10:17-24 – ശമുവേൽ നറുക്കിട്ട് ബെന്യാമീൻ ഗോത്രത്തിലെ കീശിന്റെ മകൻ ശൗലിനെ തിരഞ്ഞെടുത്തു.","1 ശമു. 11:1-13 – അമ്മോന്യരിൽനിന്ന് യിസ്രായേലിനെ രക്ഷിച്ചതോടെ ശൗൽ ഔദ്യോഗികമായി രാജാവായി."]},
+  {en:"What were the reasons for Saul’s downfall?", ml:"ശൗലിന്റെ പതനത്തിന്റെ കാരണങ്ങൾ എന്തെല്ലാം?",
+   aen:["Disobedience to God’s commandments.","Not listening to Prophet Samuel.","Offering the burnt offering himself and not fulfilling the vow.","Pride and jealousy towards David."],
+   aml:["ദൈവകല്പനകളോടുള്ള അനുസരണക്കേട്.","ശമുവേൽ പ്രവാചകനെ കേൾക്കാതിരുന്നത്.","ഹോമയാഗം സ്വയം അർപ്പിച്ചതും നേർച്ച നിറവേറ്റാതിരുന്നതും.","ദാവീദിനോടുള്ള അഹങ്കാരവും അസൂയയും."]},
+  {en:"What do the lives of Saul and David teach us?", ml:"ശൗലിന്റെയും ദാവീദിന്റെയും ജീവിതം നൽകുന്ന സന്ദേശം?",
+   aen:["Act according to one’s calling.","God may lift up or reject a person according to his conduct; what we have is by God’s grace.","Live in fellowship with people; it is useless to rise against those blessed by the Lord."],
+   aml:["വിളിച്ചവന്റെ വിളിക്ക് യോഗ്യമായി പ്രവർത്തിക്കുക.","ഓരോരുത്തരുടെയും പ്രവൃത്തിക്കനുസരിച്ച് ദൈവം ഉയർത്തുകയോ തള്ളുകയോ ചെയ്യും; നമുക്കുള്ളത് ദൈവകൃപയാൽ.","മനുഷ്യരോട് കൂട്ടായ്മയിൽ ജീവിക്കുക; ദൈവം അനുഗ്രഹിച്ചവർക്കെതിരെ എഴുന്നേൽക്കുന്നത് വ്യർത്ഥം."]},
+  {en:"Resolution of this chapter", ml:"ഈ പാഠത്തിലെ നിശ്ചയം",
+   aen:["We won’t become proud like Saul who forgot God’s blessings. We will understand God’s will through prayer, fasting and humility, and treat all people with love and care."],
+   aml:["ദൈവാനുഗ്രഹങ്ങൾ മറന്ന ശൗലിനെപ്പോലെ ഞങ്ങൾ അഹങ്കാരികളാവുകയില്ല. പ്രാർത്ഥന, ഉപവാസം, വിനയം എന്നിവയിലൂടെ ദൈവഹിതം മനസ്സിലാക്കി, എല്ലാവരോടും സ്നേഹത്തോടെ പെരുമാറും."]}
+ ]
+}
+];
+
+/* ---------- HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}>${ml ? `<${tag} class="ml">${esc(ml)}</${tag}>` : ""}`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ---------- LANGUAGE ---------- */
+function setLang(l){
+  document.body.dataset.lang = l;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  store.set("c7lang", l);
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+const C = CH[0], N = C.mcq.length;
+
+/* ---------- TABS ---------- */
+const TABS = [{id:"practice", label:"Practice", sub:"പരിശീലനം"}, {id:"test", label:"Chapter Test", sub:`${N} questions · പാഠ പരീക്ഷ`}];
+function renderTabs(active){
+  $("#tabs").innerHTML = TABS.map(t => `<a class="tab" role="tab" href="#${t.id}" aria-selected="${t.id === active}" data-id="${t.id}">${esc(t.label)}<small class="ml-small">${esc(t.sub)}</small></a>`).join("");
+}
+
+/* ---------- MCQ ---------- */
+function mcqHTML(q, idx, key){
+  const order = shuffle([0,1,2,3]);
+  return `<li class="q" data-key="${key}" data-correct="${q[3]}">
+    <span class="n">${idx}.</span>
+    <div class="body">
+      <div class="qtext">${bi(q[0], q[1])}</div>
+      <div class="opts">${order.map(i => `<button type="button" class="opt" data-i="${i}">${bi(q[2][i][0], q[2][i][1])}</button>`).join("")}</div>
+      <div class="fb" hidden></div>
+    </div>
+  </li>`;
+}
+function answerMCQ(li, btn, q, onDone){
+  const correct = +li.dataset.correct, pick = +btn.dataset.i, ok = pick === correct;
+  li.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true;
+    const i = +b.dataset.i;
+    if (i === correct) b.classList.add("correct");
+    else if (i === pick) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  const fb = li.querySelector(".fb");
+  const right = q[2][correct];
+  fb.innerHTML = ok
+    ? `<b class="ok">${bi("Correct!", "ശരിയാണ്!")}</b> ${q[4] ? bi(q[4], q[5]) : ""}`
+    : `<b class="bad">${bi("Not quite.", "തെറ്റി.")}</b> ${bi("Answer: " + right[0], "ഉത്തരം: " + right[1])} ${q[4] ? bi(q[4], q[5]) : ""}`;
+  fb.hidden = false;
+  onDone && onDone(ok, pick);
+}
+
+/* ---------- CHAPTER VIEW ---------- */
+function renderChapter(c){
+  const saved = store.get("c7-" + c.id, {});
+  const v = $("#view");
+  v.innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Chapter " + c.n, "പാഠം " + c.n)}</div>
+      <h2><span class="en">${esc(c.en)}</span><span class="ml">${esc(c.ml)}</span></h2>
+    </div>
+    <div class="verse">
+      <div class="lbl">${bi("Verse to be memorized", " · മനഃപാഠവാക്യം")}</div>
+      <q class="en">${esc(c.verse.en)}</q>
+      <q class="ml">${esc(c.verse.ml)}</q>
+      <cite>${esc(c.verse.ref)}</cite>
+    </div>
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div class="sec-title">
+        <h3><span class="en">Choose the correct answer</span><span class="ml">ശരിയുത്തരം തിരഞ്ഞെടുക്കുക</span></h3>
+        <span class="score" id="score"></span>
+      </div>
+      <ol class="qlist">${c.mcq.map((q, i) => mcqHTML(q, i + 1, i)).join("")}</ol>
+      <div class="btnrow"><button type="button" class="btn ghost" id="reset">${bi("Start again", " · വീണ്ടും തുടങ്ങുക")}</button></div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div class="sec-title">
+        <h3><span class="en">Answer these questions</span><span class="ml">ഉത്തരം എഴുതുക</span></h3>
+        <span class="score">${bi("Think first, then check", "ആലോചിച്ചശേഷം നോക്കുക")}</span>
+      </div>
+      <div class="cards">${c.short.map((s, i) => `
+        <div class="card">
+          <div class="qtext">${bi(s.en, s.ml)}</div>
+          <button type="button" class="reveal" aria-expanded="false" data-i="${i}">${bi("Show answer", " · ഉത്തരം കാണുക")}</button>
+          <div class="ans" hidden>
+            ${s.aen.length > 1 ? `<ol class="en">${s.aen.map(a => `<li>${esc(a)}</li>`).join("")}</ol>` : `<p class="en" style="margin:0">${esc(s.aen[0])}</p>`}
+            ${s.aml.length > 1 ? `<ol class="ml">${s.aml.map(a => `<li>${esc(a)}</li>`).join("")}</ol>` : `<p class="ml" style="margin:8px 0 0">${esc(s.aml[0])}</p>`}
+          </div>
+        </div>`).join("")}
+      </div>
+    </section>
+    <div class="btnrow"><a class="btn ghost pdf" href="${PDF}" target="_blank" rel="noopener">${bi("Open printable PDF", " · PDF തുറക്കുക")}</a></div>`;
+
+  const total = c.mcq.length;
+  const upd = () => {
+    const vals = Object.values(saved);
+    const right = vals.filter(x => x.ok).length;
+    $("#score").innerHTML = `<b>${right}</b> ${bi("correct", "ശരി")} · ${vals.length}/${total} ${bi("answered", "ചെയ്തു")}`;
+  };
+  v.querySelectorAll(".q").forEach(li => {
+    const k = li.dataset.key, q = c.mcq[k];
+    if (saved[k]) {
+      const btn = li.querySelector(`.opt[data-i="${saved[k].pick}"]`);
+      answerMCQ(li, btn, q);
+    }
+    li.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+      answerMCQ(li, btn, q, (ok, pick) => { saved[k] = {ok, pick}; store.set("c7-" + c.id, saved); upd(); });
+    }));
+  });
+  $("#reset").addEventListener("click", () => { store.set("c7-" + c.id, {}); renderChapter(c); });
+  v.querySelectorAll(".reveal").forEach(b => b.addEventListener("click", () => {
+    const a = b.nextElementSibling, open = a.hidden;
+    a.hidden = !open; b.setAttribute("aria-expanded", open);
+    b.innerHTML = open ? bi("Hide answer", " · ഉത്തരം മറയ്ക്കുക") : bi("Show answer", " · ഉത്തരം കാണുക");
+  }));
+  upd();
+}
+
+/* ---------- TEST VIEW ---------- */
+const BEST = "c7-best-" + C.id;
+function renderTestIntro(){
+  const best = store.get(BEST, null);
+  $("#view").innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Chapter " + C.n, "പാഠം " + C.n)}</div>
+      <h2><span class="en">Chapter Test</span><span class="ml">പാഠ പരീക്ഷ</span></h2>
+    </div>
+    <div class="test-intro">
+      <p>${bi(`All ${N} questions from this chapter in random order, one at a time. Your score is shown at the end, with every question you missed.`, `ഈ പാഠത്തിലെ ${N} ചോദ്യങ്ങളും, ഓരോന്നായി. അവസാനം മാർക്കും തെറ്റിയ ചോദ്യങ്ങളും കാണാം.`)}</p>
+      ${best !== null ? `<p class="score">${bi("Your best score on this device:", "ഈ ഫോണിലെ മികച്ച മാർക്ക്:")} <b>${best}/${N}</b></p>` : ""}
+      <div class="btnrow"><button type="button" class="btn" id="start">${bi("Start test", " · പരീക്ഷ തുടങ്ങുക")}</button></div>
+    </div>`;
+  $("#start").addEventListener("click", startTest);
+}
+function startTest(){
+  const qs = shuffle(C.mcq);
+  let i = 0, score = 0; const missed = [];
+  const step = () => {
+    if (i >= qs.length) return finish();
+    const q = qs[i];
+    $("#view").innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="test-meta"><span>${bi("Question " + (i + 1) + " of " + N, " · ചോദ്യം " + (i + 1) + "/" + N)}</span><span>${bi("Score " + score, " · മാർക്ക് " + score)}</span></div>
+        <div class="bar"><i style="width:${i / qs.length * 100}%"></i></div>
+      </div>
+      <ol class="qlist"><li class="q" data-correct="${q[3]}"><span class="n">${i + 1}.</span>
+        <div class="body">
+          <div class="qtext">${bi(q[0], q[1])}</div>
+          <div class="opts">${shuffle([0,1,2,3]).map(k => `<button type="button" class="opt" data-i="${k}">${bi(q[2][k][0], q[2][k][1])}</button>`).join("")}</div>
+          <div class="fb" hidden></div>
+        </div></li></ol>
+      <div class="btnrow"><button type="button" class="btn" id="next" hidden>${i === qs.length - 1 ? bi("See my score", " · മാർക്ക് കാണുക") : bi("Next question", " · അടുത്ത ചോദ്യം")}</button></div>`;
+    const li = $("#view .q");
+    li.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+      answerMCQ(li, btn, q, ok => { if (ok) score++; else missed.push(q); $("#next").hidden = false; $("#next").focus(); });
+    }));
+    $("#next").addEventListener("click", () => { i++; step(); window.scrollTo({top:0}); });
+  };
+  const finish = () => {
+    const best = store.get(BEST, 0);
+    if (score > best) store.set(BEST, score);
+    const pct = score / N;
+    const msg = pct >= .9 ? ["Excellent! Well prepared.", "മികച്ചത്! നന്നായി പഠിച്ചിട്ടുണ്ട്."]
+              : pct >= .7 ? ["Good work. Revise the ones you missed.", "നല്ലത്. തെറ്റിയവ ഒന്നുകൂടി പഠിക്കുക."]
+              : ["Keep practising. Go through the chapter again.", "പാഠം ഒന്നുകൂടി വായിച്ച് പരിശീലിക്കുക."];
+    $("#view").innerHTML = `
+      <div class="result">
+        <span class="chip">${bi("Your score", " · നിങ്ങളുടെ മാർക്ക്")}</span>
+        <div class="big">${score}<small>/${N}</small></div>
+        <p style="margin:0">${bi(msg[0], msg[1])}</p>
+        <div class="btnrow" style="justify-content:center;margin-top:8px">
+          <button type="button" class="btn" id="again">${bi("Try again", " · വീണ്ടും എഴുതുക")}</button>
+        </div>
+      </div>
+      ${missed.length ? `<section style="display:flex;flex-direction:column;gap:12px">
+        <div class="sec-title"><h3><span class="en">Questions to revise</span><span class="ml">വീണ്ടും പഠിക്കേണ്ടവ</span></h3></div>
+        <div class="cards">${missed.map(q => `<div class="card">
+          <div class="qtext">${bi(q[0], q[1])}</div>
+          <div class="ans">${bi("Answer: " + q[2][q[3]][0], "ഉത്തരം: " + q[2][q[3]][1], "div")}</div>
+        </div>`).join("")}</div></section>` : ""}`;
+    $("#again").addEventListener("click", startTest);
+  };
+  step();
+}
+
+/* ---------- ROUTING ---------- */
+function show(id){
+  renderTabs(id);
+  if (id === "test") renderTestIntro(); else renderChapter(C);
+}
+function route(){ show(location.hash === "#test" ? "test" : "practice"); }
+document.addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if (!t) return;
+  e.preventDefault();
+  try { history.replaceState(null, "", "#" + t.dataset.id); } catch(err) {}
+  show(t.dataset.id);
+  window.scrollTo({top:0});
+});
+window.addEventListener("hashchange", route);
+setLang(store.get("c7lang", "both"));
+route();
+</script>
+
+</body></html>
