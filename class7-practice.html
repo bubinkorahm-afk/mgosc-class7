@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 7 Revision 1–4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column; sticky chapter bar; questions as numbered practice items, then reveal-answer cards */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:22px 16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end;justify-content:space-between}
+.brand .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,5vw,34px);line-height:1.1;margin:4px 0 2px;text-wrap:balance}
+.brand p{margin:0;color:var(--muted);font-size:15px}
+.homelink{display:inline-block;margin-top:6px;color:var(--accent);font-weight:700;text-decoration:none;font-size:14px}
+
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 13px;border-radius:999px;cursor:pointer}
+.seg button.ml{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:8px 14px;font:600 15px var(--f-body);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:0;text-decoration:none}
+.tab small{font-weight:500;color:var(--muted);font-size:12px}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.tab[aria-selected="true"] small{color:var(--accent-ink);opacity:.85}
+
+main .wrap{padding-block:26px 64px;display:flex;flex-direction:column;gap:28px}
+.chap-head .num{font:700 13px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.chap-head h2{font-family:var(--f-display);font-size:clamp(24px,4.5vw,30px);line-height:1.15;margin:4px 0 0;text-wrap:balance}
+.chap-head h2 .ml{display:block;font-size:.78em;font-weight:700;margin-top:4px;color:var(--muted)}
+
+.verse{background:var(--gold-soft);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.verse .lbl{font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.verse q{quotes:none;font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.4}
+.verse .ml{font-size:16px}
+.verse cite{font-style:normal;color:var(--muted);font-size:14px}
+
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h3{margin:0;font-family:var(--f-display);font-size:21px}
+.sec-title h3 .ml{font-size:15px;font-weight:600;color:var(--muted);margin-left:6px}
+.score{font-variant-numeric:tabular-nums;font-size:15px;color:var(--muted)}
+.score b{color:var(--ink)}
+
+.qlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.q .n{font:700 15px var(--f-body);color:var(--accent);font-variant-numeric:tabular-nums;padding-top:1px;min-width:1.6em}
+.q .body{min-width:0;display:flex;flex-direction:column;gap:10px}
+.qtext{font-weight:700;font-size:17px}
+.qtext .ml{display:block;font-weight:600;font-size:15.5px;color:var(--ink)}
+.qtext .en + .ml{margin-top:2px;color:var(--muted)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:9px 12px;cursor:pointer;font:500 16px var(--f-body);display:flex;flex-direction:column;gap:1px;min-width:0}
+.opt .ml{font-size:14.5px;color:var(--muted)}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:focus-visible,.tab:focus-visible,.seg button:focus-visible,.btn:focus-visible,.reveal:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .ml{color:var(--ink)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .ml{color:var(--ink)}
+.opt.dim{opacity:.55}
+.fb{font-size:15px;border-radius:10px;padding:9px 12px;background:var(--sunk)}
+.fb b.ok{color:var(--ok)} .fb b.bad{color:var(--bad)}
+.fb .ml{display:block;font-size:14px}
+
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.reveal{align-self:flex-start;border:1.5px solid var(--accent);color:var(--accent);background:transparent;border-radius:999px;padding:6px 14px;font:700 14px var(--f-body);cursor:pointer}
+.reveal .ml{font-weight:600;font-size:13px}
+.ans{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:16px}
+.ans ol,.ans ul{margin:0;padding-left:1.3em}
+.ans .ml{margin-top:8px;font-size:15px}
+.ans .ml:first-child{margin-top:0}
+
+.btnrow{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:11px 18px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+
+/* Test mode */
+.test-intro{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.test-intro p{margin:0}
+.bar{height:8px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .3s}
+.test-meta{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.result{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center}
+.result .big{font-family:var(--f-display);font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.result .big small{font-size:24px;color:var(--muted)}
+.chip{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:var(--sunk);color:var(--muted)}
+
+/* Home: chapter picker */
+.pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.chcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);cursor:pointer}
+.chcard:hover{border-color:var(--accent)}
+.chcard:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.chcard .num{font:700 12.5px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.chcard .t{font-family:var(--f-display);font-weight:800;font-size:19px;line-height:1.2}
+.chcard .t .ml{display:block;font-family:var(--f-ml);font-size:14.5px;font-weight:600;color:var(--muted);margin-top:2px}
+.chcard .meta{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:auto}
+.chcard .meta b{color:var(--ok)}
+.chcard.test{background:var(--accent-soft);border-color:transparent}
+.toggles{display:flex;flex-wrap:wrap;gap:8px}
+.toggles button{border:1.5px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;padding:6px 14px;font:700 15px var(--f-body);cursor:pointer;font-variant-numeric:tabular-nums}
+.toggles button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.toggles button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 32px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="eyebrow">OSSAE · Galilee Division</div>
+      <h1>Class 7 Revision</h1>
+      <p><span class="en">Chapters 1–8 · Stories from the Holy Bible</span><span class="ml"> · പാഠം 1–8 · വി. വേദപുസ്തക സംഭവങ്ങൾ</span></p>
+      <a class="homelink" href="index.html">← Class 7 Portal home</a>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="ml" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Chapters">
+  <div class="wrap" role="tablist" id="tabs"></div>
+</nav>
+
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">Based on the OSSAE Class VII textbook (Third Edition, 2022)</div></footer>
+
+<script>
+/* ---------- DATA ---------- */
+/* mcq: [enQ, mlQ, [[en,ml] x4], correctIndex, enNote, mlNote] */
+/* To add a chapter next week: copy one {...} block below, change id/n/titles/verse, add its mcq and short questions. */
+const CH = [
+{
+ id:"ch1", n:1, en:"The Judges", ml:"ന്യായാധിപന്മാർ",
+ verse:{en:"And the Angel of the LORD appeared to him, and said to him, “The LORD is with you, you mighty man of valor!”", ml:"“യഹോവയുടെ ദൂതൻ അവന്നു പ്രത്യക്ഷനായി: അല്ലയോ പരാക്രമശാലിയേ, യഹോവ നിന്നോടുകൂടെ ഉണ്ടു എന്നു അവനോടു പറഞ്ഞു”", ref:"Judges 6:12 · ന്യായാ. 6:12"},
+ mcq:[
+  ["The Judges led Israel during the period between…","ന്യായാധിപന്മാർ യിസ്രായേലിനെ നയിച്ചത് ഏത് കാലഘട്ടത്തിൽ?",
+   [["Joshua and King Saul","യോശുവയ്ക്കും ശൗൽ രാജാവിനും ഇടയിൽ"],["Moses and Joshua","മോശയ്ക്കും യോശുവയ്ക്കും ഇടയിൽ"],["Saul and David","ശൗലിനും ദാവീദിനും ഇടയിൽ"],["David and Solomon","ദാവീദിനും ശലോമോനും ഇടയിൽ"]],0,"",""],
+  ["How many Judges led Israel altogether?","ആകെ എത്ര ന്യായാധിപന്മാർ യിസ്രായേലിനെ നയിച്ചു?",
+   [["Fifteen","പതിനഞ്ച്"],["Twelve","പന്ത്രണ്ട്"],["Ten","പത്ത്"],["Seven","ഏഴ്"]],0,"",""],
+  ["Who was the first Judge in the list?","പട്ടികയിലെ ആദ്യ ന്യായാധിപൻ ആര്?",
+   [["Othniel","ഒത്നിയേൽ"],["Ehud","ഏഹൂദ്"],["Samson","ശിംശോൻ"],["Eli","ഏലി"]],0,"",""],
+  ["Who was the only woman to become a Judge of Israel?","യിസ്രായേലിൽ ന്യായപാലനം ചെയ്ത ഏക സ്ത്രീ ആര്?",
+   [["Deborah","ദെബോരാ"],["Hannah","ഹന്നാ"],["Ruth","രൂത്ത്"],["Esther","എസ്ഥേർ"]],0,"Judges 4:4.","ന്യായാ. 4:4."],
+  ["What does the name ‘Deborah’ mean?","‘ദെബോരാ’ എന്ന പേരിന്റെ അർത്ഥം എന്ത്?",
+   [["Bee","തേനീച്ച"],["Lamp","വിളക്ക്"],["Gift of God","ദൈവത്തിന്റെ ദാനം"],["Mother","അമ്മ"]],0,"",""],
+  ["Who was Deborah’s husband?","ദെബോരായുടെ ഭർത്താവ് ആര്?",
+   [["Lappidoth","ലപ്പീദോത്ത്"],["Barak","ബാരാക്ക്"],["Elkanah","എല്ക്കാനാ"],["Kish","കീശ്"]],0,"",""],
+  ["Deborah held which two titles at the same time?","ദെബോരായ്ക്ക് ഉണ്ടായിരുന്ന രണ്ട് വിശേഷണങ്ങൾ ഏവ?",
+   [["Prophetess and Judge","പ്രവാചകിയും ന്യായപാലകയും"],["Queen and Judge","രാജ്ഞിയും ന്യായപാലകയും"],["Priestess and Prophetess","പുരോഹിതയും പ്രവാചകിയും"],["Queen and Prophetess","രാജ്ഞിയും പ്രവാചകിയും"]],0,"",""],
+  ["Who were attacking Israel during Deborah’s time?","ദെബോരായുടെ കാലത്ത് യിസ്രായേലിനെ ആക്രമിച്ചിരുന്നത് ആര്?",
+   [["The Canaanites","കനാന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Ammonites","അമ്മോന്യർ"],["The Midianites","മിദ്യാന്യർ"]],0,"",""],
+  ["Whom did Deborah inspire to become a leader of Israel?","നേതൃത്വത്തിലേക്ക് ദെബോരാ പ്രചോദിപ്പിച്ചത് ആരെ?",
+   [["Barak","ബാരാക്ക്"],["Gideon","ഗിദെയോൻ"],["Samson","ശിംശോൻ"],["Jephthah","യിഫ്താഹ്"]],0,"",""],
+  ["What was Gideon’s other name?","ഗിദെയോന്റെ മറ്റൊരു പേര് എന്ത്?",
+   [["Jerubbaal","യെരുബ്ബാൽ"],["Barak","ബാരാക്ക്"],["Ebenezer","ഏബെൻ-ഏസെർ"],["Lappidoth","ലപ്പീദോത്ത്"]],0,"",""],
+  ["What does ‘Jerubbaal’ mean?","‘യെരുബ്ബാൽ’ എന്ന പേരിന്റെ അർത്ഥം?",
+   [["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"],["Mighty soldier","പരാക്രമശാലി"],["Asked of God","ദൈവത്തോട് ചോദിച്ചവൻ"],["Stone of help","സഹായത്തിന്റെ കല്ല്"]],0,
+   "He broke down the altar of Baal (Judges 6:32).","അവൻ ബാലിന്റെ ബലിപീഠം തകർത്തു (ന്യായാ. 6:32)."],
+  ["God called Gideon when Israel was suffering attacks from…","ഗിദെയോനെ ദൈവം വിളിച്ചത് ആരുടെ ആക്രമണകാലത്ത്?",
+   [["Midianites and Amalekites","മിദ്യാന്യരും അമാലേക്യരും"],["Philistines","ഫെലിസ്ത്യർ"],["Ammonites","അമ്മോന്യർ"],["Canaanites","കനാന്യർ"]],0,"",""],
+  ["What was Gideon doing when the Angel of the Lord appeared to him?","ദൈവദൂതൻ പ്രത്യക്ഷനായപ്പോൾ ഗിദെയോൻ എന്തു ചെയ്യുകയായിരുന്നു?",
+   [["Threshing wheat at the winepress","മുന്തിരിച്ചക്കിനരികെ ഗോതമ്പ് മെതിക്കുകയായിരുന്നു"],["Looking after sheep","ആടുകളെ മേയ്ക്കുകയായിരുന്നു"],["Searching for lost donkeys","കാണാതെപോയ കഴുതകളെ തേടുകയായിരുന്നു"],["Praying in the Tabernacle","ദൈവാലയത്തിൽ പ്രാർത്ഥിക്കുകയായിരുന്നു"]],0,
+   "Judges 6:11.","ന്യായാ. 6:11."],
+  ["Where did God speak to Jephthah?","യിഫ്താഹ് ദൈവത്തോട് തന്റെ കാര്യങ്ങൾ ബോധിപ്പിച്ചത് എവിടെ വച്ച്?",
+   [["Mizpah","മിസ്പാ"],["Shiloh","ശീലോ"],["Ramah","രാമാ"],["Bethlehem","ബേത്‌ലഹേം"]],0,"",""],
+  ["Jephthah went to war against which people?","യിഫ്താഹ് ആരുമായാണ് യുദ്ധം ചെയ്തത്?",
+   [["The Ammonites","അമ്മോന്യർ"],["The Midianites","മിദ്യാന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Canaanites","കനാന്യർ"]],0,"",""],
+  ["Who came first to greet Jephthah on his victorious return?","വിജയിച്ചുവന്ന യിഫ്താഹിനെ ആദ്യം എതിരേറ്റത് ആര്?",
+   [["His only daughter","തന്റെ ഏകമകൾ"],["His wife","ഭാര്യ"],["His servant","ദാസൻ"],["His brother","സഹോദരൻ"]],0,
+   "Judges 11:34.","ന്യായാ. 11:34."],
+  ["Every year, for how many days did the virgins of Israel go to praise Jephthah’s daughter?","ആണ്ടുതോറും യിസ്രായേലിലെ കന്യകമാർ യിഫ്താഹിന്റെ മകളെ കീർത്തിക്കാൻ പോയത് എത്ര ദിവസം?",
+   [["Four days","നാല് ദിവസം"],["Seven days","ഏഴ് ദിവസം"],["Three days","മൂന്ന് ദിവസം"],["Forty days","നാല്പത് ദിവസം"]],0,
+   "Judges 11:40.","ന്യായാ. 11:40."],
+  ["What lesson do we learn from Jephthah’s oath?","യിഫ്താഹിന്റെ നേർച്ചയിൽനിന്ന് നാം പഠിക്കുന്ന പാഠം?",
+   [["Never make an oath emotionally; check if it is God’s will, and keep the oaths we make","വികാരത്തിനടിമപ്പെട്ട് നേർച്ച നേരരുത്; ദൈവഹിതമാണോ എന്ന് നോക്കണം; നേർന്നത് നിറവേറ്റണം"],["Oaths can be broken if they are hard","പ്രയാസമായാൽ നേർച്ച ലംഘിക്കാം"],["Oaths are a way to influence God","ദൈവത്തെ സ്വാധീനിക്കാനുള്ള വഴിയാണ് നേർച്ച"],["We should never pray before a war","യുദ്ധത്തിനു മുമ്പ് പ്രാർത്ഥിക്കരുത്"]],0,"",""],
+  ["Which Judge’s life shows that God punishes His chosen ones when they drift into sin?","തിരഞ്ഞെടുക്കപ്പെട്ടവർ പാപത്തിലേക്ക് തിരിഞ്ഞാൽ ദൈവം ശിക്ഷിക്കുമെന്നതിന് ഉദാഹരണമായ ന്യായാധിപൻ?",
+   [["Samson","ശിംശോൻ"],["Deborah","ദെബോരാ"],["Gideon","ഗിദെയോൻ"],["Othniel","ഒത്നിയേൽ"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["Judges 6:12","ന്യായാ. 6:12"],["1 Samuel 3:19","1 ശമു. 3:19"],["1 Samuel 15:22","1 ശമു. 15:22"],["2 Samuel 22:31","2 ശമു. 22:31"]],0,"",""]
+ ],
+ short:[
+  {en:"Who were the Judges? Why did God raise them up?", ml:"ന്യായാധിപന്മാർ ആരായിരുന്നു? ദൈവം അവരെ എഴുന്നേൽപ്പിച്ചത് എന്തിന്?",
+   aen:["They were leaders who guided Israel in the period between Joshua and King Saul.","When Israel turned away from God, enemies attacked and oppressed them.","When the people cried to God, He raised up Judges to deliver them and lead them back to Him.","Fifteen Judges led Israel; Othniel was the first."],
+   aml:["യോശുവയ്ക്കും ശൗൽ രാജാവിനും ഇടയിലുള്ള കാലത്ത് യിസ്രായേലിനെ നയിച്ച നേതാക്കളായിരുന്നു അവർ.","യിസ്രായേൽ ദൈവത്തെ വിട്ടുമാറിയപ്പോൾ ശത്രുക്കൾ അവരെ ആക്രമിച്ച് പീഡിപ്പിച്ചു.","ജനം ദൈവത്തോട് നിലവിളിച്ചപ്പോൾ അവരെ രക്ഷിക്കാനും ദൈവത്തിങ്കലേക്ക് തിരികെ നയിക്കാനും ദൈവം ന്യായാധിപന്മാരെ എഴുന്നേൽപ്പിച്ചു.","പതിനഞ്ച് ന്യായാധിപന്മാർ യിസ്രായേലിനെ നയിച്ചു; ഒത്നിയേൽ ആയിരുന്നു ആദ്യത്തെയാൾ."]},
+  {en:"Write a note on Deborah.", ml:"ദെബോരായെക്കുറിച്ച് ഒരു കുറിപ്പ് എഴുതുക.",
+   aen:["She was the only woman Judge of Israel.","She was both a prophetess and a Judge; her husband was Lappidoth.","Her name means ‘Bee’.","When the Canaanites attacked Israel, she inspired Barak to lead Israel, and God gave them victory (Judges 4–5)."],
+   aml:["യിസ്രായേലിൽ ന്യായപാലനം ചെയ്ത ഏക സ്ത്രീ.","പ്രവാചകിയും ന്യായപാലകയുമായിരുന്നു; ഭർത്താവ് ലപ്പീദോത്ത്.","‘ദെബോരാ’ എന്ന പേരിന്റെ അർത്ഥം ‘തേനീച്ച’.","കനാന്യർ യിസ്രായേലിനെ ആക്രമിച്ചപ്പോൾ ബാരാക്കിനെ നേതൃത്വത്തിലേക്ക് പ്രചോദിപ്പിച്ചു; ദൈവം അവർക്ക് ജയം നൽകി (ന്യായാ. 4–5)."]},
+  {en:"How did God call Gideon?", ml:"ദൈവം ഗിദെയോനെ വിളിച്ചത് എങ്ങനെ?",
+   aen:["Israel was suffering attacks from the Midianites and Amalekites.","Gideon was threshing wheat at the winepress to hide it from the enemies.","The Angel of the Lord appeared and said, “The LORD is with you, you mighty man of valor!” (Judges 6:12).","He broke down the altar of Baal, so he was called Jerubbaal – ‘Breaker of idols’."],
+   aml:["മിദ്യാന്യരുടെയും അമാലേക്യരുടെയും ആക്രമണത്താൽ യിസ്രായേൽ കഷ്ടപ്പെടുകയായിരുന്നു.","ശത്രുക്കളിൽനിന്ന് ഒളിപ്പിക്കാൻ ഗിദെയോൻ മുന്തിരിച്ചക്കിനരികെ ഗോതമ്പ് മെതിക്കുകയായിരുന്നു.","യഹോവയുടെ ദൂതൻ പ്രത്യക്ഷനായി: “അല്ലയോ പരാക്രമശാലിയേ, യഹോവ നിന്നോടുകൂടെ ഉണ്ട്” എന്ന് പറഞ്ഞു (ന്യായാ. 6:12).","ബാലിന്റെ ബലിപീഠം തകർത്തതിനാൽ ‘വിഗ്രഹഭഞ്ജകൻ’ എന്നർത്ഥമുള്ള യെരുബ്ബാൽ എന്ന് വിളിക്കപ്പെട്ടു."]},
+  {en:"What do we learn from the oath of Jephthah?", ml:"യിഫ്താഹിന്റെ നേർച്ചയിൽനിന്ന് നാം എന്ത് പഠിക്കുന്നു?",
+   aen:["Before fighting the Ammonites, Jephthah vowed to offer to God whoever first came out to meet him on his victorious return.","His only daughter came out first to greet him.","Every year the virgins of Israel went for four days to praise her.","Lesson: never make an oath emotionally; check whether it is God’s will, and keep the oaths we make."],
+   aml:["അമ്മോന്യരോട് യുദ്ധത്തിന് പോകുംമുമ്പ്, ജയിച്ചുവരുമ്പോൾ ആദ്യം എതിരേൽക്കുന്നതിനെ ദൈവത്തിന് അർപ്പിക്കാമെന്ന് യിഫ്താഹ് നേർന്നു.","അവന്റെ ഏകമകളാണ് ആദ്യം എതിരേറ്റത്.","ആണ്ടുതോറും യിസ്രായേലിലെ കന്യകമാർ നാല് ദിവസം അവളെ കീർത്തിക്കാൻ പോയി.","പാഠം: വികാരത്തിനടിമപ്പെട്ട് നേർച്ച നേരരുത്; ദൈവഹിതമാണോ എന്ന് നോക്കണം; നേർന്നത് നിറവേറ്റണം."]},
+  {en:"What lesson does the life of Samson teach us?", ml:"ശിംശോന്റെ ജീവിതം നമ്മെ പഠിപ്പിക്കുന്നത് എന്ത്?",
+   aen:["God gave Samson great strength to save Israel.","But he drifted into sin and lost his strength.","His life shows that God punishes even His chosen ones when they turn to sin, so we must stay faithful to God."],
+   aml:["യിസ്രായേലിനെ രക്ഷിക്കാൻ ദൈവം ശിംശോന് വലിയ ശക്തി നൽകി.","എന്നാൽ അവൻ പാപത്തിലേക്ക് തിരിഞ്ഞ് ശക്തി നഷ്ടപ്പെടുത്തി.","തിരഞ്ഞെടുക്കപ്പെട്ടവർ പാപത്തിലേക്ക് തിരിഞ്ഞാലും ദൈവം ശിക്ഷിക്കുമെന്ന് അവന്റെ ജീവിതം കാണിക്കുന്നു; അതിനാൽ നാം ദൈവത്തോട് വിശ്വസ്തരായിരിക്കണം."]}
+ ]
+},
+{
+ id:"ch2", n:2, en:"Samuel, the Priest and Prophet", ml:"പുരോഹിതനും പ്രവാചകനുമായ ശമുവേൽ",
+ verse:{en:"So Samuel grew, and the LORD was with him and let none of his words fall to the ground.", ml:"“ശമൂവേൽ വളർന്നു; യഹോവ അവനോടുകൂടെ ഇരുന്നു; അവന്റെ വചനങ്ങളിൽ ഒന്നും നിഷ്ഫലമാകുവാൻ ഇടവരുത്തിയില്ല”", ref:"1 Samuel 3:19 · 1 ശമു. 3:19"},
+ mcq:[
+  ["Who were Samuel’s parents?","ശമുവേലിന്റെ മാതാപിതാക്കൾ ആരെല്ലാം?",
+   [["Elkanah and Hannah","എല്ക്കാനായും ഹന്നായും"],["Jesse and his wife","യിശ്ശായിയും ഭാര്യയും"],["Kish and his wife","കീശും ഭാര്യയും"],["Lappidoth and Deborah","ലപ്പീദോത്തും ദെബോരായും"]],0,"",""],
+  ["Who scolded Hannah, thinking she was drunk while praying?","പ്രാർത്ഥിക്കുന്ന ഹന്നാ മദ്യപിച്ചിരിക്കുന്നു എന്ന് കരുതി ശാസിച്ചത് ആര്?",
+   [["Eli the priest","ഏലി പുരോഹിതൻ"],["Samuel","ശമുവേൽ"],["Elkanah","എല്ക്കാനാ"],["Nathan","നാഥാൻ"]],0,
+   "1 Samuel 1:13-14.","1 ശമു. 1:13-14."],
+  ["What does the name ‘Samuel’ mean?","‘ശമുവേൽ’ എന്ന പേരിന്റെ അർത്ഥം?",
+   [["Asked of God / God heard","ദൈവം കേട്ടു"],["Stone of help","സഹായത്തിന്റെ കല്ല്"],["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"],["Bee","തേനീച്ച"]],0,"",""],
+  ["Who was the priest at the Tabernacle where boy Samuel lived?","ബാലനായ ശമുവേൽ ഏത് പുരോഹിതന്റെ കൂടെയാണ് ദൈവാലയത്തിൽ താമസിച്ചത്?",
+   [["Eli","ഏലി"],["Aaron","അഹരോൻ"],["Nathan","നാഥാൻ"],["Zadok","സാദോക്ക്"]],0,"",""],
+  ["During Samuel’s time, Israel was at war with…","ശമുവേലിന്റെ കാലത്ത് യിസ്രായേൽ ആരുമായി യുദ്ധം ചെയ്തു?",
+   [["The Philistines","ഫെലിസ്ത്യർ"],["The Ammonites","അമ്മോന്യർ"],["The Canaanites","കനാന്യർ"],["The Egyptians","മിസ്രയീമ്യർ"]],0,"",""],
+  ["From where did the Israelites bring the Ark of the Lord to their camp?","നിയമപെട്ടകം യിസ്രായേല്യർ പാളയത്തിലേക്ക് കൊണ്ടുവന്നത് എവിടെനിന്ന്?",
+   [["Shiloh","ശീലോ"],["Ramah","രാമാ"],["Mizpah","മിസ്പാ"],["Bethlehem","ബേത്‌ലഹേം"]],0,
+   "1 Samuel 4:3-4.","1 ശമു. 4:3-4."],
+  ["What happened to Eli when he heard the Ark was captured?","നിയമപെട്ടകം പിടിക്കപ്പെട്ടു എന്ന് കേട്ടപ്പോൾ ഏലിക്ക് എന്തു സംഭവിച്ചു?",
+   [["He fell from his seat and died","ഇരിപ്പിടത്തിൽനിന്ന് മറിഞ്ഞുവീണ് മരിച്ചു"],["He went to war himself","തന്നെ യുദ്ധത്തിന് പോയി"],["He fled to Ramah","രാമായിലേക്ക് ഓടിപ്പോയി"],["He anointed a king","ഒരു രാജാവിനെ അഭിഷേകം ചെയ്തു"]],0,
+   "1 Samuel 4:18.","1 ശമു. 4:18."],
+  ["Since Shiloh was no longer safe, Samuel moved to…","ശീലോ സുരക്ഷിതമല്ലാത്തതിനാൽ ശമുവേൽ താമസം മാറ്റിയത് എവിടേക്ക്?",
+   [["Ramah","രാമാ"],["Jerusalem","യെരുശലേം"],["Bethlehem","ബേത്‌ലഹേം"],["Mizpah","മിസ്പാ"]],0,"",""],
+  ["Which kings did Samuel anoint?","ശമുവേൽ അഭിഷേകം ചെയ്ത രാജാക്കന്മാർ?",
+   [["Saul and David","ശൗലും ദാവീദും"],["David and Solomon","ദാവീദും ശലോമോനും"],["Saul and Solomon","ശൗലും ശലോമോനും"],["Saul only","ശൗൽ മാത്രം"]],0,"",""],
+  ["What does ‘Ebenezer’ mean?","‘ഏബെൻ-ഏസെർ’ എന്ന പദത്തിന്റെ അർത്ഥം?",
+   [["Stone of help","സഹായത്തിന്റെ കല്ല്"],["Asked of God","ദൈവത്തോട് ചോദിച്ചു"],["House of bread","അപ്പത്തിന്റെ ഭവനം"],["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"]],0,
+   "1 Samuel 7:12.","1 ശമു. 7:12."],
+  ["Where did Samuel gather God’s people to worship the Lord?","ശമുവേൽ ജനത്തെ ആരാധനയ്ക്കായി ഒരുമിച്ച് കൂട്ടിയിരുന്ന സ്ഥലം?",
+   [["Mizpah","മിസ്പാ"],["Shiloh","ശീലോ"],["Bethel","ബേഥേൽ"],["Hebron","ഹെബ്രോൻ"]],0,"",""],
+  ["Samuel thought it was a sin against the Lord to stop…","ശമുവേൽ എന്ത് നിർത്തുന്നതാണ് പാപമെന്ന് കരുതിയത്?",
+   [["Interceding (praying) for the people","ജനത്തിനുവേണ്ടിയുള്ള മദ്ധ്യസ്ഥപ്രാർത്ഥന"],["Offering sacrifices","യാഗം അർപ്പിക്കുന്നത്"],["Fighting the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യുന്നത്"],["Judging disputes","ന്യായം വിധിക്കുന്നത്"]],0,
+   "1 Samuel 12:23.","1 ശമു. 12:23."],
+  ["“Obedience is better than sacrifice” – Samuel said this to…","“അനുസരിക്കുന്നത് യാഗത്തെക്കാൾ നല്ലത്” – ശമുവേൽ ഇത് ആരോട് പറഞ്ഞു?",
+   [["King Saul","ശൗൽ രാജാവിനോട്"],["Eli","ഏലിയോട്"],["David","ദാവീദിനോട്"],["Hannah","ഹന്നായോട്"]],0,
+   "1 Samuel 15:22.","1 ശമു. 15:22."],
+  ["Samuel is known as the last…","ശമുവേൽ അറിയപ്പെടുന്നത് അവസാനത്തെ…",
+   [["Judge of Israel","ന്യായാധിപൻ"],["King of Israel","രാജാവ്"],["High priest from Aaron’s clan","അഹരോന്യ മഹാപുരോഹിതൻ"],["Prophet of Israel","പ്രവാചകൻ"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["1 Samuel 3:19","1 ശമു. 3:19"],["1 Samuel 15:22","1 ശമു. 15:22"],["Judges 6:12","ന്യായാ. 6:12"],["2 Samuel 22:31","2 ശമു. 22:31"]],0,"",""]
+ ],
+ short:[
+  {en:"Describe the birth of Samuel.", ml:"ശമുവേലിന്റെ ജനനം വിവരിക്കുക.",
+   aen:["Elkanah and Hannah had no children for many years.","Hannah prayed with a broken heart at Shiloh; Eli the priest thought she was drunk and scolded her.","She vowed to give her son to the Lord. God heard her prayer and she gave birth to Samuel, meaning ‘Asked of God / God heard’.","She brought the boy to Eli to serve the Lord in the Tabernacle (1 Samuel 1)."],
+   aml:["എല്ക്കാനായ്ക്കും ഹന്നായ്ക്കും വളരെക്കാലം മക്കളില്ലായിരുന്നു.","ശീലോയിൽ ഹന്നാ ഹൃദയം നൊന്ത് പ്രാർത്ഥിച്ചു; മദ്യപിച്ചിരിക്കുന്നു എന്ന് കരുതി ഏലി പുരോഹിതൻ അവളെ ശാസിച്ചു.","മകനെ ദൈവത്തിന് സമർപ്പിക്കാമെന്ന് അവൾ നേർന്നു. ദൈവം പ്രാർത്ഥന കേട്ടു; ‘ദൈവം കേട്ടു’ എന്നർത്ഥമുള്ള ശമുവേൽ ജനിച്ചു.","ദൈവാലയത്തിൽ ശുശ്രൂഷ ചെയ്യാൻ അവൾ ബാലനെ ഏലിയുടെ അടുക്കൽ ഏല്പിച്ചു (1 ശമു. 1)."]},
+  {en:"How did God call the boy Samuel?", ml:"ബാലനായ ശമുവേലിനെ ദൈവം വിളിച്ചത് എങ്ങനെ?",
+   aen:["While Samuel was sleeping in the Tabernacle, the Lord called him by name.","He thought it was Eli and ran to him three times.","Eli understood it was the Lord and told him to answer, “Speak, Lord, for Your servant hears.”","Samuel grew, and the Lord was with him (1 Samuel 3)."],
+   aml:["ദൈവാലയത്തിൽ ശമുവേൽ ഉറങ്ങുമ്പോൾ യഹോവ അവനെ പേര് ചൊല്ലി വിളിച്ചു.","ഏലിയാണ് വിളിച്ചതെന്ന് കരുതി അവൻ മൂന്നു പ്രാവശ്യം ഏലിയുടെ അടുക്കൽ ഓടിച്ചെന്നു.","യഹോവയാണ് വിളിക്കുന്നതെന്ന് മനസ്സിലാക്കിയ ഏലി, “യഹോവേ, അരുളിച്ചെയ്യേണമേ; അടിയൻ കേൾക്കുന്നു” എന്ന് മറുപടി പറയാൻ ഉപദേശിച്ചു.","ശമുവേൽ വളർന്നു; യഹോവ അവനോടുകൂടെ ഇരുന്നു (1 ശമു. 3)."]},
+  {en:"What happened to the Ark of the Lord during the war with the Philistines?", ml:"ഫെലിസ്ത്യരുമായുള്ള യുദ്ധത്തിൽ നിയമപെട്ടകത്തിന് എന്തു സംഭവിച്ചു?",
+   aen:["The Israelites brought the Ark from Shiloh to their camp, hoping it would save them.","The Philistines defeated Israel and captured the Ark.","When Eli heard the news, he fell from his seat and died.","Shiloh was no longer safe, so Samuel moved to Ramah."],
+   aml:["രക്ഷിക്കുമെന്ന് കരുതി യിസ്രായേല്യർ നിയമപെട്ടകം ശീലോയിൽനിന്ന് പാളയത്തിലേക്ക് കൊണ്ടുവന്നു.","ഫെലിസ്ത്യർ യിസ്രായേലിനെ തോല്പിച്ച് പെട്ടകം പിടിച്ചെടുത്തു.","ഈ വാർത്ത കേട്ട ഏലി ഇരിപ്പിടത്തിൽനിന്ന് മറിഞ്ഞുവീണ് മരിച്ചു.","ശീലോ സുരക്ഷിതമല്ലാതായതിനാൽ ശമുവേൽ രാമായിലേക്ക് താമസം മാറ്റി."]},
+  {en:"Write the roles and greatness of Samuel.", ml:"ശമുവേലിന്റെ ശുശ്രൂഷകളും മഹത്വവും എഴുതുക.",
+   aen:["He was a priest, a prophet and the last Judge of Israel.","He gathered God’s people at Mizpah to worship and set up a stone called Ebenezer – ‘Stone of help’.","He anointed the first two kings, Saul and David.","He felt it was a sin to stop interceding for the people.","He taught King Saul that obedience is better than sacrifice."],
+   aml:["പുരോഹിതനും പ്രവാചകനും യിസ്രായേലിന്റെ അവസാനത്തെ ന്യായാധിപനുമായിരുന്നു.","ആരാധനയ്ക്കായി ജനത്തെ മിസ്പായിൽ കൂട്ടി; ‘സഹായത്തിന്റെ കല്ല്’ എന്നർത്ഥമുള്ള ഏബെൻ-ഏസെർ എന്ന കല്ല് സ്ഥാപിച്ചു.","ആദ്യത്തെ രണ്ട് രാജാക്കന്മാരായ ശൗലിനെയും ദാവീദിനെയും അഭിഷേകം ചെയ്തു.","ജനത്തിനുവേണ്ടിയുള്ള മദ്ധ്യസ്ഥപ്രാർത്ഥന നിർത്തുന്നത് പാപമായി കരുതി.","അനുസരിക്കുന്നത് യാഗത്തെക്കാൾ നല്ലത് എന്ന് ശൗൽ രാജാവിനെ പഠിപ്പിച്ചു."]}
+ ]
+},
+{
+ id:"ch3", n:3, en:"A King for Israel", ml:"യിസ്രായേലിന് ഒരു രാജാവ്",
+ verse:{en:"“Behold, to obey is better than sacrifice, and to heed than the fat of rams.”", ml:"“ഇതാ, അനുസരിക്കുന്നതു യാഗത്തെക്കാളും ശ്രദ്ധിക്കുന്നതു മുട്ടാടുകളുടെ മേദസ്സിനെക്കാളും നല്ലതു”", ref:"1 Samuel 15:22 · 1 ശമു. 15:22"},
+ mcq:[
+  ["Who was the first king of Israel?","യിസ്രായേലിന്റെ ആദ്യ രാജാവ് ആര്?",
+   [["Saul","ശൗൽ"],["David","ദാവീദ്"],["Solomon","ശലോമോൻ"],["Samuel","ശമുവേൽ"]],0,"",""],
+  ["Name Saul’s father.","ശൗലിന്റെ പിതാവ് ആര്?",
+   [["Kish","കീശ്"],["Jesse","യിശ്ശായി"],["Elkanah","എല്ക്കാനാ"],["Eli","ഏലി"]],0,"",""],
+  ["Saul belonged to which tribe?","ശൗൽ ഏത് ഗോത്രക്കാരനായിരുന്നു?",
+   [["Benjamin","ബെന്യാമീൻ"],["Judah","യെഹൂദാ"],["Levi","ലേവി"],["Ephraim","എഫ്രയീം"]],0,"",""],
+  ["Why did Saul first go to meet Prophet Samuel at Ramah?","ശൗൽ ആദ്യമായി രാമായിൽ ശമുവേലിനെ കാണാൻ പോയത് എന്തിന്?",
+   [["To seek advice about his father’s lost donkeys","പിതാവിന്റെ കാണാതെപോയ കഴുതകളെ തേടി ഉപദേശം ചോദിക്കാൻ"],["To ask to be made king","രാജാവാക്കണമെന്ന് ആവശ്യപ്പെടാൻ"],["To offer a sacrifice","യാഗം അർപ്പിക്കാൻ"],["To fight the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യാൻ"]],0,
+   "1 Samuel 9.","1 ശമു. 9."],
+  ["How many descriptions of Saul becoming king are given in 1 Samuel?","ശൗൽ രാജാവായതിനെക്കുറിച്ച് ശമുവേലിന്റെ പുസ്തകത്തിൽ എത്ര വിവരണങ്ങൾ ഉണ്ട്?",
+   [["Three","മൂന്ന്"],["Two","രണ്ട്"],["One","ഒന്ന്"],["Four","നാല്"]],0,"",""],
+  ["How was a person anointed for a position in those days?","അന്ന് ഒരാളെ പദവിയിലേക്ക് അഭിഷേകം ചെയ്തിരുന്നത് എങ്ങനെ?",
+   [["By pouring blessed olive oil on his head","വാഴ്ത്തിയ തൈലം തലയിൽ ഒഴിച്ച്"],["By placing a crown","കിരീടം വച്ച്"],["By giving him a sword","വാൾ നൽകി"],["By washing his feet","കാൽ കഴുകി"]],0,"",""],
+  ["In the second description (1 Sam. 10:17-24), how was Saul selected?","രണ്ടാമത്തെ വിവരണത്തിൽ (1 ശമു. 10:17-24) ശൗലിനെ തിരഞ്ഞെടുത്തത് എങ്ങനെ?",
+   [["Samuel drew lots","ശമുവേൽ നറുക്കിട്ടു"],["The people voted","ജനം വോട്ട് ചെയ്തു"],["He won a battle","യുദ്ധം ജയിച്ചു"],["Eli chose him","ഏലി തിരഞ്ഞെടുത്തു"]],0,"",""],
+  ["In the third description, Saul convinced the people by saving Israel from…","മൂന്നാമത്തെ വിവരണത്തിൽ ശൗൽ ആരിൽനിന്നാണ് യിസ്രായേലിനെ രക്ഷിച്ചത്?",
+   [["The Ammonites","അമ്മോന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Midianites","മിദ്യാന്യർ"],["The Canaanites","കനാന്യർ"]],0,
+   "1 Samuel 11.","1 ശമു. 11."],
+  ["Why did God not like the people’s demand for a king?","ജനം രാജാവിനെ ആവശ്യപ്പെട്ടത് ദൈവത്തിന് ഇഷ്ടമാകാതിരുന്നത് എന്തുകൊണ്ട്?",
+   [["Because God Himself was their king","ദൈവം തന്നെയായിരുന്നു അവരുടെ രാജാവ്"],["Because Saul was too young","ശൗൽ ചെറുപ്പമായിരുന്നു"],["Because they had no army","അവർക്ക് സൈന്യമില്ലായിരുന്നു"],["Because Samuel wanted to be king","ശമുവേലിന് രാജാവാകണമായിരുന്നു"]],0,
+   "1 Samuel 8:7.","1 ശമു. 8:7."],
+  ["How were Samuel’s sons as judges?","ന്യായാധിപന്മാരെന്ന നിലയിൽ ശമുവേലിന്റെ മക്കൾ എങ്ങനെയായിരുന്നു?",
+   [["Greedy and corrupt","ദുരാഗ്രഹികളും അന്യായം പ്രവർത്തിക്കുന്നവരും"],["Wise and just","ജ്ഞാനികളും നീതിമാന്മാരും"],["Brave warriors","ധീരയോദ്ധാക്കൾ"],["Faithful prophets","വിശ്വസ്ത പ്രവാചകർ"]],0,
+   "1 Samuel 8:3.","1 ശമു. 8:3."],
+  ["Why was Saul rejected as king?","ശൗൽ രാജസ്ഥാനത്തുനിന്ന് തള്ളപ്പെട്ടത് എന്തുകൊണ്ട്?",
+   [["He disobeyed God and did not listen to the prophet","ദൈവത്തെ അനുസരിക്കാതെയും പ്രവാചകനെ കേൾക്കാതെയും പ്രവർത്തിച്ചു"],["He lost a war","യുദ്ധത്തിൽ തോറ്റു"],["He was too old","വളരെ വൃദ്ധനായി"],["The people chose David","ജനം ദാവീദിനെ തിരഞ്ഞെടുത്തു"]],0,"",""],
+  ["Who was the Philistine giant killed by David?","ദാവീദ് കൊന്ന ഫെലിസ്ത്യ മല്ലൻ ആര്?",
+   [["Goliath","ഗോല്യാത്ത്"],["Absalom","അബ്ശാലോം"],["Uriah","ഊരീയാവ്"],["Joab","യോവാബ്"]],0,"",""],
+  ["“Saul has slain thousands, and David ten thousands.” This song made Saul…","“ശൗൽ ആയിരത്തെ കൊന്നു, ദാവീദോ പതിനായിരത്തെ” – ഈ പാട്ട് ശൗലിനെ…",
+   [["Jealous of David","ദാവീദിനോട് അസൂയാലുവാക്കി"],["Happy and proud","സന്തോഷിപ്പിച്ചു"],["Afraid of the Philistines","ഫെലിസ്ത്യരെ ഭയപ്പെടുത്തി"],["Leave the palace","കൊട്ടാരം വിടുവിച്ചു"]],0,
+   "1 Samuel 18:7-9.","1 ശമു. 18:7-9."],
+  ["How was David related to Saul?","ദാവീദ് ശൗലിന്റെ ആരായിരുന്നു?",
+   [["Son-in-law","മരുമകൻ"],["Son","മകൻ"],["Brother","സഹോദരൻ"],["Nephew","അനന്തരവൻ"]],0,"",""],
+  ["How many times did David have the chance to kill Saul but spared him?","ശൗലിനെ കൊല്ലാൻ അവസരം ലഭിച്ചിട്ടും ദാവീദ് വെറുതെ വിട്ടത് എത്ര പ്രാവശ്യം?",
+   [["Twice","രണ്ടു പ്രാവശ്യം"],["Once","ഒരു പ്രാവശ്യം"],["Three times","മൂന്നു പ്രാവശ്യം"],["Never","ഒരിക്കലുമില്ല"]],0,
+   "1 Samuel 24 and 26.","1 ശമു. 24, 26."],
+  ["How is Saul described in 1 Samuel 9:2?","1 ശമു. 9:2-ൽ ശൗലിനെ വിവരിക്കുന്നത് എങ്ങനെ?",
+   [["Handsome, strong and agile","കോമളരൂപിയും ബലവാനും ചുറുചുറുക്കുള്ളവനും"],["Small and weak","ചെറുതും ബലഹീനനും"],["Old and wise","വൃദ്ധനും ജ്ഞാനിയും"],["A shepherd and singer","ഇടയനും ഗായകനും"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["1 Samuel 15:22","1 ശമു. 15:22"],["1 Samuel 3:19","1 ശമു. 3:19"],["Judges 6:12","ന്യായാ. 6:12"],["2 Samuel 22:31","2 ശമു. 22:31"]],0,"",""]
+ ],
+ short:[
+  {en:"Why did the people of Israel ask for a king? Why did God not like it?", ml:"യിസ്രായേൽ ജനം രാജാവിനെ ആവശ്യപ്പെട്ടത് എന്തുകൊണ്ട്? അത് ദൈവത്തിന് ഇഷ്ടമാകാതിരുന്നത് എന്തുകൊണ്ട്?",
+   aen:["Samuel had grown old, and his sons, who were judges, were greedy and corrupt.","The people wanted a king like the other nations.","God did not like it because God Himself was their King; yet He told Samuel to listen to the people (1 Samuel 8)."],
+   aml:["ശമുവേൽ വൃദ്ധനായി; ന്യായാധിപന്മാരായ അവന്റെ മക്കൾ ദുരാഗ്രഹികളും അന്യായം പ്രവർത്തിക്കുന്നവരുമായിരുന്നു.","മറ്റു ജാതികളെപ്പോലെ തങ്ങൾക്കും ഒരു രാജാവ് വേണമെന്ന് ജനം ആഗ്രഹിച്ചു.","ദൈവം തന്നെയായിരുന്നു അവരുടെ രാജാവ്; അതിനാൽ അത് ദൈവത്തിന് ഇഷ്ടമായില്ല. എങ്കിലും ജനത്തിന്റെ വാക്ക് കേൾക്കാൻ ദൈവം ശമുവേലിനോട് പറഞ്ഞു (1 ശമു. 8)."]},
+  {en:"Write the three descriptions of Saul becoming king.", ml:"ശൗൽ രാജാവായതിനെക്കുറിച്ചുള്ള മൂന്ന് വിവരണങ്ങൾ എഴുതുക.",
+   aen:["Saul went to Samuel at Ramah seeking advice about his father’s lost donkeys; Samuel anointed him by pouring oil on his head (1 Sam. 9–10).","Samuel gathered the people and drew lots, and Saul was chosen (1 Sam. 10:17-24).","Saul saved Israel from the Ammonites and so convinced the people that he was their king (1 Sam. 11)."],
+   aml:["പിതാവിന്റെ കാണാതെപോയ കഴുതകളെ തേടി ഉപദേശം ചോദിക്കാൻ ശൗൽ രാമായിൽ ശമുവേലിന്റെ അടുക്കൽ ചെന്നു; ശമുവേൽ തലയിൽ തൈലം ഒഴിച്ച് അവനെ അഭിഷേകം ചെയ്തു (1 ശമു. 9–10).","ശമുവേൽ ജനത്തെ കൂട്ടി നറുക്കിട്ടു; ശൗൽ തിരഞ്ഞെടുക്കപ്പെട്ടു (1 ശമു. 10:17-24).","അമ്മോന്യരിൽനിന്ന് യിസ്രായേലിനെ രക്ഷിച്ച് ശൗൽ താനാണ് രാജാവെന്ന് ജനത്തെ ബോദ്ധ്യപ്പെടുത്തി (1 ശമു. 11)."]},
+  {en:"Why was Saul rejected as king?", ml:"ശൗൽ രാജസ്ഥാനത്തുനിന്ന് തള്ളപ്പെട്ടത് എന്തുകൊണ്ട്?",
+   aen:["He disobeyed God’s commands and did not listen to the prophet Samuel.","Samuel told him, “To obey is better than sacrifice” (1 Samuel 15:22).","He became jealous of David and tried to kill him."],
+   aml:["അവൻ ദൈവകല്പന അനുസരിക്കാതെയും ശമുവേൽ പ്രവാചകനെ കേൾക്കാതെയും പ്രവർത്തിച്ചു.","“അനുസരിക്കുന്നത് യാഗത്തെക്കാൾ നല്ലത്” എന്ന് ശമുവേൽ അവനോട് പറഞ്ഞു (1 ശമു. 15:22).","ദാവീദിനോട് അസൂയപ്പെട്ട് അവനെ കൊല്ലാൻ ശ്രമിച്ചു."]},
+  {en:"Describe the relationship between Saul and David.", ml:"ശൗലും ദാവീദും തമ്മിലുള്ള ബന്ധം വിവരിക്കുക.",
+   aen:["David killed the Philistine giant Goliath and became Saul’s son-in-law.","When the women sang, “Saul has slain thousands, and David ten thousands,” Saul became jealous and tried to kill David.","David had the chance to kill Saul twice, but he spared him because Saul was the Lord’s anointed."],
+   aml:["ഫെലിസ്ത്യ മല്ലനായ ഗോല്യാത്തിനെ കൊന്ന ദാവീദ് ശൗലിന്റെ മരുമകനായി.","“ശൗൽ ആയിരത്തെ കൊന്നു, ദാവീദോ പതിനായിരത്തെ” എന്ന് സ്ത്രീകൾ പാടിയപ്പോൾ ശൗൽ അസൂയാലുവായി ദാവീദിനെ കൊല്ലാൻ ശ്രമിച്ചു.","രണ്ടു പ്രാവശ്യം ശൗലിനെ കൊല്ലാൻ അവസരം കിട്ടിയിട്ടും ദൈവത്തിന്റെ അഭിഷിക്തൻ എന്ന് കരുതി ദാവീദ് അവനെ വെറുതെ വിട്ടു."]}
+ ]
+},
+{
+ id:"ch4", n:4, en:"David, the King and Mellifluous Singer of Israel", ml:"യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്",
+ verse:{en:"“As for God, His way is perfect; the word of the LORD is proven; He is a shield to all who trust in Him.”", ml:"“ദൈവത്തിന്റെ വഴി തികവുള്ളതു; യഹോവയുടെ വചനം ഊതിക്കഴിച്ചതു; തന്നെ ശരണമാക്കുന്ന ഏവർക്കും അവൻ പരിച”", ref:"2 Samuel 22:31 · 2 ശമു. 22:31"},
+ mcq:[
+  ["Name David’s father.","ദാവീദിന്റെ പിതാവ് ആര്?",
+   [["Jesse","യിശ്ശായി"],["Kish","കീശ്"],["Elkanah","എല്ക്കാനാ"],["Nathan","നാഥാൻ"]],0,"",""],
+  ["David’s family was from…","ദാവീദിന്റെ കുടുംബം എവിടെനിന്നായിരുന്നു?",
+   [["Bethlehem","ബേത്‌ലഹേം"],["Ramah","രാമാ"],["Shiloh","ശീലോ"],["Jerusalem","യെരുശലേം"]],0,"",""],
+  ["What was David doing when God called him?","ദൈവം വിളിച്ചപ്പോൾ ദാവീദ് എന്തു ചെയ്യുകയായിരുന്നു?",
+   [["Looking after his father’s sheep","പിതാവിന്റെ ആടുകളെ മേയ്ക്കുകയായിരുന്നു"],["Fighting the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യുകയായിരുന്നു"],["Playing the harp in the palace","കൊട്ടാരത്തിൽ കിന്നരം വായിക്കുകയായിരുന്നു"],["Threshing wheat","ഗോതമ്പ് മെതിക്കുകയായിരുന്നു"]],0,
+   "1 Samuel 16:11.","1 ശമു. 16:11."],
+  ["Which of Jesse’s sons was David?","യിശ്ശായിയുടെ മക്കളിൽ ദാവീദ് ആരായിരുന്നു?",
+   [["The youngest","ഇളയവൻ"],["The eldest","മൂത്തവൻ"],["The second","രണ്ടാമൻ"],["The only son","ഏകമകൻ"]],0,"",""],
+  ["Which musical instrument did David play?","ദാവീദ് ഉപയോഗിച്ച സംഗീതോപകരണം?",
+   [["Harp","കിന്നരം"],["Trumpet","കാഹളം"],["Flute","കുഴൽ"],["Drum","തപ്പ്"]],0,"",""],
+  ["David defeated Goliath using…","ദാവീദ് ഗോല്യാത്തിനെ തോല്പിച്ചത് എന്ത് ഉപയോഗിച്ച്?",
+   [["A sling and stones","കവിണയും കല്ലും"],["A sword and shield","വാളും പരിചയും"],["A spear","കുന്തം"],["A bow and arrows","വില്ലും അമ്പും"]],0,
+   "1 Samuel 17:49-50.","1 ശമു. 17:49-50."],
+  ["Who was Saul’s son and David’s best friend?","ദാവീദിന്റെ ഉറ്റസുഹൃത്തായിരുന്ന ശൗലിന്റെ മകൻ?",
+   [["Jonathan","യോനാഥാൻ"],["Absalom","അബ്ശാലോം"],["Joab","യോവാബ്"],["Uriah","ഊരീയാവ്"]],0,"",""],
+  ["Which son of David rebelled and tried to kill him?","ദാവീദിനെതിരെ മത്സരിച്ച് കൊല്ലാൻ ശ്രമിച്ച മകൻ?",
+   [["Absalom","അബ്ശാലോം"],["Solomon","ശലോമോൻ"],["Jonathan","യോനാഥാൻ"],["Nathan","നാഥാൻ"]],0,"",""],
+  ["Whose grain fields did Absalom destroy?","അബ്ശാലോം ആരുടെ കൃഷിയാണ് നശിപ്പിച്ചത്?",
+   [["Joab, David’s general","സേനാപതി യോവാബിന്റെ"],["Jonathan","യോനാഥാന്റെ"],["Jesse","യിശ്ശായിയുടെ"],["Uriah","ഊരീയാവിന്റെ"]],0,"",""],
+  ["Which soldier was killed treacherously by David?","ദാവീദ് ചതിയിൽ കൊല്ലിച്ച യോദ്ധാവ്?",
+   [["Uriah","ഊരീയാവ്"],["Goliath","ഗോല്യാത്ത്"],["Joab","യോവാബ്"],["Jonathan","യോനാഥാൻ"]],0,
+   "2 Samuel 11.","2 ശമു. 11."],
+  ["Which Psalm is David’s song of repentance?","ദാവീദിന്റെ അനുതാപ സങ്കീർത്തനം ഏത്?",
+   [["Psalm 51","51-ാം സങ്കീർത്തനം"],["Psalm 23","23-ാം സങ്കീർത്തനം"],["Psalm 45","45-ാം സങ്കീർത്തനം"],["Psalm 91","91-ാം സങ്കീർത്തനം"]],0,"",""],
+  ["Through which prophet did David receive God’s promise of succession?","ഏത് പ്രവാചകനിലൂടെയാണ് ദാവീദിന് ദൈവത്തിന്റെ വാഗ്ദാനം ലഭിച്ചത്?",
+   [["Nathan","നാഥാൻ"],["Samuel","ശമുവേൽ"],["Elijah","ഏലിയാവ്"],["Isaiah","യെശയ്യാവ്"]],0,
+   "2 Samuel 7.","2 ശമു. 7."],
+  ["How long did David reign as king?","ദാവീദ് എത്ര വർഷം ഭരിച്ചു?",
+   [["Forty years","നാല്പത് വർഷം"],["Twenty years","ഇരുപത് വർഷം"],["Seven years","ഏഴ് വർഷം"],["Two years","രണ്ട് വർഷം"]],0,
+   "2 Samuel 5:4.","2 ശമു. 5:4."],
+  ["What was the capital of King David?","ദാവീദ് രാജാവിന്റെ തലസ്ഥാനം?",
+   [["Jerusalem","യെരുശലേം"],["Bethlehem","ബേത്‌ലഹേം"],["Ramah","രാമാ"],["Shiloh","ശീലോ"]],0,"",""],
+  ["David’s empire stretched from…","ദാവീദിന്റെ സാമ്രാജ്യം വ്യാപിച്ചിരുന്നത്…",
+   [["The Mediterranean Sea to the Euphrates River","മധ്യധരണ്യാഴി മുതൽ യൂഫ്രട്ടീസ് നദി വരെ"],["The Nile to the Jordan","നീൽ മുതൽ യോർദ്ദാൻ വരെ"],["Bethlehem to Ramah","ബേത്‌ലഹേം മുതൽ രാമാ വരെ"],["Egypt to Babylon","മിസ്രയീം മുതൽ ബാബേൽ വരെ"]],0,"",""],
+  ["What did David bring to Jerusalem?","ദാവീദ് യെരുശലേമിലേക്ക് കൊണ്ടുവന്നത് എന്ത്?",
+   [["The Ark of the Lord","നിയമപെട്ടകം"],["Goliath’s sword","ഗോല്യാത്തിന്റെ വാൾ"],["The Temple","ദൈവാലയം"],["Saul’s crown","ശൗലിന്റെ കിരീടം"]],0,
+   "2 Samuel 6.","2 ശമു. 6."],
+  ["Jesus Christ was called ‘Son of David’ because…","യേശുക്രിസ്തുവിനെ ‘ദാവീദിന്റെ പുത്രൻ’ എന്ന് വിളിച്ചത്…",
+   [["He was born in David’s royal lineage, fulfilling God’s promise","ദൈവവാഗ്ദാനപ്രകാരം ദാവീദിന്റെ രാജവംശത്തിൽ ജനിച്ചതിനാൽ"],["He was born in Jerusalem","യെരുശലേമിൽ ജനിച്ചതിനാൽ"],["He played the harp","കിന്നരം വായിച്ചതിനാൽ"],["He was a shepherd","ഇടയനായിരുന്നതിനാൽ"]],0,"",""],
+  ["David was the ___ king of Israel.","ദാവീദ് യിസ്രായേലിന്റെ ___ രാജാവായിരുന്നു.",
+   [["Second","രണ്ടാമത്തെ"],["First","ഒന്നാമത്തെ"],["Third","മൂന്നാമത്തെ"],["Last","അവസാനത്തെ"]],0,"",""],
+  ["Who said in his long discourse that God blessed David greatly (Acts 7:46)?","ദൈവം ദാവീദിനെ വളരെ അനുഗ്രഹിച്ചു എന്ന് തന്റെ പ്രസംഗത്തിൽ പറഞ്ഞത് ആര് (അപ്പൊ. 7:46)?",
+   [["St. Stephen the Martyr","സഹദാ സ്തേഫാനോസ്"],["St. Peter","പത്രോസ് ശ്ലീഹാ"],["St. Paul","പൗലോസ് ശ്ലീഹാ"],["St. John","യോഹന്നാൻ ശ്ലീഹാ"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["2 Samuel 22:31","2 ശമു. 22:31"],["1 Samuel 15:22","1 ശമു. 15:22"],["1 Samuel 3:19","1 ശമു. 3:19"],["Judges 6:12","ന്യായാ. 6:12"]],0,"",""]
+ ],
+ short:[
+  {en:"How was David chosen and anointed as king?", ml:"ദാവീദിനെ രാജാവായി തിരഞ്ഞെടുത്ത് അഭിഷേകം ചെയ്തത് എങ്ങനെ?",
+   aen:["God sent Samuel to Jesse in Bethlehem.","Jesse’s elder sons came before Samuel, but God did not choose them – “the LORD looks at the heart” (1 Samuel 16:7).","David, the youngest, was looking after his father’s sheep. He was called, and Samuel anointed him with oil."],
+   aml:["ദൈവം ശമുവേലിനെ ബേത്‌ലഹേമിൽ യിശ്ശായിയുടെ അടുക്കലേക്ക് അയച്ചു.","യിശ്ശായിയുടെ മൂത്ത മക്കൾ ശമുവേലിന്റെ മുമ്പിൽ വന്നെങ്കിലും ദൈവം അവരെ തിരഞ്ഞെടുത്തില്ല – “യഹോവയോ ഹൃദയത്തെ നോക്കുന്നു” (1 ശമു. 16:7).","ഇളയവനായ ദാവീദ് പിതാവിന്റെ ആടുകളെ മേയ്ക്കുകയായിരുന്നു. അവനെ വിളിച്ചുവരുത്തി ശമുവേൽ തൈലം ഒഴിച്ച് അഭിഷേകം ചെയ്തു."]},
+  {en:"How did David defeat Goliath?", ml:"ദാവീദ് ഗോല്യാത്തിനെ തോല്പിച്ചത് എങ്ങനെ?",
+   aen:["Goliath, the Philistine giant, challenged the army of Israel and everyone was afraid.","The shepherd boy David went against him trusting in the name of the Lord, not in sword or armour.","With a sling and a stone he struck Goliath and killed him (1 Samuel 17)."],
+   aml:["ഫെലിസ്ത്യ മല്ലനായ ഗോല്യാത്ത് യിസ്രായേൽ സൈന്യത്തെ വെല്ലുവിളിച്ചു; എല്ലാവരും ഭയപ്പെട്ടു.","ഇടയബാലനായ ദാവീദ് വാളിലും പടച്ചട്ടയിലുമല്ല, യഹോവയുടെ നാമത്തിൽ ആശ്രയിച്ച് അവനെ നേരിട്ടു.","കവിണയും കല്ലും കൊണ്ട് ഗോല്യാത്തിനെ എറിഞ്ഞുവീഴ്ത്തി കൊന്നു (1 ശമു. 17)."]},
+  {en:"Write about David’s sin and repentance.", ml:"ദാവീദിന്റെ പാപവും അനുതാപവും എഴുതുക.",
+   aen:["David sinned with Bathsheba and had her husband Uriah killed treacherously in battle (2 Samuel 11).","God sent Prophet Nathan to rebuke him (2 Samuel 12).","David repented deeply; Psalm 51 is his song of repentance.","Lesson: when we sin, we should repent sincerely and return to God."],
+   aml:["ദാവീദ് ബത്ത്‌ശേബയോട് പാപം ചെയ്തു; അവളുടെ ഭർത്താവായ ഊരീയാവിനെ യുദ്ധത്തിൽ ചതിയിൽ കൊല്ലിച്ചു (2 ശമു. 11).","അവനെ ശാസിക്കാൻ ദൈവം നാഥാൻ പ്രവാചകനെ അയച്ചു (2 ശമു. 12).","ദാവീദ് ആഴമായി അനുതപിച്ചു; 51-ാം സങ്കീർത്തനം അവന്റെ അനുതാപഗീതമാണ്.","പാഠം: പാപം ചെയ്താൽ ആത്മാർത്ഥമായി അനുതപിച്ച് ദൈവത്തിങ്കലേക്ക് മടങ്ങണം."]},
+  {en:"Write the achievements of King David.", ml:"ദാവീദ് രാജാവിന്റെ നേട്ടങ്ങൾ എഴുതുക.",
+   aen:["He was the second king of Israel and reigned for forty years.","He made Jerusalem his capital and brought the Ark of the Lord there.","His empire stretched from the Mediterranean Sea to the Euphrates River.","He was a sweet singer who played the harp and wrote many Psalms.","Through Prophet Nathan, God promised that his kingdom would continue; Jesus Christ was born in his royal line and is called ‘Son of David’."],
+   aml:["യിസ്രായേലിന്റെ രണ്ടാമത്തെ രാജാവ്; നാല്പത് വർഷം ഭരിച്ചു.","യെരുശലേം തലസ്ഥാനമാക്കി; നിയമപെട്ടകം അവിടേക്ക് കൊണ്ടുവന്നു.","അവന്റെ സാമ്രാജ്യം മധ്യധരണ്യാഴി മുതൽ യൂഫ്രട്ടീസ് നദി വരെ വ്യാപിച്ചു.","കിന്നരം വായിക്കുന്ന മധുരഗായകൻ; അനേകം സങ്കീർത്തനങ്ങൾ രചിച്ചു.","അവന്റെ രാജ്യം നിലനിൽക്കുമെന്ന് നാഥാൻ പ്രവാചകനിലൂടെ ദൈവം വാഗ്ദാനം ചെയ്തു; അവന്റെ രാജവംശത്തിൽ ജനിച്ച യേശുക്രിസ്തു ‘ദാവീദിന്റെ പുത്രൻ’ എന്ന് വിളിക്കപ്പെടുന്നു."]}
+ ]
+},
+{
+ id:"ch5", n:5, en:"Solomon, the Wisest of Kings", ml:"ജ്ഞാനിയായ ശലോമോൻ",
+ verse:{en:"“A wise teacher makes learning a joy; a rebellious teacher spouts foolishness.”", ml:"“ജ്ഞാനികളുടെ നാവ് നല്ല പരിജ്ഞാനം പ്രസ്താവിക്കുന്നു; മൂഢന്മാരുടെ വായോ ഭോഷത്വം പൊഴിക്കുന്നു”", ref:"Proverbs 15:2 · സദൃ. 15:2"},
+ mcq:[
+  ["Solomon was the ___ king of Israel.","ശലോമോൻ യിസ്രായേലിന്റെ ___ രാജാവായിരുന്നു.",
+   [["Third","മൂന്നാമത്തെ"],["Second","രണ്ടാമത്തെ"],["First","ഒന്നാമത്തെ"],["Last","അവസാനത്തെ"]],0,
+   "Saul was first, David second, Solomon third.","ശൗൽ ഒന്നാമൻ, ദാവീദ് രണ്ടാമൻ, ശലോമോൻ മൂന്നാമൻ."],
+  ["Who were Solomon’s parents?","ശലോമോന്റെ മാതാപിതാക്കൾ ആരെല്ലാം?",
+   [["David and Bathsheba","ദാവീദും ബത്ത്‌ശേബയും"],["David and Abigail","ദാവീദും അബീഗയിലും"],["Jesse and his wife","യിശ്ശായിയും ഭാര്യയും"],["Saul and Michal","ശൗലും മീഖളും"]],0,"",""],
+  ["What does the name ‘Solomon’ mean?","‘ശലോമോൻ’ എന്ന പേരിന്റെ അർത്ഥം?",
+   [["One who is peaceful","സമാധാനമുള്ളവൻ"],["Beloved of Yahweh","യഹോവയ്ക്ക് പ്രിയൻ"],["Asked of God","ദൈവം കേട്ടു"],["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"]],0,"",""],
+  ["What was Solomon’s other name?","ശലോമോന്റെ മറ്റൊരു പേര്?",
+   [["Jedidiah","യെദീദ്യാവ്"],["Jerubbaal","യെരുബ്ബാൽ"],["Didymus","ദിദിമോസ്"],["Ebenezer","ഏബെൻ-ഏസെർ"]],0,
+   "Jedidiah means ‘Beloved of Yahweh’ (2 Sam. 12:24-25).","യെദീദ്യാവ് = യഹോവയ്ക്ക് പ്രിയൻ (2 ശമു. 12:24-25)."],
+  ["Under whose care did Solomon grow up?","ശലോമോൻ ആരുടെ പരിലാളനയിലാണ് വളർന്നത്?",
+   [["Prophet Nathan","നാഥാൻ പ്രവാചകൻ"],["Prophet Samuel","ശമുവേൽ പ്രവാചകൻ"],["Priest Zadok","സാദോക്ക് പുരോഹിതൻ"],["Eli the priest","ഏലി പുരോഹിതൻ"]],0,
+   "2 Samuel 12:25.","2 ശമു. 12:25."],
+  ["Whose death improved Solomon’s chance to become king?","ആരുടെ മരണമാണ് ശലോമോന്റെ രാജസ്ഥാന സാധ്യത വർദ്ധിപ്പിച്ചത്?",
+   [["Absalom, David’s favourite son","ദാവീദിന്റെ പ്രിയൻ അബ്ശാലോം"],["Jonathan","യോനാഥാൻ"],["Uriah","ഊരീയാവ്"],["Goliath","ഗോല്യാത്ത്"]],0,"",""],
+  ["What did Solomon ask God for?","ശലോമോൻ ദൈവത്തോട് ചോദിച്ചത് എന്ത്?",
+   [["An understanding mind (wisdom) to govern God’s people","ജനത്തെ ഭരിക്കാൻ വിവേകമുള്ള ഹൃദയം (ജ്ഞാനം)"],["Riches and honour","ധനവും മാനവും"],["Long life and health","ദീർഘായുസ്സും ആരോഗ്യവും"],["Death of his enemies","ശത്രുക്കളുടെ സംഹാരം"]],0,
+   "1 Kings 3:9.","1 രാജാ. 3:9."],
+  ["Besides wisdom, what else did God give Solomon?","ജ്ഞാനത്തോടൊപ്പം ദൈവം ശലോമോന് മറ്റെന്തു നൽകി?",
+   [["Riches and honour in plenty","ധാരാളം ധനവും മാനവും"],["A long life of 900 years","900 വർഷത്തെ ആയുസ്സ്"],["A great army only","വലിയ സൈന്യം മാത്രം"],["Nothing else","മറ്റൊന്നുമില്ല"]],0,
+   "1 Kings 3:12-13.","1 രാജാ. 3:12-13."],
+  ["Which son of David tried to seize the throne?","രാജസ്ഥാനം പിടിച്ചെടുക്കാൻ ശ്രമിച്ച ദാവീദിന്റെ മകൻ?",
+   [["Adonijah","അദോനീയാവ്"],["Solomon","ശലോമോൻ"],["Nathan","നാഥാൻ"],["Jonathan","യോനാഥാൻ"]],0,"",""],
+  ["Where was Solomon sent to be anointed king?","രാജാവായി അഭിഷേകം ചെയ്യാൻ ശലോമോനെ അയച്ചത് എവിടേക്ക്?",
+   [["Gihon","ഗീഹോൻ"],["Ramah","രാമാ"],["Bethlehem","ബേത്‌ലഹേം"],["Mizpah","മിസ്പാ"]],0,
+   "1 Kings 1:13-34.","1 രാജാ. 1:13-34."],
+  ["Who anointed Solomon as king of Israel?","ശലോമോനെ രാജാവായി അഭിഷേകം ചെയ്തത് ആര്?",
+   [["Priest Zadok","സാദോക്ക് പുരോഹിതൻ"],["Prophet Samuel","ശമുവേൽ പ്രവാചകൻ"],["King David","ദാവീദ് രാജാവ്"],["Eli the priest","ഏലി പുരോഹിതൻ"]],0,"",""],
+  ["The story of two women coming to Solomon with a child is in…","രണ്ട് സ്ത്രീകൾ കുഞ്ഞുമായി ശലോമോന്റെ അടുക്കൽ വന്ന സംഭവം ഏത് അദ്ധ്യായത്തിൽ?",
+   [["1 Kings chapter 3","1 രാജാ. 3-ാം അദ്ധ്യായം"],["1 Kings chapter 10","1 രാജാ. 10-ാം അദ്ധ്യായം"],["2 Samuel chapter 12","2 ശമു. 12-ാം അദ്ധ്യായം"],["1 Kings chapter 11","1 രാജാ. 11-ാം അദ്ധ്യായം"]],0,"",""],
+  ["Which queen came to test Solomon’s wisdom?","ശലോമോന്റെ ജ്ഞാനം പരീക്ഷിക്കാൻ വന്ന രാജ്ഞി?",
+   [["The Queen of Sheba","ശേബാ രാജ്ഞി"],["Queen Esther","എസ്ഥേർ രാജ്ഞി"],["Queen Jezebel","ഈസേബെൽ രാജ്ഞി"],["Queen Vashti","വസ്ഥി രാജ്ഞി"]],0,
+   "1 Kings 10:1.","1 രാജാ. 10:1."],
+  ["Who built the first temple of the Lord in Jerusalem?","യെരുശലേമിൽ ആദ്യത്തെ ദൈവാലയം പണിതത് ആര്?",
+   [["Solomon","ശലോമോൻ"],["David","ദാവീദ്"],["Samuel","ശമുവേൽ"],["Saul","ശൗൽ"]],0,"",""],
+  ["Which book describes the relationship between God and His people?","ദൈവവും ദൈവജനവും തമ്മിലുള്ള ബന്ധം വിവരിക്കുന്ന പുസ്തകം?",
+   [["Song of Songs","ഉത്തമഗീതം"],["Proverbs","സദൃശവാക്യങ്ങൾ"],["Ecclesiastes","സഭാപ്രസംഗി"],["Psalms","സങ്കീർത്തനങ്ങൾ"]],0,"",""],
+  ["Which idols did Solomon later worship?","പിൽക്കാലത്ത് ശലോമോൻ ആരാധിച്ച അന്യദൈവങ്ങൾ?",
+   [["Ashtoreth and Milcom","അസ്തോരെത്തും മോലെക്കും"],["Baal and Dagon","ബാലും ദാഗോനും"],["Asherah and Chemosh","അശേരയും കെമോശും"],["The golden calf","സ്വർണ്ണക്കാളക്കുട്ടി"]],0,
+   "1 Kings 11:5.","1 രാജാ. 11:5."],
+  ["What led Solomon away from God into idol worship?","ശലോമോൻ അന്യദൈവാരാധനയിലേക്ക് വീഴാൻ കാരണം?",
+   [["His association with unbelievers","അന്യദൈവവിശ്വാസികളുമായുള്ള ബന്ധം"],["A war with Egypt","മിസ്രയീമുമായുള്ള യുദ്ധം"],["Advice of Prophet Nathan","നാഥാൻ പ്രവാചകന്റെ ഉപദേശം"],["A famine","ക്ഷാമം"]],0,"",""],
+  ["By the end of Solomon’s rule the kingdom was divided into…","ശലോമോന്റെ ഭരണാവസാനത്തോടെ രാജ്യം വിഭജിക്കപ്പെട്ടത്…",
+   [["Israel and Judah","യിസ്രായേലും യെഹൂദയും"],["Egypt and Israel","മിസ്രയീമും യിസ്രായേലും"],["Benjamin and Judah","ബെന്യാമീനും യെഹൂദയും"],["Three kingdoms","മൂന്ന് രാജ്യങ്ങളായി"]],0,
+   "His neglect of Northern Israel was a dark chapter of his reign.","വടക്കേ യിസ്രായേലിനോടുള്ള അവഗണന അദ്ദേഹത്തിന്റെ ഭരണത്തിലെ കറുത്ത അദ്ധ്യായമാണ്."],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["Proverbs 15:2","സദൃ. 15:2"],["Job 28:28","ഇയ്യോബ് 28:28"],["1 Kings 3:9","1 രാജാ. 3:9"],["Psalm 51","സങ്കീ. 51"]],0,"",""]
+ ],
+ short:[
+  {en:"How did Solomon find the real mother when two women came to him with a child?", ml:"കുഞ്ഞുമായി വന്ന രണ്ട് സ്ത്രീകളിൽ യഥാർത്ഥ അമ്മയെ ശലോമോൻ കണ്ടെത്തിയത് എങ്ങനെ?",
+   aen:["Solomon ordered the living child to be cut in two and shared. The real mother, out of love, begged him to give the child to the other woman rather than kill it. Solomon knew she was the true mother and gave her the child (1 Kings 3:16-28)."],
+   aml:["ജീവനുള്ള കുഞ്ഞിനെ രണ്ടായി പകുത്ത് ഇരുവർക്കും കൊടുക്കാൻ ശലോമോൻ കല്പിച്ചു. കുഞ്ഞിനെ കൊല്ലാതെ മറ്റവൾക്ക് കൊടുത്തേക്കണമെന്ന് യഥാർത്ഥ അമ്മ സ്നേഹത്താൽ അപേക്ഷിച്ചു. അവളാണ് അമ്മയെന്ന് മനസ്സിലാക്കി ശലോമോൻ കുഞ്ഞിനെ അവൾക്ക് നൽകി (1 രാജാ. 3:16-28)."]},
+  {en:"Name the wisdom writings of Solomon.", ml:"ശലോമോന്റെ ജ്ഞാനഗ്രന്ഥങ്ങൾ ഏവ?",
+   aen:["Proverbs","Ecclesiastes","The Wisdom of Solomon","Song of Songs – describes the relationship between God and His people"],
+   aml:["സദൃശവാക്യങ്ങൾ","സഭാപ്രസംഗി","ശലോമോന്റെ ജ്ഞാനം","ഉത്തമഗീതം – ദൈവവും ദൈവജനവും തമ്മിലുള്ള ബന്ധം വിവരിക്കുന്നു"]},
+  {en:"Why did Solomon become king? How did it happen?", ml:"ശലോമോൻ രാജാവായതിന്റെ കാരണങ്ങളും സാഹചര്യവും എഴുതുക.",
+   aen:["David’s promise to Bathsheba and the intervention of Prophet Nathan.","Solomon feared and worshipped the Lord, and he built the Lord’s temple.","When Adonijah tried to seize the throne, David and Nathan sent Solomon to Gihon, where Priest Zadok anointed him king (1 Kings 1:13-34)."],
+   aml:["ബത്ത്‌ശേബയ്ക്ക് ദാവീദ് നൽകിയ വാഗ്ദാനവും നാഥാൻ പ്രവാചകന്റെ ഇടപെടലും.","ശലോമോൻ ദൈവത്തെ ഭയപ്പെട്ട് ആരാധിച്ചു; ദൈവാലയം പണിതു.","അദോനീയാവ് അധികാരം പിടിച്ചെടുക്കാൻ ശ്രമിച്ചപ്പോൾ ദാവീദും നാഥാനും ശലോമോനെ ഗീഹോനിലേക്ക് അയച്ച് സാദോക്ക് പുരോഹിതനെക്കൊണ്ട് അഭിഷേകം ചെയ്യിച്ചു (1 രാജാ. 1:13-34)."]},
+  {en:"What were the evil effects of Solomon’s transgression?", ml:"ശലോമോന്റെ വഴിതെറ്റലിന്റെ ദോഷഫലങ്ങൾ എന്തെല്ലാം?",
+   aen:["He worshipped idols like Ashtoreth and Milcom and followed idolatrous practices.","He favoured Jerusalem and Judea and neglected Northern Israel.","By the end of his rule the kingdom was divided into Israel and Judah."],
+   aml:["അസ്തോരെത്ത്, മോലെക്ക് തുടങ്ങിയ അന്യദൈവങ്ങളെ ആരാധിച്ചു.","യെരുശലേമിനോടും യെഹൂദയോടുമുള്ള അമിത താല്പര്യവും വടക്കേ യിസ്രായേലിനോടുള്ള അവഗണനയും.","ഭരണാവസാനത്തോടെ രാജ്യം യിസ്രായേൽ, യെഹൂദാ എന്നിങ്ങനെ രണ്ടായി വിഭജിക്കപ്പെട്ടു."]},
+  {en:"Resolution of this chapter", ml:"ഈ പാഠത്തിലെ നിശ്ചയം",
+   aen:["We will attend church services regularly and remain steadfast in the true faith of the Orthodox Church."],
+   aml:["സ്ഥിരമായി ദേവാലയത്തിൽ ആരാധനയിൽ പങ്കെടുക്കും. ഏത് വലിയ സ്ഥാനത്ത് എത്തിയാലും സത്യദൈവത്തെ മറക്കാതെ ആരാധിച്ച് ഓർത്തഡോക്സ് സഭാവിശ്വാസിയായി ജീവിക്കും."]}
+ ]
+},
+{
+ id:"ch6", n:6, en:"Resurrected Jesus Christ and Disciples", ml:"ഉയിർത്തെഴുന്നേറ്റ യേശുക്രിസ്തുവും ശിഷ്യന്മാരും",
+ verse:{en:"So Jesus said to them again, “Peace to you! As the Father has sent Me, I also send you.”", ml:"“യേശു പിന്നെയും അവരോട്: നിങ്ങൾക്കു സമാധാനം; പിതാവ് എന്നെ അയച്ചതുപോലെ ഞാനും നിങ്ങളെ അയക്കുന്നു എന്നു പറഞ്ഞു”", ref:"St. John 20:21 · യോഹ. 20:21"},
+ mcq:[
+  ["How did the disciples feel after the crucifixion of Jesus?","കർത്താവിന്റെ ക്രൂശുമരണത്തിനുശേഷം ശിഷ്യന്മാരുടെ അവസ്ഥ എന്തായിരുന്നു?",
+   [["Fearful and insecure; they hid together in a secret place","ഭയവും അരക്ഷിതാവസ്ഥയും; അവർ ഒരുമിച്ച് ഒളിച്ചിരുന്നു"],["Happy and joyful","സന്തോഷഭരിതർ"],["They preached boldly in the temple","ദൈവാലയത്തിൽ ധൈര്യമായി പ്രസംഗിച്ചു"],["They went back to their homes","വീടുകളിലേക്ക് മടങ്ങിപ്പോയി"]],0,"",""],
+  ["What was the first message of the resurrected Jesus to His disciples?","ഉയിർത്തെഴുന്നേറ്റ കർത്താവ് ശിഷ്യന്മാർക്ക് നൽകിയ ആദ്യസന്ദേശം?",
+   [["“Peace be with you”","“നിങ്ങൾക്ക് സമാധാനം”"],["“Follow me”","“എന്നെ അനുഗമിക്കുക”"],["“Go and fish”","“പോയി മീൻ പിടിക്കുക”"],["“Why did you run away?”","“നിങ്ങൾ എന്തിന് ഓടിപ്പോയി?”"]],0,"",""],
+  ["What did Jesus show His disciples?","യേശു ശിഷ്യന്മാർക്ക് കാണിച്ചുകൊടുത്തത് എന്ത്?",
+   [["His hands and His side","തന്റെ കൈകളും വിലാപ്പുറവും"],["The empty tomb","ശൂന്യമായ കല്ലറ"],["His cross","തന്റെ കുരിശ്"],["A vision of heaven","സ്വർഗ്ഗത്തിന്റെ ദർശനം"]],0,"",""],
+  ["How did the disciples react when they saw the Lord?","കർത്താവിനെ കണ്ടപ്പോൾ ശിഷ്യന്മാരുടെ ആദ്യപ്രതികരണം?",
+   [["They were glad","അവർ സന്തോഷിച്ചു"],["They ran away","അവർ ഓടിപ്പോയി"],["They were angry","അവർ കോപിച്ചു"],["They fainted","അവർ ബോധംകെട്ടു"]],0,"",""],
+  ["How did Jesus give the Holy Spirit to His disciples?","യേശു ശിഷ്യന്മാർക്ക് പരിശുദ്ധാത്മാവിനെ നൽകിയത് എങ്ങനെ?",
+   [["He breathed on them","അവരുടെമേൽ ഊതി"],["He laid hands on them","അവരുടെമേൽ കൈവച്ചു"],["He poured oil on them","അവരുടെമേൽ തൈലം ഒഴിച്ചു"],["He gave them bread","അവർക്ക് അപ്പം കൊടുത്തു"]],0,
+   "St. John 20:22.","യോഹ. 20:22."],
+  ["What authority did Jesus give the disciples along with the Holy Spirit?","പരിശുദ്ധാത്മാവിനോടൊപ്പം യേശു ശിഷ്യന്മാർക്ക് നൽകിയ അധികാരം?",
+   [["To forgive sins","പാപങ്ങൾ മോചിക്കുവാൻ"],["To become kings","രാജാക്കന്മാരാകുവാൻ"],["To build a temple","ദൈവാലയം പണിയുവാൻ"],["To judge the Romans","റോമാക്കാരെ ന്യായം വിധിക്കുവാൻ"]],0,
+   "St. John 20:23.","യോഹ. 20:23."],
+  ["The Resurrection of Jesus Christ is the ___ of Christian faith.","യേശുക്രിസ്തുവിന്റെ ഉയിർപ്പ് ക്രൈസ്തവ വിശ്വാസത്തിന്റെ ___ ആണ്.",
+   [["Foundation","അടിസ്ഥാനം"],["End","അവസാനം"],["Opposite","വിപരീതം"],["Only a story","വെറും കഥ"]],0,"",""],
+  ["On which day did Jesus rise from the tomb?","യേശു കല്ലറയിൽനിന്ന് ഉയിർത്തെഴുന്നേറ്റത് എത്രാം നാൾ?",
+   [["The third day","മൂന്നാം നാൾ"],["The seventh day","ഏഴാം നാൾ"],["The fortieth day","നാല്പതാം നാൾ"],["The first day","ഒന്നാം നാൾ"]],0,"",""],
+  ["The Gospels were written when?","സുവിശേഷങ്ങൾ എഴുതപ്പെട്ടത് എപ്പോൾ?",
+   [["Second half of the first century","ഒന്നാം നൂറ്റാണ്ടിന്റെ രണ്ടാം പകുതിയിൽ"],["Before Jesus was born","യേശുവിന്റെ ജനനത്തിനു മുമ്പ്"],["Tenth century","പത്താം നൂറ്റാണ്ടിൽ"],["Fifth century","അഞ്ചാം നൂറ്റാണ്ടിൽ"]],0,
+   "Early Christians were then going through hard times, but were sure of the Resurrection.","അന്ന് ക്രൈസ്തവർ കഷ്ടതകളിലായിരുന്നെങ്കിലും ഉയിർപ്പിനെക്കുറിച്ച് ഉറപ്പുള്ളവരായിരുന്നു."],
+  ["The Resurrection of Jesus wiped out the power of…","യേശുവിന്റെ ഉയിർപ്പ് ഇല്ലാതാക്കിയത് ആരുടെ ശക്തി?",
+   [["Death and Satan","മരണത്തിന്റെയും സാത്താന്റെയും"],["The Roman Empire","റോമാ സാമ്രാജ്യത്തിന്റെ"],["The Pharisees","പരീശന്മാരുടെ"],["The disciples","ശിഷ്യന്മാരുടെ"]],0,"",""],
+  ["The Resurrection of Jesus Christ is for the sake of…","യേശുവിന്റെ ഉയിർപ്പ് ആർക്കുവേണ്ടി?",
+   [["All people","എല്ലാവർക്കും വേണ്ടി"],["Only the disciples","ശിഷ്യന്മാർക്കു മാത്രം"],["Only the Jews","യെഹൂദന്മാർക്കു മാത്രം"],["Only priests","പുരോഹിതന്മാർക്കു മാത്രം"]],0,"",""],
+  ["What continues the mission of the resurrected Jesus Christ in the world?","ഉയിർത്തെഴുന്നേറ്റ ക്രിസ്തുവിനെ ഈ ലോകത്തിൽ പ്രതിനിധാനം ചെയ്യുന്നത് എന്ത്?",
+   [["The Church","സഭ"],["The government","ഭരണകൂടം"],["The Roman army","റോമൻ സൈന്യം"],["The temple of Jerusalem","യെരുശലേം ദൈവാലയം"]],0,"",""],
+  ["Jesus invites us to experience the Resurrection by passing through…","ഉയിർപ്പ് അനുഭവിക്കാൻ ക്രിസ്തു നമ്മെ ക്ഷണിക്കുന്നത് എന്തിലൂടെ?",
+   [["The experience of the cross","കുരിശിന്റെ അനുഭവത്തിലൂടെ"],["Wealth and comfort","ധനത്തിലൂടെയും സുഖത്തിലൂടെയും"],["Running away from trouble","പ്രശ്നങ്ങളിൽനിന്ന് ഓടിയൊളിക്കുന്നതിലൂടെ"],["Becoming famous","പ്രശസ്തരാകുന്നതിലൂടെ"]],0,"",""],
+  ["The Easter greeting is “He is risen”. What is the response?","‘യേശുക്രിസ്തു ഉയിർത്തെഴുന്നേറ്റു’ എന്ന ഈസ്റ്റർ അഭിവാദനത്തിന്റെ പ്രതിവാക്യം?",
+   [["“Indeed He has risen”","“സത്യമായി താൻ ഉയിർത്തെഴുന്നേറ്റു”"],["“Peace be with you”","“നിങ്ങൾക്ക് സമാധാനം”"],["“Amen”","“ആമേൻ”"],["“Halleluiah”","“ഹാലേലൂയ്യാ”"]],0,"",""],
+  ["The real message of the Resurrection is…","ഉയിർപ്പിന്റെ യഥാർത്ഥ സന്ദേശം…",
+   [["The redemption of creation in Jesus Christ","യേശുക്രിസ്തുവിൽ സൃഷ്ടിയുടെ വീണ്ടെടുപ്പ്"],["That we should fear death","നാം മരണത്തെ ഭയപ്പെടണം"],["That only the disciples are saved","ശിഷ്യന്മാർ മാത്രം രക്ഷിക്കപ്പെടും"],["That the cross is not needed","കുരിശ് ആവശ്യമില്ല"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["St. John 20:21","യോഹ. 20:21"],["St. Matthew 28:20","മത്തായി 28:20"],["St. John 14:6","യോഹ. 14:6"],["St. Luke 24:13","ലൂക്കോ. 24:13"]],0,"",""]
+ ],
+ short:[
+  {en:"Write what we learn from the Resurrection of Jesus Christ.", ml:"യേശുക്രിസ്തുവിന്റെ ഉയിർപ്പിൽനിന്ന് നാം പഠിക്കുന്നത് എന്തെല്ലാം?",
+   aen:["If Jesus had not risen, we would have no hope of our resurrection and life after death.","His Resurrection wiped out the power of death and Satan.","The hope given by Christ’s Resurrection is the basis of Christian life.","The Resurrection is for the sake of all.","The real message of the Resurrection is the redemption of creation in Jesus Christ."],
+   aml:["യേശു ഉയിർത്തില്ലായിരുന്നുവെങ്കിൽ നമുക്ക് ഉയിർപ്പിന്റെയും നിത്യജീവന്റെയും പ്രത്യാശയില്ല.","ഉയിർപ്പ് മരണത്തെയും സാത്താനെയും ശക്തിയില്ലാത്തതാക്കി.","ഉയിർപ്പിന്റെ പ്രത്യാശയാണ് ക്രൈസ്തവജീവിതത്തിന്റെ അടിസ്ഥാനം.","ഉയിർപ്പ് എല്ലാവർക്കും വേണ്ടിയാണ്.","യേശുക്രിസ്തുവിൽ സൃഷ്ടിയുടെ വീണ്ടെടുപ്പാണ് ഉയിർപ്പിന്റെ യഥാർത്ഥ സന്ദേശം."]},
+  {en:"Describe the first appearance of the risen Jesus to His disciples.", ml:"ഉയിർത്തെഴുന്നേറ്റ യേശു ശിഷ്യന്മാർക്ക് ആദ്യം പ്രത്യക്ഷനായ സംഭവം വിവരിക്കുക.",
+   aen:["The fearful disciples were hiding together. Jesus came among them and said, “Peace be with you,” and showed them His hands and side. They were glad. He said, “As the Father has sent Me, I also send you,” breathed on them, said “Receive the Holy Spirit,” and gave them authority to forgive sins (St. John 20:19-23)."],
+   aml:["ഭയന്ന് ഒരുമിച്ചിരുന്ന ശിഷ്യന്മാരുടെ മദ്ധ്യേ യേശു വന്ന് “നിങ്ങൾക്ക് സമാധാനം” എന്ന് പറഞ്ഞ് കൈകളും വിലാപ്പുറവും കാണിച്ചു. അവർ സന്തോഷിച്ചു. “പിതാവ് എന്നെ അയച്ചതുപോലെ ഞാനും നിങ്ങളെ അയക്കുന്നു” എന്ന് പറഞ്ഞ് അവരുടെമേൽ ഊതി, പരിശുദ്ധാത്മാവിനെ നൽകി, പാപങ്ങൾ മോചിക്കുവാനുള്ള അധികാരം നൽകി (യോഹ. 20:19-23)."]},
+  {en:"St. Paul says faith has no meaning without the Resurrection. Explain.", ml:"ഉയിർപ്പില്ലെങ്കിൽ വിശ്വാസം വ്യർത്ഥം എന്ന് പൗലോസ് പറയുന്നു. വിശദീകരിക്കുക.",
+   aen:["If Christ had not risen, our faith and preaching would be empty (1 Cor. 15). The Resurrection proves Jesus defeated death, gives us hope of eternal life, and is the foundation of the Church."],
+   aml:["ക്രിസ്തു ഉയിർത്തില്ലെങ്കിൽ നമ്മുടെ വിശ്വാസവും പ്രസംഗവും വ്യർത്ഥമാകും (1 കൊരി. 15). യേശു മരണത്തെ ജയിച്ചു എന്നതിന്റെ തെളിവാണ് ഉയിർപ്പ്; അത് നിത്യജീവന്റെ പ്രത്യാശ നൽകുന്നു; സഭയുടെ അടിസ്ഥാനവും അതാണ്."]},
+  {en:"Resolution of this chapter", ml:"ഈ പാഠത്തിലെ നിശ്ചയം",
+   aen:["We believe that Jesus Christ has risen and is seated at the right hand of God the Father. We will always remember His selfless love and attend the Resurrection service on Easter Sunday."],
+   aml:["യേശുക്രിസ്തു ഉയിർത്തെഴുന്നേറ്റ് ദൈവത്തിന്റെ വലതുഭാഗത്ത് ഇരിക്കുന്നു എന്ന് ഞാൻ ഉറച്ച് വിശ്വസിച്ച് ജീവിക്കും. യേശുക്രിസ്തുവിന്റെ ത്യാഗപൂർണ്ണമായ സ്നേഹത്തെ എന്നും ഞാൻ അനുസ്മരിക്കും. എല്ലാ ഉയിർപ്പു ശുശ്രൂഷകളിലും ഞാൻ ഉത്സാഹമായി പങ്കെടുക്കും."]}
+ ]
+},
+{
+ id:"ch7", n:7, en:"Journey to Emmaus", ml:"എമ്മാവൂസിലേക്കുള്ള യാത്ര",
+ verse:{en:"“I am with you always, even to the end of the age.”", ml:"“ഞാനോ ലോകാവസാനത്തോളം എല്ലാനാളും നിങ്ങളോടു കൂടെ ഉണ്ട് എന്ന് അരുളിച്ചെയ്തു”", ref:"St. Matthew 28:20 · മത്തായി 28:20"},
+ mcq:[
+  ["The Journey to Emmaus is found in…","എമ്മാവൂസ് യാത്ര വിവരിച്ചിരിക്കുന്നത് ഏത് ഭാഗത്ത്?",
+   [["St. Luke 24:13-35","ലൂക്കോ. 24:13-35"],["St. John 20:24-29","യോഹ. 20:24-29"],["St. Matthew 28:1-10","മത്തായി 28:1-10"],["Acts 1:1-11","അ. പ്ര. 1:1-11"]],0,"",""],
+  ["How many days after Jesus’ crucifixion did this journey take place?","യേശുവിന്റെ ക്രൂശാരോഹണത്തിന്റെ എത്രാം ദിവസമാണ് ഈ യാത്ര?",
+   [["Third day","മൂന്നാം ദിവസം"],["Seventh day","ഏഴാം ദിവസം"],["Fortieth day","നാല്പതാം ദിവസം"],["Fiftieth day","അമ്പതാം ദിവസം"]],0,"",""],
+  ["Who were the first to know about Christ’s Resurrection?","ക്രിസ്തുവിന്റെ ഉയിർപ്പിനെക്കുറിച്ച് ആദ്യം അറിഞ്ഞത് ആര്?",
+   [["The women who came with spices to the tomb","സുഗന്ധലേപനവുമായി കല്ലറയിൽ വന്ന സ്ത്രീകൾ"],["Peter and John","പത്രോസും യോഹന്നാനും"],["The Roman soldiers","റോമൻ പടയാളികൾ"],["Cleopas","ക്ലെയോപ്പാവ്"]],0,"",""],
+  ["How far is Emmaus from Jerusalem?","യെരുശലേമിൽനിന്ന് എമ്മാവൂസിലേക്കുള്ള ദൂരം?",
+   [["Seven miles","ഏഴ് നാഴിക (ഏകദേശം 11 കി.മീ.)"],["Seventy miles","എഴുപത് നാഴിക"],["Two miles","രണ്ട് നാഴിക"],["Forty miles","നാല്പത് നാഴിക"]],0,"",""],
+  ["What was the name of one of the two disciples?","രണ്ട് ശിഷ്യന്മാരിൽ ഒരാളുടെ പേര്?",
+   [["Cleopas","ക്ലെയോപ്പാവ്"],["Thomas","തോമസ്"],["Peter","പത്രോസ്"],["Andrew","അന്ത്രയോസ്"]],0,"",""],
+  ["Why did the two disciples not recognise Jesus?","ശിഷ്യന്മാർ യേശുവിനെ തിരിച്ചറിയാതിരുന്നത് എന്തുകൊണ്ട്?",
+   [["Their eyes were restrained","അവരുടെ കണ്ണ് നിരോധിച്ചിരുന്നു"],["It was too dark","നല്ല ഇരുട്ടായിരുന്നു"],["Jesus wore a disguise","യേശു വേഷം മാറിയിരുന്നു"],["They were asleep","അവർ ഉറങ്ങുകയായിരുന്നു"]],0,
+   "St. Luke 24:16.","ലൂക്കോ. 24:16."],
+  ["How did Cleopas describe Jesus?","ക്ലെയോപ്പാവ് യേശുവിനെ വിശേഷിപ്പിച്ചത് എങ്ങനെ?",
+   [["A prophet mighty in deed and word","വാക്കിലും പ്രവൃത്തിയിലും ശക്തനായ പ്രവാചകൻ"],["A king of the Romans","റോമാക്കാരുടെ രാജാവ്"],["A teacher of the law","ന്യായപ്രമാണോപദേഷ്ടാവ്"],["A fisherman","മീൻപിടുത്തക്കാരൻ"]],0,"",""],
+  ["Why did Jesus scold the two disciples?","യേശു ശിഷ്യന്മാരെ ശാസിച്ചത് എന്തിന്?",
+   [["For their ignorance and hard-heartedness","അവരുടെ അജ്ഞതയും ഹൃദയകാഠിന്യവും നിമിത്തം"],["For running too fast","വേഗത്തിൽ നടന്നതിന്"],["For not sharing food","ഭക്ഷണം പങ്കുവയ്ക്കാത്തതിന്"],["For talking loudly","ഉറക്കെ സംസാരിച്ചതിന്"]],0,"",""],
+  ["From what did Jesus explain about His Passion and Resurrection?","തന്റെ കഷ്ടാനുഭവവും ഉയിർപ്പും യേശു എന്തിൽനിന്നാണ് വ്യാഖ്യാനിച്ചത്?",
+   [["The Scriptures","തിരുവെഴുത്തുകളിൽനിന്ന്"],["Roman laws","റോമൻ നിയമങ്ങളിൽനിന്ന്"],["The stars","നക്ഷത്രങ്ങളിൽനിന്ന്"],["Stories of the elders","പൂർവികരുടെ കഥകളിൽനിന്ന്"]],0,"",""],
+  ["In the evening, what did the disciples ask Jesus?","വൈകുന്നേരമായപ്പോൾ ശിഷ്യന്മാർ യേശുവിനോട് എന്ത് അപേക്ഷിച്ചു?",
+   [["To stay (abide) with them","അവരോടുകൂടി പാർക്കുവാൻ"],["To go back to Jerusalem","യെരുശലേമിലേക്ക് മടങ്ങുവാൻ"],["To perform a miracle","അത്ഭുതം പ്രവർത്തിക്കുവാൻ"],["To tell His name","പേര് പറയുവാൻ"]],0,"",""],
+  ["When did the disciples recognise Jesus?","ശിഷ്യന്മാർ യേശുവിനെ തിരിച്ചറിഞ്ഞത് എപ്പോൾ?",
+   [["When He took bread, blessed and broke it, and gave it to them","അപ്പമെടുത്ത് വാഴ്ത്തി നുറുക്കി അവർക്ക് കൊടുത്തപ്പോൾ"],["When He showed His wounds","മുറിവുകൾ കാണിച്ചപ്പോൾ"],["When He called their names","അവരുടെ പേര് വിളിച്ചപ്പോൾ"],["When they reached Emmaus gate","എമ്മാവൂസ് പടിവാതിൽക്കൽ എത്തിയപ്പോൾ"]],0,"",""],
+  ["What happened right after they recognised Jesus?","തിരിച്ചറിഞ്ഞ ഉടനെ എന്തു സംഭവിച്ചു?",
+   [["Jesus vanished from their sight","യേശു അവർക്ക് അപ്രത്യക്ഷനായി"],["Jesus went to sleep","യേശു ഉറങ്ങി"],["Jesus walked to Jerusalem with them","യേശു അവരോടൊപ്പം യെരുശലേമിലേക്ക് നടന്നു"],["Jesus ate a meal with them","യേശു അവരോടൊപ്പം ഭക്ഷണം കഴിച്ചു"]],0,"",""],
+  ["The disciples remembered that while Jesus explained the Scriptures their hearts were…","തിരുവെഴുത്തുകൾ വിശദീകരിച്ചപ്പോൾ അവരുടെ ഹൃദയം…",
+   [["Burning within them","ഉള്ളിൽ കത്തുകയായിരുന്നു"],["Heavy with sleep","ഉറക്കത്താൽ ഭാരപ്പെട്ടിരുന്നു"],["Full of anger","കോപം നിറഞ്ഞിരുന്നു"],["Cold with fear","ഭയംകൊണ്ട് തണുത്തിരുന്നു"]],0,"",""],
+  ["What did the disciples do after recognising Jesus?","യേശുവിനെ തിരിച്ചറിഞ്ഞ ശിഷ്യന്മാർ എന്തു ചെയ്തു?",
+   [["Returned to Jerusalem at once","ഉടനെ യെരുശലേമിലേക്ക് മടങ്ങി"],["Stayed in Emmaus","എമ്മാവൂസിൽ താമസിച്ചു"],["Went to Galilee","ഗലീലയിലേക്ക് പോയി"],["Went to sleep","ഉറങ്ങാൻ പോയി"]],0,"",""],
+  ["What enables us to see and receive Christ today?","ഇന്ന് ക്രിസ്തുവിനെ കാണാനും സ്വീകരിക്കാനും നമ്മെ സഹായിക്കുന്നത്?",
+   [["Holy Qurbana","വി. കുർബ്ബാന"],["Watching films","സിനിമ കാണുന്നത്"],["Going on holiday","വിനോദയാത്ര"],["Buying gifts","സമ്മാനങ്ങൾ വാങ്ങുന്നത്"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["St. Matthew 28:20","മത്തായി 28:20"],["St. Luke 24:16","ലൂക്കോ. 24:16"],["St. John 20:21","യോഹ. 20:21"],["St. John 14:6","യോഹ. 14:6"]],0,"",""]
+ ],
+ short:[
+  {en:"Why were the two disciples leaving Jerusalem?", ml:"രണ്ട് ശിഷ്യന്മാർ യെരുശലേം വിട്ടുപോയത് എന്തുകൊണ്ട്?",
+   aen:["After the crucifixion they were dejected, hopeless and afraid. Hearing the women’s news of the Resurrection made them even more frightened, so they were ‘running away’ from Jerusalem to Emmaus."],
+   aml:["ക്രൂശുമരണത്തിനുശേഷം അവർ നിരാശരും പ്രതീക്ഷയറ്റവരും ഭയചകിതരുമായിരുന്നു. ഉയിർപ്പിനെക്കുറിച്ചുള്ള സ്ത്രീകളുടെ വാർത്ത കേട്ടപ്പോൾ അവർ കൂടുതൽ ഭയന്നു. അതിനാൽ യെരുശലേമിൽനിന്ന് എമ്മാവൂസിലേക്ക് ‘ഓടിപ്പോകുകയായിരുന്നു’."]},
+  {en:"What did Jesus do during His meeting with the two disciples?", ml:"എമ്മാവൂസ് യാത്രയിൽ യേശു ചെയ്ത കാര്യങ്ങൾ എഴുതുക.",
+   aen:["He walked along with them.","He asked why they were sad and listened to them.","He explained the Scriptures about His Passion and Resurrection.","He stayed with them when they asked.","He took bread, blessed, broke it and gave it to them."],
+   aml:["അവരോടൊപ്പം നടന്നു.","അവരുടെ ദുഃഖകാരണം ചോദിച്ച് കേട്ടു.","തന്റെ കഷ്ടാനുഭവവും ഉയിർപ്പും തിരുവെഴുത്തുകളിൽനിന്ന് വ്യാഖ്യാനിച്ചു.","അവരുടെ അപേക്ഷപ്രകാരം അവരോടുകൂടെ പാർത്തു.","അപ്പമെടുത്ത് വാഴ്ത്തി നുറുക്കി അവർക്ക് കൊടുത്തു."]},
+  {en:"What lessons does the Journey to Emmaus teach us?", ml:"എമ്മാവൂസ് യാത്ര നമ്മെ പഠിപ്പിക്കുന്നത് എന്ത്?",
+   aen:["Jesus is our fellow traveller, even when we don’t recognise Him.","He won’t forsake us in adversities and failures.","Holy Qurbana helps us see and receive Christ.","We should read and meditate on the Scriptures every day and share what we have with others."],
+   aml:["തിരിച്ചറിയാത്തപ്പോഴും യേശു നമ്മുടെ സഹയാത്രികനാണ്.","പ്രതികൂലതകളിലും പരാജയങ്ങളിലും അവൻ നമ്മെ കൈവിടുന്നില്ല.","വി. കുർബ്ബാന ക്രിസ്തുദർശനത്തിന് ഇടയാക്കുന്നു.","ദിവസവും തിരുവെഴുത്തുകൾ പഠിക്കുകയും ധ്യാനിക്കുകയും, നമുക്കുള്ളത് മറ്റുള്ളവരുമായി പങ്കുവയ്ക്കുകയും വേണം."]},
+  {en:"Resolution of this chapter", ml:"ഈ പാഠത്തിലെ നിശ്ചയം",
+   aen:["We will seek God in joys and sorrows. We truly believe that Jesus comes into us every time we receive Holy Qurbana."],
+   aml:["ദൈവം വാഴ്ത്തിത്തരുന്ന അപ്പം എന്റെ ജീവിതത്തിന്റെ സത്യത്തെ തെളിയിക്കുന്നതിനാൽ ഞാൻ സ്ഥിരമായി വി. കുർബ്ബാന അനുഭവിക്കും. ഏത് പ്രതിസന്ധികളിലും ദൈവത്തെ മറന്ന് ഞാൻ ജീവിക്കില്ല."]}
+ ]
+},
+{
+ id:"ch8", n:8, en:"My Lord and My God", ml:"എന്റെ കർത്താവും എന്റെ ദൈവവുമേ",
+ verse:{en:"Jesus said to him, “I am the way, the truth and the life. No one comes to the Father except through me.”", ml:"“ഞാൻതന്നെ വഴിയും സത്യവും ജീവനും ആകുന്നു. ഞാൻ മുഖാന്തരമല്ലാതെ ആരും പിതാവിന്റെ അടുക്കൽ എത്തുന്നില്ല”", ref:"St. John 14:6 · യോഹ. 14:6"},
+ mcq:[
+  ["The story of St. Thomas’s confession is found in…","തോമാശ്ലീഹായുടെ വിശ്വാസപ്രഖ്യാപനം വിവരിക്കുന്ന ഭാഗം?",
+   [["St. John 20:24-29","യോഹ. 20:24-29"],["St. Luke 24:13-35","ലൂക്കോ. 24:13-35"],["St. Matthew 16:13-20","മത്തായി 16:13-20"],["Acts 2:1-13","അ. പ്ര. 2:1-13"]],0,"",""],
+  ["When Jesus first appeared to the disciples after the Resurrection, who was absent?","ഉയിർപ്പിനുശേഷം യേശു ആദ്യം പ്രത്യക്ഷനായപ്പോൾ കൂട്ടത്തിൽ ഇല്ലാതിരുന്ന ശിഷ്യൻ?",
+   [["Thomas","തോമസ്"],["Peter","പത്രോസ്"],["John","യോഹന്നാൻ"],["Andrew","അന്ത്രയോസ്"]],0,"",""],
+  ["Thomas said he would believe only if he could…","തോമസ് വിശ്വസിക്കുമെന്ന് പറഞ്ഞത് എന്ത് ചെയ്താൽ?",
+   [["Touch the wounds of Jesus","യേശുവിന്റെ മുറിവുകൾ തൊട്ടുനോക്കിയാൽ"],["Hear Jesus’ voice","യേശുവിന്റെ ശബ്ദം കേട്ടാൽ"],["See an angel","ഒരു ദൂതനെ കണ്ടാൽ"],["See the empty tomb","ശൂന്യമായ കല്ലറ കണ്ടാൽ"]],0,
+   "St. John 20:25.","യോഹ. 20:25."],
+  ["After how many days did Jesus appear again and meet Thomas?","എത്ര ദിവസം കഴിഞ്ഞാണ് യേശു വീണ്ടും പ്രത്യക്ഷനായി തോമസിനെ കണ്ടത്?",
+   [["Eight days","എട്ട് ദിവസം"],["Three days","മൂന്ന് ദിവസം"],["Forty days","നാല്പത് ദിവസം"],["Seven days","ഏഴ് ദിവസം"]],0,
+   "St. John 20:26.","യോഹ. 20:26."],
+  ["What did Thomas proclaim after touching Jesus?","യേശുവിനെ സ്പർശിച്ച തോമസ് പ്രഖ്യാപിച്ചത്?",
+   [["“My Lord and my God”","“എന്റെ കർത്താവും എന്റെ ദൈവവുമേ”"],["“You are a great prophet”","“നീ വലിയ പ്രവാചകനാണ്”"],["“Peace be with you”","“നിങ്ങൾക്ക് സമാധാനം”"],["“Let us go and die with Him”","“നമുക്കും അവനോടുകൂടെ മരിക്കാം”"]],0,"",""],
+  ["Thomas’s declaration states that Jesus is…","തോമസിന്റെ പ്രഖ്യാപനം വ്യക്തമാക്കുന്നത് യേശു…",
+   [["Both human and God at the same time","ഒരേസമയം മനുഷ്യനും ദൈവവുമാണ്"],["Only a human teacher","ഒരു മനുഷ്യ ഗുരു മാത്രം"],["Only an angel","ഒരു ദൂതൻ മാത്രം"],["A king of Israel","യിസ്രായേലിന്റെ രാജാവ്"]],0,"",""],
+  ["Earlier, Peter had declared that Jesus is…","മുമ്പ് പത്രോസ് യേശുവിനെ പ്രഖ്യാപിച്ചത്…",
+   [["The Christ, the Son of the Most High","ക്രിസ്തു, അത്യുന്നതന്റെ പുത്രൻ"],["My Lord and my God","എന്റെ കർത്താവും എന്റെ ദൈവവും"],["Son of David only","ദാവീദിന്റെ പുത്രൻ മാത്രം"],["A prophet like Elijah","ഏലിയാവിനെപ്പോലെ ഒരു പ്രവാചകൻ"]],0,"",""],
+  ["Where is Thomas’s proclamation “My Lord and my God” inscribed?","‘എന്റെ കർത്താവും എന്റെ ദൈവവുമേ’ എന്ന പ്രഖ്യാപനം ആലേഖനം ചെയ്തിരിക്കുന്നത് എവിടെ?",
+   [["On the emblem of the Malankara Orthodox Church","മലങ്കര ഓർത്തഡോക്സ് സഭയുടെ (കാതോലിക്കേറ്റിന്റെ) ചിഹ്നത്തിൽ"],["On the walls of Jerusalem","യെരുശലേം മതിലുകളിൽ"],["On the Ark of the Covenant","നിയമപെട്ടകത്തിൽ"],["On the Roman coins","റോമൻ നാണയങ്ങളിൽ"]],0,"",""],
+  ["Which verse shows Thomas was ready to die with Jesus?","യേശുവിനോടുകൂടെ മരിക്കാൻ തോമസ് തയ്യാറായിരുന്നു എന്ന് കാണിക്കുന്ന വാക്യം?",
+   [["St. John 11:16","യോഹ. 11:16"],["St. John 14:5","യോഹ. 14:5"],["St. John 20:21","യോഹ. 20:21"],["St. Luke 24:16","ലൂക്കോ. 24:16"]],0,
+   "In St. John 14:5 he openly asked his doubts.","യോഹ. 14:5-ൽ അദ്ദേഹം സംശയം തുറന്നു ചോദിക്കുന്നു."],
+  ["Jesus said, “Blessed are those who…”","യേശു പറഞ്ഞു: “ഭാഗ്യവാന്മാർ…”",
+   [["have not seen and yet believe","കാണാതെ വിശ്വസിക്കുന്നവർ"],["see and then believe","കണ്ടശേഷം വിശ്വസിക്കുന്നവർ"],["touch My wounds","എന്റെ മുറിവുകൾ തൊടുന്നവർ"],["never ask questions","ഒരിക്കലും ചോദ്യം ചോദിക്കാത്തവർ"]],0,"",""],
+  ["Jesus told Thomas to be…","യേശു തോമസിനോട് എങ്ങനെയായിരിക്കാൻ പറഞ്ഞു?",
+   [["A believer, not an unbeliever","അവിശ്വാസിയല്ല, വിശ്വാസി"],["A soldier","ഒരു പടയാളി"],["A king","ഒരു രാജാവ്"],["Silent","നിശ്ശബ്ദൻ"]],0,"",""],
+  ["St. Thomas is the apostle of…","തോമാശ്ലീഹാ ഏത് ദേശത്തിന്റെ അപ്പോസ്തോലനാണ്?",
+   [["India","ഭാരതം"],["Rome","റോമാ"],["Egypt","മിസ്രയീം"],["Greece","ഗ്രീസ്"]],0,
+   "He founded the Church in India.","ഭാരതത്തിൽ സഭ സ്ഥാപിച്ചത് തോമാശ്ലീഹായാണ്."],
+  ["What is the other name of St. Thomas?","തോമസ് അപ്പോസ്തോലന്റെ മറ്റൊരു പേര്?",
+   [["Didymus","ദിദിമോസ്"],["Cleopas","ക്ലെയോപ്പാവ്"],["Jedidiah","യെദീദ്യാവ്"],["Barnabas","ബർന്നബാസ്"]],0,"",""],
+  ["What does ‘Didymus’ mean?","‘ദിദിമോസ്’ എന്ന പേരിന്റെ അർത്ഥം?",
+   [["Twin","ഇരട്ട"],["Rock","പാറ"],["Peaceful","സമാധാനമുള്ളവൻ"],["Beloved","പ്രിയൻ"]],0,"",""],
+  ["In which year was St. Thomas martyred in India?","തോമാശ്ലീഹാ ഭാരതത്തിൽ രക്തസാക്ഷിയായത് ഏത് വർഷം?",
+   [["AD 72","എ.ഡി. 72"],["AD 52","എ.ഡി. 52"],["AD 33","എ.ഡി. 33"],["AD 325","എ.ഡി. 325"]],0,
+   "He came to India in AD 52 and was martyred in AD 72 (Malayalam textbook).","എ.ഡി. 72-ൽ രക്തസാക്ഷിത്വം വരിച്ച് ഭാരതമണ്ണിൽ അടക്കപ്പെട്ടു."],
+  ["Thomas wanted to touch Jesus’ wounds because of…","തോമസ് യേശുവിന്റെ മുറിവുകൾ തൊടാൻ ആഗ്രഹിച്ചത്…",
+   [["His deep love and closeness to Jesus","യേശുവിനോടുള്ള ആഴമായ സ്നേഹവും അടുപ്പവും"],["His anger","കോപം"],["His wish to hurt Jesus","യേശുവിനെ വേദനിപ്പിക്കാനുള്ള ആഗ്രഹം"],["A Roman order","റോമൻ കല്പന"]],0,"",""],
+  ["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",
+   [["St. John 14:6","യോഹ. 14:6"],["St. John 20:21","യോഹ. 20:21"],["St. Matthew 28:20","മത്തായി 28:20"],["St. John 11:16","യോഹ. 11:16"]],0,
+   "The English textbook prints 14:16, but the verse is John 14:6.","ഇംഗ്ലീഷ് പുസ്തകത്തിൽ 14:16 എന്ന് അച്ചടിച്ചിരിക്കുന്നു; ശരി 14:6."]
+ ],
+ short:[
+  {en:"Explain the meaning of St. Thomas’s declaration “My Lord and my God”.", ml:"‘എന്റെ കർത്താവും എന്റെ ദൈവവുമേ’ എന്ന പ്രഖ്യാപനത്തിന്റെ അർത്ഥം വിശദീകരിക്കുക.",
+   aen:["Touching the risen Lord gave Thomas a new vision of faith. He declared that Jesus is both human and God at the same time. This is an important dogma of the Church’s faith and is inscribed on the emblem of the Malankara Orthodox Church."],
+   aml:["ഉയിർത്തെഴുന്നേറ്റ കർത്താവിനെ സ്പർശിച്ചപ്പോൾ തോമസിന് പുതിയ വിശ്വാസദർശനം ലഭിച്ചു. യേശു ഒരേസമയം മനുഷ്യനും ദൈവവുമാണെന്ന് അദ്ദേഹം പ്രഖ്യാപിച്ചു. ഇത് സഭയുടെ പ്രധാന വിശ്വാസസത്യമാണ്; മലങ്കര സഭയുടെ കാതോലിക്കേറ്റ് ചിഹ്നത്തിൽ ഇത് ആലേഖനം ചെയ്തിരിക്കുന്നു."]},
+  {en:"Explain: “Blessed are those who have not seen and yet believe.”", ml:"“കാണാതെ വിശ്വസിക്കുന്നവർ ഭാഗ്യവാന്മാർ” – വിശദീകരിക്കുക.",
+   aen:["Thomas believed because he saw the Lord. We have not seen Jesus with our eyes, yet we believe in Him and feel His presence. Jesus calls such believers blessed."],
+   aml:["തോമസ് കർത്താവിനെ കണ്ടതുകൊണ്ട് വിശ്വസിച്ചു. നാം യേശുവിനെ കണ്ണുകൊണ്ട് കണ്ടിട്ടില്ലെങ്കിലും അവനിൽ വിശ്വസിക്കുകയും അവന്റെ സാന്നിധ്യം അനുഭവിക്കുകയും ചെയ്യുന്നു. അങ്ങനെയുള്ളവരെ യേശു ഭാഗ്യവാന്മാർ എന്ന് വിളിക്കുന്നു."]},
+  {en:"Why is St. Thomas called ‘a disciple with a difference’?", ml:"തോമാശ്ലീഹായെ വ്യത്യസ്തനായ ശിഷ്യൻ എന്ന് വിളിക്കുന്നത് എന്തുകൊണ്ട്?",
+   aen:["He was ready to die with Jesus (St. John 11:16).","He openly asked his doubts (St. John 14:5).","His curiosity showed a mature personality and his sincerity endeared him to Jesus.","He is not an unbeliever but one whose love for his Master was great."],
+   aml:["യേശുവിനോടുകൂടെ മരിക്കാൻ തയ്യാറായിരുന്നു (യോഹ. 11:16).","സംശയങ്ങൾ തുറന്നു ചോദിച്ചു (യോഹ. 14:5).","അദ്ദേഹത്തിന്റെ ജിജ്ഞാസ പക്വതയുടെ അടയാളമാണ്; ആത്മാർത്ഥത യേശുവിന് പ്രിയമായി.","അദ്ദേഹം അവിശ്വാസിയല്ല; ഗുരുവിനോട് അഗാധ സ്നേഹമുള്ള വിശ്വാസിയാണ്."]},
+  {en:"Resolution of this chapter", ml:"ഈ പാഠത്തിലെ നിശ്ചയം",
+   aen:["Jesus Christ is our God and the Lord of our life. We believe in God even though we don’t see Him, and we feel His presence. We will live as children of St. Thomas and witnesses of God."],
+   aml:["തോമാശ്ലീഹായുടെ മക്കളായി, ദൈവത്തിന്റെ സാക്ഷികളായി ഭാരതത്തിൽ ജീവിക്കും. എന്ത് പ്രശ്നങ്ങളിലും പ്രതികൂലങ്ങളിലും ‘എന്റെ കർത്താവും എന്റെ ദൈവവും’ എന്ന് യേശുവിനെ ഉറക്കെ ഘോഷിച്ചുകൊണ്ട് തോമാശ്ലീഹായുടെ വിശ്വാസത്തിൽ ജീവിക്കും."]}
+ ]
+}
+];
+
+/* ---------- HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}>${ml ? `<${tag} class="ml">${esc(ml)}</${tag}>` : ""}`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+const TEST_N = 20;
+const RANGE = `${CH[0].n}–${CH[CH.length - 1].n}`;
+const BEST_KEY = "c7-best-" + RANGE;
+
+/* ---------- LANGUAGE ---------- */
+function setLang(l){
+  document.body.dataset.lang = l;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  store.set("c7lang", l);
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+/* ---------- TABS ---------- */
+const TABS = [{id:"home", label:"All chapters", sub:"പാഠങ്ങൾ"}, ...CH.map(c => ({id:c.id, label:`Chapter ${c.n}`, sub:c.ml})), {id:"test", label:"Mixed Test", sub:"മിശ്ര പരീക്ഷ"}];
+function renderTabs(active){
+  $("#tabs").innerHTML = TABS.map(t => `<a class="tab" role="tab" href="#${t.id}" aria-selected="${t.id === active}" data-id="${t.id}">${esc(t.label)}<small>${esc(t.sub)}</small></a>`).join("");
+}
+
+/* ---------- MCQ ---------- */
+function mcqHTML(q, idx, key){
+  const order = shuffle([0,1,2,3]);
+  return `<li class="q" data-key="${key}" data-correct="${q[3]}">
+    <span class="n">${idx}.</span>
+    <div class="body">
+      <div class="qtext">${bi(q[0], q[1])}</div>
+      <div class="opts">${order.map(i => `<button type="button" class="opt" data-i="${i}">${bi(q[2][i][0], q[2][i][1])}</button>`).join("")}</div>
+      <div class="fb" hidden></div>
+    </div>
+  </li>`;
+}
+function answerMCQ(li, btn, q, onDone){
+  const correct = +li.dataset.correct, pick = +btn.dataset.i, ok = pick === correct;
+  li.querySelectorAll(".opt").forEach(b => {
+    b.disabled = true;
+    const i = +b.dataset.i;
+    if (i === correct) b.classList.add("correct");
+    else if (i === pick) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  const fb = li.querySelector(".fb");
+  const right = q[2][correct];
+  fb.innerHTML = ok
+    ? `<b class="ok">${bi("Correct!", "ശരിയാണ്!")}</b> ${q[4] ? bi(q[4], q[5]) : ""}`
+    : `<b class="bad">${bi("Not quite.", "തെറ്റി.")}</b> ${bi("Answer: " + right[0], "ഉത്തരം: " + right[1])} ${q[4] ? bi(q[4], q[5]) : ""}`;
+  fb.hidden = false;
+  onDone && onDone(ok, pick);
+}
+
+/* ---------- CHAPTER VIEW ---------- */
+function renderChapter(c){
+  const saved = store.get("c7-" + c.id, {});
+  const v = $("#view");
+  v.innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Chapter " + c.n, "പാഠം " + c.n)}</div>
+      <h2><span class="en">${esc(c.en)}</span><span class="ml">${esc(c.ml)}</span></h2>
+    </div>
+    <div class="verse">
+      <div class="lbl">${bi("Verse to be memorized", " · മനഃപാഠവാക്യം")}</div>
+      <q class="en">${esc(c.verse.en)}</q>
+      <q class="ml">${esc(c.verse.ml)}</q>
+      <cite>${esc(c.verse.ref)}</cite>
+    </div>
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div class="sec-title">
+        <h3><span class="en">Choose the correct answer</span><span class="ml">ശരിയുത്തരം തിരഞ്ഞെടുക്കുക</span></h3>
+        <span class="score" id="score"></span>
+      </div>
+      <ol class="qlist">${c.mcq.map((q, i) => mcqHTML(q, i + 1, i)).join("")}</ol>
+      <div class="btnrow"><button type="button" class="btn ghost" id="reset">${bi("Start again", " · വീണ്ടും തുടങ്ങുക")}</button></div>
+    </section>
+    <section style="display:flex;flex-direction:column;gap:14px">
+      <div class="sec-title">
+        <h3><span class="en">Answer these questions</span><span class="ml">ഉത്തരം എഴുതുക</span></h3>
+        <span class="score">${bi("Think first, then check", "ആലോചിച്ചശേഷം നോക്കുക")}</span>
+      </div>
+      <div class="cards">${c.short.map((s, i) => `
+        <div class="card">
+          <div class="qtext">${bi(s.en, s.ml)}</div>
+          <button type="button" class="reveal" aria-expanded="false" data-i="${i}">${bi("Show answer", " · ഉത്തരം കാണുക")}</button>
+          <div class="ans" hidden>
+            ${s.aen.length > 1 ? `<ol class="en">${s.aen.map(a => `<li>${esc(a)}</li>`).join("")}</ol>` : `<p class="en" style="margin:0">${esc(s.aen[0])}</p>`}
+            ${s.aml.length > 1 ? `<ol class="ml">${s.aml.map(a => `<li>${esc(a)}</li>`).join("")}</ol>` : `<p class="ml" style="margin:8px 0 0">${esc(s.aml[0])}</p>`}
+          </div>
+        </div>`).join("")}
+      </div>
+    </section>`;
+
+  const total = c.mcq.length;
+  const upd = () => {
+    const vals = Object.values(saved);
+    const right = vals.filter(x => x.ok).length;
+    $("#score").innerHTML = `<b>${right}</b> ${bi("correct", "ശരി")} · ${vals.length}/${total} ${bi("answered", "ചെയ്തു")}`;
+  };
+  v.querySelectorAll(".q").forEach(li => {
+    const k = li.dataset.key, q = c.mcq[k];
+    if (saved[k]) {
+      const btn = li.querySelector(`.opt[data-i="${saved[k].pick}"]`);
+      answerMCQ(li, btn, q);
+    }
+    li.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+      answerMCQ(li, btn, q, (ok, pick) => { saved[k] = {ok, pick}; store.set("c7-" + c.id, saved); upd(); });
+    }));
+  });
+  $("#reset").addEventListener("click", () => { store.set("c7-" + c.id, {}); renderChapter(c); });
+  v.querySelectorAll(".reveal").forEach(b => b.addEventListener("click", () => {
+    const a = b.nextElementSibling, open = a.hidden;
+    a.hidden = !open; b.setAttribute("aria-expanded", open);
+    b.innerHTML = open ? bi("Hide answer", " · ഉത്തരം മറയ്ക്കുക") : bi("Show answer", " · ഉത്തരം കാണുക");
+  }));
+  upd();
+}
+
+/* ---------- HOME VIEW (chapter picker) ---------- */
+function renderHome(){
+  $("#view").innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Choose a chapter", "പാഠം തിരഞ്ഞെടുക്കുക")}</div>
+      <h2><span class="en">What do you want to practise?</span><span class="ml">ഏത് പാഠമാണ് പരിശീലിക്കേണ്ടത്?</span></h2>
+    </div>
+    <div class="pick">
+      ${CH.map(c => {
+        const done = Object.values(store.get("c7-" + c.id, {}));
+        const right = done.filter(x => x.ok).length;
+        return `<a class="chcard" href="#${c.id}" data-go="${c.id}">
+          <span class="num">${bi("Chapter " + c.n, " · പാഠം " + c.n)}</span>
+          <span class="t"><span class="en">${esc(c.en)}</span><span class="ml">${esc(c.ml)}</span></span>
+          <span class="meta">${done.length
+            ? `<b>${right}</b> ${bi("correct", "ശരി")} · ${done.length}/${c.mcq.length} ${bi("answered", "ചെയ്തു")}`
+            : bi(`${c.mcq.length} questions · ${c.short.length} answer cards`, ` · ${c.mcq.length} ചോദ്യങ്ങൾ`)}</span>
+        </a>`;
+      }).join("")}
+      <a class="chcard test" href="#test" data-go="test">
+        <span class="num">${bi("Test yourself", " · സ്വയം പരീക്ഷിക്കുക")}</span>
+        <span class="t"><span class="en">Mixed Revision Test</span><span class="ml">മിശ്ര പുനരവലോകന പരീക്ഷ</span></span>
+        <span class="meta">${bi("Pick the chapters you want", "പാഠങ്ങൾ തിരഞ്ഞെടുക്കാം")}</span>
+      </a>
+    </div>`;
+}
+
+/* ---------- TEST VIEW ---------- */
+function renderTestIntro(){
+  const best = store.get(BEST_KEY, null);
+  const sel = new Set(store.get("c7-test-ch", CH.map(c => c.n)).filter(n => CH.some(c => c.n === n)));
+  if (!sel.size) CH.forEach(c => sel.add(c.n));
+  $("#view").innerHTML = `
+    <div class="chap-head">
+      <div class="num">${bi("Chapters " + RANGE, "പാഠം " + RANGE)}</div>
+      <h2><span class="en">Mixed Revision Test</span><span class="ml">മിശ്ര പുനരവലോകന പരീക്ഷ</span></h2>
+    </div>
+    <div class="test-intro">
+      <p>${bi(`Up to ${TEST_N} questions picked at random from the chapters you choose, one at a time. Your score is shown at the end, with every question you missed.`, `തിരഞ്ഞെടുക്കുന്ന പാഠങ്ങളിൽ നിന്ന് ${TEST_N} ചോദ്യങ്ങൾ വരെ, ഓരോന്നായി. അവസാനം മാർക്കും തെറ്റിയ ചോദ്യങ്ങളും കാണാം.`)}</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <b>${bi("Chapters in this test", " · ഈ പരീക്ഷയിലെ പാഠങ്ങൾ")}</b>
+        <div class="toggles" role="group">${CH.map(c => `<button type="button" data-n="${c.n}" aria-pressed="${sel.has(c.n)}">${bi("Ch " + c.n, " · പാഠം " + c.n)}</button>`).join("")}</div>
+      </div>
+      ${best !== null ? `<p class="score">${bi("Your best score on this device:", "ഈ ഫോണിലെ മികച്ച മാർക്ക്:")} <b>${best}/${TEST_N}</b></p>` : ""}
+      <div class="btnrow"><button type="button" class="btn" id="start">${bi("Start test", " · പരീക്ഷ തുടങ്ങുക")}</button></div>
+    </div>`;
+  $("#view").querySelectorAll(".toggles button").forEach(b => b.addEventListener("click", () => {
+    const n = +b.dataset.n;
+    if (sel.has(n)) { if (sel.size > 1) sel.delete(n); } else sel.add(n);
+    $("#view").querySelectorAll(".toggles button").forEach(x => x.setAttribute("aria-pressed", sel.has(+x.dataset.n)));
+    store.set("c7-test-ch", [...sel]);
+  }));
+  $("#start").addEventListener("click", () => startTest([...sel]));
+}
+function startTest(chs){
+  const pool = [];
+  CH.filter(c => chs.includes(c.n)).forEach(c => c.mcq.forEach(q => pool.push({q, ch:c.n})));
+  const qs = shuffle(pool).slice(0, TEST_N);
+  let i = 0, score = 0; const missed = [];
+  const step = () => {
+    if (i >= qs.length) return finish();
+    const {q, ch} = qs[i];
+    $("#view").innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="test-meta"><span>${bi("Question " + (i + 1) + " of " + qs.length, " · ചോദ്യം " + (i + 1) + "/" + qs.length)}</span><span>${bi("Score " + score, " · മാർക്ക് " + score)}</span></div>
+        <div class="bar"><i style="width:${i / qs.length * 100}%"></i></div>
+      </div>
+      <ol class="qlist"><li class="q" data-correct="${q[3]}"><span class="n"><span class="chip">${bi("Ch " + ch, " · പാഠം " + ch)}</span></span>
+        <div class="body">
+          <div class="qtext">${bi(q[0], q[1])}</div>
+          <div class="opts">${shuffle([0,1,2,3]).map(k => `<button type="button" class="opt" data-i="${k}">${bi(q[2][k][0], q[2][k][1])}</button>`).join("")}</div>
+          <div class="fb" hidden></div>
+        </div></li></ol>
+      <div class="btnrow"><button type="button" class="btn" id="next" hidden>${i === qs.length - 1 ? bi("See my score", " · മാർക്ക് കാണുക") : bi("Next question", " · അടുത്ത ചോദ്യം")}</button></div>`;
+    const li = $("#view .q");
+    li.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+      answerMCQ(li, btn, q, ok => { if (ok) score++; else missed.push({q, ch}); $("#next").hidden = false; $("#next").focus(); });
+    }));
+    $("#next").addEventListener("click", () => { i++; step(); window.scrollTo({top:0}); });
+  };
+  const finish = () => {
+    const n = qs.length;
+    const best = store.get(BEST_KEY, 0);
+    if (score > best) store.set(BEST_KEY, score);
+    const msg = score >= n * 0.9 ? ["Excellent! Well prepared.", "മികച്ചത്! നന്നായി പഠിച്ചിട്ടുണ്ട്."]
+              : score >= n * 0.7 ? ["Good work. Revise the ones you missed.", "നല്ലത്. തെറ്റിയവ ഒന്നുകൂടി പഠിക്കുക."]
+              : ["Keep practising. Go through each chapter again.", "ഓരോ പാഠവും ഒന്നുകൂടി വായിച്ച് പരിശീലിക്കുക."];
+    $("#view").innerHTML = `
+      <div class="result">
+        <span class="chip">${bi("Your score", " · നിങ്ങളുടെ മാർക്ക്")}</span>
+        <div class="big">${score}<small>/${n}</small></div>
+        <p style="margin:0">${bi(msg[0], msg[1])}</p>
+        <div class="btnrow" style="justify-content:center;margin-top:8px">
+          <button type="button" class="btn" id="again">${bi("Try another test", " · വീണ്ടും എഴുതുക")}</button>
+        </div>
+      </div>
+      ${missed.length ? `<section style="display:flex;flex-direction:column;gap:12px">
+        <div class="sec-title"><h3><span class="en">Questions to revise</span><span class="ml">വീണ്ടും പഠിക്കേണ്ടവ</span></h3></div>
+        <div class="cards">${missed.map(m => `<div class="card">
+          <span class="chip" style="align-self:flex-start">${bi("Chapter " + m.ch, " · പാഠം " + m.ch)}</span>
+          <div class="qtext">${bi(m.q[0], m.q[1])}</div>
+          <div class="ans">${bi("Answer: " + m.q[2][m.q[3]][0], "ഉത്തരം: " + m.q[2][m.q[3]][1], "div")}</div>
+        </div>`).join("")}</div></section>` : ""}`;
+    $("#again").addEventListener("click", () => startTest(chs));
+  };
+  step();
+}
+
+/* ---------- ROUTING ---------- */
+function show(id){
+  const c = CH.find(x => x.id === id);
+  if (!c && id !== "test") id = "home";
+  renderTabs(id);
+  if (c) renderChapter(c); else if (id === "test") renderTestIntro(); else renderHome();
+  const tab = document.querySelector(`.tab[data-id="${id}"]`);
+  tab && tab.scrollIntoView({block:"nearest", inline:"nearest"});
+}
+function route(){ show((location.hash || "#home").slice(1)); }
+document.addEventListener("click", e => {
+  const t = e.target.closest(".tab, .chcard");
+  if (!t) return;
+  e.preventDefault();
+  const id = t.dataset.id || t.dataset.go;
+  try { history.replaceState(null, "", "#" + id); } catch(err) {}
+  show(id);
+  window.scrollTo({top:0});
+});
+window.addEventListener("hashchange", route);
+setLang(store.get("c7lang", "both"));
+route();
+</script>
+
+</body>
+</html>
