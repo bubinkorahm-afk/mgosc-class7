@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 7 Sunday School Portal – Mar Gregorios Orthodox Syrian Church</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: header with language switch; hero with the two main actions; chapter grid with search; downloads; teacher's note */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+.ml{font-family:var(--f-ml);line-height:1.7}
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+.wrap{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* header */
+.banner{background:#fff;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid var(--line)}
+.banner img{display:block;width:100%;max-width:1400px;height:auto;margin:0 auto}
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:10px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand .name{font-family:var(--f-display);font-weight:800;font-size:clamp(16px,3vw,19px);line-height:1.2}
+.brand .name .ml{display:block;font-size:14px;font-weight:600;color:var(--muted)}
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button.mlb{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+main .wrap{padding-block:28px 56px;display:flex;flex-direction:column;gap:40px}
+
+/* hero */
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,6vw,44px);line-height:1.08;margin:0;text-wrap:balance}
+.hero h1 .ml{display:block;font-size:.55em;font-weight:700;color:var(--muted);margin-top:6px}
+.hero p{margin:8px 0 0;color:var(--muted);max-width:60ch}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:22px}
+.action{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:16px;text-decoration:none;border:1px solid var(--line);background:var(--surface);transition:transform .15s,border-color .15s}
+.action:hover{transform:translateY(-2px);border-color:var(--accent)}
+.action.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.action .ic{font-size:26px;line-height:1}
+.action .t{font-family:var(--f-display);font-weight:800;font-size:23px;line-height:1.15}
+.action .t .ml{display:block;font-family:var(--f-ml);font-size:15px;font-weight:600;opacity:.85}
+.action .d{font-size:15px;opacity:.85}
+.action .go{margin-top:auto;padding-top:8px;font-weight:700;font-size:15px}
+
+.notice{display:flex;gap:12px;align-items:flex-start;background:var(--gold-soft);border-radius:14px;padding:14px 16px;margin-top:14px}
+.notice .ic{font-size:20px;line-height:1.3}
+.notice b{display:block}
+.notice .ml{font-size:15px}
+
+/* sections */
+.sec-head{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;justify-content:space-between;margin-bottom:16px}
+.sec-head h2{margin:0;font-family:var(--f-display);font-size:clamp(24px,4.5vw,30px);line-height:1.15}
+.sec-head h2 .ml{display:block;font-size:.6em;font-weight:700;color:var(--muted)}
+.search{position:relative;flex:1 1 240px;max-width:340px}
+.search input{width:100%;font:500 16px var(--f-body);padding:10px 14px 10px 38px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+.search input:focus{outline:3px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+
+/* chapter grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.ch{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.ch .num{font:700 12.5px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.ch .t{font-family:var(--f-display);font-weight:800;font-size:19px;line-height:1.2}
+.ch .t .ml{display:block;font-family:var(--f-ml);font-size:14.5px;font-weight:600;color:var(--muted);margin-top:2px}
+.ch .prog{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ch .prog b{color:var(--ok)}
+.ch .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.ch.locked{background:var(--sunk);border-style:dashed}
+.ch.locked .num{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--accent);border-radius:999px;padding:6px 14px;font:700 14px var(--f-body);text-decoration:none;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.off{background:transparent;border-color:var(--line);color:var(--muted);cursor:default}
+.empty{color:var(--muted);padding:12px 0}
+
+/* downloads */
+.dl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.file{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none}
+.file:hover{border-color:var(--accent)}
+.file .badge{flex:0 0 auto;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font:800 12px var(--f-body);letter-spacing:.04em}
+.file .info{min-width:0;display:flex;flex-direction:column}
+.file .info b{font-size:16px}
+.file .info small{color:var(--muted);font-size:14px}
+
+/* teacher's note */
+.note{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:14px;padding:18px 20px}
+.note h2{margin:0 0 6px;font-family:var(--f-display);font-size:22px}
+.note p{margin:0}
+
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 16px calc(28px + env(safe-area-inset-bottom,0px))}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body data-lang="both">
+
+<div class="banner"><img src="header-banner.jpg" width="1600" height="422" alt="Mar Gregorios Orthodox Syrian Church Sunday School · OSSAE · Class 7 Practice App"></div>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div>
+        <div class="eyebrow">OSSAE · Class 7 Sunday School</div>
+        <div class="name"><span class="en">Mar Gregorios Orthodox Syrian Church, Riyadh</span><span class="ml">മാർ ഗ്രീഗോറിയോസ് ഓർത്തഡോക്സ് സിറിയൻ ചർച്ച്, റിയാദ്</span></div>
+      </div>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both">EN + മല</button>
+      <button type="button" data-lang="en">English</button>
+      <button type="button" data-lang="ml" class="mlb">മലയാളം</button>
+    </div>
+  </div>
+</header>
+
+<main><div class="wrap">
+
+  <section class="hero">
+    <h1><span class="en">Class 7 Portal</span><span class="ml">ക്ലാസ് 7 സൺഡേ സ്കൂൾ പോർട്ടൽ</span></h1>
+    <p><span class="en">Practise each chapter, take the revision exam, watch the classes and download your textbooks.</span><span class="ml"> · ഓരോ പാഠവും പരിശീലിക്കുക, പരീക്ഷ എഴുതുക, ക്ലാസുകൾ കാണുക, പാഠപുസ്തകങ്ങൾ ഡൗൺലോഡ് ചെയ്യുക.</span></p>
+
+    <div class="actions">
+      <a class="action primary" href="class7-practice.html">
+        <span class="ic" aria-hidden="true">📖</span>
+        <span class="t"><span class="en">Revision Practice</span><span class="ml">പുനരവലോകന പരിശീലനം</span></span>
+        <span class="d" id="practiceRange"></span>
+        <span class="go"><span class="en">Start practising →</span><span class="ml"> · തുടങ്ങുക →</span></span>
+      </a>
+      <a class="action" href="class7-revision-exam.html">
+        <span class="ic" aria-hidden="true">📝</span>
+        <span class="t"><span class="en">Revision Exam</span><span class="ml">പുനരവലോകന പരീക്ഷ</span></span>
+        <span class="d"><span class="en">Chapters 1–4 · timed online test with a result card</span><span class="ml"> · പാഠം 1–4 · സമയബന്ധിത ഓൺലൈൻ പരീക്ഷ</span></span>
+        <span class="go" style="color:var(--accent)"><span class="en">Take the exam →</span><span class="ml"> · പരീക്ഷ എഴുതുക →</span></span>
+      </a>
+    </div>
+
+    <div class="notice">
+      <span class="ic" aria-hidden="true">📢</span>
+      <div>
+        <b><span class="en">Half Yearly Exam (May 1, 2026) portions</span><span class="ml"> · അർദ്ധവാർഷിക പരീക്ഷ (മെയ് 1, 2026) പാഠഭാഗങ്ങൾ</span></b>
+        <span class="en">Chapters 1, 2, 6, 7, 11, 12, 13, 14, 15, 16, 18, 20, 22</span><span class="ml"> · അധ്യായങ്ങൾ: 1, 2, 6, 7, 11, 12, 13, 14, 15, 16, 18, 20, 22</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="chHead">
+    <div class="sec-head">
+      <h2 id="chHead"><span class="en">Chapters</span><span class="ml">അധ്യായങ്ങൾ</span></h2>
+      <label class="search">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5" stroke-linecap="round"/></svg>
+        <input type="search" id="q" placeholder="Search… (e.g. David / ദാവീദ്)" aria-label="Search chapters and downloads">
+      </label>
+    </div>
+    <div class="grid" id="chapters"></div>
+    <p class="empty" id="noCh" hidden><span class="en">No chapters match your search.</span><span class="ml"> · തിരയലിന് യോജിച്ച അധ്യായങ്ങളില്ല.</span></p>
+  </section>
+
+  <section aria-labelledby="dlHead">
+    <div class="sec-head">
+      <h2 id="dlHead"><span class="en">Textbooks &amp; question papers</span><span class="ml">പാഠപുസ്തകങ്ങളും ചോദ്യപേപ്പറുകളും</span></h2>
+    </div>
+    <div class="dl" id="downloads"></div>
+    <p class="empty" id="noDl" hidden><span class="en">No downloads match your search.</span><span class="ml"> · യോജിച്ച ഫയലുകളില്ല.</span></p>
+  </section>
+
+  <section class="note">
+    <h2><span class="en">Teacher’s note</span><span class="ml"> · ടീച്ചറുടെ കുറിപ്പ്</span></h2>
+    <p><b><span class="en">Weekly homework:</span><span class="ml">പ്രതിവാര ഗൃഹപാഠം:</span></b>
+      <span class="en">Learn prayers from Chapters 12 and 13, and songs from Chapters 14 &amp; 15.</span><span class="ml">12, 13 അധ്യായങ്ങളിൽ നിന്നുള്ള പ്രാർത്ഥനകളും 14, 15 അധ്യായങ്ങളിൽ നിന്നുള്ള ഗാനങ്ങളും പഠിക്കുക.</span></p>
+  </section>
+
+</div></main>
+
+<footer>Copyright and Developed by bubinkorahmathew@2026</footer>
+
+<!-- Teacher settings: which chapters are open for practice (edit chapters-config.js) -->
+<script src="chapters-config.js"></script>
+<script>
+/* ---------- DATA ---------- */
+/* practice: true = chapter is in class7-practice.html; video: YouTube class link */
+const CHAPTERS = [
+  {n:1,  en:"The Judges", ml:"ന്യായാധിപന്മാർ", practice:true, video:"https://youtu.be/HA52eETE57U?si=dJWAmd1IsxYtkrtW"},
+  {n:2,  en:"Samuel, the Priest and Prophet", ml:"പുരോഹിതനും പ്രവാചകനുമായ ശമുവേൽ", practice:true, video:"https://youtu.be/4t5YKvTnbbE?si=WHal5xXSsC4Yu7ce"},
+  {n:3,  en:"A King for Israel", ml:"യിസ്രായേലിന് ഒരു രാജാവ്", practice:true},
+  {n:4,  en:"David, the King and Mellifluous Singer of Israel", ml:"യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്", practice:true},
+  {n:5,  en:"Solomon, the Wisest of Kings", ml:"ജ്ഞാനിയായ ശലോമോൻ", practice:true},
+  {n:6,  en:"Resurrected Jesus Christ and Disciples", ml:"ഉയിർത്തെഴുന്നേറ്റ യേശുക്രിസ്തുവും ശിഷ്യന്മാരും", practice:true, video:"https://youtu.be/E0nWJLh7Hhs?si=wWl-pE063yKZxTMf"},
+  {n:7,  en:"Journey to Emmaus", ml:"എമ്മാവൂസിലേക്കുള്ള യാത്ര", practice:true, video:"https://youtu.be/AKbqHWVPRdo?si=iYBVP9l4ZnC4rO5m"},
+  {n:8,  en:"My Lord and My God", ml:"എന്റെ കർത്താവും എന്റെ ദൈവവുമേ", practice:true},
+  {n:18, en:"The Promeyon and Sedra used in the Holy Eucharist", ml:"വിശുദ്ധ കുർബാനയിൽ ഉപയോഗിക്കുന്ന പ്രൊമിയോണും സെദ്രായും", video:"https://www.youtube.com/watch?v=jZt_POF58z8"},
+  {n:20, en:"Fasts and Fasting", ml:"നോമ്പും ഉപവാസവും", video:"https://www.youtube.com/watch?v=fRIAD7eS77s&t=358s"}
+];
+const DOWNLOADS = [
+  {href:"Class 7 English.pdf", en:"Class 7 Textbook · English", ml:"ക്ലാസ് 7 പാഠപുസ്തകം · ഇംഗ്ലീഷ്", sub:"Textbook"},
+  {href:"CLASS 7-Malayalam.pdf", en:"Class 7 Textbook · Malayalam", ml:"ക്ലാസ് 7 പാഠപുസ്തകം · മലയാളം", sub:"Textbook"},
+  {href:"HALF YEARLY EXAM CLASS 7-English.pdf", en:"Half-Yearly Exam 2023 · English", ml:"അർദ്ധവാർഷിക പരീക്ഷ 2023 · ഇംഗ്ലീഷ്", sub:"Question paper"},
+  {href:"HALF YEARLY EXAM CLASS 7-Malayalam2023.pdf", en:"Half-Yearly Exam 2023 · Malayalam", ml:"അർദ്ധവാർഷിക പരീക്ഷ 2023 · മലയാളം", sub:"Question paper"},
+  {href:"CLASS VII - Half Yearly Questions.pdf", en:"Question Bank · Bilingual", ml:"ചോദ്യ ബാങ്ക് · ദ്വിഭാഷ", sub:"Various years"}
+];
+
+/* ---------- HELPERS ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml) => `<span class="en">${esc(en)}</span><span class="ml">${esc(ml)}</span>`;
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+const OPEN = Array.isArray(window.C7_OPEN_CHAPTERS) ? window.C7_OPEN_CHAPTERS.map(Number) : CHAPTERS.filter(c => c.practice).map(c => c.n);
+const isOpen = c => c.practice && OPEN.includes(c.n);
+
+/* ---------- LANGUAGE (shared with the practice app) ---------- */
+function setLang(l){
+  document.body.dataset.lang = l;
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  store.set("c7lang", l);
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+setLang(store.get("c7lang", "both"));
+
+/* ---------- HERO ---------- */
+const openNums = CHAPTERS.filter(isOpen).map(c => c.n);
+$("#practiceRange").innerHTML = openNums.length
+  ? bi(`Chapters ${openNums.join(", ")} · questions, memory verses and a mixed test`, ` · പാഠം ${openNums.join(", ")} · ചോദ്യങ്ങൾ, മനഃപാഠവാക്യം, മിശ്ര പരീക്ഷ`)
+  : bi("Chapters coming soon", " · പാഠങ്ങൾ ഉടൻ വരുന്നു");
+
+/* ---------- CHAPTER CARDS ---------- */
+$("#chapters").innerHTML = CHAPTERS.map(c => {
+  const locked = c.practice && !isOpen(c);
+  const done = isOpen(c) ? Object.values(store.get("c7-ch" + c.n, {})) : [];
+  const right = done.filter(x => x.ok).length;
+  const practiceBtn = isOpen(c)
+    ? `<a class="btn" href="class7-practice.html#ch${c.n}">${bi("Practice", "പരിശീലിക്കുക")}</a>`
+    : locked ? `<span class="btn off">🔒 ${bi("Coming soon", "ഉടൻ വരുന്നു")}</span>` : "";
+  const videoBtn = c.video ? `<a class="btn ghost" href="${esc(c.video)}" target="_blank" rel="noopener">▶ ${bi("Watch class", "ക്ലാസ് കാണുക")}</a>` : "";
+  return `<article class="ch${locked ? " locked" : ""}" data-search="${esc((c.n + " " + c.en + " " + c.ml).toLowerCase())}">
+    <span class="num">${bi("Chapter " + c.n, "അധ്യായം " + c.n)}</span>
+    <span class="t">${bi(c.en, c.ml)}</span>
+    ${done.length ? `<span class="prog"><b>${right}</b> ${bi("correct", "ശരി")} · ${done.length} ${bi("answered", "ചെയ്തു")}</span>` : ""}
+    <div class="btns">${practiceBtn}${videoBtn}</div>
+  </article>`;
+}).join("");
+
+/* ---------- DOWNLOADS ---------- */
+$("#downloads").innerHTML = DOWNLOADS.map(d => `
+  <a class="file" href="${encodeURI(d.href)}" target="_blank" rel="noopener" data-search="${esc((d.en + " " + d.ml + " " + d.sub).toLowerCase())}">
+    <span class="badge">PDF</span>
+    <span class="info"><b>${bi(d.en, d.ml)}</b><small>${esc(d.sub)}</small></span>
+  </a>`).join("");
+
+/* ---------- SEARCH ---------- */
+$("#q").addEventListener("input", e => {
+  const q = e.target.value.trim().toLowerCase();
+  const filter = (sel, empty) => {
+    let shown = 0;
+    document.querySelectorAll(sel).forEach(el => { const hit = !q || el.dataset.search.includes(q); el.hidden = !hit; if (hit) shown++; });
+    $(empty).hidden = shown > 0;
+  };
+  filter("#chapters .ch", "#noCh");
+  filter("#downloads .file", "#noDl");
+});
+</script>
+</body>
+</html>
