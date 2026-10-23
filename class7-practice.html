@@ -130,6 +130,9 @@ main .wrap{padding-block:26px 64px;display:flex;flex-direction:column;gap:28px}
 .chcard .meta{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:auto}
 .chcard .meta b{color:var(--ok)}
 .chcard.test{background:var(--accent-soft);border-color:transparent}
+.chcard.locked{background:var(--sunk);border-style:dashed;cursor:default;opacity:.7}
+.chcard.locked:hover{border-color:var(--line)}
+.chcard.locked .num{color:var(--muted)}
 .toggles{display:flex;flex-wrap:wrap;gap:8px}
 .toggles button{border:1.5px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;padding:6px 14px;font:700 15px var(--f-body);cursor:pointer;font-variant-numeric:tabular-nums}
 .toggles button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
@@ -164,6 +167,7 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 32px}
 </nav>
 
 <main><div class="wrap" id="view"></div></main>
+<script src="chapters-config.js"></script>
 <footer><div class="wrap">Based on the OSSAE Class VII textbook (Third Edition, 2022)</div></footer>
 
 <script>
@@ -660,6 +664,11 @@ const CH = [
 }
 ];
 
+/* ---------- OPEN CHAPTERS (set by the teacher in chapters-config.js) ---------- */
+const OPEN = new Set(Array.isArray(window.C7_OPEN_CHAPTERS) ? window.C7_OPEN_CHAPTERS.map(Number) : CH.map(c => c.n));
+const LOCKED = CH.filter(c => !OPEN.has(c.n));
+CH.splice(0, CH.length, ...CH.filter(c => OPEN.has(c.n)));
+
 /* ---------- HELPERS ---------- */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -670,7 +679,7 @@ const store = {
   set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
 };
 const TEST_N = 20;
-const RANGE = `${CH[0].n}–${CH[CH.length - 1].n}`;
+const RANGE = CH.length ? `${CH[0].n}–${CH[CH.length - 1].n}` : "";
 const BEST_KEY = "c7-best-" + RANGE;
 
 /* ---------- LANGUAGE ---------- */
@@ -682,7 +691,7 @@ function setLang(l){
 document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
 
 /* ---------- TABS ---------- */
-const TABS = [{id:"home", label:"All chapters", sub:"പാഠങ്ങൾ"}, ...CH.map(c => ({id:c.id, label:`Chapter ${c.n}`, sub:c.ml})), {id:"test", label:"Mixed Test", sub:"മിശ്ര പരീക്ഷ"}];
+const TABS = [{id:"home", label:"All chapters", sub:"പാഠങ്ങൾ"}, ...CH.map(c => ({id:c.id, label:`Chapter ${c.n}`, sub:c.ml})), ...(CH.length ? [{id:"test", label:"Mixed Test", sub:"മിശ്ര പരീക്ഷ"}] : [])];
 function renderTabs(active){
   $("#tabs").innerHTML = TABS.map(t => `<a class="tab" role="tab" href="#${t.id}" aria-selected="${t.id === active}" data-id="${t.id}">${esc(t.label)}<small>${esc(t.sub)}</small></a>`).join("");
 }
@@ -801,11 +810,16 @@ function renderHome(){
             : bi(`${c.mcq.length} questions · ${c.short.length} answer cards`, ` · ${c.mcq.length} ചോദ്യങ്ങൾ`)}</span>
         </a>`;
       }).join("")}
-      <a class="chcard test" href="#test" data-go="test">
+      ${CH.length ? `<a class="chcard test" href="#test" data-go="test">
         <span class="num">${bi("Test yourself", " · സ്വയം പരീക്ഷിക്കുക")}</span>
         <span class="t"><span class="en">Mixed Revision Test</span><span class="ml">മിശ്ര പുനരവലോകന പരീക്ഷ</span></span>
         <span class="meta">${bi("Pick the chapters you want", "പാഠങ്ങൾ തിരഞ്ഞെടുക്കാം")}</span>
-      </a>
+      </a>` : ""}
+      ${LOCKED.map(c => `<div class="chcard locked" aria-disabled="true">
+          <span class="num">${bi("Chapter " + c.n, " · പാഠം " + c.n)}</span>
+          <span class="t"><span class="en">${esc(c.en)}</span><span class="ml">${esc(c.ml)}</span></span>
+          <span class="meta">${bi("🔒 Coming soon", " · ഉടൻ വരുന്നു")}</span>
+        </div>`).join("")}
     </div>`;
 }
 
@@ -893,7 +907,7 @@ function startTest(chs){
 /* ---------- ROUTING ---------- */
 function show(id){
   const c = CH.find(x => x.id === id);
-  if (!c && id !== "test") id = "home";
+  if (!c && !(id === "test" && CH.length)) id = "home";
   renderTabs(id);
   if (c) renderChapter(c); else if (id === "test") renderTestIntro(); else renderHome();
   const tab = document.querySelector(`.tab[data-id="${id}"]`);
@@ -901,7 +915,7 @@ function show(id){
 }
 function route(){ show((location.hash || "#home").slice(1)); }
 document.addEventListener("click", e => {
-  const t = e.target.closest(".tab, .chcard");
+  const t = e.target.closest(".tab, a.chcard");
   if (!t) return;
   e.preventDefault();
   const id = t.dataset.id || t.dataset.go;

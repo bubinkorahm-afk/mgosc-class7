@@ -177,9 +177,11 @@
                 <span class="lang-en">Chapter-Wise Study Modules</span>
                 <span class="lang-ml" style="display: none;">അധ്യായം തിരിച്ചുള്ള പഠന മൊഡ്യൂളുകൾ</span>
             </h2>
+            <!-- Practice cards for chapters 1–8 open in class7-practice.html.
+                 Which chapters are open is set in chapters-config.js (teacher settings). -->
             <div class="grid-cards">
                 <!-- Chapter 1 -->
-                <div class="card shadow-card search-row">
+                <div class="card shadow-card search-row" data-ch="1">
                     <h3>
                         <span class="lang-en">Chapter 1</span>
                         <span class="lang-ml" style="display: none;">അധ്യായം 1</span>
@@ -189,10 +191,10 @@
                         <span class="lang-ml" style="display: none;">ന്യായാധിപന്മാർ</span>
                     </p>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button class="btn btn-outline btn-small" onclick="openModal(1)">
+                        <a href="class7-practice.html#ch1" class="btn btn-outline btn-small practice-link">
                             <span class="lang-en">Practice</span>
                             <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
-                        </button>
+                        </a>
                         <a href="https://youtu.be/HA52eETE57U?si=dJWAmd1IsxYtkrtW" target="_blank" class="btn btn-primary btn-small" style="font-size: 0.85rem; padding: 6px 10px;">
                             <span class="lang-en">&#9654; Watch Video</span>
                             <span class="lang-ml" style="display: none;">&#9654; ക്ലാസ് കാണുക (EN)</span>
@@ -200,7 +202,7 @@
                     </div>
                 </div>
                 <!-- Chapter 2 -->
-                <div class="card shadow-card search-row">
+                <div class="card shadow-card search-row" data-ch="2">
                     <h3>
                         <span class="lang-en">Chapter 2</span>
                         <span class="lang-ml" style="display: none;">അധ്യായം 2</span>
@@ -210,10 +212,10 @@
                         <span class="lang-ml" style="display: none;">ശമുവേൽ - പുരോഹിതനും പ്രവാചകനും</span>
                     </p>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button class="btn btn-outline btn-small" onclick="openModal(2)">
+                        <a href="class7-practice.html#ch2" class="btn btn-outline btn-small practice-link">
                             <span class="lang-en">Practice</span>
                             <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
-                        </button>
+                        </a>
                         <a href="https://youtu.be/4t5YKvTnbbE?si=WHal5xXSsC4Yu7ce" target="_blank" class="btn btn-primary btn-small" style="font-size: 0.85rem; padding: 6px 10px;">
                             <span class="lang-en">&#9654; Watch Video</span>
                             <span class="lang-ml" style="display: none;">&#9654; ക്ലാസ് കാണുക (EN)</span>
@@ -221,7 +223,7 @@
                     </div>
                 </div>
                 <!-- Chapter 3 -->
-                <div class="card shadow-card search-row">
+                <div class="card shadow-card search-row" data-ch="3">
                     <h3>
                         <span class="lang-en">Chapter 3</span>
                         <span class="lang-ml" style="display: none;">അധ്യായം 3</span>
@@ -230,13 +232,49 @@
                         <span class="lang-en">A King For Israel</span>
                         <span class="lang-ml" style="display: none;">യിസ്രായേലിനൊരു രാജാവ്</span>
                     </p>
-                    <button class="btn btn-outline" onclick="openModal(3)">
-                        <span class="lang-en">Practice</span>
-                        <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
-                    </button>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="class7-practice.html#ch3" class="btn btn-outline btn-small practice-link">
+                            <span class="lang-en">Practice</span>
+                            <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Chapter 4 -->
+                <div class="card shadow-card search-row" data-ch="4">
+                    <h3>
+                        <span class="lang-en">Chapter 4</span>
+                        <span class="lang-ml" style="display: none;">അധ്യായം 4</span>
+                    </h3>
+                    <p class="chapter-desc">
+                        <span class="lang-en">David, the King and Mellifluous Singer of Israel</span>
+                        <span class="lang-ml" style="display: none;">യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്</span>
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="class7-practice.html#ch4" class="btn btn-outline btn-small practice-link">
+                            <span class="lang-en">Practice</span>
+                            <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Chapter 5 -->
+                <div class="card shadow-card search-row" data-ch="5">
+                    <h3>
+                        <span class="lang-en">Chapter 5</span>
+                        <span class="lang-ml" style="display: none;">അധ്യായം 5</span>
+                    </h3>
+                    <p class="chapter-desc">
+                        <span class="lang-en">Solomon, the Wisest of Kings</span>
+                        <span class="lang-ml" style="display: none;">ജ്ഞാനിയായ ശലോമോൻ</span>
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="class7-practice.html#ch5" class="btn btn-outline btn-small practice-link">
+                            <span class="lang-en">Practice</span>
+                            <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
+                        </a>
+                    </div>
                 </div>
                 <!-- Chapter 6 -->
-                <div class="card shadow-card search-row">
+                <div class="card shadow-card search-row" data-ch="6">
                     <h3>
                         <span class="lang-en">Chapter 6</span>
                         <span class="lang-ml" style="display: none;">അധ്യായം 6</span>
@@ -246,10 +284,10 @@
                         <span class="lang-ml" style="display: none;">ഉയിർത്തെഴുന്നേറ്റ ക്രിസ്തുവും ശിഷ്യന്മാരും</span>
                     </p>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button class="btn btn-outline btn-small" onclick="openModal(6)">
+                        <a href="class7-practice.html#ch6" class="btn btn-outline btn-small practice-link">
                             <span class="lang-en">Practice</span>
                             <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
-                        </button>
+                        </a>
                         <a href="https://youtu.be/E0nWJLh7Hhs?si=wWl-pE063yKZxTMf" target="_blank" class="btn btn-primary btn-small" style="font-size: 0.85rem; padding: 6px 10px;">
                             <span class="lang-en">&#9654; Watch Video</span>
                             <span class="lang-ml" style="display: none;">&#9654; ക്ലാസ് കാണുക (EN)</span>
@@ -257,7 +295,7 @@
                     </div>
                 </div>
                 <!-- Chapter 7 -->
-                <div class="card shadow-card search-row">
+                <div class="card shadow-card search-row" data-ch="7">
                     <h3>
                         <span class="lang-en">Chapter 7</span>
                         <span class="lang-ml" style="display: none;">അധ്യായം 7</span>
@@ -267,13 +305,30 @@
                         <span class="lang-ml" style="display: none;">എമ്മാവൂസിലേക്കുള്ള യാത്ര</span>
                     </p>
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button class="btn btn-outline btn-small" onclick="openModal(7)">
+                        <a href="class7-practice.html#ch7" class="btn btn-outline btn-small practice-link">
                             <span class="lang-en">Practice</span>
                             <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
-                        </button>
+                        </a>
                         <a href="https://youtu.be/AKbqHWVPRdo?si=iYBVP9l4ZnC4rO5m" target="_blank" class="btn btn-primary btn-small" style="font-size: 0.85rem; padding: 6px 10px;">
                             <span class="lang-en">&#9654; Watch Video</span>
                             <span class="lang-ml" style="display: none;">&#9654; ക്ലാസ് കാണുക (EN)</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Chapter 8 -->
+                <div class="card shadow-card search-row" data-ch="8">
+                    <h3>
+                        <span class="lang-en">Chapter 8</span>
+                        <span class="lang-ml" style="display: none;">അധ്യായം 8</span>
+                    </h3>
+                    <p class="chapter-desc">
+                        <span class="lang-en">My Lord and My God</span>
+                        <span class="lang-ml" style="display: none;">എന്റെ കർത്താവും എന്റെ ദൈവവുമേ</span>
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="class7-practice.html#ch8" class="btn btn-outline btn-small practice-link">
+                            <span class="lang-en">Practice</span>
+                            <span class="lang-ml" style="display: none;">പരിശീലിക്കുക</span>
                         </a>
                     </div>
                 </div>
@@ -318,7 +373,8 @@
                             <span class="lang-ml" style="display: none;">&#9654; ക്ലാസ് കാണുക (EN)</span>
                         </a>
                     </div>
-                    <!-- Coming Soon Card -->
+                </div>
+                <!-- Coming Soon Card -->
                 <div class="card shadow-card search-row coming-soon-card">
                     <div class="coming-soon-content">
                         <p class="coming-soon-text">
@@ -363,6 +419,27 @@
     <footer class="sanctuary-footer">
         <p>Copyright and Developed by bubinkorahmathew@2026</p>
     </footer>
+
+    <!-- Teacher settings: which chapters are open (edit chapters-config.js) -->
+    <script src="chapters-config.js"></script>
+    <script>
+        (function () {
+            var open = Array.isArray(window.C7_OPEN_CHAPTERS) ? window.C7_OPEN_CHAPTERS.map(Number) : null;
+            if (!open) return;
+            document.querySelectorAll(".card[data-ch]").forEach(function (card) {
+                if (open.indexOf(Number(card.dataset.ch)) !== -1) return;
+                var link = card.querySelector(".practice-link");
+                if (link) {
+                    var lock = document.createElement("span");
+                    lock.className = "btn btn-outline btn-small";
+                    lock.style.cssText = "opacity: 0.6; cursor: default;";
+                    lock.innerHTML = '<span class="lang-en">🔒 Coming soon</span><span class="lang-ml" style="display: none;">🔒 ഉടൻ വരുന്നു</span>';
+                    link.replaceWith(lock);
+                }
+                card.style.opacity = "0.75";
+            });
+        })();
+    </script>
 
     <!-- Script file -->
     <script src="script.js"></script>
