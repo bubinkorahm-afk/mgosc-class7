@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 7 Revision Exam · Chapters 1–4 | MGOSC Sunday School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: single exam column; sticky exam bar with timer; question palette below the question */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4; --warn:#B36B00;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; --warn:#F0B24A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; --warn:#F0B24A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:18px 14px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.brand .eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand .name{font-family:var(--f-display);font-weight:800;font-size:22px;line-height:1.15}
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button.mlb{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+main .wrap{padding-block:24px 64px;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--f-display);font-size:clamp(28px,6vw,38px);line-height:1.1;margin:0;text-wrap:balance}
+h1 .ml{display:block;font-size:.6em;font-weight:700;color:var(--muted);margin-top:6px}
+.lead{margin:0;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px}
+label.f{display:flex;flex-direction:column;gap:6px;font-weight:700}
+label.f small{font-weight:500;color:var(--muted)}
+input[type=text]{font:500 18px var(--f-body);padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
+input[type=text]:focus{outline:3px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.err{color:var(--bad);font-size:14px;font-weight:600}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.choices{grid-template-columns:1fr}}
+.choice{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px;font:inherit}
+.choice .t{font-weight:700}
+.choice .s{font-size:14px;color:var(--muted)}
+.choice .meta{font-size:13px;color:var(--gold);font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.choice[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.choice.full{grid-column:1/-1}
+.rules{margin:0;padding-left:1.2em;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;border-radius:10px;padding:12px 20px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,.choice:focus-visible,.opt:focus-visible,.pal button:focus-visible,.seg button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* exam */
+.exambar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.exambar .wrap{padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.exambar .row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-variant-numeric:tabular-nums}
+.exambar .who{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.timer{font:700 18px var(--f-body);font-variant-numeric:tabular-nums;padding:3px 10px;border-radius:8px;background:var(--sunk)}
+.timer.low{background:var(--bad-soft);color:var(--bad)}
+.bar{height:6px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.qnum{font:700 13px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.qtext{font-weight:700;font-size:19px;line-height:1.4}
+.qtext .ml{display:block;font-size:16.5px;font-weight:600;margin-top:4px}
+body[data-lang="both"] .qtext .ml{color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 14px;cursor:pointer;font:500 17px var(--f-body)}
+.opt .k{font-weight:700;color:var(--muted);width:1.4em}
+.opt .tx{min-width:0;display:flex;flex-direction:column}
+.opt .tx .ml{font-size:15px;color:var(--muted)}
+.opt[aria-checked="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.opt[aria-checked="true"] .k{color:var(--accent)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px}
+.pal button{height:40px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font:700 15px var(--f-body);cursor:pointer;font-variant-numeric:tabular-nums}
+.pal button.done{background:var(--sunk);color:var(--ink);border-color:var(--sunk)}
+.pal button.cur{border-color:var(--accent);color:var(--accent)}
+.legend{font-size:13px;color:var(--muted)}
+.confirm{background:var(--gold-soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+
+/* result */
+.cert{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cert .top{background:var(--accent);color:var(--accent-ink);padding:16px 20px}
+.cert .top .e{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.9}
+.cert .top .t{font-family:var(--f-display);font-size:22px;font-weight:800}
+.cert .bd{padding:20px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+@media (max-width:480px){.cert .bd{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.ring{width:128px;height:128px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ok) calc(var(--p)*1%), var(--sunk) 0)}
+.ring div{width:104px;height:104px;border-radius:50%;background:var(--surface);display:grid;place-items:center;text-align:center;line-height:1}
+.ring b{font-family:var(--f-display);font-size:38px;font-variant-numeric:tabular-nums}
+.ring small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:15px;min-width:0}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-weight:700;min-width:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.grade{display:inline-block;padding:2px 10px;border-radius:99px;background:var(--ok-soft);color:var(--ok);font-weight:700}
+.grade.mid{background:var(--gold-soft);color:var(--gold)}
+.grade.low{background:var(--bad-soft);color:var(--bad)}
+.cert .ft{border-top:1px dashed var(--line);padding:10px 20px;font-size:13px;color:var(--muted);text-align:center}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.rv.x{border-left-color:var(--bad)}
+.rv.s{border-left-color:var(--muted)}
+.rv .qt{font-weight:700}
+.rv .qt .ml{display:block;font-weight:600;font-size:15px;color:var(--muted)}
+.rv .a{font-size:15px}
+.rv .a .ml{display:block;font-size:14px}
+.tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tag.ok{color:var(--ok)} .tag.bad{color:var(--bad)} .tag.skip{color:var(--muted)}
+.sec-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h2{margin:0;font-family:var(--f-display);font-size:21px}
+.filter{font-size:14px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 28px}
+span.en + span.ml{margin-left:.4em}
+.qtext span.ml,.tx span.ml,.rv span.ml,.a span.ml{margin-left:0}
+.facts span.ml{display:block;margin-left:0;font-weight:500;font-size:.9em}
+.facts dt span.ml{font-size:12.5px}
+.legend span.ml,.ft span.ml{display:block;margin-left:0}
+body[data-lang="both"] .meta .ml{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+html{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.homelink{color:var(--accent);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="eyebrow">Mar Gregorios Orthodox Syrian Church · Sunday School</div>
+      <div class="name">Class 7 Revision Exam</div>
+      <a class="homelink" href="index.html">← Class 7 Portal home</a>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="mlb" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+<div id="exambar"></div>
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">Galilee Division · Class VII · Chapters 1–4</div></footer>
+
+<script>
+const CH=[{"n":1,"en":"Judges","ml":"ന്യായാധിപന്മാർ","q":[["The Judges led Israel during the period between…","ന്യായാധിപന്മാർ യിസ്രായേലിനെ നയിച്ചത് ഏത് കാലഘട്ടത്തിൽ?",[["Joshua and King Saul","യോശുവയ്ക്കും ശൗൽ രാജാവിനും ഇടയിൽ"],["Moses and Joshua","മോശയ്ക്കും യോശുവയ്ക്കും ഇടയിൽ"],["Saul and David","ശൗലിനും ദാവീദിനും ഇടയിൽ"],["David and Solomon","ദാവീദിനും ശലോമോനും ഇടയിൽ"]]],["How many Judges led Israel altogether?","ആകെ എത്ര ന്യായാധിപന്മാർ യിസ്രായേലിനെ നയിച്ചു?",[["Fifteen","പതിനഞ്ച്"],["Twelve","പന്ത്രണ്ട്"],["Ten","പത്ത്"],["Seven","ഏഴ്"]]],["Who was the first Judge in the list?","പട്ടികയിലെ ആദ്യ ന്യായാധിപൻ ആര്?",[["Othniel","ഒത്നിയേൽ"],["Ehud","ഏഹൂദ്"],["Samson","ശിംശോൻ"],["Eli","ഏലി"]]],["Who was the only woman to become a Judge of Israel?","യിസ്രായേലിൽ ന്യായപാലനം ചെയ്ത ഏക സ്ത്രീ ആര്?",[["Deborah","ദെബോരാ"],["Hannah","ഹന്നാ"],["Ruth","രൂത്ത്"],["Esther","എസ്ഥേർ"]]],["What does the name ‘Deborah’ mean?","‘ദെബോരാ’ എന്ന പേരിന്റെ അർത്ഥം എന്ത്?",[["Bee","തേനീച്ച"],["Lamp","വിളക്ക്"],["Gift of God","ദൈവത്തിന്റെ ദാനം"],["Mother","അമ്മ"]]],["Who was Deborah’s husband?","ദെബോരായുടെ ഭർത്താവ് ആര്?",[["Lappidoth","ലപ്പീദോത്ത്"],["Barak","ബാരാക്ക്"],["Elkanah","എല്ക്കാനാ"],["Kish","കീശ്"]]],["Deborah held which two titles at the same time?","ദെബോരായ്ക്ക് ഉണ്ടായിരുന്ന രണ്ട് വിശേഷണങ്ങൾ ഏവ?",[["Prophetess and Judge","പ്രവാചകിയും ന്യായപാലകയും"],["Queen and Judge","രാജ്ഞിയും ന്യായപാലകയും"],["Priestess and Prophetess","പുരോഹിതയും പ്രവാചകിയും"],["Queen and Prophetess","രാജ്ഞിയും പ്രവാചകിയും"]]],["Who were attacking Israel during Deborah’s time?","ദെബോരായുടെ കാലത്ത് യിസ്രായേലിനെ ആക്രമിച്ചിരുന്നത് ആര്?",[["The Canaanites","കനാന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Ammonites","അമ്മോന്യർ"],["The Midianites","മിദ്യാന്യർ"]]],["Whom did Deborah inspire to become a leader of Israel?","നേതൃത്വത്തിലേക്ക് ദെബോരാ പ്രചോദിപ്പിച്ചത് ആരെ?",[["Barak","ബാരാക്ക്"],["Gideon","ഗിദെയോൻ"],["Samson","ശിംശോൻ"],["Jephthah","യിഫ്താഹ്"]]],["What was Gideon’s other name?","ഗിദെയോന്റെ മറ്റൊരു പേര് എന്ത്?",[["Jerubbaal","യെരുബ്ബാൽ"],["Barak","ബാരാക്ക്"],["Ebenezer","ഏബെൻ-ഏസെർ"],["Lappidoth","ലപ്പീദോത്ത്"]]],["What does ‘Jerubbaal’ mean?","‘യെരുബ്ബാൽ’ എന്ന പേരിന്റെ അർത്ഥം?",[["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"],["Mighty soldier","പരാക്രമശാലി"],["Asked of God","ദൈവത്തോട് ചോദിച്ചവൻ"],["Stone of help","സഹായത്തിന്റെ കല്ല്"]]],["God called Gideon when Israel was suffering attacks from…","ഗിദെയോനെ ദൈവം വിളിച്ചത് ആരുടെ ആക്രമണകാലത്ത്?",[["Midianites and Amalekites","മിദ്യാന്യരും അമാലേക്യരും"],["Philistines","ഫെലിസ്ത്യർ"],["Ammonites","അമ്മോന്യർ"],["Canaanites","കനാന്യർ"]]],["What was Gideon doing when the Angel of the Lord appeared to him?","ദൈവദൂതൻ പ്രത്യക്ഷനായപ്പോൾ ഗിദെയോൻ എന്തു ചെയ്യുകയായിരുന്നു?",[["Threshing wheat at the winepress","മുന്തിരിച്ചക്കിനരികെ ഗോതമ്പ് മെതിക്കുകയായിരുന്നു"],["Looking after sheep","ആടുകളെ മേയ്ക്കുകയായിരുന്നു"],["Searching for lost donkeys","കാണാതെപോയ കഴുതകളെ തേടുകയായിരുന്നു"],["Praying in the Tabernacle","ദൈവാലയത്തിൽ പ്രാർത്ഥിക്കുകയായിരുന്നു"]]],["Where did God speak to Jephthah?","യിഫ്താഹ് ദൈവത്തോട് തന്റെ കാര്യങ്ങൾ ബോധിപ്പിച്ചത് എവിടെ വച്ച്?",[["Mizpah","മിസ്പാ"],["Shiloh","ശീലോ"],["Ramah","രാമാ"],["Bethlehem","ബേത്‌ലഹേം"]]],["Jephthah went to war against which people?","യിഫ്താഹ് ആരുമായാണ് യുദ്ധം ചെയ്തത്?",[["The Ammonites","അമ്മോന്യർ"],["The Midianites","മിദ്യാന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Canaanites","കനാന്യർ"]]],["Who came first to greet Jephthah on his victorious return?","വിജയിച്ചുവന്ന യിഫ്താഹിനെ ആദ്യം എതിരേറ്റത് ആര്?",[["His only daughter","തന്റെ ഏകമകൾ"],["His wife","ഭാര്യ"],["His servant","ദാസൻ"],["His brother","സഹോദരൻ"]]],["Every year, for how many days did the virgins of Israel go to praise Jephthah’s daughter?","ആണ്ടുതോറും യിസ്രായേലിലെ കന്യകമാർ യിഫ്താഹിന്റെ മകളെ കീർത്തിക്കാൻ പോയത് എത്ര ദിവസം?",[["Four days","നാല് ദിവസം"],["Seven days","ഏഴ് ദിവസം"],["Three days","മൂന്ന് ദിവസം"],["Forty days","നാല്പത് ദിവസം"]]],["What lesson do we learn from Jephthah’s oath?","യിഫ്താഹിന്റെ നേർച്ചയിൽനിന്ന് നാം പഠിക്കുന്ന പാഠം?",[["Never make an oath emotionally; check if it is God’s will, and keep the oaths we make","വികാരത്തിനടിമപ്പെട്ട് നേർച്ച നേരരുത്; ദൈവഹിതമാണോ എന്ന് നോക്കണം; നേർന്നത് നിറവേറ്റണം"],["Oaths can be broken if they are hard","പ്രയാസമായാൽ നേർച്ച ലംഘിക്കാം"],["Oaths are a way to influence God","ദൈവത്തെ സ്വാധീനിക്കാനുള്ള വഴിയാണ് നേർച്ച"],["We should never pray before a war","യുദ്ധത്തിനു മുമ്പ് പ്രാർത്ഥിക്കരുത്"]]],["Which Judge’s life shows that God punishes His chosen ones when they drift into sin?","തിരഞ്ഞെടുക്കപ്പെട്ടവർ പാപത്തിലേക്ക് തിരിഞ്ഞാൽ ദൈവം ശിക്ഷിക്കുമെന്നതിന് ഉദാഹരണമായ ന്യായാധിപൻ?",[["Samson","ശിംശോൻ"],["Deborah","ദെബോരാ"],["Gideon","ഗിദെയോൻ"],["Othniel","ഒത്നിയേൽ"]]]]},{"n":2,"en":"Samuel, the Priest and Prophet","ml":"പുരോഹിതനും പ്രവാചകനുമായ ശമുവേൽ","q":[["Who were Samuel’s parents?","ശമുവേലിന്റെ മാതാപിതാക്കൾ ആരെല്ലാം?",[["Elkanah and Hannah","എല്ക്കാനായും ഹന്നായും"],["Jesse and his wife","യിശ്ശായിയും ഭാര്യയും"],["Kish and his wife","കീശും ഭാര്യയും"],["Lappidoth and Deborah","ലപ്പീദോത്തും ദെബോരായും"]]],["Who scolded Hannah, thinking she was drunk while praying?","പ്രാർത്ഥിക്കുന്ന ഹന്നാ മദ്യപിച്ചിരിക്കുന്നു എന്ന് കരുതി ശാസിച്ചത് ആര്?",[["Eli the priest","ഏലി പുരോഹിതൻ"],["Samuel","ശമുവേൽ"],["Elkanah","എല്ക്കാനാ"],["Nathan","നാഥാൻ"]]],["What does the name ‘Samuel’ mean?","‘ശമുവേൽ’ എന്ന പേരിന്റെ അർത്ഥം?",[["Asked of God / God heard","ദൈവം കേട്ടു"],["Stone of help","സഹായത്തിന്റെ കല്ല്"],["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"],["Bee","തേനീച്ച"]]],["Who was the priest at the Tabernacle where boy Samuel lived?","ബാലനായ ശമുവേൽ ഏത് പുരോഹിതന്റെ കൂടെയാണ് ദൈവാലയത്തിൽ താമസിച്ചത്?",[["Eli","ഏലി"],["Aaron","അഹരോൻ"],["Nathan","നാഥാൻ"],["Zadok","സാദോക്ക്"]]],["During Samuel’s time, Israel was at war with…","ശമുവേലിന്റെ കാലത്ത് യിസ്രായേൽ ആരുമായി യുദ്ധം ചെയ്തു?",[["The Philistines","ഫെലിസ്ത്യർ"],["The Ammonites","അമ്മോന്യർ"],["The Canaanites","കനാന്യർ"],["The Egyptians","മിസ്രയീമ്യർ"]]],["From where did the Israelites bring the Ark of the Lord to their camp?","നിയമപെട്ടകം യിസ്രായേല്യർ പാളയത്തിലേക്ക് കൊണ്ടുവന്നത് എവിടെനിന്ന്?",[["Shiloh","ശീലോ"],["Ramah","രാമാ"],["Mizpah","മിസ്പാ"],["Bethlehem","ബേത്‌ലഹേം"]]],["What happened to Eli when he heard the Ark was captured?","നിയമപെട്ടകം പിടിക്കപ്പെട്ടു എന്ന് കേട്ടപ്പോൾ ഏലിക്ക് എന്തു സംഭവിച്ചു?",[["He fell from his seat and died","ഇരിപ്പിടത്തിൽനിന്ന് മറിഞ്ഞുവീണ് മരിച്ചു"],["He went to war himself","തന്നെ യുദ്ധത്തിന് പോയി"],["He fled to Ramah","രാമായിലേക്ക് ഓടിപ്പോയി"],["He anointed a king","ഒരു രാജാവിനെ അഭിഷേകം ചെയ്തു"]]],["Since Shiloh was no longer safe, Samuel moved to…","ശീലോ സുരക്ഷിതമല്ലാത്തതിനാൽ ശമുവേൽ താമസം മാറ്റിയത് എവിടേക്ക്?",[["Ramah","രാമാ"],["Jerusalem","യെരുശലേം"],["Bethlehem","ബേത്‌ലഹേം"],["Mizpah","മിസ്പാ"]]],["Which kings did Samuel anoint?","ശമുവേൽ അഭിഷേകം ചെയ്ത രാജാക്കന്മാർ?",[["Saul and David","ശൗലും ദാവീദും"],["David and Solomon","ദാവീദും ശലോമോനും"],["Saul and Solomon","ശൗലും ശലോമോനും"],["Saul only","ശൗൽ മാത്രം"]]],["What does ‘Ebenezer’ mean?","‘ഏബെൻ-ഏസെർ’ എന്ന പദത്തിന്റെ അർത്ഥം?",[["Stone of help","സഹായത്തിന്റെ കല്ല്"],["Asked of God","ദൈവത്തോട് ചോദിച്ചു"],["House of bread","അപ്പത്തിന്റെ ഭവനം"],["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"]]],["Where did Samuel gather God’s people to worship the Lord?","ശമുവേൽ ജനത്തെ ആരാധനയ്ക്കായി ഒരുമിച്ച് കൂട്ടിയിരുന്ന സ്ഥലം?",[["Mizpah","മിസ്പാ"],["Shiloh","ശീലോ"],["Bethel","ബേഥേൽ"],["Hebron","ഹെബ്രോൻ"]]],["Samuel thought it was a sin against the Lord to stop…","ശമുവേൽ എന്ത് നിർത്തുന്നതാണ് പാപമെന്ന് കരുതിയത്?",[["Interceding (praying) for the people","ജനത്തിനുവേണ്ടിയുള്ള മദ്ധ്യസ്ഥപ്രാർത്ഥന"],["Offering sacrifices","യാഗം അർപ്പിക്കുന്നത്"],["Fighting the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യുന്നത്"],["Judging disputes","ന്യായം വിധിക്കുന്നത്"]]],["“Obedience is better than sacrifice” – Samuel said this to…","“അനുസരിക്കുന്നത് യാഗത്തെക്കാൾ നല്ലത്” – ശമുവേൽ ഇത് ആരോട് പറഞ്ഞു?",[["King Saul","ശൗൽ രാജാവിനോട്"],["Eli","ഏലിയോട്"],["David","ദാവീദിനോട്"],["Hannah","ഹന്നായോട്"]]],["Samuel is known as the last…","ശമുവേൽ അറിയപ്പെടുന്നത് അവസാനത്തെ…",[["Judge of Israel","ന്യായാധിപൻ"],["King of Israel","രാജാവ്"],["High priest from Aaron’s clan","അഹരോന്യ മഹാപുരോഹിതൻ"],["Prophet of Israel","പ്രവാചകൻ"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["1 Samuel 3:19","1 ശമു. 3:19"],["1 Samuel 15:22","1 ശമു. 15:22"],["Judges 6:12","ന്യായാ. 6:12"],["2 Samuel 22:31","2 ശമു. 22:31"]]]]},{"n":3,"en":"A King for Israel","ml":"യിസ്രായേലിന് ഒരു രാജാവ്","q":[["Who was the first king of Israel?","യിസ്രായേലിന്റെ ആദ്യ രാജാവ് ആര്?",[["Saul","ശൗൽ"],["David","ദാവീദ്"],["Solomon","ശലോമോൻ"],["Samuel","ശമുവേൽ"]]],["Name Saul’s father.","ശൗലിന്റെ പിതാവ് ആര്?",[["Kish","കീശ്"],["Jesse","യിശ്ശായി"],["Elkanah","എല്ക്കാനാ"],["Eli","ഏലി"]]],["Saul belonged to which tribe?","ശൗൽ ഏത് ഗോത്രക്കാരനായിരുന്നു?",[["Benjamin","ബെന്യാമീൻ"],["Judah","യെഹൂദാ"],["Levi","ലേവി"],["Ephraim","എഫ്രയീം"]]],["Why did Saul first go to meet Prophet Samuel at Ramah?","ശൗൽ ആദ്യമായി രാമായിൽ ശമുവേലിനെ കാണാൻ പോയത് എന്തിന്?",[["To seek advice about his father’s lost donkeys","പിതാവിന്റെ കാണാതെപോയ കഴുതകളെ തേടി ഉപദേശം ചോദിക്കാൻ"],["To ask to be made king","രാജാവാക്കണമെന്ന് ആവശ്യപ്പെടാൻ"],["To offer a sacrifice","യാഗം അർപ്പിക്കാൻ"],["To fight the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യാൻ"]]],["How many descriptions of Saul becoming king are given in 1 Samuel?","ശൗൽ രാജാവായതിനെക്കുറിച്ച് ശമുവേലിന്റെ പുസ്തകത്തിൽ എത്ര വിവരണങ്ങൾ ഉണ്ട്?",[["Three","മൂന്ന്"],["Two","രണ്ട്"],["One","ഒന്ന്"],["Four","നാല്"]]],["How was a person anointed for a position in those days?","അന്ന് ഒരാളെ പദവിയിലേക്ക് അഭിഷേകം ചെയ്തിരുന്നത് എങ്ങനെ?",[["By pouring blessed olive oil on his head","വാഴ്ത്തിയ തൈലം തലയിൽ ഒഴിച്ച്"],["By placing a crown","കിരീടം വച്ച്"],["By giving him a sword","വാൾ നൽകി"],["By washing his feet","കാൽ കഴുകി"]]],["In the second description (1 Sam. 10:17-24), how was Saul selected?","രണ്ടാമത്തെ വിവരണത്തിൽ (1 ശമു. 10:17-24) ശൗലിനെ തിരഞ്ഞെടുത്തത് എങ്ങനെ?",[["Samuel drew lots","ശമുവേൽ നറുക്കിട്ടു"],["The people voted","ജനം വോട്ട് ചെയ്തു"],["He won a battle","യുദ്ധം ജയിച്ചു"],["Eli chose him","ഏലി തിരഞ്ഞെടുത്തു"]]],["In the third description, Saul convinced the people by saving Israel from…","മൂന്നാമത്തെ വിവരണത്തിൽ ശൗൽ ആരിൽനിന്നാണ് യിസ്രായേലിനെ രക്ഷിച്ചത്?",[["The Ammonites","അമ്മോന്യർ"],["The Philistines","ഫെലിസ്ത്യർ"],["The Midianites","മിദ്യാന്യർ"],["The Canaanites","കനാന്യർ"]]],["Why did God not like the people’s demand for a king?","ജനം രാജാവിനെ ആവശ്യപ്പെട്ടത് ദൈവത്തിന് ഇഷ്ടമാകാതിരുന്നത് എന്തുകൊണ്ട്?",[["Because God Himself was their king","ദൈവം തന്നെയായിരുന്നു അവരുടെ രാജാവ്"],["Because Saul was too young","ശൗൽ ചെറുപ്പമായിരുന്നു"],["Because they had no army","അവർക്ക് സൈന്യമില്ലായിരുന്നു"],["Because Samuel wanted to be king","ശമുവേലിന് രാജാവാകണമായിരുന്നു"]]],["How were Samuel’s sons as judges?","ന്യായാധിപന്മാരെന്ന നിലയിൽ ശമുവേലിന്റെ മക്കൾ എങ്ങനെയായിരുന്നു?",[["Greedy and corrupt","ദുരാഗ്രഹികളും അന്യായം പ്രവർത്തിക്കുന്നവരും"],["Wise and just","ജ്ഞാനികളും നീതിമാന്മാരും"],["Brave warriors","ധീരയോദ്ധാക്കൾ"],["Faithful prophets","വിശ്വസ്ത പ്രവാചകർ"]]],["Why was Saul rejected as king?","ശൗൽ രാജസ്ഥാനത്തുനിന്ന് തള്ളപ്പെട്ടത് എന്തുകൊണ്ട്?",[["He disobeyed God and did not listen to the prophet","ദൈവത്തെ അനുസരിക്കാതെയും പ്രവാചകനെ കേൾക്കാതെയും പ്രവർത്തിച്ചു"],["He lost a war","യുദ്ധത്തിൽ തോറ്റു"],["He was too old","വളരെ വൃദ്ധനായി"],["The people chose David","ജനം ദാവീദിനെ തിരഞ്ഞെടുത്തു"]]],["Who was the Philistine giant killed by David?","ദാവീദ് കൊന്ന ഫെലിസ്ത്യ മല്ലൻ ആര്?",[["Goliath","ഗോല്യാത്ത്"],["Absalom","അബ്ശാലോം"],["Uriah","ഊരീയാവ്"],["Joab","യോവാബ്"]]],["“Saul has slain thousands, and David ten thousands.” This song made Saul…","“ശൗൽ ആയിരത്തെ കൊന്നു, ദാവീദോ പതിനായിരത്തെ” – ഈ പാട്ട് ശൗലിനെ…",[["Jealous of David","ദാവീദിനോട് അസൂയാലുവാക്കി"],["Happy and proud","സന്തോഷിപ്പിച്ചു"],["Afraid of the Philistines","ഫെലിസ്ത്യരെ ഭയപ്പെടുത്തി"],["Leave the palace","കൊട്ടാരം വിടുവിച്ചു"]]],["How was David related to Saul?","ദാവീദ് ശൗലിന്റെ ആരായിരുന്നു?",[["Son-in-law","മരുമകൻ"],["Son","മകൻ"],["Brother","സഹോദരൻ"],["Nephew","അനന്തരവൻ"]]],["How many times did David have the chance to kill Saul but spared him?","ശൗലിനെ കൊല്ലാൻ അവസരം ലഭിച്ചിട്ടും ദാവീദ് വെറുതെ വിട്ടത് എത്ര പ്രാവശ്യം?",[["Twice","രണ്ടു പ്രാവശ്യം"],["Once","ഒരു പ്രാവശ്യം"],["Three times","മൂന്നു പ്രാവശ്യം"],["Never","ഒരിക്കലുമില്ല"]]],["How is Saul described in 1 Samuel 9:2?","1 ശമു. 9:2-ൽ ശൗലിനെ വിവരിക്കുന്നത് എങ്ങനെ?",[["Handsome, strong and agile","കോമളരൂപിയും ബലവാനും ചുറുചുറുക്കുള്ളവനും"],["Small and weak","ചെറുതും ബലഹീനനും"],["Old and wise","വൃദ്ധനും ജ്ഞാനിയും"],["A shepherd and singer","ഇടയനും ഗായകനും"]]]]},{"n":4,"en":"David, the King and Mellifluous Singer of Israel","ml":"യിസ്രായേലിന്റെ മധുരഗായകനും രാജാവുമായ ദാവീദ്","q":[["Name David’s father.","ദാവീദിന്റെ പിതാവ് ആര്?",[["Jesse","യിശ്ശായി"],["Kish","കീശ്"],["Elkanah","എല്ക്കാനാ"],["Nathan","നാഥാൻ"]]],["David’s family was from…","ദാവീദിന്റെ കുടുംബം എവിടെനിന്നായിരുന്നു?",[["Bethlehem","ബേത്‌ലഹേം"],["Ramah","രാമാ"],["Shiloh","ശീലോ"],["Jerusalem","യെരുശലേം"]]],["What was David doing when God called him?","ദൈവം വിളിച്ചപ്പോൾ ദാവീദ് എന്തു ചെയ്യുകയായിരുന്നു?",[["Looking after his father’s sheep","പിതാവിന്റെ ആടുകളെ മേയ്ക്കുകയായിരുന്നു"],["Fighting the Philistines","ഫെലിസ്ത്യരോട് യുദ്ധം ചെയ്യുകയായിരുന്നു"],["Playing the harp in the palace","കൊട്ടാരത്തിൽ കിന്നരം വായിക്കുകയായിരുന്നു"],["Threshing wheat","ഗോതമ്പ് മെതിക്കുകയായിരുന്നു"]]],["Which of Jesse’s sons was David?","യിശ്ശായിയുടെ മക്കളിൽ ദാവീദ് ആരായിരുന്നു?",[["The youngest","ഇളയവൻ"],["The eldest","മൂത്തവൻ"],["The second","രണ്ടാമൻ"],["The only son","ഏകമകൻ"]]],["Which musical instrument did David play?","ദാവീദ് ഉപയോഗിച്ച സംഗീതോപകരണം?",[["Harp","കിന്നരം"],["Trumpet","കാഹളം"],["Flute","കുഴൽ"],["Drum","തപ്പ്"]]],["David defeated Goliath using…","ദാവീദ് ഗോല്യാത്തിനെ തോല്പിച്ചത് എന്ത് ഉപയോഗിച്ച്?",[["A sling and stones","കവിണയും കല്ലും"],["A sword and shield","വാളും പരിചയും"],["A spear","കുന്തം"],["A bow and arrows","വില്ലും അമ്പും"]]],["Who was Saul’s son and David’s best friend?","ദാവീദിന്റെ ഉറ്റസുഹൃത്തായിരുന്ന ശൗലിന്റെ മകൻ?",[["Jonathan","യോനാഥാൻ"],["Absalom","അബ്ശാലോം"],["Joab","യോവാബ്"],["Uriah","ഊരീയാവ്"]]],["Which son of David rebelled and tried to kill him?","ദാവീദിനെതിരെ മത്സരിച്ച് കൊല്ലാൻ ശ്രമിച്ച മകൻ?",[["Absalom","അബ്ശാലോം"],["Solomon","ശലോമോൻ"],["Jonathan","യോനാഥാൻ"],["Nathan","നാഥാൻ"]]],["Whose grain fields did Absalom destroy?","അബ്ശാലോം ആരുടെ കൃഷിയാണ് നശിപ്പിച്ചത്?",[["Joab, David’s general","സേനാപതി യോവാബിന്റെ"],["Jonathan","യോനാഥാന്റെ"],["Jesse","യിശ്ശായിയുടെ"],["Uriah","ഊരീയാവിന്റെ"]]],["Which soldier was killed treacherously by David?","ദാവീദ് ചതിയിൽ കൊല്ലിച്ച യോദ്ധാവ്?",[["Uriah","ഊരീയാവ്"],["Goliath","ഗോല്യാത്ത്"],["Joab","യോവാബ്"],["Jonathan","യോനാഥാൻ"]]],["Which Psalm is David’s song of repentance?","ദാവീദിന്റെ അനുതാപ സങ്കീർത്തനം ഏത്?",[["Psalm 51","51-ാം സങ്കീർത്തനം"],["Psalm 23","23-ാം സങ്കീർത്തനം"],["Psalm 45","45-ാം സങ്കീർത്തനം"],["Psalm 91","91-ാം സങ്കീർത്തനം"]]],["Through which prophet did David receive God’s promise of succession?","ഏത് പ്രവാചകനിലൂടെയാണ് ദാവീദിന് ദൈവത്തിന്റെ വാഗ്ദാനം ലഭിച്ചത്?",[["Nathan","നാഥാൻ"],["Samuel","ശമുവേൽ"],["Elijah","ഏലിയാവ്"],["Isaiah","യെശയ്യാവ്"]]],["How long did David reign as king?","ദാവീദ് എത്ര വർഷം ഭരിച്ചു?",[["Forty years","നാല്പത് വർഷം"],["Twenty years","ഇരുപത് വർഷം"],["Seven years","ഏഴ് വർഷം"],["Two years","രണ്ട് വർഷം"]]],["What was the capital of King David?","ദാവീദ് രാജാവിന്റെ തലസ്ഥാനം?",[["Jerusalem","യെരുശലേം"],["Bethlehem","ബേത്‌ലഹേം"],["Ramah","രാമാ"],["Shiloh","ശീലോ"]]],["David’s empire stretched from…","ദാവീദിന്റെ സാമ്രാജ്യം വ്യാപിച്ചിരുന്നത്…",[["The Mediterranean Sea to the Euphrates River","മധ്യധരണ്യാഴി മുതൽ യൂഫ്രട്ടീസ് നദി വരെ"],["The Nile to the Jordan","നീൽ മുതൽ യോർദ്ദാൻ വരെ"],["Bethlehem to Ramah","ബേത്‌ലഹേം മുതൽ രാമാ വരെ"],["Egypt to Babylon","മിസ്രയീം മുതൽ ബാബേൽ വരെ"]]],["What did David bring to Jerusalem?","ദാവീദ് യെരുശലേമിലേക്ക് കൊണ്ടുവന്നത് എന്ത്?",[["The Ark of the Lord","നിയമപെട്ടകം"],["Goliath’s sword","ഗോല്യാത്തിന്റെ വാൾ"],["The Temple","ദൈവാലയം"],["Saul’s crown","ശൗലിന്റെ കിരീടം"]]],["Jesus Christ was called ‘Son of David’ because…","യേശുക്രിസ്തുവിനെ ‘ദാവീദിന്റെ പുത്രൻ’ എന്ന് വിളിച്ചത്…",[["He was born in David’s royal lineage, fulfilling God’s promise","ദൈവവാഗ്ദാനപ്രകാരം ദാവീദിന്റെ രാജവംശത്തിൽ ജനിച്ചതിനാൽ"],["He was born in Jerusalem","യെരുശലേമിൽ ജനിച്ചതിനാൽ"],["He played the harp","കിന്നരം വായിച്ചതിനാൽ"],["He was a shepherd","ഇടയനായിരുന്നതിനാൽ"]]],["David was the ___ king of Israel.","ദാവീദ് യിസ്രായേലിന്റെ ___ രാജാവായിരുന്നു.",[["Second","രണ്ടാമത്തെ"],["First","ഒന്നാമത്തെ"],["Third","മൂന്നാമത്തെ"],["Last","അവസാനത്തെ"]]],["Who said in his long discourse that God blessed David greatly (Acts 7:46)?","ദൈവം ദാവീദിനെ വളരെ അനുഗ്രഹിച്ചു എന്ന് തന്റെ പ്രസംഗത്തിൽ പറഞ്ഞത് ആര് (അപ്പൊ. 7:46)?",[["St. Stephen the Martyr","സഹദാ സ്തേഫാനോസ്"],["St. Peter","പത്രോസ് ശ്ലീഹാ"],["St. Paul","പൗലോസ് ശ്ലീഹാ"],["St. John","യോഹന്നാൻ ശ്ലീഹാ"]]]]}];
+const L = ["A","B","C","D"];
+const PER_Q = 60; // seconds per question
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}><${tag} class="ml">${esc(ml)}</${tag}>`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = { get(k,d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
+const fmt = s => `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+
+const EXAMS = [
+  ...CH.map(c => ({id:"ch"+c.n, en:`Chapter ${c.n}: ${c.en}`, ml:`പാഠം ${c.n}: ${c.ml}`, pool:c.q.map((q,i)=>({q,ch:c.n})), count:c.q.length})),
+  {id:"full", en:"Full exam · Chapters 1–4", ml:"പൂർണ്ണ പരീക്ഷ · പാഠം 1–4", pool:CH.flatMap(c => c.q.map(q => ({q,ch:c.n}))), count:25, full:true}
+];
+
+/* language */
+function setLang(l){ document.body.dataset.lang = l; document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l)); store.set("c7x-lang", l); }
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+setLang(store.get("c7x-lang", "both"));
+
+let S = null; // exam state
+let tick = null;
+
+/* ---------- WELCOME ---------- */
+function welcome(){
+  clearInterval(tick); $("#exambar").innerHTML = "";
+  const last = store.get("c7x-name", "");
+  let pick = "full";
+  $("#view").innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <h1><span class="en">Sunday School Exam</span><span class="ml">സൺഡേസ്കൂൾ പരീക്ഷ</span></h1>
+      <p class="lead">${bi("Class VII · Galilee Division · Stories from the Holy Bible", "ക്ലാസ് VII · വി. വേദപുസ്തക സംഭവങ്ങൾ")}</p>
+    </div>
+    <form class="panel" id="startForm" novalidate>
+      <label class="f" for="sname">${bi("Your full name", "നിങ്ങളുടെ പേര്")}
+        <input type="text" id="sname" autocomplete="name" maxlength="60" value="${esc(last)}" placeholder="e.g. Ann Mariya Thomas">
+      </label>
+      <label class="f" for="sparish">${bi("Parish / Sunday School", "ഇടവക / സൺഡേസ്കൂൾ")} <small>${bi("optional", "നിർബന്ധമില്ല")}</small>
+        <input type="text" id="sparish" maxlength="60" value="${esc(store.get("c7x-parish",""))}">
+      </label>
+      <div class="f" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-weight:700">${bi("Choose your exam", "പരീക്ഷ തിരഞ്ഞെടുക്കുക")}</span>
+        <div class="choices" role="group">
+          ${EXAMS.map(e => `<button type="button" class="choice${e.full ? " full" : ""}" data-id="${e.id}" aria-pressed="${e.id === pick}">
+            <span class="t">${esc(e.en)}</span><span class="s ml">${esc(e.ml)}</span>
+            <span class="meta">${bi(e.count + " questions · " + Math.round(e.count*PER_Q/60) + " min", e.count + " ചോദ്യങ്ങൾ · " + Math.round(e.count*PER_Q/60) + " മിനിറ്റ്")}</span>
+          </button>`).join("")}
+        </div>
+      </div>
+      <ul class="rules">
+        <li>${bi("One minute per question. The exam submits itself when time runs out.", "ഓരോ ചോദ്യത്തിനും ഒരു മിനിറ്റ്. സമയം കഴിഞ്ഞാൽ പരീക്ഷ സ്വയം സമർപ്പിക്കും.")}</li>
+        <li>${bi("You can go back and change answers before submitting.", "സമർപ്പിക്കുന്നതിനു മുമ്പ് ഉത്തരങ്ങൾ മാറ്റാം.")}</li>
+        <li>${bi("Take a screenshot of your result and send it to your teacher.", "ഫലത്തിന്റെ സ്ക്രീൻഷോട്ട് എടുത്ത് ടീച്ചർക്ക് അയയ്ക്കുക.")}</li>
+      </ul>
+      <div class="err" id="err" hidden></div>
+      <div class="btnrow"><button type="submit" class="btn">${bi("Start exam", " · പരീക്ഷ തുടങ്ങുക")}</button></div>
+    </form>`;
+  document.querySelectorAll(".choice").forEach(b => b.addEventListener("click", () => {
+    pick = b.dataset.id; document.querySelectorAll(".choice").forEach(x => x.setAttribute("aria-pressed", x === b));
+  }));
+  $("#startForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("#sname").value.trim().replace(/\s+/g, " ");
+    if (name.length < 2){ const er = $("#err"); er.innerHTML = bi("Please type your name to begin.", " · തുടങ്ങാൻ പേര് നൽകുക."); er.hidden = false; $("#sname").focus(); return; }
+    store.set("c7x-name", name); store.set("c7x-parish", $("#sparish").value.trim());
+    begin(name, $("#sparish").value.trim(), EXAMS.find(x => x.id === pick));
+  });
+}
+
+/* ---------- EXAM ---------- */
+function begin(name, parish, exam){
+  const items = shuffle(exam.pool).slice(0, exam.count).map(it => ({...it, order: shuffle([0,1,2,3])}));
+  const total = items.length * PER_Q;
+  S = {name, parish, exam, items, ans: new Array(items.length).fill(null), i:0, total, end: Date.now() + total*1000, start: Date.now(), confirming:false};
+  renderBar();
+  tick = setInterval(updTimer, 500);
+  renderQ();
+}
+function renderBar(){
+  $("#exambar").innerHTML = `<div class="exambar"><div class="wrap">
+    <div class="row"><span class="who">${esc(S.name)}</span><span class="timer" id="timer" role="timer" aria-label="Time left">${fmt(S.total)}</span></div>
+    <div class="bar"><i id="prog" style="width:0%"></i></div></div></div>`;
+  updTimer();
+}
+function updTimer(){
+  if (!S) return;
+  const left = Math.max(0, Math.round((S.end - Date.now())/1000));
+  const t = $("#timer"); if (!t) return;
+  t.textContent = fmt(left); t.classList.toggle("low", left <= 60);
+  if (left <= 0) submit(true);
+}
+function renderQ(){
+  const it = S.items[S.i], q = it.q, n = S.items.length;
+  const answered = S.ans.filter(a => a !== null).length;
+  $("#prog").style.width = (answered / n * 100) + "%";
+  const unanswered = n - answered;
+  $("#view").innerHTML = `
+    <div class="qcard">
+      <div class="qnum">${bi(`Question ${S.i+1} of ${n}`, ` · ചോദ്യം ${S.i+1}/${n}`)}</div>
+      <div class="qtext">${bi(q[0], q[1])}</div>
+      <div class="opts" role="radiogroup">
+        ${it.order.map((k, j) => `<button type="button" class="opt" role="radio" aria-checked="${S.ans[S.i] === k}" data-k="${k}">
+          <span class="k">${L[j]}</span><span class="tx">${bi(q[2][k][0], q[2][k][1])}</span></button>`).join("")}
+      </div>
+      <div class="nav">
+        <button type="button" class="btn ghost" id="prev" ${S.i === 0 ? "disabled" : ""}>${bi("← Previous", "← മുമ്പത്തേത്")}</button>
+        ${S.i < n-1 ? `<button type="button" class="btn" id="next">${bi("Next →", "അടുത്തത് →")}</button>`
+                    : `<button type="button" class="btn" id="fin">${bi("Finish", "പൂർത്തിയാക്കുക")}</button>`}
+      </div>
+    </div>
+    <div class="panel" style="gap:10px">
+      <div class="legend">${bi(`Answered ${answered} of ${n} · tap a number to jump`, `ഉത്തരം നൽകിയത് ${answered}/${n}`)}</div>
+      <div class="pal">${S.items.map((_, j) => `<button type="button" data-j="${j}" class="${S.ans[j] !== null ? "done" : ""}${j === S.i ? " cur" : ""}" aria-label="Question ${j+1}">${j+1}</button>`).join("")}</div>
+      ${S.confirming ? `<div class="confirm">
+          <div>${unanswered ? bi(`${unanswered} question(s) not answered yet. Submit anyway?`, `${unanswered} ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകിയിട്ടില്ല. സമർപ്പിക്കണോ?`) : bi("All questions answered. Submit your exam?", "എല്ലാ ചോദ്യങ്ങൾക്കും ഉത്തരം നൽകി. സമർപ്പിക്കണോ?")}</div>
+          <div class="btnrow"><button type="button" class="btn" id="yes">${bi("Yes, submit", " · സമർപ്പിക്കുക")}</button><button type="button" class="btn ghost" id="no">${bi("Go back", " · തിരികെ")}</button></div>
+        </div>`
+      : `<div class="btnrow"><button type="button" class="btn ghost" id="sub">${bi("Submit exam", " · പരീക്ഷ സമർപ്പിക്കുക")}</button></div>`}
+    </div>`;
+  document.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => {
+    S.ans[S.i] = +b.dataset.k; S.confirming = false;
+    if (S.i < n-1) setTimeout(() => { S.i++; renderQ(); }, 220); else renderQ();
+    document.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", x === b));
+  }));
+  const go = j => { S.i = j; S.confirming = false; renderQ(); window.scrollTo({top:0}); };
+  $("#prev").addEventListener("click", () => go(S.i - 1));
+  $("#next")?.addEventListener("click", () => go(S.i + 1));
+  const ask = () => { S.confirming = true; renderQ(); $("#yes")?.scrollIntoView({block:"center"}); };
+  $("#fin")?.addEventListener("click", ask);
+  $("#sub")?.addEventListener("click", ask);
+  $("#yes")?.addEventListener("click", () => submit(false));
+  $("#no")?.addEventListener("click", () => { S.confirming = false; renderQ(); });
+  document.querySelectorAll(".pal button").forEach(b => b.addEventListener("click", () => go(+b.dataset.j)));
+}
+
+/* ---------- RESULT ---------- */
+function syncResult(a){
+  try{
+    const cfg = window.SS_CONFIG || {};
+    let url = cfg.sheetUrl; try{ url = url || localStorage.getItem("ss_cloud_endpoint"); }catch(e){}
+    if (url && url.trim().startsWith("http")) fetch(url.trim(), {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(a), mode:"no-cors"}).catch(()=>{});
+  }catch(e){}
+  try{ const raw = localStorage.getItem("ss_exam_attempts"); const list = raw ? JSON.parse(raw) : []; list.unshift(a); localStorage.setItem("ss_exam_attempts", JSON.stringify(list.slice(0,1000))); }catch(e){}
+}
+
+function submit(timeout){
+  if (!S || S.done) return;
+  S.done = true; clearInterval(tick); $("#exambar").innerHTML = "";
+  const n = S.items.length;
+  const right = S.items.filter((it, j) => S.ans[j] === 0).length;
+  const skipped = S.ans.filter(a => a === null).length;
+  const pct = Math.round(right / n * 100);
+  const used = Math.min(S.total, Math.round((Date.now() - S.start)/1000));
+  const g = pct >= 90 ? ["A+","Excellent","മികച്ചത്",""] : pct >= 75 ? ["A","Very good","വളരെ നല്ലത്",""] : pct >= 60 ? ["B","Good","നല്ലത്","mid"] : pct >= 40 ? ["C","Pass · revise more","ജയിച്ചു · ഇനിയും പഠിക്കുക","mid"] : ["D","Needs more study","കൂടുതൽ പഠിക്കണം","low"];
+  const d = new Date();
+  const when = d.toLocaleDateString("en-GB", {day:"2-digit", month:"short", year:"numeric"}) + ", " + d.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit"});
+  const hist = store.get("c7x-hist", []); hist.unshift({n:S.name, e:S.exam.id, s:right, t:n, d:d.toISOString()}); store.set("c7x-hist", hist.slice(0, 20));
+
+  syncResult({
+    id: "att_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6),
+    timestamp: d.toISOString(), dateStr: d.toLocaleDateString("en-GB"),
+    timeStr: d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}),
+    className: "Class 7 Revision – " + (S.exam.full ? "Ch 1-4 Full" : "Ch " + S.exam.id.slice(2)),
+    studentName: S.name, rollNumber: "", studentPhone: "", schoolName: S.parish, schoolCode: "", diocese: "",
+    score: right, totalQuestions: n, percentage: pct, status: pct >= 50 ? "PASS" : "FAIL",
+    timeTakenSeconds: used, durationStr: Math.floor(used/60) + "m " + (used%60) + "s"
+  });
+  let filter = "all";
+  const reviewHTML = () => S.items.map((it, j) => {
+    const a = S.ans[j], q = it.q, ok = a === 0, sk = a === null;
+    if (filter === "wrong" && ok) return "";
+    return `<div class="rv ${ok ? "" : sk ? "s" : "x"}">
+      <span class="tag ${ok ? "ok" : sk ? "skip" : "bad"}">${j+1} · ${ok ? bi("Correct","ശരി") : sk ? bi("Not answered","ഉത്തരം നൽകിയില്ല") : bi("Wrong","തെറ്റ്")} · ${bi("Chapter " + it.ch, " · പാഠം " + it.ch)}</span>
+      <div class="qt">${bi(q[0], q[1])}</div>
+      ${!ok && !sk ? `<div class="a" style="color:var(--bad)">${bi("Your answer: " + q[2][a][0], "നിങ്ങളുടെ ഉത്തരം: " + q[2][a][1])}</div>` : ""}
+      <div class="a" style="color:var(--ok)">${bi("Correct answer: " + q[2][0][0], "ശരിയുത്തരം: " + q[2][0][1])}</div>
+    </div>`;
+  }).join("");
+
+  $("#view").innerHTML = `
+    ${timeout ? `<div class="confirm">${bi("Time is up. Your exam was submitted automatically.", "സമയം കഴിഞ്ഞു. പരീക്ഷ സ്വയം സമർപ്പിച്ചു.")}</div>` : ""}
+    <div class="cert" id="cert">
+      <div class="top"><div class="e">Mar Gregorios Orthodox Syrian Church · Sunday School</div><div class="t">${bi("Exam Result", " · പരീക്ഷാഫലം")}</div></div>
+      <div class="bd">
+        <div class="ring" style="--p:${pct}"><div><div><b>${right}</b><small>/ ${n}</small></div></div></div>
+        <dl class="facts">
+          <dt>${bi("Name","പേര്")}</dt><dd>${esc(S.name)}</dd>
+          ${S.parish ? `<dt>${bi("Parish","ഇടവക")}</dt><dd>${esc(S.parish)}</dd>` : ""}
+          <dt>${bi("Exam","പരീക്ഷ")}</dt><dd>${bi(S.exam.en, S.exam.ml)}</dd>
+          <dt>${bi("Score","മാർക്ക്")}</dt><dd>${right}/${n} · ${pct}%</dd>
+          <dt>${bi("Grade","ഗ്രേഡ്")}</dt><dd><span class="grade ${g[3]}">${g[0]}</span> ${bi(g[1], " " + g[2])}</dd>
+          <dt>${bi("Time","സമയം")}</dt><dd>${fmt(used)}${skipped ? ` · ${skipped} ${bi("skipped","ഒഴിവാക്കി")}` : ""}</dd>
+          <dt>${bi("Date","തീയതി")}</dt><dd>${esc(when)}</dd>
+        </dl>
+      </div>
+      <div class="ft">${bi("Class VII · Galilee Division · Screenshot this card and send it to your teacher", "ഈ കാർഡിന്റെ സ്ക്രീൻഷോട്ട് ടീച്ചർക്ക് അയയ്ക്കുക")}</div>
+    </div>
+    <div class="btnrow">
+      <button type="button" class="btn" id="again">${bi("Take another exam", " · മറ്റൊരു പരീക്ഷ")}</button>
+    </div>
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div class="sec-title"><h2>${bi("Answer review", " · ഉത്തരങ്ങൾ")}</h2>
+        <div class="seg filter" role="group"><button type="button" data-f="all" aria-pressed="true">${bi("All","എല്ലാം")}</button><button type="button" data-f="wrong" aria-pressed="false">${bi(`Mistakes (${n-right})`,`തെറ്റിയവ (${n-right})`)}</button></div>
+      </div>
+      <div class="review" id="review">${reviewHTML()}</div>
+    </section>`;
+  window.scrollTo({top:0});
+  $("#again").addEventListener("click", welcome);
+  document.querySelectorAll(".filter button").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.f; document.querySelectorAll(".filter button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $("#review").innerHTML = reviewHTML();
+  }));
+}
+
+welcome();
+</script>
+
+</body>
+</html>
