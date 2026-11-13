@@ -7,6 +7,6 @@
   Examples:
     window.C7_OPEN_CHAPTERS = [1, 2, 3, 4];            // only chapters 1–4
     window.C7_OPEN_CHAPTERS = [1, 2, 3, 4, 5];         // open chapter 5 next week
-    window.C7_OPEN_CHAPTERS = [1, 2, 3, 4, 5, 6, 7, 8]; // all chapters
+    window.C7_OPEN_CHAPTERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; // all chapters
 */
-window.C7_OPEN_CHAPTERS = [1, 2, 3, 4, 5, 6, 7, 8];
+window.C7_OPEN_CHAPTERS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
