@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 7 Revision Exam · Chapters 20–25 | MGOSC Sunday School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: single exam column; sticky exam bar with timer; question palette below the question */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4; --warn:#B36B00;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; --warn:#F0B24A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; --warn:#F0B24A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:18px 14px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.brand .eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand .name{font-family:var(--f-display);font-weight:800;font-size:22px;line-height:1.15}
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button.mlb{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+main .wrap{padding-block:24px 64px;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--f-display);font-size:clamp(28px,6vw,38px);line-height:1.1;margin:0;text-wrap:balance}
+h1 .ml{display:block;font-size:.6em;font-weight:700;color:var(--muted);margin-top:6px}
+.lead{margin:0;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px}
+label.f{display:flex;flex-direction:column;gap:6px;font-weight:700}
+label.f small{font-weight:500;color:var(--muted)}
+input[type=text]{font:500 18px var(--f-body);padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
+input[type=text]:focus{outline:3px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.err{color:var(--bad);font-size:14px;font-weight:600}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.choices{grid-template-columns:1fr}}
+.choice{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px;font:inherit}
+.choice .t{font-weight:700}
+.choice .s{font-size:14px;color:var(--muted)}
+.choice .meta{font-size:13px;color:var(--gold);font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.choice[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.choice.full{grid-column:1/-1}
+.rules{margin:0;padding-left:1.2em;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;border-radius:10px;padding:12px 20px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,.choice:focus-visible,.opt:focus-visible,.pal button:focus-visible,.seg button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* exam */
+.exambar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.exambar .wrap{padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.exambar .row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-variant-numeric:tabular-nums}
+.exambar .who{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.timer{font:700 18px var(--f-body);font-variant-numeric:tabular-nums;padding:3px 10px;border-radius:8px;background:var(--sunk)}
+.timer.low{background:var(--bad-soft);color:var(--bad)}
+.bar{height:6px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.qnum{font:700 13px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.qtext{font-weight:700;font-size:19px;line-height:1.4}
+.qtext .ml{display:block;font-size:16.5px;font-weight:600;margin-top:4px}
+body[data-lang="both"] .qtext .ml{color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 14px;cursor:pointer;font:500 17px var(--f-body)}
+.opt .k{font-weight:700;color:var(--muted);width:1.4em}
+.opt .tx{min-width:0;display:flex;flex-direction:column}
+.opt .tx .ml{font-size:15px;color:var(--muted)}
+.opt[aria-checked="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.opt[aria-checked="true"] .k{color:var(--accent)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px}
+.pal button{height:40px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font:700 15px var(--f-body);cursor:pointer;font-variant-numeric:tabular-nums}
+.pal button.done{background:var(--sunk);color:var(--ink);border-color:var(--sunk)}
+.pal button.cur{border-color:var(--accent);color:var(--accent)}
+.legend{font-size:13px;color:var(--muted)}
+.confirm{background:var(--gold-soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+
+/* result */
+.cert{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cert .top{background:var(--accent);color:var(--accent-ink);padding:16px 20px}
+.cert .top .e{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.9}
+.cert .top .t{font-family:var(--f-display);font-size:22px;font-weight:800}
+.cert .bd{padding:20px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+@media (max-width:480px){.cert .bd{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.ring{width:128px;height:128px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ok) calc(var(--p)*1%), var(--sunk) 0)}
+.ring div{width:104px;height:104px;border-radius:50%;background:var(--surface);display:grid;place-items:center;text-align:center;line-height:1}
+.ring b{font-family:var(--f-display);font-size:38px;font-variant-numeric:tabular-nums}
+.ring small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:15px;min-width:0}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-weight:700;min-width:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.grade{display:inline-block;padding:2px 10px;border-radius:99px;background:var(--ok-soft);color:var(--ok);font-weight:700}
+.grade.mid{background:var(--gold-soft);color:var(--gold)}
+.grade.low{background:var(--bad-soft);color:var(--bad)}
+.cert .ft{border-top:1px dashed var(--line);padding:10px 20px;font-size:13px;color:var(--muted);text-align:center}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.rv.x{border-left-color:var(--bad)}
+.rv.s{border-left-color:var(--muted)}
+.rv .qt{font-weight:700}
+.rv .qt .ml{display:block;font-weight:600;font-size:15px;color:var(--muted)}
+.rv .a{font-size:15px}
+.rv .a .ml{display:block;font-size:14px}
+.tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tag.ok{color:var(--ok)} .tag.bad{color:var(--bad)} .tag.skip{color:var(--muted)}
+.sec-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h2{margin:0;font-family:var(--f-display);font-size:21px}
+.filter{font-size:14px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 28px}
+span.en + span.ml{margin-left:.4em}
+.qtext span.ml,.tx span.ml,.rv span.ml,.a span.ml{margin-left:0}
+.facts span.ml{display:block;margin-left:0;font-weight:500;font-size:.9em}
+.facts dt span.ml{font-size:12.5px}
+.legend span.ml,.ft span.ml{display:block;margin-left:0}
+body[data-lang="both"] .meta .ml{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+html{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.homelink{color:var(--accent);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="eyebrow">Mar Gregorios Orthodox Syrian Church · Sunday School</div>
+      <div class="name">Class 7 Revision Exam</div>
+      <a class="homelink" href="index.html">← Class 7 Portal home</a>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="mlb" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+<div id="exambar"></div>
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">Galilee Division · Class VII · Chapters 20–25</div></footer>
+
+<script>
+const CH=[{"n":20,"en":"Fasts and Fasting","ml":"നോമ്പും ഉപവാസവും","q":[["What is ‘fasting’ according to this lesson?","ഈ പാഠമനുസരിച്ച് ‘ഉപവാസം’ എന്നാൽ?",[["Spending the day in fellowship with God along with abstinence from food","ഭക്ഷണം വർജ്ജിച്ച് ദൈവസംസർഗ്ഗത്തിൽ ചെലവഴിക്കുന്നത്"],["Eating only once a week","ആഴ്ചയിൽ ഒരിക്കൽ മാത്രം കഴിക്കുന്നത്"],["Avoiding sleep","ഉറക്കം ഒഴിവാക്കുന്നത്"],["Eating only sweets","മധുരം മാത്രം കഴിക്കുന്നത്"]]],["The Church’s rule for fasting is to give up food at least till…","സഭ ഉദ്ദേശിക്കുന്ന ഉപവാസം കുറഞ്ഞത് എപ്പോൾ വരെ?",[["3 PM (or noon)","ഉച്ചകഴിഞ്ഞ് 3 മണി (അല്ലെങ്കിൽ ഉച്ചവരെ)"],["9 AM","രാവിലെ 9 മണി"],["Midnight","അർദ്ധരാത്രി"],["Sunrise","സൂര്യോദയം"]]],["Humans possess three things. They are…","മനുഷ്യന് മൂന്നെണ്ണമുണ്ട്…",[["Body, mind and soul","ശരീരം, മനസ്സ്, ആത്മാവ്"],["Eyes, ears and nose","കണ്ണ്, ചെവി, മൂക്ക്"],["Food, water and air","ഭക്ഷണം, വെള്ളം, വായു"],["Home, school and church","വീട്, സ്കൂൾ, പള്ളി"]]],["For how many days did Jesus fast?","യേശു എത്ര ദിവസം ഉപവസിച്ചു?",[["Forty days","നാല്പത് ദിവസം"],["Seven days","ഏഴ് ദിവസം"],["Three days","മൂന്ന് ദിവസം"],["Fifty days","അമ്പത് ദിവസം"]]],["Jesus taught that Satan cannot be defeated without…","സാത്താനെ ജയിക്കാൻ ആവശ്യമെന്ന് യേശു പഠിപ്പിച്ചത്…",[["Prayer and fasting (Matthew 17:21)","പ്രാർത്ഥനയും ഉപവാസവും (മത്താ. 17:21)"],["Money","ധനം"],["Weapons","ആയുധങ്ങൾ"],["Sleep","ഉറക്കം"]]],["Who are given concessions from the rigours of fasting?","ഉപവാസത്തിൽനിന്ന് ഇളവ് ലഭിക്കുന്നത് ആർക്ക്?",[["Children, pregnant women, nursing mothers, the sick and the elderly","കുഞ്ഞുങ്ങൾ, ഗർഭിണികൾ, മുലയൂട്ടുന്നവർ, രോഗികൾ, വാർദ്ധക്യത്തിലായവർ"],["Rich people","ധനികർ"],["Teachers","അദ്ധ്യാപകർ"],["Nobody","ആർക്കുമില്ല"]]],["The book Didache (early 2nd century) mentions weekly fasting on…","ഡിഡാക്കെ പ്രകാരം ആഴ്ചതോറുമുള്ള ഉപവാസ ദിവസങ്ങൾ?",[["Wednesday and Friday","ബുധനും വെള്ളിയും"],["Monday and Thursday","തിങ്കളും വ്യാഴവും"],["Saturday and Sunday","ശനിയും ഞായറും"],["Only Sunday","ഞായർ മാത്രം"]]],["How many Canonical Fasts does the Church have?","സഭയ്ക്ക് എത്ര കാനോനിക നോമ്പുകൾ ഉണ്ട്?",[["Five","അഞ്ച്"],["Three","മൂന്ന്"],["Seven","ഏഴ്"],["Two","രണ്ട്"]]],["The Great Lent is observed for how many days?","വലിയ നോമ്പ് എത്ര ദിവസം?",[["50 days","50 ദിവസം"],["40 days","40 ദിവസം"],["25 days","25 ദിവസം"],["13 days","13 ദിവസം"]]],["The Fast in the name of the Apostles is from…","ശ്ലീഹാ നോമ്പ്…",[["June 16 to June 29","ജൂൺ 16 മുതൽ 29 വരെ"],["August 1 to August 15","ആഗസ്റ്റ് 1 മുതൽ 15 വരെ"],["December 1 to December 25","ഡിസംബർ 1 മുതൽ 25 വരെ"],["February to April","ഫെബ്രുവരി–ഏപ്രിൽ"]]],["The Fast in the name of the Mother of God (Shoonoyo) is from…","ദൈവമാതാവിന്റെ നോമ്പ് (ശൂനോയോ)…",[["August 1 to August 15","ആഗസ്റ്റ് 1 മുതൽ 15 വരെ"],["June 16 to June 29","ജൂൺ 16 മുതൽ 29 വരെ"],["December 1 to December 25","ഡിസംബർ 1 മുതൽ 25 വരെ"],["January 1 to January 6","ജനുവരി 1 മുതൽ 6 വരെ"]]],["The Fast of Yeldho (Nativity) is from…","യൽദോ നോമ്പ്…",[["December 1 to December 25","ഡിസംബർ 1 മുതൽ 25 വരെ"],["August 1 to August 15","ആഗസ്റ്റ് 1 മുതൽ 15 വരെ"],["June 16 to June 29","ജൂൺ 16 മുതൽ 29 വരെ"],["November 1 to November 25","നവംബർ 1 മുതൽ 25 വരെ"]]],["The Three-day Fast commemorates…","മൂന്നു നോമ്പ് അനുസ്മരിക്കുന്നത്…",[["The repentance of the people of Nineveh and the mission of Jonah","നിനെവേക്കാരുടെ അനുതാപവും യോനായുടെ ദൗത്യവും"],["The birth of Jesus","യേശുവിന്റെ ജനനം"],["The Apostles","ശ്ലീഹന്മാരെ"],["The Ascension","സ്വർഗ്ഗാരോഹണം"]]],["When is Wednesday/Friday fasting NOT required?","ബുധൻ/വെള്ളി ഉപവാസം നിർബന്ധമില്ലാത്ത ദിവസങ്ങൾ?",[["The 18 days between the Three-day Fast and Lent, and the 50 days after Easter","മൂന്നുനോമ്പിനും വലിയ നോമ്പിനും ഇടയിലെ 18 ദിവസവും ഉയിർപ്പ് മുതൽ പെന്തിക്കോസ്തി വരെ 50 ദിവസവും"],["All of December","ഡിസംബർ മുഴുവൻ"],["During school exams","സ്കൂൾ പരീക്ഷാസമയത്ത്"],["Every Wednesday","എല്ലാ ബുധനാഴ്ചയും"]]],["Which Old Testament figures fasted before important events?","പ്രധാന സംഭവങ്ങൾക്കു മുമ്പ് ഉപവസിച്ച പഴയനിയമ വ്യക്തികൾ?",[["Moses (before the Commandments) and Elijah (before ascending)","മോശ (കല്പനകൾക്കു മുമ്പ്), ഏലിയാവ് (സ്വർഗ്ഗാരോഹണത്തിനു മുമ്പ്)"],["Cain and Abel","കയീനും ഹാബേലും"],["Saul and Goliath","ശൗലും ഗോല്യാത്തും"],["Absalom and Joab","അബ്ശാലോമും യോവാബും"]]],["Fasting is meaningless for those who…","ആരുടെ നോമ്പ് വ്യർത്ഥമാണ്?",[["Do not share their bread with the poor","വിശക്കുന്നവർക്ക് ഭക്ഷണം പങ്കുവയ്ക്കാത്തവരുടെ"],["Pray too much","കൂടുതൽ പ്രാർത്ഥിക്കുന്നവരുടെ"],["Go to church","പള്ളിയിൽ പോകുന്നവരുടെ"],["Read the Bible","ബൈബിൾ വായിക്കുന്നവരുടെ"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Isaiah 58:6","യെശയ്യാവ് 58:6"],["Matthew 17:21","മത്തായി 17:21"],["Matthew 9:37","മത്തായി 9:37"],["Psalm 119:164","സങ്കീ. 119:164"]]]]},{"n":21,"en":"Ascetic Life","ml":"സന്യാസ ജീവിതം","q":[["According to Indian thought, what are the four stages of life?","ഭാരതീയ ചിന്തയിലെ ജീവിതത്തിന്റെ നാല് ഘട്ടങ്ങൾ?",[["Brahmacharya, Garhasthya, Vanaprastha, Sanyasa","ബ്രഹ്മചര്യം, ഗാർഹസ്ഥ്യം, വാനപ്രസ്ഥം, സന്യാസം"],["Childhood, youth, middle age, old age","ബാല്യം, യൗവനം, മദ്ധ്യവയസ്സ്, വാർദ്ധക്യം"],["Morning, noon, evening, night","രാവിലെ, ഉച്ച, വൈകിട്ട്, രാത്രി"],["Body, mind, soul, spirit","ശരീരം, മനസ്സ്, ആത്മാവ്, ചൈതന്യം"]]],["An ‘ascetic’ (sanyasi) is a person who…","‘സന്യാസി’ എന്നാൽ…",[["Has freed himself from all worldly bonds","ലോകബന്ധങ്ങളിൽനിന്ന് വിമുക്തനായവൻ"],["Rules a kingdom","രാജ്യം ഭരിക്കുന്നവൻ"],["Lives only for pleasure","സുഖത്തിനായി മാത്രം ജീവിക്കുന്നവൻ"],["Travels for business","വ്യാപാരത്തിനായി യാത്ര ചെയ്യുന്നവൻ"]]],["The place where monks live is called…","സന്യാസിമാർ താമസിക്കുന്ന സ്ഥലം?",[["Monastery (Dayara)","ദയറാ (ആശ്രമം)"],["Convent (Madom)","മഠം"],["Palace","കൊട്ടാരം"],["Synagogue","സിനഗോഗ്"]]],["What does the Orthodox Church say about ascetic life versus family life?","സന്യാസവും കുടുംബജീവിതവും സംബന്ധിച്ച് ഓർത്തഡോക്സ് സഭയുടെ നിലപാട്?",[["Neither is greater; each person freely chooses and must stay faithful","ഏതാണ് ശ്രേഷ്ഠമെന്ന തർക്കമില്ല; സ്വതന്ത്രമായി തിരഞ്ഞെടുത്ത് വിശ്വസ്തരായി ജീവിക്കണം"],["Ascetic life is the only right way","സന്യാസം മാത്രമാണ് ശരി"],["Family life is the only right way","കുടുംബജീവിതം മാത്രമാണ് ശരി"],["Parents must decide for their children","മാതാപിതാക്കൾ തീരുമാനിക്കണം"]]],["Who were the ‘Essenes’?","‘എസ്സീന്യർ’ ആരായിരുന്നു?",[["Jewish ascetics who lived by the Dead Sea (2nd century BC)","ചാവുകടൽ തീരത്ത് ജീവിച്ചിരുന്ന യഹൂദ സന്യാസികൾ (ബി.സി. 2-ാം നൂറ്റാണ്ട്)"],["Roman soldiers","റോമൻ പടയാളികൾ"],["Greek philosophers","ഗ്രീക്ക് തത്വചിന്തകർ"],["Indian kings","ഇന്ത്യൻ രാജാക്കന്മാർ"]]],["Who said, “I wish that all men were even as I myself” (1 Cor. 7:7)?","“എല്ലാവരും എന്നെപ്പോലെ ആയിരുന്നെങ്കിൽ കൊള്ളാമായിരുന്നു” (1 കൊരി. 7:7) എന്ന് പറഞ്ഞത്?",[["St. Paul","പൗലോസ് ശ്ലീഹാ"],["St. Peter","പത്രോസ് ശ്ലീഹാ"],["St. Thomas","മാർത്തോമ്മാ ശ്ലീഹാ"],["St. Antony","അന്തോനിയോസ്"]]],["Who is known as the “Father of Monasticism”?","‘സന്യാസപ്രസ്ഥാനത്തിന്റെ പിതാവ്’?",[["St. Antony (251-356)","മാർ അന്തോനിയോസ് (251-356)"],["St. Basil","മാർ ബസേലിയോസ്"],["St. Paul","പൗലോസ് ശ്ലീഹാ"],["Mar Ephrem","മാർ അപ്രേം"]]],["Who began founding monasteries so that ascetics could live together?","സന്യാസികൾ ഒരുമിച്ച് താമസിക്കുന്ന ദയറാകൾ സ്ഥാപിച്ചത്?",[["St. Pachomios and St. Basil","പക്കോമിയോസും ബസേലിയോസും"],["Constantine and Valens","കുസ്തന്തീനോസും വാലൻസും"],["Peter and Andrew","പത്രോസും അന്ത്രയോസും"],["Moses and Aaron","മോശയും അഹരോനും"]]],["Who made the Milan Proclamation of AD 313?","എ.ഡി. 313-ലെ മിലാൻ പ്രഖ്യാപനം നടത്തിയ ചക്രവർത്തി?",[["Emperor Constantine","കുസ്തന്തീനോസ് ചക്രവർത്തി"],["Emperor Valens","വാലൻസ് ചക്രവർത്തി"],["Emperor Diocletian","ഡയോക്ലീഷ്യൻ ചക്രവർത്തി"],["Emperor Nero","നീറോ ചക്രവർത്തി"]]],["What are the three vows of monasticism?","സന്യാസത്തിന്റെ മൂന്ന് വ്രതങ്ങൾ?",[["Obedience, poverty and celibacy","അനുസരണം, ദാരിദ്ര്യം, ബ്രഹ്മചര്യം"],["Prayer, fasting and charity","പ്രാർത്ഥന, ഉപവാസം, ദാനം"],["Faith, hope and love","വിശ്വാസം, പ്രത്യാശ, സ്നേഹം"],["Silence, study and work","മൗനം, പഠനം, അദ്ധ്വാനം"]]],["Which tradition arose because the faithful admired the pure lives of ascetics?","സന്യാസികളുടെ വിശുദ്ധജീവിതം കണ്ട് സഭയിൽ ഉടലെടുത്ത പാരമ്പര്യം?",[["Selecting bishops only from ascetic priests","സന്യാസ പട്ടക്കാരിൽനിന്ന് മാത്രം മേല്പട്ടക്കാരെ തിരഞ്ഞെടുക്കുക"],["Building large palaces","വലിയ കൊട്ടാരങ്ങൾ പണിയുക"],["Electing kings","രാജാക്കന്മാരെ തിരഞ്ഞെടുക്കുക"],["Stopping all marriages","എല്ലാ വിവാഹങ്ങളും നിർത്തുക"]]],["Which saints of our Church are examples of this ascetic life?","നമ്മുടെ സഭയിലെ സന്യാസജീവിതത്തിന്റെ ഉദാഹരണങ്ങൾ?",[["Parumala Mar Gregorios and Pampady Kuriakose Mar Gregorios","പരുമല തിരുമേനിയും പാമ്പാടി തിരുമേനിയും"],["Cheraman Perumal and Knai Thoma","ചേരമാൻ പെരുമാളും ക്നായി തോമ്മായും"],["Gondaphores and Gad","ഗോണ്ടഫോറസും ഗാദും"],["Constantine and Valens","കുസ്തന്തീനോസും വാലൻസും"]]],["“A bishop should be the husband of one wife” (1 Tim. 3:2) shows that…","“അദ്ധ്യക്ഷൻ ഏകഭാര്യയുടെ ഭർത്താവ്” (1 തിമോ. 3:2) വ്യക്തമാക്കുന്നത്…",[["Marriage is not a barrier to ministry in the Church","വിവാഹം സഭാശുശ്രൂഷയ്ക്ക് തടസ്സമല്ല"],["Bishops must not marry","മേല്പട്ടക്കാർ വിവാഹം കഴിക്കരുത്"],["Only women can be bishops","സ്ത്രീകൾക്ക് മാത്രം"],["Marriage is better than asceticism","വിവാഹമാണ് ശ്രേഷ്ഠം"]]],["Why did some early believers give up family life?","ആദിമസഭയിൽ ചിലർ കുടുംബജീവിതം ഉപേക്ഷിച്ചതിന്റെ ഒരു കാരണം?",[["They expected Christ’s Second Coming soon","കർത്താവിന്റെ രണ്ടാം വരവ് ഉടനെ ഉണ്ടാകുമെന്ന് കരുതി"],["They were too poor","അവർ ദരിദ്രരായിരുന്നു"],["The king ordered it","രാജാവ് കല്പിച്ചു"],["They disliked children","കുട്ടികളെ ഇഷ്ടമല്ലായിരുന്നു"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["St. Matthew 9:37-38","മത്തായി 9:37-38"],["St. Matthew 5:48","മത്തായി 5:48"],["1 Corinthians 7:7","1 കൊരി. 7:7"],["Hebrews 13:7","എബ്രാ. 13:7"]]]]},{"n":22,"en":"St. Basil the Great","ml":"വലിയ മാർ ബസ്സേലിയോസ്","q":[["The study of the teachings of the Church Fathers is called…","സഭാപിതാക്കന്മാരുടെ പഠിപ്പിക്കലുകളുടെ പഠനം?",[["Patristics","പിതൃവിജ്ഞാനീയം (Patristics)"],["Liturgy","ആരാധനാക്രമം"],["Theology of Nature","പ്രകൃതി ദൈവശാസ്ത്രം"],["Church history","സഭാചരിത്രം"]]],["‘Baselius’ is the official name taken by…","‘ബസ്സേലിയോസ്’ എന്ന പേര് സ്വീകരിക്കുന്നത്…",[["The Catholicos of the East","പൗരസ്ത്യ കാതോലിക്കാ"],["Every priest","എല്ലാ പട്ടക്കാരും"],["Every deacon","എല്ലാ ശെമ്മാശന്മാരും"],["Kings of Kerala","കേരളത്തിലെ രാജാക്കന്മാർ"]]],["Who are the three Cappadocian Fathers?","കപ്പദോക്യൻ പിതാക്കന്മാർ ആരെല്ലാം?",[["St. Basil, St. Gregory of Nyssa and St. Gregory Nazianzen","മാർ ബസ്സേലിയോസ്, നിസ്സായിലെ മാർ ഗ്രീഗോറിയോസ്, നാസിയാൻസിലെ മാർ ഗ്രീഗോറിയോസ്"],["Peter, Paul and John","പത്രോസ്, പൗലോസ്, യോഹന്നാൻ"],["Ephrem, Severios and Jacob","അപ്രേം, സേവേറിയോസ്, യാക്കോബ്"],["Antony, Pachomios and Macrina","അന്തോനിയോസ്, പക്കോമിയോസ്, മക്രീന"]]],["When and where was St. Basil born?","മാർ ബസ്സേലിയോസ് ജനിച്ചത്?",[["AD 329, at Pontus in Caesarea","എ.ഡി. 329-ൽ കൈസറിയായിലെ പൊന്തോസിൽ"],["AD 355, in Athens","എ.ഡി. 355-ൽ ഏഥൻസിൽ"],["AD 52, in India","എ.ഡി. 52-ൽ ഇന്ത്യയിൽ"],["AD 313, in Milan","എ.ഡി. 313-ൽ മിലാനിൽ"]]],["During whose persecution did Basil’s forefathers suffer?","ആരുടെ പീഡനകാലത്താണ് ബസ്സേലിയോസിന്റെ പൂർവ്വികർ കഷ്ടം സഹിച്ചത്?",[["Emperor Diocletian","ഡയോക്ലീഷ്യൻ ചക്രവർത്തി"],["Emperor Constantine","കുസ്തന്തീനോസ് ചക്രവർത്തി"],["King Gondaphores","ഗോണ്ടഫോറസ് രാജാവ്"],["King Herod","ഹെരോദാ രാജാവ്"]]],["Where did Basil have his higher education?","ബസ്സേലിയോസ് ഉപരിപഠനം നടത്തിയത്?",[["Constantinople and Athens","കുസ്തന്തീനോപ്പോലീസിലും ഏഥൻസിലും"],["Rome and Jerusalem","റോമായിലും യെരുശലേമിലും"],["Alexandria and Antioch","അലക്സാന്ത്രിയായിലും അന്ത്യോഖ്യായിലും"],["Kerala and Persia","കേരളത്തിലും പേർഷ്യയിലും"]]],["St. Basil’s most notable writings are about…","മാർ ബസ്സേലിയോസിന്റെ ഏറ്റവും ശ്രദ്ധേയമായ രചനകൾ?",[["The Holy Spirit","പരിശുദ്ധാത്മാവിനെപ്പറ്റി"],["Farming","കൃഷിയെപ്പറ്റി"],["Wars","യുദ്ധങ്ങളെപ്പറ്റി"],["Music","സംഗീതത്തെപ്പറ്റി"]]],["At what age did Basil take up monastic life?","എത്രാം വയസ്സിലാണ് ബസ്സേലിയോസ് സന്യാസജീവിതം തിരഞ്ഞെടുത്തത്?",[["26","26"],["41","41"],["50","50"],["12","12"]]],["Who inspired Basil to take up the ascetic life?","സന്യാസത്തിലേക്ക് ബസ്സേലിയോസിനെ പ്രേരിപ്പിച്ചത്?",[["His grandmother and elder sister, both named Macrina","മക്രീന എന്ന് പേരുള്ള വല്യമ്മയും മൂത്ത സഹോദരിയും"],["His father and mother","അപ്പനും അമ്മയും"],["The emperor","ചക്രവർത്തി"],["His teachers in Athens","ഏഥൻസിലെ ഗുരുക്കന്മാർ"]]],["History records that St. Basil was the first to start…","ചരിത്രത്തിൽ ആദ്യമായി ബസ്സേലിയോസ് ആരംഭിച്ചത്…",[["Hospitals giving care with accommodation for patients","രോഗികളെ താമസിപ്പിച്ച് ചികിത്സിക്കുന്ന ആശുപത്രി"],["Schools for kings","രാജാക്കന്മാർക്കുള്ള സ്കൂൾ"],["Newspapers","പത്രങ്ങൾ"],["Boat races","വള്ളംകളി"]]],["At what age was Basil made Bishop of Caesarea?","എത്രാം വയസ്സിലാണ് കൈസറിയായുടെ മെത്രാപ്പോലീത്തയായത്?",[["41, as successor of Eusebius","41-ൽ, യൗസേബിയോസിന്റെ പിൻഗാമിയായി"],["26, as successor of Antony","26-ൽ, അന്തോനിയോസിന്റെ പിൻഗാമിയായി"],["50, as successor of Gregory","50-ൽ, ഗ്രീഗോറിയോസിന്റെ പിൻഗാമിയായി"],["30, as successor of Peter","30-ൽ, പത്രോസിന്റെ പിൻഗാമിയായി"]]],["When did St. Basil die?","മാർ ബസ്സേലിയോസ് കാലം ചെയ്തത്?",[["AD 379, at the age of 50","എ.ഡി. 379-ൽ, 50-ാം വയസ്സിൽ"],["AD 394, at 39","എ.ഡി. 394-ൽ, 39-ാം വയസ്സിൽ"],["AD 313, at 60","എ.ഡി. 313-ൽ, 60-ാം വയസ്സിൽ"],["AD 649, at 70","എ.ഡി. 649-ൽ, 70-ാം വയസ്സിൽ"]]],["On which day do the Oriental Churches commemorate St. Basil?","പൗരസ്ത്യ സഭകൾ മാർ ബസ്സേലിയോസിന്റെ ഓർമ്മ ആചരിക്കുന്നത്?",[["January 1","ജനുവരി 1"],["June 29","ജൂൺ 29"],["August 15","ആഗസ്റ്റ് 15"],["December 25","ഡിസംബർ 25"]]],["‘Heretics’ are those who…","‘വേദവിപരീതികൾ’ എന്നാൽ…",[["Go against the Orthodox faith of the Church","സഭയുടെ സത്യവിശ്വാസത്തിന് എതിരായി നിൽക്കുന്നവർ"],["Fast regularly","പതിവായി ഉപവസിക്കുന്നവർ"],["Sing in the choir","ഗായകസംഘത്തിൽ പാടുന്നവർ"],["Live in monasteries","ദയറാകളിൽ ജീവിക്കുന്നവർ"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Hebrews 13:7","എബ്രാ. 13:7"],["Philippians 1:21","ഫിലി. 1:21"],["St. Matthew 9:37","മത്തായി 9:37"],["Psalm 92:12","സങ്കീ. 92:12"]]]]},{"n":23,"en":"St. Gregory of Nyssa","ml":"നിസ്സായിലെ മാർ ഗ്രീഗോറിയോസ്","q":[["St. Gregory of Nyssa was the ___ of St. Basil the Great.","നിസ്സായിലെ മാർ ഗ്രീഗോറിയോസ് വലിയ മാർ ബസ്സേലിയോസിന്റെ…",[["Younger brother","ഇളയ സഹോദരൻ"],["Father","പിതാവ്"],["Teacher","ഗുരു"],["Friend only","സ്നേഹിതൻ മാത്രം"]]],["What does the name ‘Gregory’ (Gregorios) mean?","‘ഗ്രീഗോറിയോസ്’ എന്ന വാക്കിന്റെ അർത്ഥം?",[["One who is awake","ഉണർന്നിരിക്കുന്നവൻ"],["One who is peaceful","സമാധാനമുള്ളവൻ"],["Breaker of idols","വിഗ്രഹഭഞ്ജകൻ"],["Twin","ഇരട്ട"]]],["Who were his parents?","അദ്ദേഹത്തിന്റെ മാതാപിതാക്കൾ?",[["St. Basil the Elder and Emmelia","വലിയ ബസേലിയോസും എമ്മേലിയായും"],["Elkanah and Hannah","എല്ക്കാനായും ഹന്നായും"],["Jesse and his wife","യിശ്ശായിയും ഭാര്യയും"],["Gad and Macrina","ഗാദും മക്രീനയും"]]],["Which subjects did Gregory master in his early life?","ആദ്യകാലത്ത് ഗ്രീഗോറിയോസ് പ്രാവീണ്യം നേടിയ വിഷയങ്ങൾ?",[["World literature, philosophy and medicine","വിശ്വസാഹിത്യം, തത്വചിന്ത, വൈദ്യശാസ്ത്രം"],["Farming and fishing","കൃഷിയും മീൻപിടുത്തവും"],["Architecture and painting","വാസ്തുവിദ്യയും ചിത്രരചനയും"],["Law and war","നിയമവും യുദ്ധവും"]]],["Whom did Gregory marry?","ഗ്രീഗോറിയോസ് വിവാഹം ചെയ്തത്?",[["Theosebia (said to have been a deaconess)","തെയോസേബിയ (ഒരു ശെമ്മാശിനി ആയിരുന്നു എന്ന് പറയപ്പെടുന്നു)"],["Macrina","മക്രീന"],["Emmelia","എമ്മേലിയ"],["Hannah","ഹന്നാ"]]],["St. Basil had founded a monastery on the banks of the river…","ബസ്സേലിയോസ് ആശ്രമം സ്ഥാപിച്ചിരുന്നത് ഏത് നദീതീരത്ത്?",[["Iris","ഐറിസ്"],["Jordan","യോർദ്ദാൻ"],["Nile","നീൽ"],["Euphrates","യൂഫ്രട്ടീസ്"]]],["When was Gregory appointed Bishop of Nyssa?","നിസ്സായിലെ എപ്പിസ്കോപ്പായി നിയമിക്കപ്പെട്ടത്?",[["AD 371","എ.ഡി. 371"],["AD 381","എ.ഡി. 381"],["AD 329","എ.ഡി. 329"],["AD 394","എ.ഡി. 394"]]],["Which emperor exiled Gregory?","ഗ്രീഗോറിയോസിനെ നാടുകടത്തിയ ചക്രവർത്തി?",[["Valens, a follower of Arius","അറിയോസിന്റെ അനുയായിയായ വാലൻസ്"],["Constantine","കുസ്തന്തീനോസ്"],["Diocletian","ഡയോക്ലീഷ്യൻ"],["Nero","നീറോ"]]],["Gregory fought against which heresy?","ഗ്രീഗോറിയോസ് എതിർത്ത വേദവിപരീതം?",[["Arianism","അറിയോസിന്റെ വേദവിപരീതം (Arianism)"],["Idol worship of Baal","ബാൽ ആരാധന"],["Sun worship","സൂര്യാരാധന"],["Paganism of Rome only","റോമൻ വിഗ്രഹാരാധന മാത്രം"]]],["Gregory played a key role in compiling the Creed at the Council of…","ഏത് സുന്നഹദോസിലാണ് വിശ്വാസപ്രമാണം ക്രോഡീകരിക്കുന്നതിൽ ഗ്രീഗോറിയോസ് മുഖ്യപങ്ക് വഹിച്ചത്?",[["Constantinople, AD 381","കുസ്തന്തീനോപ്പോലീസ്, എ.ഡി. 381"],["Nicaea, AD 325","നിഖ്യാ, എ.ഡി. 325"],["Ephesus, AD 431","എഫേസൂസ്, എ.ഡി. 431"],["Milan, AD 313","മിലാൻ, എ.ഡി. 313"]]],["In the social realm, Gregory argued that…","സാമൂഹ്യരംഗത്ത് ഗ്രീഗോറിയോസ് വാദിച്ചത്…",[["Slavery is a sin","അടിമസമ്പ്രദായം തിന്മയാണ്"],["Kings should be worshipped","രാജാക്കന്മാരെ ആരാധിക്കണം"],["Education is useless","വിദ്യാഭ്യാസം വ്യർത്ഥമാണ്"],["Wars are good","യുദ്ധം നല്ലതാണ്"]]],["Gregory of Nyssa is called…","നിസ്സായിലെ ഗ്രീഗോറിയോസ് അറിയപ്പെടുന്നത്…",[["The Star of Nyssa","നിസ്സായിലെ നക്ഷത്രം"],["Lyre of the Holy Spirit","പരിശുദ്ധാത്മാവിന്റെ കിന്നരം"],["Father of Monasticism","സന്യാസത്തിന്റെ പിതാവ്"],["Treasure of virtues","സദ്ഗുണനിധി"]]],["Which Malankara bishop wrote at length about Gregory of Nyssa?","നിസ്സായിലെ ഗ്രീഗോറിയോസിനെപ്പറ്റി വിശദമായി എഴുതിയ മലങ്കര സഭയിലെ പണ്ഡിതൻ?",[["H.G. Paulose Mar Gregorios","പൗലൂസ് മാർ ഗ്രീഗോറിയോസ് തിരുമേനി"],["Parumala Thirumeni","പരുമല തിരുമേനി"],["Pampady Thirumeni","പാമ്പാടി തിരുമേനി"],["Mar Yuhanon I","മാർ യൂഹാനോൻ ഒന്നാമൻ"]]],["What was the real name of St. Gregorios of Parumala?","പരുമല തിരുമേനിയുടെ യഥാർത്ഥ പേര്?",[["Geevarghese Mar Gregorios","ഗീവർഗ്ഗീസ് മാർ ഗ്രീഗോറിയോസ്"],["Kuriakose Mar Gregorios","കുറിയാക്കോസ് മാർ ഗ്രീഗോറിയോസ്"],["Paulose Mar Gregorios","പൗലൂസ് മാർ ഗ്രീഗോറിയോസ്"],["Mathews Mar Baselios","മാത്യൂസ് മാർ ബസേലിയോസ്"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Philippians 1:21","ഫിലി. 1:21"],["Hebrews 13:7","എബ്രാ. 13:7"],["Romans 8:17","റോമ. 8:17"],["Psalm 115:16","സങ്കീ. 115:16"]]]]},{"n":24,"en":"Holistic Health Care","ml":"സമ്പൂർണ്ണ ആരോഗ്യപരിപാലനം","q":[["How does the World Health Organization describe health?","ലോകാരോഗ്യസംഘടന ആരോഗ്യത്തെ നിർവ്വചിക്കുന്നത്?",[["A balanced state of body, mind and spirit","ശാരീരികവും മാനസികവും ആദ്ധ്യാത്മികവുമായ സന്തുലിതാവസ്ഥ"],["Having no illness only","രോഗമില്ലാത്ത അവസ്ഥ മാത്രം"],["Having a lot of money","ധാരാളം പണമുള്ള അവസ്ഥ"],["Being very strong","വളരെ ബലമുള്ള അവസ്ഥ"]]],["Real health is a state of comfort at which levels?","യഥാർത്ഥ ആരോഗ്യം ഏതെല്ലാം തലങ്ങളിലെ സുഖാവസ്ഥയാണ്?",[["Physical, mental, social and spiritual","ശാരീരിക, മാനസിക, സാമൂഹിക, ആത്മീയ"],["Only physical","ശാരീരികം മാത്രം"],["Only mental","മാനസികം മാത്രം"],["Only financial","സാമ്പത്തികം മാത്രം"]]],["Which of these is NOT a healthy habit from the lesson?","പാഠത്തിലെ നല്ല ശീലങ്ങളിൽ പെടാത്തത്?",[["Overeating fatty food","കൊഴുപ്പേറിയ ഭക്ഷണം അമിതമായി കഴിക്കുക"],["Taking a shower","കുളിക്കുക"],["Prayer","പ്രാർത്ഥിക്കുക"],["Observing fasting","ഉപവസിക്കുക"]]],["Which is one of the four main causes of ill-health?","അനാരോഗ്യത്തിന്റെ നാല് കാരണങ്ങളിൽ ഒന്ന്?",[["Lack of exercise and tension in life","വ്യായാമരഹിതവും മാനസികസംഘർഷം നിറഞ്ഞതുമായ ജീവിതം"],["Too much prayer","അമിത പ്രാർത്ഥന"],["Reading books","പുസ്തകവായന"],["Drinking water","വെള്ളം കുടിക്കുന്നത്"]]],["How much water should we drink every day?","ദിവസവും കുറഞ്ഞത് എത്ര ഗ്ലാസ് വെള്ളം കുടിക്കണം?",[["At least eight glasses","കുറഞ്ഞത് എട്ട് ഗ്ലാസ്"],["One glass","ഒരു ഗ്ലാസ്"],["Three glasses","മൂന്ന് ഗ്ലാസ്"],["Twenty glasses","ഇരുപത് ഗ്ലാസ്"]]],["Sunbathing (morning sunlight) is especially good for…","പ്രഭാതവെയിൽ കൊള്ളുന്നത് പ്രത്യേകിച്ച് നല്ലത്…",[["Joints and muscles","സന്ധികൾക്കും മാംസപേശികൾക്കും"],["Hair only","മുടിക്ക് മാത്രം"],["Teeth only","പല്ലിന് മാത്രം"],["Nothing","ഒന്നിനുമല്ല"]]],["Which spiritual exercise of Orthodox worship gives health to body, mind and soul?","ശരീരത്തിനും മനസ്സിനും ആത്മാവിനും ആരോഗ്യം നൽകുന്ന ഓർത്തഡോക്സ് ആരാധനയിലെ ആത്മീയ വ്യായാമം?",[["Prostration (kneeling and bowing) in prayer","കുമ്പിട്ടുള്ള പ്രാർത്ഥന"],["Sitting quietly","നിശ്ശബ്ദമായി ഇരിക്കുന്നത്"],["Lighting candles","മെഴുകുതിരി കത്തിക്കുന്നത്"],["Ringing bells","മണിയടിക്കുന്നത്"]]],["According to the lesson, childhood and adolescence are the period of…","ബാല്യ-കൗമാരകാലം…",[["Physical and mental development","ശരീരത്തിന്റെയും മനസ്സിന്റെയും വളർച്ചയുടെ കാലം"],["Preparing for the end of life","ജീവിതാന്ത്യത്തിനുള്ള ഒരുക്കത്തിന്റെ കാലം"],["Building the next generation","അടുത്ത തലമുറയെ വാർത്തെടുക്കുന്ന കാലം"],["Rest and retirement","വിശ്രമകാലം"]]],["Old age is the period of…","വാർദ്ധക്യം…",[["Evaluating one’s life and preparing for its end","സ്വയം ജീവിതത്തെ വിലയിരുത്താനും ജീവിതാന്ത്യത്തിന് ഒരുങ്ങാനുമുള്ള കാലം"],["Physical growth","ശാരീരിക വളർച്ചയുടെ കാലം"],["Starting school","സ്കൂൾ തുടങ്ങുന്ന കാലം"],["Learning to walk","നടക്കാൻ പഠിക്കുന്ന കാലം"]]],["Lifestyle diseases are caused mainly by…","ജീവിതശൈലീരോഗങ്ങളുടെ പ്രധാന കാരണം…",[["High-calorie fatty food with little exercise","കലോറി കൂടിയ കൊഴുപ്പേറിയ ഭക്ഷണവും വ്യായാമമില്ലായ്മയും"],["Eating vegetables","പച്ചക്കറി കഴിക്കുന്നത്"],["Walking daily","ദിവസവും നടക്കുന്നത്"],["Praying","പ്രാർത്ഥിക്കുന്നത്"]]],["The Church encourages a change of diet during…","ഭക്ഷണക്രമത്തിൽ മാറ്റം വരുത്താൻ സഭ ആഹ്വാനം ചെയ്യുന്നത്…",[["Fasting seasons","നോമ്പുകാലങ്ങളിൽ"],["Birthdays","ജന്മദിനങ്ങളിൽ"],["Weddings","വിവാഹങ്ങളിൽ"],["School holidays","സ്കൂൾ അവധിക്കാലത്ത്"]]],["“My heart is overflowing with a good theme” is from…","“എന്റെ ഹൃദയം ശുഭവചനത്താൽ കവിയുന്നു” ഏത് വാക്യം?",[["Psalm 45:1","സങ്കീ. 45:1"],["Psalm 115:16","സങ്കീ. 115:16"],["Proverbs 17:22","സദൃ. 17:22"],["Psalm 141:2","സങ്കീ. 141:2"]]],["The hymn “O Lord kindly conserve me as the apple of Your eyes” is from the…","“എന്നുടയോനേ നീയെന്നെ കൺമണിപോൽ കാത്തിടണമേ” – ഈ ഗീതം…",[["Memra of penitence","അനുതാപത്തിന്റെ മെമ്രാ"],["Kukiliyon of saints","പരിശുദ്ധന്മാരുടെ കുക്കിലിയോൻ"],["Christmas service","ക്രിസ്മസ് ശുശ്രൂഷ"],["Wedding service","വിവാഹ ശുശ്രൂഷ"]]],["Our body is the abode (dwelling place) of…","നമ്മുടെ ശരീരം ആരുടെ വാസസ്ഥലമാണ്?",[["God’s Spirit","ദൈവാത്മാവിന്റെ"],["Our pets","വളർത്തുമൃഗങ്ങളുടെ"],["Our friends","സുഹൃത്തുക്കളുടെ"],["Nobody","ആരുടേതുമല്ല"]]],["Can we buy health from hospitals or supermarkets?","ആരോഗ്യം ആശുപത്രിയിൽനിന്നോ സൂപ്പർമാർക്കറ്റിൽനിന്നോ വാങ്ങാമോ?",[["No – it needs knowledge, determination and constant effort","ഇല്ല – അറിവും ദൃഢനിശ്ചയവും സ്ഥിരപരിശ്രമവും വേണം"],["Yes, from hospitals","ഉണ്ട്, ആശുപത്രിയിൽനിന്ന്"],["Yes, from medical stores","ഉണ്ട്, മെഡിക്കൽ സ്റ്റോറിൽനിന്ന്"],["Yes, from supermarkets","ഉണ്ട്, സൂപ്പർമാർക്കറ്റിൽനിന്ന്"]]]]},{"n":25,"en":"Love of Nature","ml":"പ്രകൃതിസ്നേഹം","q":[["What did God create before creating human beings?","മനുഷ്യനെ സൃഷ്ടിക്കുന്നതിനു മുമ്പ് ദൈവം സൃഷ്ടിച്ചത്?",[["An orderly nature – the world and everything in it","ക്രമീകൃതമായ പ്രകൃതി – ലോകവും അതിലുള്ളതെല്ലാം"],["Nothing","ഒന്നുമില്ല"],["Only angels","മാലാഖമാരെ മാത്രം"],["Only the sun","സൂര്യനെ മാത്രം"]]],["From what did God create man (Genesis 2:7)?","ദൈവം മനുഷ്യനെ സൃഷ്ടിച്ചത് എന്തിൽനിന്ന് (ഉല്പത്തി 2:7)?",[["Clay (dust of the ground)","നിലത്തെ പൊടി (മണ്ണ്)"],["Water","വെള്ളം"],["Fire","തീ"],["Light","പ്രകാശം"]]],["During the great flood, God saved…","ജലപ്രളയകാലത്ത് ദൈവം രക്ഷിച്ചത്…",[["Noah’s family and all living things in pairs","നോഹയുടെ കുടുംബത്തെയും സകല ജീവജാലങ്ങളെയും ഈരണ്ടായി"],["Only Noah","നോഹയെ മാത്രം"],["Only the animals","മൃഗങ്ങളെ മാത്രം"],["Only the trees","മരങ്ങളെ മാത്രം"]]],["“Consider the ravens… God feeds them” is from…","“കാക്കകളെ നോക്കുവിൻ… ദൈവം അവയെ പുലർത്തുന്നു” ഏത് വാക്യം?",[["Luke 12:24","ലൂക്കോ. 12:24"],["Matthew 5:48","മത്താ. 5:48"],["John 3:16","യോഹ. 3:16"],["Genesis 1:1","ഉല്പത്തി 1:1"]]],["“Are not five sparrows sold for ___?” (Luke 12:6)","“അഞ്ച് കുരികിലിനെ ___ക്ക് വിൽക്കുന്നില്ലയോ?” (ലൂക്കോ. 12:6)",[["Two copper coins","രണ്ട് കാശിന്"],["Ten silver coins","പത്ത് വെള്ളിക്കാശിന്"],["One gold coin","ഒരു പൊൻകാശിന്"],["Nothing","ഒന്നുമില്ലാതെ"]]],["Jesus was born among…","യേശു ജനിച്ചത്…",[["Animals, haystack and grass in a manger","മൃഗങ്ങളുടെയും വൈക്കോലിന്റെയും പുല്ലിന്റെയും ഇടയിൽ പുൽക്കൂട്ടിൽ"],["A royal palace","രാജകൊട്ടാരത്തിൽ"],["A big hospital","വലിയ ആശുപത്രിയിൽ"],["The Temple","ദൈവാലയത്തിൽ"]]],["On the feast of Hosanna, special prayers are said for…","ഓശാന പെരുന്നാളിൽ പ്രത്യേക പ്രാർത്ഥന…",[["All trees and plants","സകല വൃക്ഷങ്ങൾക്കും ചെടികൾക്കും"],["Kings","രാജാക്കന്മാർക്ക്"],["Animals only","മൃഗങ്ങൾക്ക് മാത്രം"],["Rivers only","നദികൾക്ക് മാത്രം"]]],["What is done on the day of Pentecost?","പെന്തിക്കോസ്തി പെരുന്നാളിൽ ചെയ്യുന്നത്?",[["Water is blessed and sprinkled on the people three times","വെള്ളം വാഴ്ത്തി മൂന്നു പ്രാവശ്യം ജനങ്ങളുടെമേൽ തളിക്കുന്നു"],["Palm leaves are blessed","കുരുത്തോല വാഴ്ത്തുന്നു"],["A bonfire is lit","തീജ്വാല ശുശ്രൂഷ നടത്തുന്നു"],["The cross is removed","കുരിശ് മാറ്റുന്നു"]]],["Which material is especially harmful to nature?","പ്രകൃതിക്ക് ഏറെ ഹാനികരമായ വസ്തു?",[["Plastic","പ്ലാസ്റ്റിക്"],["Cloth bags","തുണിസഞ്ചി"],["Compost","കമ്പോസ്റ്റ്"],["Coconut leaves","തെങ്ങോല"]]],["Water scarcity can be tackled by…","ജലക്ഷാമം പരിഹരിക്കാനുള്ള വഴി…",[["Rain water harvesting","മഴവെള്ള സംഭരണം"],["Digging more tube wells","കൂടുതൽ കുഴൽക്കിണറുകൾ"],["Filling paddy fields","വയലുകൾ നികത്തുന്നത്"],["Sand mining","മണൽവാരൽ"]]],["For farming, ___ is better than chemical fertilisers.","കൃഷിക്ക് രാസവളത്തേക്കാൾ നല്ലത്…",[["Compost","കമ്പോസ്റ്റ് വളം"],["Plastic","പ്ലാസ്റ്റിക്"],["Sand","മണൽ"],["Petrol","പെട്രോൾ"]]],["Which medicinal plants can we grow in our courtyard?","മുറ്റത്ത് നട്ടുപിടിപ്പിക്കാവുന്ന ഔഷധസസ്യങ്ങൾ?",[["Neem, tulsi (basil) and turmeric","വേപ്പ്, തുളസി, മഞ്ഞൾ"],["Rubber and teak","റബ്ബറും തേക്കും"],["Cactus only","കള്ളിച്ചെടി മാത്രം"],["Plastic plants","പ്ലാസ്റ്റിക് ചെടികൾ"]]],["Which drinks should we choose?","നാം ഉപയോഗിക്കേണ്ട പാനീയങ്ങൾ?",[["Pure water, coconut water and fruit juice","ശുദ്ധജലം, കരിക്കിൻവെള്ളം, പഴച്ചാറുകൾ"],["Artificial soft drinks","കൃത്രിമ ശീതളപാനീയങ്ങൾ"],["Energy drinks","എനർജി ഡ്രിങ്കുകൾ"],["Coloured sugar drinks","നിറം ചേർത്ത മധുരപാനീയങ്ങൾ"]]],["Which activity upsets the equilibrium of nature?","പ്രകൃതിയുടെ സന്തുലിതാവസ്ഥ തകർക്കുന്ന പ്രവൃത്തി?",[["Levelling hills, filling paddy fields and sand mining","കുന്നിടിക്കൽ, വയൽ നികത്തൽ, മണൽവാരൽ"],["Planting trees","മരം നടുന്നത്"],["Rain water harvesting","മഴവെള്ള സംഭരണം"],["Growing vegetables","പച്ചക്കറി കൃഷി"]]],["God created nature, and…","ദൈവം സൃഷ്ടിച്ചതെല്ലാം…",[["Saw that it was good","നല്ലതെന്ന് കണ്ടു"],["Was not pleased","തൃപ്തനായില്ല"],["Destroyed it","നശിപ്പിച്ചു"],["Forgot it","മറന്നു"]]]]}];
+const L = ["A","B","C","D"];
+const PER_Q = 60; // seconds per question
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}><${tag} class="ml">${esc(ml)}</${tag}>`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = { get(k,d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
+const fmt = s => `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+
+const EXAMS = [
+  ...CH.map(c => ({id:"ch"+c.n, en:`Chapter ${c.n}: ${c.en}`, ml:`പാഠം ${c.n}: ${c.ml}`, pool:c.q.map((q,i)=>({q,ch:c.n})), count:c.q.length})),
+  {id:"full", en:"Full exam · Chapters 20–25", ml:"പൂർണ്ണ പരീക്ഷ · പാഠം 20–25", pool:CH.flatMap(c => c.q.map(q => ({q,ch:c.n}))), count:25, full:true}
+];
+
+/* language */
+function setLang(l){ document.body.dataset.lang = l; document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l)); store.set("c7x-lang", l); }
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+setLang(store.get("c7x-lang", "both"));
+
+let S = null; // exam state
+let tick = null;
+
+/* ---------- WELCOME ---------- */
+function welcome(){
+  clearInterval(tick); $("#exambar").innerHTML = "";
+  const last = store.get("c7x-name", "");
+  let pick = "full";
+  $("#view").innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <h1><span class="en">Sunday School Exam</span><span class="ml">സൺഡേസ്കൂൾ പരീക്ഷ</span></h1>
+      <p class="lead">${bi("Class VII · Galilee Division · Stories from the Holy Bible", "ക്ലാസ് VII · വി. വേദപുസ്തക സംഭവങ്ങൾ")}</p>
+    </div>
+    <form class="panel" id="startForm" novalidate>
+      <label class="f" for="sname">${bi("Your full name", "നിങ്ങളുടെ പേര്")}
+        <input type="text" id="sname" autocomplete="name" maxlength="60" value="${esc(last)}" placeholder="e.g. Ann Mariya Thomas">
+      </label>
+      <label class="f" for="sparish">${bi("Parish / Sunday School", "ഇടവക / സൺഡേസ്കൂൾ")} <small>${bi("optional", "നിർബന്ധമില്ല")}</small>
+        <input type="text" id="sparish" maxlength="60" value="${esc(store.get("c7x-parish",""))}">
+      </label>
+      <div class="f" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-weight:700">${bi("Choose your exam", "പരീക്ഷ തിരഞ്ഞെടുക്കുക")}</span>
+        <div class="choices" role="group">
+          ${EXAMS.map(e => `<button type="button" class="choice${e.full ? " full" : ""}" data-id="${e.id}" aria-pressed="${e.id === pick}">
+            <span class="t">${esc(e.en)}</span><span class="s ml">${esc(e.ml)}</span>
+            <span class="meta">${bi(e.count + " questions · " + Math.round(e.count*PER_Q/60) + " min", e.count + " ചോദ്യങ്ങൾ · " + Math.round(e.count*PER_Q/60) + " മിനിറ്റ്")}</span>
+          </button>`).join("")}
+        </div>
+      </div>
+      <ul class="rules">
+        <li>${bi("One minute per question. The exam submits itself when time runs out.", "ഓരോ ചോദ്യത്തിനും ഒരു മിനിറ്റ്. സമയം കഴിഞ്ഞാൽ പരീക്ഷ സ്വയം സമർപ്പിക്കും.")}</li>
+        <li>${bi("You can go back and change answers before submitting.", "സമർപ്പിക്കുന്നതിനു മുമ്പ് ഉത്തരങ്ങൾ മാറ്റാം.")}</li>
+        <li>${bi("Take a screenshot of your result and send it to your teacher.", "ഫലത്തിന്റെ സ്ക്രീൻഷോട്ട് എടുത്ത് ടീച്ചർക്ക് അയയ്ക്കുക.")}</li>
+      </ul>
+      <div class="err" id="err" hidden></div>
+      <div class="btnrow"><button type="submit" class="btn">${bi("Start exam", " · പരീക്ഷ തുടങ്ങുക")}</button></div>
+    </form>`;
+  document.querySelectorAll(".choice").forEach(b => b.addEventListener("click", () => {
+    pick = b.dataset.id; document.querySelectorAll(".choice").forEach(x => x.setAttribute("aria-pressed", x === b));
+  }));
+  $("#startForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("#sname").value.trim().replace(/\s+/g, " ");
+    if (name.length < 2){ const er = $("#err"); er.innerHTML = bi("Please type your name to begin.", " · തുടങ്ങാൻ പേര് നൽകുക."); er.hidden = false; $("#sname").focus(); return; }
+    store.set("c7x-name", name); store.set("c7x-parish", $("#sparish").value.trim());
+    begin(name, $("#sparish").value.trim(), EXAMS.find(x => x.id === pick));
+  });
+}
+
+/* ---------- EXAM ---------- */
+function begin(name, parish, exam){
+  const items = shuffle(exam.pool).slice(0, exam.count).map(it => ({...it, order: shuffle([0,1,2,3])}));
+  const total = items.length * PER_Q;
+  S = {name, parish, exam, items, ans: new Array(items.length).fill(null), i:0, total, end: Date.now() + total*1000, start: Date.now(), confirming:false};
+  renderBar();
+  tick = setInterval(updTimer, 500);
+  renderQ();
+}
+function renderBar(){
+  $("#exambar").innerHTML = `<div class="exambar"><div class="wrap">
+    <div class="row"><span class="who">${esc(S.name)}</span><span class="timer" id="timer" role="timer" aria-label="Time left">${fmt(S.total)}</span></div>
+    <div class="bar"><i id="prog" style="width:0%"></i></div></div></div>`;
+  updTimer();
+}
+function updTimer(){
+  if (!S) return;
+  const left = Math.max(0, Math.round((S.end - Date.now())/1000));
+  const t = $("#timer"); if (!t) return;
+  t.textContent = fmt(left); t.classList.toggle("low", left <= 60);
+  if (left <= 0) submit(true);
+}
+function renderQ(){
+  const it = S.items[S.i], q = it.q, n = S.items.length;
+  const answered = S.ans.filter(a => a !== null).length;
+  $("#prog").style.width = (answered / n * 100) + "%";
+  const unanswered = n - answered;
+  $("#view").innerHTML = `
+    <div class="qcard">
+      <div class="qnum">${bi(`Question ${S.i+1} of ${n}`, ` · ചോദ്യം ${S.i+1}/${n}`)}</div>
+      <div class="qtext">${bi(q[0], q[1])}</div>
+      <div class="opts" role="radiogroup">
+        ${it.order.map((k, j) => `<button type="button" class="opt" role="radio" aria-checked="${S.ans[S.i] === k}" data-k="${k}">
+          <span class="k">${L[j]}</span><span class="tx">${bi(q[2][k][0], q[2][k][1])}</span></button>`).join("")}
+      </div>
+      <div class="nav">
+        <button type="button" class="btn ghost" id="prev" ${S.i === 0 ? "disabled" : ""}>${bi("← Previous", "← മുമ്പത്തേത്")}</button>
+        ${S.i < n-1 ? `<button type="button" class="btn" id="next">${bi("Next →", "അടുത്തത് →")}</button>`
+                    : `<button type="button" class="btn" id="fin">${bi("Finish", "പൂർത്തിയാക്കുക")}</button>`}
+      </div>
+    </div>
+    <div class="panel" style="gap:10px">
+      <div class="legend">${bi(`Answered ${answered} of ${n} · tap a number to jump`, `ഉത്തരം നൽകിയത് ${answered}/${n}`)}</div>
+      <div class="pal">${S.items.map((_, j) => `<button type="button" data-j="${j}" class="${S.ans[j] !== null ? "done" : ""}${j === S.i ? " cur" : ""}" aria-label="Question ${j+1}">${j+1}</button>`).join("")}</div>
+      ${S.confirming ? `<div class="confirm">
+          <div>${unanswered ? bi(`${unanswered} question(s) not answered yet. Submit anyway?`, `${unanswered} ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകിയിട്ടില്ല. സമർപ്പിക്കണോ?`) : bi("All questions answered. Submit your exam?", "എല്ലാ ചോദ്യങ്ങൾക്കും ഉത്തരം നൽകി. സമർപ്പിക്കണോ?")}</div>
+          <div class="btnrow"><button type="button" class="btn" id="yes">${bi("Yes, submit", " · സമർപ്പിക്കുക")}</button><button type="button" class="btn ghost" id="no">${bi("Go back", " · തിരികെ")}</button></div>
+        </div>`
+      : `<div class="btnrow"><button type="button" class="btn ghost" id="sub">${bi("Submit exam", " · പരീക്ഷ സമർപ്പിക്കുക")}</button></div>`}
+    </div>`;
+  document.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => {
+    S.ans[S.i] = +b.dataset.k; S.confirming = false;
+    if (S.i < n-1) setTimeout(() => { S.i++; renderQ(); }, 220); else renderQ();
+    document.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", x === b));
+  }));
+  const go = j => { S.i = j; S.confirming = false; renderQ(); window.scrollTo({top:0}); };
+  $("#prev").addEventListener("click", () => go(S.i - 1));
+  $("#next")?.addEventListener("click", () => go(S.i + 1));
+  const ask = () => { S.confirming = true; renderQ(); $("#yes")?.scrollIntoView({block:"center"}); };
+  $("#fin")?.addEventListener("click", ask);
+  $("#sub")?.addEventListener("click", ask);
+  $("#yes")?.addEventListener("click", () => submit(false));
+  $("#no")?.addEventListener("click", () => { S.confirming = false; renderQ(); });
+  document.querySelectorAll(".pal button").forEach(b => b.addEventListener("click", () => go(+b.dataset.j)));
+}
+
+/* ---------- RESULT ---------- */
+function syncResult(a){
+  try{
+    const cfg = window.SS_CONFIG || {};
+    let url = cfg.sheetUrl; try{ url = url || localStorage.getItem("ss_cloud_endpoint"); }catch(e){}
+    if (url && url.trim().startsWith("http")) fetch(url.trim(), {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(a), mode:"no-cors"}).catch(()=>{});
+  }catch(e){}
+  try{ const raw = localStorage.getItem("ss_exam_attempts"); const list = raw ? JSON.parse(raw) : []; list.unshift(a); localStorage.setItem("ss_exam_attempts", JSON.stringify(list.slice(0,1000))); }catch(e){}
+}
+
+function submit(timeout){
+  if (!S || S.done) return;
+  S.done = true; clearInterval(tick); $("#exambar").innerHTML = "";
+  const n = S.items.length;
+  const right = S.items.filter((it, j) => S.ans[j] === 0).length;
+  const skipped = S.ans.filter(a => a === null).length;
+  const pct = Math.round(right / n * 100);
+  const used = Math.min(S.total, Math.round((Date.now() - S.start)/1000));
+  const g = pct >= 90 ? ["A+","Excellent","മികച്ചത്",""] : pct >= 75 ? ["A","Very good","വളരെ നല്ലത്",""] : pct >= 60 ? ["B","Good","നല്ലത്","mid"] : pct >= 40 ? ["C","Pass · revise more","ജയിച്ചു · ഇനിയും പഠിക്കുക","mid"] : ["D","Needs more study","കൂടുതൽ പഠിക്കണം","low"];
+  const d = new Date();
+  const when = d.toLocaleDateString("en-GB", {day:"2-digit", month:"short", year:"numeric"}) + ", " + d.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit"});
+  const hist = store.get("c7x-hist", []); hist.unshift({n:S.name, e:S.exam.id, s:right, t:n, d:d.toISOString()}); store.set("c7x-hist", hist.slice(0, 20));
+
+  syncResult({
+    id: "att_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6),
+    timestamp: d.toISOString(), dateStr: d.toLocaleDateString("en-GB"),
+    timeStr: d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}),
+    className: "Class 7 Revision – " + (S.exam.full ? "Ch 20-25 Full" : "Ch " + S.exam.id.slice(2)),
+    studentName: S.name, rollNumber: "", studentPhone: "", schoolName: S.parish, schoolCode: "", diocese: "",
+    score: right, totalQuestions: n, percentage: pct, status: pct >= 50 ? "PASS" : "FAIL",
+    timeTakenSeconds: used, durationStr: Math.floor(used/60) + "m " + (used%60) + "s"
+  });
+  let filter = "all";
+  const reviewHTML = () => S.items.map((it, j) => {
+    const a = S.ans[j], q = it.q, ok = a === 0, sk = a === null;
+    if (filter === "wrong" && ok) return "";
+    return `<div class="rv ${ok ? "" : sk ? "s" : "x"}">
+      <span class="tag ${ok ? "ok" : sk ? "skip" : "bad"}">${j+1} · ${ok ? bi("Correct","ശരി") : sk ? bi("Not answered","ഉത്തരം നൽകിയില്ല") : bi("Wrong","തെറ്റ്")} · ${bi("Chapter " + it.ch, " · പാഠം " + it.ch)}</span>
+      <div class="qt">${bi(q[0], q[1])}</div>
+      ${!ok && !sk ? `<div class="a" style="color:var(--bad)">${bi("Your answer: " + q[2][a][0], "നിങ്ങളുടെ ഉത്തരം: " + q[2][a][1])}</div>` : ""}
+      <div class="a" style="color:var(--ok)">${bi("Correct answer: " + q[2][0][0], "ശരിയുത്തരം: " + q[2][0][1])}</div>
+    </div>`;
+  }).join("");
+
+  $("#view").innerHTML = `
+    ${timeout ? `<div class="confirm">${bi("Time is up. Your exam was submitted automatically.", "സമയം കഴിഞ്ഞു. പരീക്ഷ സ്വയം സമർപ്പിച്ചു.")}</div>` : ""}
+    <div class="cert" id="cert">
+      <div class="top"><div class="e">Mar Gregorios Orthodox Syrian Church · Sunday School</div><div class="t">${bi("Exam Result", " · പരീക്ഷാഫലം")}</div></div>
+      <div class="bd">
+        <div class="ring" style="--p:${pct}"><div><div><b>${right}</b><small>/ ${n}</small></div></div></div>
+        <dl class="facts">
+          <dt>${bi("Name","പേര്")}</dt><dd>${esc(S.name)}</dd>
+          ${S.parish ? `<dt>${bi("Parish","ഇടവക")}</dt><dd>${esc(S.parish)}</dd>` : ""}
+          <dt>${bi("Exam","പരീക്ഷ")}</dt><dd>${bi(S.exam.en, S.exam.ml)}</dd>
+          <dt>${bi("Score","മാർക്ക്")}</dt><dd>${right}/${n} · ${pct}%</dd>
+          <dt>${bi("Grade","ഗ്രേഡ്")}</dt><dd><span class="grade ${g[3]}">${g[0]}</span> ${bi(g[1], " " + g[2])}</dd>
+          <dt>${bi("Time","സമയം")}</dt><dd>${fmt(used)}${skipped ? ` · ${skipped} ${bi("skipped","ഒഴിവാക്കി")}` : ""}</dd>
+          <dt>${bi("Date","തീയതി")}</dt><dd>${esc(when)}</dd>
+        </dl>
+      </div>
+      <div class="ft">${bi("Class VII · Galilee Division · Screenshot this card and send it to your teacher", "ഈ കാർഡിന്റെ സ്ക്രീൻഷോട്ട് ടീച്ചർക്ക് അയയ്ക്കുക")}</div>
+    </div>
+    <div class="btnrow">
+      <button type="button" class="btn" id="again">${bi("Take another exam", " · മറ്റൊരു പരീക്ഷ")}</button>
+    </div>
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div class="sec-title"><h2>${bi("Answer review", " · ഉത്തരങ്ങൾ")}</h2>
+        <div class="seg filter" role="group"><button type="button" data-f="all" aria-pressed="true">${bi("All","എല്ലാം")}</button><button type="button" data-f="wrong" aria-pressed="false">${bi(`Mistakes (${n-right})`,`തെറ്റിയവ (${n-right})`)}</button></div>
+      </div>
+      <div class="review" id="review">${reviewHTML()}</div>
+    </section>`;
+  window.scrollTo({top:0});
+  $("#again").addEventListener("click", welcome);
+  document.querySelectorAll(".filter button").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.f; document.querySelectorAll(".filter button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $("#review").innerHTML = reviewHTML();
+  }));
+}
+
+welcome();
+</script>
+
+</body>
+</html>

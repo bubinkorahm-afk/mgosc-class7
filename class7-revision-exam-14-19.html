@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Class 7 Revision Exam · Chapters 14–19 | MGOSC Sunday School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap">
+<style>
+/* Layout: single exam column; sticky exam bar with timer; question palette below the question */
+:root{
+  --bg:#F5F3F7; --surface:#FFFFFF; --sunk:#ECE8F0; --ink:#1E1A29; --muted:#625B70; --line:#DCD6E3;
+  --accent:#8A1C3B; --accent-ink:#FFFFFF; --accent-soft:#F6E4EA; --gold:#9A6E1C; --gold-soft:#F7EEDB;
+  --ok:#1D7A4A; --ok-soft:#E1F3E8; --bad:#B4322C; --bad-soft:#FBE6E4; --warn:#B36B00;
+  --f-display:"Alegreya", Georgia, serif;
+  --f-body:"Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --f-ml:"Noto Sans Malayalam", "Manjari", "Kartika", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; --warn:#F0B24A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111B; --surface:#201A28; --sunk:#2A2333; --ink:#EEE9F3; --muted:#A79FB4; --line:#3A3245;
+  --accent:#E8789A; --accent-ink:#1A0D13; --accent-soft:#3A1C28; --gold:#E2B65A; --gold-soft:#352A16;
+  --ok:#5BCB8C; --ok-soft:#173226; --bad:#F08079; --bad-soft:#3A1C1B; --warn:#F0B24A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.ml{font-family:var(--f-ml);line-height:1.7}
+body[data-lang="en"] .ml{display:none!important}
+body[data-lang="ml"] .en{display:none!important}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+header.top{background:var(--surface);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-block:18px 14px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.brand .eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.brand .name{font-family:var(--f-display);font-weight:800;font-size:22px;line-height:1.15}
+.seg{display:inline-flex;background:var(--sunk);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--muted);font:600 14px var(--f-body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button.mlb{font-family:var(--f-ml);font-size:13px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+
+main .wrap{padding-block:24px 64px;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--f-display);font-size:clamp(28px,6vw,38px);line-height:1.1;margin:0;text-wrap:balance}
+h1 .ml{display:block;font-size:.6em;font-weight:700;color:var(--muted);margin-top:6px}
+.lead{margin:0;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px}
+label.f{display:flex;flex-direction:column;gap:6px;font-weight:700}
+label.f small{font-weight:500;color:var(--muted)}
+input[type=text]{font:500 18px var(--f-body);padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);width:100%}
+input[type=text]:focus{outline:3px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.err{color:var(--bad);font-size:14px;font-weight:600}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.choices{grid-template-columns:1fr}}
+.choice{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px;font:inherit}
+.choice .t{font-weight:700}
+.choice .s{font-size:14px;color:var(--muted)}
+.choice .meta{font-size:13px;color:var(--gold);font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
+.choice[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.choice.full{grid-column:1/-1}
+.rules{margin:0;padding-left:1.2em;color:var(--muted);font-size:15px;display:flex;flex-direction:column;gap:4px}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{border:0;border-radius:10px;padding:12px 20px;font:700 16px var(--f-body);cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,.choice:focus-visible,.opt:focus-visible,.pal button:focus-visible,.seg button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* exam */
+.exambar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.exambar .wrap{padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.exambar .row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-variant-numeric:tabular-nums}
+.exambar .who{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.timer{font:700 18px var(--f-body);font-variant-numeric:tabular-nums;padding:3px 10px;border-radius:8px;background:var(--sunk)}
+.timer.low{background:var(--bad-soft);color:var(--bad)}
+.bar{height:6px;background:var(--sunk);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.qnum{font:700 13px var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.qtext{font-weight:700;font-size:19px;line-height:1.4}
+.qtext .ml{display:block;font-size:16.5px;font-weight:600;margin-top:4px}
+body[data-lang="both"] .qtext .ml{color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:11px 14px;cursor:pointer;font:500 17px var(--f-body)}
+.opt .k{font-weight:700;color:var(--muted);width:1.4em}
+.opt .tx{min-width:0;display:flex;flex-direction:column}
+.opt .tx .ml{font-size:15px;color:var(--muted)}
+.opt[aria-checked="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.opt[aria-checked="true"] .k{color:var(--accent)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px}
+.pal button{height:40px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--muted);font:700 15px var(--f-body);cursor:pointer;font-variant-numeric:tabular-nums}
+.pal button.done{background:var(--sunk);color:var(--ink);border-color:var(--sunk)}
+.pal button.cur{border-color:var(--accent);color:var(--accent)}
+.legend{font-size:13px;color:var(--muted)}
+.confirm{background:var(--gold-soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+
+/* result */
+.cert{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.cert .top{background:var(--accent);color:var(--accent-ink);padding:16px 20px}
+.cert .top .e{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;opacity:.9}
+.cert .top .t{font-family:var(--f-display);font-size:22px;font-weight:800}
+.cert .bd{padding:20px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+@media (max-width:480px){.cert .bd{grid-template-columns:1fr;text-align:center;justify-items:center}}
+.ring{width:128px;height:128px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ok) calc(var(--p)*1%), var(--sunk) 0)}
+.ring div{width:104px;height:104px;border-radius:50%;background:var(--surface);display:grid;place-items:center;text-align:center;line-height:1}
+.ring b{font-family:var(--f-display);font-size:38px;font-variant-numeric:tabular-nums}
+.ring small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:15px;min-width:0}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-weight:700;min-width:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.grade{display:inline-block;padding:2px 10px;border-radius:99px;background:var(--ok-soft);color:var(--ok);font-weight:700}
+.grade.mid{background:var(--gold-soft);color:var(--gold)}
+.grade.low{background:var(--bad-soft);color:var(--bad)}
+.cert .ft{border-top:1px dashed var(--line);padding:10px 20px;font-size:13px;color:var(--muted);text-align:center}
+.review{display:flex;flex-direction:column;gap:10px}
+.rv{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.rv.x{border-left-color:var(--bad)}
+.rv.s{border-left-color:var(--muted)}
+.rv .qt{font-weight:700}
+.rv .qt .ml{display:block;font-weight:600;font-size:15px;color:var(--muted)}
+.rv .a{font-size:15px}
+.rv .a .ml{display:block;font-size:14px}
+.tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tag.ok{color:var(--ok)} .tag.bad{color:var(--bad)} .tag.skip{color:var(--muted)}
+.sec-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-title h2{margin:0;font-family:var(--f-display);font-size:21px}
+.filter{font-size:14px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding-block:0 28px}
+span.en + span.ml{margin-left:.4em}
+.qtext span.ml,.tx span.ml,.rv span.ml,.a span.ml{margin-left:0}
+.facts span.ml{display:block;margin-left:0;font-weight:500;font-size:.9em}
+.facts dt span.ml{font-size:12.5px}
+.legend span.ml,.ft span.ml{display:block;margin-left:0}
+body[data-lang="both"] .meta .ml{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+html{color-scheme:light}body{margin:0}[hidden]{display:none!important}img{max-width:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.homelink{color:var(--accent);font-weight:700;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div class="eyebrow">Mar Gregorios Orthodox Syrian Church · Sunday School</div>
+      <div class="name">Class 7 Revision Exam</div>
+      <a class="homelink" href="index.html">← Class 7 Portal home</a>
+    </div>
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" data-lang="both" id="lang-both">EN + മല</button>
+      <button type="button" data-lang="en" id="lang-en">English</button>
+      <button type="button" data-lang="ml" class="mlb" id="lang-ml">മലയാളം</button>
+    </div>
+  </div>
+</header>
+<div id="exambar"></div>
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">Galilee Division · Class VII · Chapters 14–19</div></footer>
+
+<script>
+const CH=[{"n":14,"en":"Intercessory Hymns to Mother Mary (Kukiliyon of the Mother of God)","ml":"ദൈവമാതാവിന്റെ കുക്കിലിയോൻ","q":[["Whose Kukiliyon is recited first in the Holy Qurbana?","വി. കുർബ്ബാനമദ്ധ്യേ കുക്കിലിയോൻ ചൊല്ലുമ്പോൾ ആദ്യം ചൊല്ലുന്നത് ആരുടെ കുക്കിലിയോൻ?",[["St. Mary, the Mother of God","ദൈവമാതാവായ വി. കന്യകമറിയാമിന്റെ"],["The saints","പരിശുദ്ധന്മാരുടെ"],["The departed","വാങ്ങിപ്പോയവരുടെ"],["The apostles","ശ്ലീഹന്മാരുടെ"]]],["How does the Kukiliyon of St. Mary begin?","ദൈവമാതാവിന്റെ കുക്കിലിയോൻ ആരംഭിക്കുന്നത് ഏത് ഗീതത്തോടെ?",[["“See the royal daughter stand…”","“നിന്നാൾ സ്തുതിയൊടു രാജമകൾ…”"],["“Plead for us, ye holy Saints”","“പരിശുദ്ധന്മാരേ നിങ്ങൾ…”"],["“Lord, Thy mercy on us cast”","“കർത്താവേ കൃപ ചെയ്യേണമേ”"],["“The righteous shall prosper like palm trees”","“നയവാൻ പനപോലെ തളിർത്തിടുമേ”"]]],["The opening Psalm passage is taken from…","കുക്കിലിയോനിലെ സങ്കീർത്തനഭാഗം എടുത്തിരിക്കുന്നത്…",[["Psalm 45:9-11","സങ്കീ. 45:9-11"],["Psalm 92:12-14","സങ്കീ. 92:12-14"],["Psalm 51","സങ്കീ. 51"],["Psalm 23","സങ്കീ. 23"]]],["What does ‘Ekbo’ mean?","‘എക്ബോ’ എന്ന വാക്കിന്റെ അർത്ഥം?",[["Step / stair","പടി"],["Sound","ശബ്ദം"],["Supplication","അപേക്ഷ"],["Preface","ആമുഖം"]]],["The Ekbo begins…","എക്ബോ ആരംഭിക്കുന്നത്…",[["“Thou whose praise the Church doth sing”","“ഭക്തർ പുകഴ്ചാ ഭാജനമേ”"],["“By Thy Cross, O Jesus Lord”","“മോറാനീശോ കുരിശും നിൻ”"],["“Cease not, thou of grace of fount”","“നിർത്തീടരുതേ പരിശുദ്ധേ”"],["“Mary’s memory blessing for us be”","“മറിയാമിൻ സ്മരണം വരദായമാക”"]]],["What does ‘Kolo’ mean?","‘കോലോ’ എന്ന പദത്തിന്റെ അർത്ഥം?",[["Sound","ശബ്ദം"],["Step","പടി"],["Order","ക്രമം"],["Prayer for forgiveness","പാപപരിഹാര പ്രാർത്ഥന"]]],["What does ‘Bovootho’ mean?","‘ബോവൂസോ’ എന്ന വാക്കിന്റെ അർത്ഥം?",[["Supplication","അപേക്ഷ"],["Sound","ശബ്ദം"],["Step","പടി"],["Praise","സ്തുതി"]]],["What does ‘Sthaumen Kalos’ mean?","‘സ്തൗമെൻ കാലോസ്’ എന്നതിന്റെ അർത്ഥം?",[["We should stand well","നാം നല്ലവണ്ണം നിൽക്കണം"],["Lord, have mercy","കർത്താവേ കരുണ ചെയ്യേണമേ"],["Bless us, O Lord","കർത്താവേ വാഴ്ത്തണമേ"],["Peace be with you","നിങ്ങൾക്ക് സമാധാനം"]]],["What does ‘Kuriyelaison’ mean?","‘കുറിയേലായിസോൻ’ എന്നതിന്റെ അർത്ഥം?",[["Lord, have mercy upon us","കർത്താവേ, കരുണ ചെയ്യേണമേ"],["Glory to the Father","പിതാവിന് സ്തുതി"],["We should stand well","നാം നല്ലവണ്ണം നിൽക്കണം"],["Amen","ആമേൻ"]]],["‘Men Olam Vaada Mol Olam Olmeen, Amen’ means…","‘മെൻ ഓലം വാദാമോൽ ഓലം ഒൽമീൻ ആമ്മീൻ’ എന്നതിന്റെ അർത്ഥം?",[["From the beginning and for ever and ever, Amen","ആദിമുതൽ എന്നേക്കും തന്നെ, ആമ്മീൻ"],["Lord, have mercy upon us","കർത്താവേ കരുണ ചെയ്യേണമേ"],["Bless us, O Lord","കർത്താവേ വാഴ്ത്തണമേ"],["We should stand well","നാം നല്ലവണ്ണം നിൽക്കണം"]]],["‘Moriyo Rahem melain u Aadarain’ means…","‘മോറിയോ റാഹേം മേലൈൻ ഉ ആദാറെൻ’ എന്നതിന്റെ അർത്ഥം?",[["Lord, help us by having mercy upon us","കർത്താവേ, കരുണ ചെയ്ത് ഞങ്ങളെ സഹായിക്കേണമേ"],["Lord, show us grace","കർത്താവേ കൃപ ചെയ്യേണമേ"],["From the beginning and for ever","ആദിമുതൽ എന്നേക്കും"],["Glory to the Holy Trinity","ത്രിത്വത്തിന് സ്തുതി"]]],["‘Barekmor’ means…","‘ബാറെക്മോർ’ എന്നതിന്റെ അർത്ഥം?",[["Bless us, O Lord","കർത്താവേ വാഴ്ത്തണമേ"],["Peace","സമാധാനം"],["Amen","ആമേൻ"],["Holy, holy, holy","പരിശുദ്ധൻ, പരിശുദ്ധൻ, പരിശുദ്ധൻ"]]],["The first Kolo (“Peace the bright archangel brought”) refers to…","ഒന്നാമത്തെ കോലോ (“മന്നമകൾക്കായി ശ്ലോമ്മോ…”) സൂചിപ്പിക്കുന്ന സംഭവം?",[["The Annunciation by archangel Gabriel (Luke 1:28-32)","ഗബ്രിയേൽ ദൂതന്റെ വചനിപ്പ് (ലൂക്കോ. 1:28-32)"],["The birth of Jesus","യേശുവിന്റെ ജനനം"],["The wedding at Cana","കാനാവിലെ കല്യാണം"],["The Ascension","സ്വർഗ്ഗാരോഹണം"]]],["In the Kolo, St. Mary is compared to a…","കോലോയിൽ കന്യകമറിയാമിനെ ഉപമിച്ചിരിക്കുന്നത്…",[["Large ship carrying the Lord","കർത്താവിനെ വഹിച്ച വലിയ കപ്പൽ (പടക്)"],["Tall tower","ഉയർന്ന ഗോപുരം"],["Bright star","പ്രകാശമുള്ള നക്ഷത്രം"],["Strong rock","ബലമുള്ള പാറ"]]],["“May her prayers for us be a ___” (Kolo 2)","“തൽപ്രാർത്ഥന ഞങ്ങൾക്കാത്മാവിനു ___” (കോലോ 2)",[["Fortress","കോട്ട"],["Lamp","വിളക്ക്"],["Song","ഗാനം"],["Crown","കിരീടം"]]],["In all these hymns, what do we ask St. Mary to do?","ഈ ഗീതങ്ങളിലെല്ലാം നാം കന്യകമറിയാമിനോട് അപേക്ഷിക്കുന്നത്?",[["To pray to her Only Son on our behalf","ഞങ്ങൾക്കുവേണ്ടി തന്റെ ഏകപുത്രനോട് അപേക്ഷിക്കുവാൻ"],["To forgive our sins herself","അവൾ തന്നെ പാപം ക്ഷമിക്കുവാൻ"],["To take the place of Christ","ക്രിസ്തുവിന്റെ സ്ഥാനം ഏറ്റെടുക്കുവാൻ"],["To judge the world","ലോകത്തെ ന്യായം വിധിക്കുവാൻ"]]],["Which bovootho is used in the Kukiliyon of St. Mary?","ദൈവമാതാവിന്റെ കുക്കിലിയോനിൽ ഉപയോഗിക്കുന്ന ബോവൂസോ?",[["“By Thy Cross, O Jesus Lord”","“മോറാനീശോ കുരിശും നിൻ”"],["“Plead for us, ye holy Saints”","“പരിശുദ്ധന്മാരേ നിങ്ങൾ”"],["“Clear, O Lord, my every debt”","“എന്റെ കടങ്ങളശേഷം”"],["“Take to Fast for forty days”","“നാല്പതുനാൾ ഉപവസിക്ക”"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Psalm 45:9-10","സങ്കീ. 45:9-10"],["Psalm 92:12-14","സങ്കീ. 92:12-14"],["Luke 1:28","ലൂക്കോ. 1:28"],["Psalm 119:18","സങ്കീ. 119:18"]]]]},{"n":15,"en":"Intercessory Hymns to Saints (Kukiliyon of Saints)","ml":"പരിശുദ്ധന്മാരുടെ കുക്കിലിയോൻ","q":[["The Psalm passage of the Kukiliyon of saints is from…","പരിശുദ്ധന്മാരുടെ കുക്കിലിയോനിലെ സങ്കീർത്തനഭാഗം?",[["Psalm 92:12-14","സങ്കീ. 92:12-14"],["Psalm 45:9-11","സങ്കീ. 45:9-11"],["Psalm 91","സങ്കീ. 91"],["Psalm 4:8","സങ്കീ. 4:8"]]],["The righteous are compared to…","നീതിമാനെ ഉപമിച്ചിരിക്കുന്നത്…",[["A palm tree and a cedar of Lebanon","പനയോടും ലെബാനോനിലെ ദേവദാരുവിനോടും"],["A rose and a lily","റോസാപ്പൂവിനോടും ലില്ലിയോടും"],["A river and a sea","നദിയോടും കടലിനോടും"],["A lion and an eagle","സിംഹത്തോടും കഴുകനോടും"]]],["Why is the date palm a good image for a righteous person?","നീതിമാനെ ഈന്തപ്പനയോട് ഉപമിക്കുന്നത് എന്തുകൊണ്ട്?",[["It grows well even in hot deserts, undaunted by hardship","കഠിനമായ മരുഭൂമിയിലും തളരാതെ തഴച്ചുവളരുന്നതിനാൽ"],["It has beautiful flowers","മനോഹരമായ പൂക്കളുള്ളതിനാൽ"],["It grows only in rivers","നദിയിൽ മാത്രം വളരുന്നതിനാൽ"],["It is very short","വളരെ ചെറുതായതിനാൽ"]]],["The Ekbo of the Kukiliyon of saints begins by addressing…","എക്ബോ ആരംഭിക്കുന്നത് ആരെ സംബോധന ചെയ്തുകൊണ്ട്?",[["The saint whose intercession we seek (e.g. St. Thomas)","മദ്ധ്യസ്ഥത അപേക്ഷിക്കുന്ന പരിശുദ്ധനെ (ഉദാ. മാർത്തോമ്മാ)"],["The Holy Trinity","പരിശുദ്ധ ത്രിത്വത്തെ"],["The priest","പുരോഹിതനെ"],["The angels","മാലാഖമാരെ"]]],["Instead of ‘St. Thomas’ in the Ekbo, we can use…","എക്ബോയിൽ ‘മാർത്തോമ്മാ’ എന്നതിനു പകരം ചേർക്കാവുന്നത്…",[["The saint commemorated that day or the parish’s patron saint","അന്ന് ഓർക്കുന്ന പരിശുദ്ധന്റെയോ ഇടവകയുടെ കാവൽപിതാവിന്റെയോ പേര്"],["Our own name","നമ്മുടെ സ്വന്തം പേര്"],["The name of a king","ഒരു രാജാവിന്റെ പേര്"],["Nothing can be changed","ഒന്നും മാറ്റാൻ പാടില്ല"]]],["“Stretch forth thy hand like ___ – grant thy blessings”","“ആടുകളെ ___ പോൽ തൃക്കൈ വാഴ്ത്തേണം”",[["Moses","മോശ"],["David","ദാവീദ്"],["Abraham","അബ്രാഹം"],["Elijah","ഏലിയാവ്"]]],["The martyrs who longed to see Christ, “by their death took ___”","ക്രിസ്തുവിനെ കാണാൻ കൊതിച്ച സഹദേന്മാർക്ക് വാളാൽ ___ പൂണ്ടു",[["Wings","ചിറകുകൾ"],["Crowns of gold","പൊൻകിരീടങ്ങൾ"],["Swords","വാളുകൾ"],["Lamps","വിളക്കുകൾ"]]],["Where are the crowns of the prophets, apostles and martyrs kept?","പ്രവാചകരുടെയും ശ്ലീഹന്മാരുടെയും സഹദേന്മാരുടെയും കിരീടങ്ങൾ എവിടെ?",[["In heaven","സ്വർഗ്ഗത്തിൽ"],["In the church","ദേവാലയത്തിൽ"],["In Jerusalem","യെരുശലേമിൽ"],["In their homes","അവരുടെ വീടുകളിൽ"]]],["The bovootho “Plead for us, ye holy Saints” asks the saints to pray that…","“പരിശുദ്ധന്മാരേ നിങ്ങൾ പ്രാർത്ഥിപ്പിൻ” എന്ന ബോവൂസോയിലെ അപേക്ഷ?",[["The Lord’s anger and scourges are removed from us","കർത്താവിന്റെ കോപവും ശിക്ഷകളും ഞങ്ങളിൽനിന്ന് നീങ്ങണം"],["We become rich","ഞങ്ങൾ ധനികരാകണം"],["Our enemies are punished","ശത്രുക്കൾ ശിക്ഷിക്കപ്പെടണം"],["The rain stops","മഴ നിൽക്കണം"]]],["In the special bovootho, St. Thomas is called…","പ്രത്യേക ബോവൂസോയിൽ മാർത്തോമ്മാ ശ്ലീഹായെ വിളിക്കുന്നത്…",[["Treasure of virtues","സദ്ഗുണനിധി"],["Rock of faith","വിശ്വാസത്തിന്റെ പാറ"],["Star of Nyssa","നിസ്സായിലെ നക്ഷത്രം"],["Lyre of the Holy Spirit","പരിശുദ്ധാത്മാവിന്റെ കിന്നരം"]]],["The missionary work of St. Thomas resulted in the founding of the Church in…","മാർത്തോമ്മാ ശ്ലീഹായുടെ പ്രേഷിതപ്രവർത്തനത്തിന്റെ ഫലമായി സഭ സ്ഥാപിതമായത്…",[["India","ഭാരതത്തിൽ"],["Rome","റോമായിൽ"],["Egypt","മിസ്രയീമിൽ"],["Greece","ഗ്രീസിൽ"]]],["The intercession of the saints is…","പരിശുദ്ധന്മാരുടെ മദ്ധ്യസ്ഥത…",[["A dogma (faith teaching) of the Church","സഭയുടെ വിശ്വാസസത്യമാണ്"],["A new custom","ഒരു പുതിയ ആചാരമാണ്"],["Not allowed","അനുവദനീയമല്ല"],["Only for priests","പുരോഹിതന്മാർക്ക് മാത്രം"]]],["Which statement is TRUE about the Orthodox Church?","ഓർത്തഡോക്സ് സഭയെക്കുറിച്ച് ശരിയായ പ്രസ്താവന?",[["It has never equated any saint with God","ഒരു പരിശുദ്ധനെയും ദൈവത്തിന് തുല്യനാക്കിയിട്ടില്ല"],["It worships saints as God","പരിശുദ്ധന്മാരെ ദൈവമായി ആരാധിക്കുന്നു"],["It rejects the saints","പരിശുദ്ധന്മാരെ തള്ളിക്കളയുന്നു"],["It allows only one saint","ഒരു പരിശുദ്ധനെ മാത്രം അംഗീകരിക്കുന്നു"]]],["What has nourished the growth of the Church?","സഭയുടെ വളർച്ചയ്ക്ക് പോഷണമായത്?",[["The faith, prayers and blood of saints and martyrs","പരിശുദ്ധരുടെയും സഹദേന്മാരുടെയും വിശ്വാസവും പ്രാർത്ഥനയും രക്തവും"],["Wealth of kings","രാജാക്കന്മാരുടെ ധനം"],["Large buildings","വലിയ കെട്ടിടങ്ങൾ"],["Wars","യുദ്ധങ്ങൾ"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Psalm 92:12-14","സങ്കീ. 92:12-14"],["Psalm 45:9-10","സങ്കീ. 45:9-10"],["Hebrews 13:7","എബ്രാ. 13:7"],["Psalm 61:4","സങ്കീ. 61:4"]]]]},{"n":16,"en":"Marthoman Heritage: The Oral Tradition","ml":"മാർത്തോമ്മൻ പാരമ്പര്യം: വാമൊഴികളിലൂടെ","q":[["Which are the three main oral traditions about St. Thomas?","മാർത്തോമ്മൻ പാരമ്പര്യം വിളിച്ചോതുന്ന മൂന്ന് പ്രധാന വാമൊഴികൾ?",[["Ramban song, Maargam Kali song and Veeradiyan song","റമ്പാൻ പാട്ട്, മാർഗ്ഗംകളിപ്പാട്ട്, വീരടിയാൻ പാട്ട്"],["Folk song, boat song and lullaby","നാടോടിപ്പാട്ട്, വഞ്ചിപ്പാട്ട്, താരാട്ട്"],["Psalms, hymns and Kolos","സങ്കീർത്തനങ്ങൾ, ഗീതങ്ങൾ, കോലോകൾ"],["Margam Kali, Kathakali and Theyyam","മാർഗ്ഗംകളി, കഥകളി, തെയ്യം"]]],["Maargam Kali is performed around a…","മാർഗ്ഗംകളി ചുറ്റും നിന്ന് കളിക്കുന്നത്…",[["Nilavilakku (wick floor lamp)","നിലവിളക്ക്"],["Cross","കുരിശ്"],["Tree","മരം"],["Altar","ബലിപീഠം"]]],["Maargam Kali is a…","മാർഗ്ഗംകളി ഒരു…",[["Choral group dance with stamping feet and clapping","ചുവടുവച്ചും താളമടിച്ചുമുള്ള സംഘനൃത്തം"],["Solo song","ഏകാംഗ ഗാനം"],["Drama with masks","മുഖംമൂടി നാടകം"],["Boat race","വള്ളംകളി"]]],["The Maargam Kali song has…","മാർഗ്ഗംകളിപ്പാട്ടിൽ…",[["14 parts with 360 lines","14 പദങ്ങളിലായി 360 വരികൾ"],["448 lines","448 വരികൾ"],["7 parts with 100 lines","7 പദങ്ങളിലായി 100 വരികൾ"],["21 stanzas","21 ഖണ്ഡങ്ങൾ"]]],["In the Maargam Kali song, St. Thomas asks Jesus…","മാർഗ്ഗംകളിപ്പാട്ടിൽ മാർത്തോമ്മാ കർത്താവിനോട് അപേക്ഷിക്കുന്നത്…",[["Not to send him to Malankara","തന്നെ മലങ്കരയിലേക്ക് അയയ്ക്കരുതേ എന്ന്"],["To send him quickly to Rome","തന്നെ റോമായിലേക്ക് വേഗം അയയ്ക്കണമെന്ന്"],["To make him a king","തന്നെ രാജാവാക്കണമെന്ന്"],["To give him a ship","തനിക്ക് ഒരു കപ്പൽ നൽകണമെന്ന്"]]],["Which king sent for a descendant of the builders of Solomon’s palace?","ശലോമോന്റെ കൊട്ടാരം പണിത തച്ചന്മാരുടെ വംശത്തിൽപ്പെട്ടവനെ നിയോഗിച്ച രാജാവ്?",[["Cheraman Perumal","ചേരമാൻ പെരുമാൾ"],["Gondaphores","ഗോണ്ടഫോറസ്"],["Constantine","കുസ്തന്തീനോസ്"],["Valens","വാലൻസ്"]]],["The Maargam Kali songs mention how many churches founded by St. Thomas?","മാർഗ്ഗംകളിപ്പാട്ടിൽ പറയുന്ന മാർത്തോമ്മാ സ്ഥാപിച്ച പള്ളികൾ എത്ര?",[["Seven","ഏഴ്"],["Twelve","പന്ത്രണ്ട്"],["Three","മൂന്ന്"],["Five","അഞ്ച്"]]],["Ramban song is also known as…","റമ്പാൻ പാട്ടിന്റെ മറ്റൊരു പേര്?",[["Thoma Parvam","തോമ്മാപർവ്വം"],["Paanan’s song","പാണൻ പാട്ട്"],["Maargam Kali","മാർഗ്ഗംകളി"],["Kukiliyon","കുക്കിലിയോൻ"]]],["Who composed the Ramban song?","റമ്പാൻ പാട്ട് എഴുതിയത്?",[["A priest named Thoma of Malikayil (Maliyekkal), Niranam","നിരണം മാളികയിൽ (മാലിയേക്കൽ) തോമ്മാ എന്ന വൈദികൻ"],["Cheraman Perumal","ചേരമാൻ പെരുമാൾ"],["Mar Ephrem","മാർ അപ്രേം"],["Knai Thoma","ക്നായി തോമ്മാ"]]],["How many lines does the Ramban song have?","റമ്പാൻ പാട്ടിൽ എത്ര വരികൾ?",[["448","448"],["360","360"],["153","153"],["72","72"]]],["The Ramban song was re-written in its modern form in…","റമ്പാൻ പാട്ടിന് പുതിയ രൂപം ലഭിച്ചത്…",[["1601","1601-ൽ"],["1653","1653-ൽ"],["AD 52","എ.ഡി. 52-ൽ"],["1912","1912-ൽ"]]],["Veeradiyan songs were sung in Christian homes by…","വീരടിയാൻ പാട്ടുകൾ ക്രൈസ്തവഭവനങ്ങളിൽ പാടിയിരുന്നത്…",[["People of the Paanan community","പാണർ വിഭാഗത്തിൽപ്പെട്ടവർ"],["Priests","വൈദികർ"],["Kings","രാജാക്കന്മാർ"],["Children","കുട്ടികൾ"]]],["The Veeradiyan songs include the arrival of…","വീരടിയാൻ പാട്ടുകളിൽ ആരുടെ വരവിനെക്കുറിച്ചും പറയുന്നു?",[["Thomas of Cana (Knai Thoma)","ക്നായി തോമ്മാ"],["Vasco da Gama","വാസ്കോ ഡ ഗാമ"],["St. Peter","പത്രോസ് ശ്ലീഹാ"],["King Solomon","ശലോമോൻ രാജാവ്"]]],["Today Maargam Kali is an important competition at the…","ഇന്ന് മാർഗ്ഗംകളി ഒരു പ്രധാന മത്സര ഇനമായിരിക്കുന്നത്…",[["School Arts Festival","സ്കൂൾ കലാമേളയിൽ"],["Olympics","ഒളിമ്പിക്സിൽ"],["Boat race","വള്ളംകളിയിൽ"],["Science fair","ശാസ്ത്രമേളയിൽ"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["St. John 20:28","യോഹ. 20:28"],["St. John 14:6","യോഹ. 14:6"],["Ephesians 2:19","എഫെ. 2:19"],["Hebrews 13:7","എബ്രാ. 13:7"]]]]},{"n":17,"en":"Stories Connected with St. Thomas","ml":"മാർത്തോമ്മാ ശ്ലീഹായുമായി ബന്ധപ്പെട്ട സംഭവങ്ങൾ","q":[["The story of the palace comes from which apocryphal book?","കൊട്ടാര നിർമ്മാണത്തിന്റെ കഥ ഏത് അപ്പോക്രിഫൽ ഗ്രന്ഥത്തിൽനിന്ന്?",[["The Acts of Thomas (Acta Thoma)","തോമായുടെ പ്രവൃത്തികൾ"],["The Didache","ഡിഡാക്കെ"],["The Book of Kings","രാജാക്കന്മാരുടെ പുസ്തകം"],["The Ramban song","റമ്പാൻ പാട്ട്"]]],["Which Indian king wanted an architect to build his palace?","കൊട്ടാരം പണിയുവാൻ ശില്പിയെ അന്വേഷിച്ച രാജാവ്?",[["Gondaphores","ഗോണ്ടഫോറസ്"],["Cheraman Perumal","ചേരമാൻ പെരുമാൾ"],["Constantine","കുസ്തന്തീനോസ്"],["Diocletian","ഡയോക്ലീഷ്യൻ"]]],["Who came to the palace along with St. Thomas?","മാർത്തോമ്മായോടൊപ്പം കൊട്ടാരത്തിൽ എത്തിയ വ്യാപാരി?",[["Habaan, a trader","ഹാബാൻ എന്ന വ്യാപാരി"],["Gad","ഗാദ്"],["Barnabas","ബർന്നബാസ്"],["Cleopas","ക്ലെയോപ്പാവ്"]]],["How did St. Thomas use the money given for the palace?","കൊട്ടാരത്തിനായി ലഭിച്ച പണം എങ്ങനെ ചെലവഴിച്ചു?",[["Gave it to the poor and for preaching the Gospel","സാധുക്കൾക്കും സുവിശേഷവേലയ്ക്കുമായി ചെലവഴിച്ചു"],["Built a big church","വലിയ ഒരു പള്ളി പണിതു"],["Kept it safely","സുരക്ഷിതമായി സൂക്ഷിച്ചു"],["Returned it to the king","രാജാവിന് തിരികെ നൽകി"]]],["Who was the king’s brother who died and came back to life?","മരിച്ച് വീണ്ടും ജീവൻ പ്രാപിച്ച രാജാവിന്റെ സഹോദരൻ?",[["Gad","ഗാദ്"],["Habaan","ഹാബാൻ"],["Lazarus","ലാസർ"],["Jonathan","യോനാഥാൻ"]]],["What did Gad tell the king?","ഗാദ് രാജാവിനോട് പറഞ്ഞത്?",[["About the palace St. Thomas had built for him in heaven","മാർത്തോമ്മാ സ്വർഗ്ഗത്തിൽ രാജാവിനായി പണിത കൊട്ടാരത്തെക്കുറിച്ച്"],["To kill St. Thomas","മാർത്തോമ്മായെ കൊല്ലാൻ"],["To build a bigger palace","വലിയ കൊട്ടാരം പണിയാൻ"],["To leave the country","രാജ്യം വിടാൻ"]]],["How did St. Thomas save the young man bitten by a snake?","സർപ്പം കടിച്ച യുവാവിനെ ശ്ലീഹാ രക്ഷിച്ചത് എങ്ങനെ?",[["He prayed and argued with the snake until it took its poison back","പ്രാർത്ഥിച്ച്, സർപ്പവുമായി സംവാദിച്ച് വിഷം തിരിച്ചെടുപ്പിച്ചു"],["He gave him medicine","മരുന്ന് നൽകി"],["He took him to a doctor","വൈദ്യന്റെ അടുക്കൽ കൊണ്ടുപോയി"],["He killed the snake","സർപ്പത്തെ കൊന്നു"]]],["Where did St. Thomas throw water into the air and it stayed there?","ശ്ലീഹാ എറിഞ്ഞ വെള്ളം അന്തരീക്ഷത്തിൽ നിന്നത് എവിടെ?",[["Palayur","പാലയൂർ"],["Paravur","പറവൂർ"],["Niranam","നിരണം"],["Kodungallur","കൊടുങ്ങല്ലൂർ"]]],["The people at Palayur were worshipping…","പാലയൂരിൽ ജനങ്ങൾ ആരാധിച്ചിരുന്നത്?",[["The sun god","സൂര്യനെ"],["The moon","ചന്ദ്രനെ"],["A river god","നദീദേവനെ"],["Fire","അഗ്നിയെ"]]],["The water thrown up by St. Thomas…","ശ്ലീഹാ മുകളിലേക്ക് എറിഞ്ഞ വെള്ളം…",[["Stayed in the air, glistening like beads (pearls)","മുത്തുകൾപോലെ അന്തരീക്ഷത്തിൽ നിന്ന് ശോഭിച്ചു"],["Turned into wine","വീഞ്ഞായി മാറി"],["Turned into fire","തീയായി മാറി"],["Fell back as rain","മഴയായി തിരികെ വീണു"]]],["Where did lightning kill elephants and people during a temple festival?","ക്ഷേത്ര ഉത്സവത്തിനിടയിൽ ഇടിമിന്നലേറ്റ് ആനകളും ആളുകളും മരിച്ചത് എവിടെ?",[["Paravur","പറവൂർ"],["Palayur","പാലയൂർ"],["Mylapore","മൈലാപ്പൂർ"],["Niranam","നിരണം"]]],["How did St. Thomas raise them up?","ശ്ലീഹാ അവരെ ഉയിർപ്പിച്ചത് എങ്ങനെ?",[["By sprinkling water on them in the name of the Holy Spirit","പരിശുദ്ധാത്മ നാമത്തിൽ വെള്ളം തളിച്ച്"],["By anointing them with oil","തൈലം പൂശി"],["By ringing a bell","മണിയടിച്ച്"],["By lighting a lamp","വിളക്ക് കത്തിച്ച്"]]],["In the hymn, the Holy Spirit told St. Thomas to go to…","ഗീതത്തിൽ, പരിശുദ്ധാത്മാവ് ശ്ലീഹായോട് പോകാൻ പറഞ്ഞത്…",[["The funeral of the Lord’s Mother (St. Mary)","കർത്താവിന്റെ മാതാവിന്റെ ശവസംസ്കാരത്തിന്"],["The wedding at Cana","കാനാവിലെ കല്യാണത്തിന്"],["Rome","റോമായിലേക്ക്"],["A temple festival","ക്ഷേത്ര ഉത്സവത്തിന്"]]],["How did St. Thomas travel from India to Jerusalem in the hymn?","ഗീതത്തിൽ ശ്ലീഹാ ഇന്ത്യയിൽനിന്ന് യെരുശലേമിൽ എത്തിയത് എങ്ങനെ?",[["Carried in a cloud","ഒരു മേഘത്തിൽ കയറി"],["By ship","കപ്പലിൽ"],["On a camel","ഒട്ടകപ്പുറത്ത്"],["On foot","കാൽനടയായി"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Ephesians 2:19","എഫെ. 2:19"],["St. John 20:28","യോഹ. 20:28"],["Hebrews 13:7","എബ്രാ. 13:7"],["Philippians 1:21","ഫിലി. 1:21"]]]]},{"n":18,"en":"The Promeyon and Sedra in the Holy Qurbana","ml":"വി. കുർബാനയിലെ പ്രൊമിയോൻ, സെദറാകൾ","q":[["What does the deacon announce before the Promeyon?","പ്രൊമിയോന് മുമ്പ് ശുശ്രൂഷക്കാരൻ വിളിച്ചുപറയുന്നത്?",[["‘Sthaumen Kalos’","‘സ്തൗമെൻ കാലോസ്’"],["‘Barekmor’","‘ബാറെക്മോർ’"],["‘Shubaho’","‘ശുബഹോ’"],["‘Halleluiah’","‘ഹാലേലൂയ്യാ’"]]],["‘Sthaumen Kalos’ means…","‘സ്തൗമെൻ കാലോസ്’ എന്നാൽ…",[["Let us stand well","നാം നല്ലവണ്ണം നിൽക്കണം"],["Lord, have mercy","കർത്താവേ കരുണ ചെയ്യേണമേ"],["Peace be with you","നിങ്ങൾക്ക് സമാധാനം"],["Bless us, O Lord","കർത്താവേ വാഴ്ത്തണമേ"]]],["The faithful respond to ‘Sthaumen Kalos’ by saying…","‘സ്തൗമെൻ കാലോസ്’ എന്നതിന് വിശ്വാസികളുടെ മറുപടി?",[["‘Kuriyelaison’ – Lord, have mercy","‘കുറിയേലായിസോൻ’ – കർത്താവേ കരുണ ചെയ്യേണമേ"],["‘Amen’","‘ആമേൻ’"],["‘Barekmor’","‘ബാറെക്മോർ’"],["‘Halleluiah’","‘ഹാലേലൂയ്യാ’"]]],["The words ‘Sthaumen Kalos’ and ‘Kuriyelaison’ are from which language?","‘സ്തൗമെൻ കാലോസ്’, ‘കുറിയേലായിസോൻ’ ഏത് ഭാഷയിലെ പദങ്ങൾ?",[["Greek","ഗ്രീക്ക്"],["Syriac","സുറിയാനി"],["Hebrew","എബ്രായ"],["Latin","ലത്തീൻ"]]],["Promeyon and Sedra are read at the end of which part of the Holy Qurbana?","പ്രൊമിയോൻ സെദറാകൾ വായിക്കുന്നത് വി. കുർബ്ബാനയുടെ ഏത് ഭാഗത്തിന്റെ അവസാനം?",[["Liturgy of the Word (of the Catechumens)","വചന ശുശ്രൂഷ (പഠിതാക്കളുടെ ശുശ്രൂഷ)"],["Holy Communion","വി. കുർബ്ബാന സ്വീകരണം"],["Final blessing","സമാപന ആശീർവാദം"],["Procession","പ്രദക്ഷിണം"]]],["What does ‘Promeyon’ mean?","‘പ്രൊമിയോൻ’ എന്ന പദത്തിന്റെ അർത്ഥം?",[["Preface","ആമുഖം"],["Order","ക്രമം"],["Supplication","അപേക്ഷ"],["Sound","ശബ്ദം"]]],["What does ‘Sedra’ mean?","‘സെദറാ’ എന്ന പദത്തിന്റെ അർത്ഥം?",[["Order, series or row","ക്രമം, നിര"],["Preface","ആമുഖം"],["Step","പടി"],["Prayer for forgiveness","പാപപരിഹാര പ്രാർത്ഥന"]]],["What does ‘Hoosoyo’ mean?","‘ഹൂസോയോ’ എന്നതിന്റെ അർത്ഥം?",[["Prayer for remission of sins","പാപപരിഹാര പ്രാർത്ഥന"],["Preface","ആമുഖം"],["Hymn of praise","സ്തുതിഗീതം"],["Prayer for the sick","രോഗികൾക്കായുള്ള പ്രാർത്ഥന"]]],["When is the Hoosoyo prayer said?","ഹൂസോയോ പ്രാർത്ഥന ചൊല്ലുന്നത് എപ്പോൾ?",[["Between Promeyon and Sedra, only in the Holy Qurbana","പ്രൊമിയോനും സെദറായ്ക്കും ഇടയിൽ, വി. കുർബ്ബാനയിൽ മാത്രം"],["At the start of every canonical hour","എല്ലാ യാമപ്രാർത്ഥനകളുടെയും തുടക്കത്തിൽ"],["After Holy Communion","കുർബ്ബാന സ്വീകരണത്തിനുശേഷം"],["Only at funerals","ശവസംസ്കാരത്തിൽ മാത്രം"]]],["Who is believed to be the first composer of Sedra prayers?","സെദറാ പ്രാർത്ഥനകളുടെ ഉപജ്ഞാതാവായി കരുതപ്പെടുന്നത്?",[["Mar Yuhanon I (+649), Patriarch of Antioch","അന്ത്യോഖ്യാ പാത്രിയർക്കീസായിരുന്ന മാർ യൂഹാനോൻ ഒന്നാമൻ (+649)"],["Mar Ephrem","മാർ അപ്രേം"],["St. Basil","മാർ ബസേലിയോസ്"],["Mar Severios","മാർ സേവേറിയോസ്"]]],["In the Hoosoyo, the priest also prays for…","ഹൂസോയോയിൽ പട്ടക്കാരൻ പ്രാർത്ഥിക്കുന്നത്…",[["His own and the people’s sins, and for the departed","തന്റെയും ജനത്തിന്റെയും പാപങ്ങൾക്കും വാങ്ങിപ്പോയവർക്കും"],["Good weather only","നല്ല കാലാവസ്ഥയ്ക്ക് മാത്രം"],["The government only","ഭരണകൂടത്തിന് മാത്രം"],["Wealth","ധനത്തിന്"]]],["Which is one of the four features of the place where we stand during worship?","ആരാധനാവേളയിൽ നാം നിൽക്കുന്ന സ്ഥലത്തിന്റെ നാല് പ്രത്യേകതകളിൽ ഒന്ന്?",[["Before the Holy Altar which gives remission of sins","പാപപരിഹാരം നൽകുന്ന ബലിപീഠത്തിന്റെ മുൻപാകെ"],["Before the king’s throne","രാജസിംഹാസനത്തിന്റെ മുൻപാകെ"],["Before the church gate","പള്ളിവാതിൽക്കൽ"],["Before the crowd","ജനക്കൂട്ടത്തിന്റെ മുൻപാകെ"]]],["The time of Promeyon–Sedra is an hour of…","പ്രൊമിയോൻ–സെദറാ സമയം…",[["Meditation, self-dedication, and reconciliation","ധ്യാനം, ആത്മസമർപ്പണം, അനുരഞ്ജനം എന്നിവയുടെ സമയം"],["Talking with friends","സുഹൃത്തുക്കളോട് സംസാരിക്കാനുള്ള സമയം"],["Sitting and resting","ഇരുന്ന് വിശ്രമിക്കാനുള്ള സമയം"],["Leaving the church","പള്ളിയിൽനിന്ന് പോകാനുള്ള സമയം"]]],["The Holy Qurbana is called the ___ of sacraments.","വി. കുർബ്ബാനയെ കൂദാശകളുടെ ___ എന്നു വിളിക്കുന്നു.",[["Queen","രാജ്ഞി"],["Servant","ദാസി"],["Last","അവസാനം"],["Smallest","ഏറ്റവും ചെറുത്"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["Psalm 119:18","സങ്കീ. 119:18"],["Psalm 141:2","സങ്കീ. 141:2"],["2 Corinthians 2:15","2 കൊരി. 2:15"],["Psalm 45:1","സങ്കീ. 45:1"]]]]},{"n":19,"en":"Blessing of the Censer in the Holy Qurbana","ml":"വി. കുർബ്ബാനയിലെ ധൂപക്കുറ്റിവാഴ്വ്","q":[["Where do we first read about the Incense Altar?","ധൂപപീഠത്തെക്കുറിച്ച് ആദ്യം വായിക്കുന്നത്?",[["The Book of Exodus (30:9-10; 37:25-28)","പുറപ്പാട് പുസ്തകത്തിൽ (30:9-10; 37:25-28)"],["The Book of Psalms","സങ്കീർത്തനങ്ങളിൽ"],["The Gospel of John","യോഹന്നാന്റെ സുവിശേഷത്തിൽ"],["The Book of Revelation","വെളിപാട് പുസ്തകത്തിൽ"]]],["The Incense Altar was made of…","ധൂപപീഠം ഉണ്ടാക്കിയിരുന്നത്…",[["Acacia wood","ഖദിരമരംകൊണ്ട്"],["Gold only","പൊന്നുകൊണ്ട് മാത്രം"],["Stone","കല്ലുകൊണ്ട്"],["Cedar of Lebanon","ലെബാനോൻ ദേവദാരുകൊണ്ട്"]]],["God commanded Aaron to burn incense…","അഹരോനോട് ധൂപം അർപ്പിക്കുവാൻ ദൈവം കല്പിച്ചത്…",[["Every morning and evening","എല്ലാ രാവിലെയും വൈകിട്ടും"],["Once a year","വർഷത്തിൽ ഒരിക്കൽ"],["Only on the Sabbath","ശബത്തിൽ മാത്രം"],["Only during wars","യുദ്ധകാലത്ത് മാത്രം"]]],["The sweet smell of incense indicates…","ധൂപത്തിന്റെ സൗരഭ്യം സൂചിപ്പിക്കുന്നത്…",[["The holy and comforting presence of the Lord","ദൈവത്തിന്റെ പരിശുദ്ധവും ആശ്വാസദായകവുമായ സാന്നിധ്യം"],["A feast day meal","പെരുന്നാൾ സദ്യ"],["Flowers in the church","പള്ളിയിലെ പൂക്കൾ"],["A royal visit","രാജസന്ദർശനം"]]],["Who received a vision while burning incense in the Temple (Luke 1:8-23)?","ദൈവാലയത്തിൽ ധൂപാർപ്പണം നടത്തുമ്പോൾ ദൈവിക ദർശനം ലഭിച്ചത് ആർക്ക് (ലൂക്കോ. 1:8-23)?",[["Zechariah","സഖറിയാ"],["Aaron","അഹരോൻ"],["Moses","മോശ"],["Samuel","ശമുവേൽ"]]],["Who rebelled against Moses and Aaron (Numbers 16)?","മോശയ്ക്കും അഹരോനുമെതിരെ മത്സരിച്ചവർ (സംഖ്യാ. 16)?",[["Korah, Dathan and Abiram","കോരഹ്, ദാഥാൻ, അബീറാം"],["Cain and Abel","കയീനും ഹാബേലും"],["Saul and Jonathan","ശൗലും യോനാഥാനും"],["Absalom and Joab","അബ്ശാലോമും യോവാബും"]]],["How many people died in the plague (Numbers 16)?","ബാധയിൽ എത്രപേർ മരിച്ചു (സംഖ്യാ. 16)?",[["14,700","14,700"],["3,000","3,000"],["153","153"],["40","40"]]],["“The smoke of incense, with the prayers of the saints, ascended before God” is in…","ധൂപത്തിന്റെ പുക വിശുദ്ധന്മാരുടെ പ്രാർത്ഥനയോടുകൂടെ ദൈവസന്നിധിയിൽ ഉയരുന്നു എന്ന് പറയുന്നത്?",[["Revelation 8:4","വെളിപാട് 8:4"],["Exodus 30:9","പുറപ്പാട് 30:9"],["Luke 1:8","ലൂക്കോ. 1:8"],["Matthew 2:11","മത്തായി 2:11"]]],["When the priest goes round the altar with the censer, it commemorates…","പട്ടക്കാരൻ ധൂപക്കുറ്റിയുമായി ത്രോണോസിന് വലംവയ്ക്കുന്നത് ഓർമ്മിപ്പിക്കുന്നത്…",[["The wise men who brought gold, myrrh and frankincense to Child Jesus","പൊന്ന്, മൂർ, കുന്തിരിക്കം ഇവയുമായി ശിശുവായ യേശുവിനെ കാണാൻ വന്ന വിദ്വാന്മാരെ"],["Moses on Mount Sinai","സീനായ് മലയിലെ മോശയെ"],["The Last Supper","അന്ത്യ അത്താഴത്തെ"],["The Ascension","സ്വർഗ്ഗാരോഹണത്തെ"]]],["The two bowls of the censer together stand for…","ധൂപക്കുറ്റിയുടെ രണ്ട് പാത്രങ്ങളും ചേർന്ന് സൂചിപ്പിക്കുന്നത്…",[["The whole universe created by God","ദൈവം സൃഷ്ടിച്ച പ്രപഞ്ചം മുഴുവൻ"],["Two churches","രണ്ട് സഭകൾ"],["Old and New Testaments","പഴയനിയമവും പുതിയനിയമവും"],["Priest and deacon","പട്ടക്കാരനും ശുശ്രൂഷകനും"]]],["The four chains of the censer stand for…","ധൂപക്കുറ്റിയുടെ നാല് ചങ്ങലകൾ സൂചിപ്പിക്കുന്നത്…",[["The Holy Trinity","പരിശുദ്ധ ത്രിത്വം"],["Four Gospels","നാല് സുവിശേഷങ്ങൾ"],["Four seasons","നാല് ഋതുക്കൾ"],["Four prophets","നാല് പ്രവാചകന്മാർ"]]],["The 12 small bells on the censer represent…","ധൂപക്കുറ്റിയിലെ 12 ചെറിയ മണികൾ…",[["The twelve apostles","പന്ത്രണ്ട് ശ്ലീഹന്മാർ"],["Twelve tribes","പന്ത്രണ്ട് ഗോത്രങ്ങൾ"],["Twelve months","പന്ത്രണ്ട് മാസങ്ങൾ"],["Twelve prophets","പന്ത്രണ്ട് പ്രവാചകന്മാർ"]]],["The 72 links of the chains stand for…","ചങ്ങലകളിലെ 72 കൊളുത്തുകൾ…",[["The 72 disciples sent out by Jesus","യേശു അയച്ച 72 അറിയിപ്പുകാർ (ശിഷ്യന്മാർ)"],["72 years of life","72 വർഷത്തെ ആയുസ്സ്"],["72 psalms","72 സങ്കീർത്തനങ്ങൾ"],["72 churches","72 പള്ളികൾ"]]],["The burning charcoal represents…","കത്തിയെരിയുന്ന കരി സൂചിപ്പിക്കുന്നത്…",[["Mankind purified by the fire of the Lord’s grace","കർത്താവിന്റെ കൃപയാൽ ശുദ്ധീകരിക്കപ്പെടുന്ന മനുഷ്യകുലം"],["Hell","നരകം"],["The sun","സൂര്യൻ"],["Our anger","നമ്മുടെ കോപം"]]],["Holding the first chain, the priest declares…","ഒന്നാമത്തെ ചങ്ങലയിൽ പിടിച്ചുകൊണ്ട് പട്ടക്കാരൻ പ്രഖ്യാപിക്കുന്നത്…",[["“Holy God the Father is Holy”","“പരിശുദ്ധനായ പിതാവ് പരിശുദ്ധനാകുന്നു”"],["“Holy is the Son”","“പരിശുദ്ധനായ പുത്രൻ പരിശുദ്ധനാകുന്നു”"],["“Holy is the Spirit”","“പരിശുദ്ധനായ റൂഹാ പരിശുദ്ധനാകുന്നു”"],["“Peace be with you”","“നിങ്ങൾക്ക് സമാധാനം”"]]],["The memory verse of this chapter is from…","ഈ പാഠത്തിലെ മനഃപാഠവാക്യം ഏത് ഭാഗത്തുനിന്ന്?",[["2 Corinthians 2:15","2 കൊരി. 2:15"],["Psalm 141:2","സങ്കീ. 141:2"],["Revelation 8:4","വെളിപാട് 8:4"],["Psalm 119:18","സങ്കീ. 119:18"]]]]}];
+const L = ["A","B","C","D"];
+const PER_Q = 60; // seconds per question
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const bi = (en, ml, tag="span") => `<${tag} class="en">${esc(en)}</${tag}><${tag} class="ml">${esc(ml)}</${tag}>`;
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const store = { get(k,d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
+const fmt = s => `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+
+const EXAMS = [
+  ...CH.map(c => ({id:"ch"+c.n, en:`Chapter ${c.n}: ${c.en}`, ml:`പാഠം ${c.n}: ${c.ml}`, pool:c.q.map((q,i)=>({q,ch:c.n})), count:c.q.length})),
+  {id:"full", en:"Full exam · Chapters 14–19", ml:"പൂർണ്ണ പരീക്ഷ · പാഠം 14–19", pool:CH.flatMap(c => c.q.map(q => ({q,ch:c.n}))), count:25, full:true}
+];
+
+/* language */
+function setLang(l){ document.body.dataset.lang = l; document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l)); store.set("c7x-lang", l); }
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+setLang(store.get("c7x-lang", "both"));
+
+let S = null; // exam state
+let tick = null;
+
+/* ---------- WELCOME ---------- */
+function welcome(){
+  clearInterval(tick); $("#exambar").innerHTML = "";
+  const last = store.get("c7x-name", "");
+  let pick = "full";
+  $("#view").innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <h1><span class="en">Sunday School Exam</span><span class="ml">സൺഡേസ്കൂൾ പരീക്ഷ</span></h1>
+      <p class="lead">${bi("Class VII · Galilee Division · Stories from the Holy Bible", "ക്ലാസ് VII · വി. വേദപുസ്തക സംഭവങ്ങൾ")}</p>
+    </div>
+    <form class="panel" id="startForm" novalidate>
+      <label class="f" for="sname">${bi("Your full name", "നിങ്ങളുടെ പേര്")}
+        <input type="text" id="sname" autocomplete="name" maxlength="60" value="${esc(last)}" placeholder="e.g. Ann Mariya Thomas">
+      </label>
+      <label class="f" for="sparish">${bi("Parish / Sunday School", "ഇടവക / സൺഡേസ്കൂൾ")} <small>${bi("optional", "നിർബന്ധമില്ല")}</small>
+        <input type="text" id="sparish" maxlength="60" value="${esc(store.get("c7x-parish",""))}">
+      </label>
+      <div class="f" style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-weight:700">${bi("Choose your exam", "പരീക്ഷ തിരഞ്ഞെടുക്കുക")}</span>
+        <div class="choices" role="group">
+          ${EXAMS.map(e => `<button type="button" class="choice${e.full ? " full" : ""}" data-id="${e.id}" aria-pressed="${e.id === pick}">
+            <span class="t">${esc(e.en)}</span><span class="s ml">${esc(e.ml)}</span>
+            <span class="meta">${bi(e.count + " questions · " + Math.round(e.count*PER_Q/60) + " min", e.count + " ചോദ്യങ്ങൾ · " + Math.round(e.count*PER_Q/60) + " മിനിറ്റ്")}</span>
+          </button>`).join("")}
+        </div>
+      </div>
+      <ul class="rules">
+        <li>${bi("One minute per question. The exam submits itself when time runs out.", "ഓരോ ചോദ്യത്തിനും ഒരു മിനിറ്റ്. സമയം കഴിഞ്ഞാൽ പരീക്ഷ സ്വയം സമർപ്പിക്കും.")}</li>
+        <li>${bi("You can go back and change answers before submitting.", "സമർപ്പിക്കുന്നതിനു മുമ്പ് ഉത്തരങ്ങൾ മാറ്റാം.")}</li>
+        <li>${bi("Take a screenshot of your result and send it to your teacher.", "ഫലത്തിന്റെ സ്ക്രീൻഷോട്ട് എടുത്ത് ടീച്ചർക്ക് അയയ്ക്കുക.")}</li>
+      </ul>
+      <div class="err" id="err" hidden></div>
+      <div class="btnrow"><button type="submit" class="btn">${bi("Start exam", " · പരീക്ഷ തുടങ്ങുക")}</button></div>
+    </form>`;
+  document.querySelectorAll(".choice").forEach(b => b.addEventListener("click", () => {
+    pick = b.dataset.id; document.querySelectorAll(".choice").forEach(x => x.setAttribute("aria-pressed", x === b));
+  }));
+  $("#startForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const name = $("#sname").value.trim().replace(/\s+/g, " ");
+    if (name.length < 2){ const er = $("#err"); er.innerHTML = bi("Please type your name to begin.", " · തുടങ്ങാൻ പേര് നൽകുക."); er.hidden = false; $("#sname").focus(); return; }
+    store.set("c7x-name", name); store.set("c7x-parish", $("#sparish").value.trim());
+    begin(name, $("#sparish").value.trim(), EXAMS.find(x => x.id === pick));
+  });
+}
+
+/* ---------- EXAM ---------- */
+function begin(name, parish, exam){
+  const items = shuffle(exam.pool).slice(0, exam.count).map(it => ({...it, order: shuffle([0,1,2,3])}));
+  const total = items.length * PER_Q;
+  S = {name, parish, exam, items, ans: new Array(items.length).fill(null), i:0, total, end: Date.now() + total*1000, start: Date.now(), confirming:false};
+  renderBar();
+  tick = setInterval(updTimer, 500);
+  renderQ();
+}
+function renderBar(){
+  $("#exambar").innerHTML = `<div class="exambar"><div class="wrap">
+    <div class="row"><span class="who">${esc(S.name)}</span><span class="timer" id="timer" role="timer" aria-label="Time left">${fmt(S.total)}</span></div>
+    <div class="bar"><i id="prog" style="width:0%"></i></div></div></div>`;
+  updTimer();
+}
+function updTimer(){
+  if (!S) return;
+  const left = Math.max(0, Math.round((S.end - Date.now())/1000));
+  const t = $("#timer"); if (!t) return;
+  t.textContent = fmt(left); t.classList.toggle("low", left <= 60);
+  if (left <= 0) submit(true);
+}
+function renderQ(){
+  const it = S.items[S.i], q = it.q, n = S.items.length;
+  const answered = S.ans.filter(a => a !== null).length;
+  $("#prog").style.width = (answered / n * 100) + "%";
+  const unanswered = n - answered;
+  $("#view").innerHTML = `
+    <div class="qcard">
+      <div class="qnum">${bi(`Question ${S.i+1} of ${n}`, ` · ചോദ്യം ${S.i+1}/${n}`)}</div>
+      <div class="qtext">${bi(q[0], q[1])}</div>
+      <div class="opts" role="radiogroup">
+        ${it.order.map((k, j) => `<button type="button" class="opt" role="radio" aria-checked="${S.ans[S.i] === k}" data-k="${k}">
+          <span class="k">${L[j]}</span><span class="tx">${bi(q[2][k][0], q[2][k][1])}</span></button>`).join("")}
+      </div>
+      <div class="nav">
+        <button type="button" class="btn ghost" id="prev" ${S.i === 0 ? "disabled" : ""}>${bi("← Previous", "← മുമ്പത്തേത്")}</button>
+        ${S.i < n-1 ? `<button type="button" class="btn" id="next">${bi("Next →", "അടുത്തത് →")}</button>`
+                    : `<button type="button" class="btn" id="fin">${bi("Finish", "പൂർത്തിയാക്കുക")}</button>`}
+      </div>
+    </div>
+    <div class="panel" style="gap:10px">
+      <div class="legend">${bi(`Answered ${answered} of ${n} · tap a number to jump`, `ഉത്തരം നൽകിയത് ${answered}/${n}`)}</div>
+      <div class="pal">${S.items.map((_, j) => `<button type="button" data-j="${j}" class="${S.ans[j] !== null ? "done" : ""}${j === S.i ? " cur" : ""}" aria-label="Question ${j+1}">${j+1}</button>`).join("")}</div>
+      ${S.confirming ? `<div class="confirm">
+          <div>${unanswered ? bi(`${unanswered} question(s) not answered yet. Submit anyway?`, `${unanswered} ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകിയിട്ടില്ല. സമർപ്പിക്കണോ?`) : bi("All questions answered. Submit your exam?", "എല്ലാ ചോദ്യങ്ങൾക്കും ഉത്തരം നൽകി. സമർപ്പിക്കണോ?")}</div>
+          <div class="btnrow"><button type="button" class="btn" id="yes">${bi("Yes, submit", " · സമർപ്പിക്കുക")}</button><button type="button" class="btn ghost" id="no">${bi("Go back", " · തിരികെ")}</button></div>
+        </div>`
+      : `<div class="btnrow"><button type="button" class="btn ghost" id="sub">${bi("Submit exam", " · പരീക്ഷ സമർപ്പിക്കുക")}</button></div>`}
+    </div>`;
+  document.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => {
+    S.ans[S.i] = +b.dataset.k; S.confirming = false;
+    if (S.i < n-1) setTimeout(() => { S.i++; renderQ(); }, 220); else renderQ();
+    document.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-checked", x === b));
+  }));
+  const go = j => { S.i = j; S.confirming = false; renderQ(); window.scrollTo({top:0}); };
+  $("#prev").addEventListener("click", () => go(S.i - 1));
+  $("#next")?.addEventListener("click", () => go(S.i + 1));
+  const ask = () => { S.confirming = true; renderQ(); $("#yes")?.scrollIntoView({block:"center"}); };
+  $("#fin")?.addEventListener("click", ask);
+  $("#sub")?.addEventListener("click", ask);
+  $("#yes")?.addEventListener("click", () => submit(false));
+  $("#no")?.addEventListener("click", () => { S.confirming = false; renderQ(); });
+  document.querySelectorAll(".pal button").forEach(b => b.addEventListener("click", () => go(+b.dataset.j)));
+}
+
+/* ---------- RESULT ---------- */
+function syncResult(a){
+  try{
+    const cfg = window.SS_CONFIG || {};
+    let url = cfg.sheetUrl; try{ url = url || localStorage.getItem("ss_cloud_endpoint"); }catch(e){}
+    if (url && url.trim().startsWith("http")) fetch(url.trim(), {method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(a), mode:"no-cors"}).catch(()=>{});
+  }catch(e){}
+  try{ const raw = localStorage.getItem("ss_exam_attempts"); const list = raw ? JSON.parse(raw) : []; list.unshift(a); localStorage.setItem("ss_exam_attempts", JSON.stringify(list.slice(0,1000))); }catch(e){}
+}
+
+function submit(timeout){
+  if (!S || S.done) return;
+  S.done = true; clearInterval(tick); $("#exambar").innerHTML = "";
+  const n = S.items.length;
+  const right = S.items.filter((it, j) => S.ans[j] === 0).length;
+  const skipped = S.ans.filter(a => a === null).length;
+  const pct = Math.round(right / n * 100);
+  const used = Math.min(S.total, Math.round((Date.now() - S.start)/1000));
+  const g = pct >= 90 ? ["A+","Excellent","മികച്ചത്",""] : pct >= 75 ? ["A","Very good","വളരെ നല്ലത്",""] : pct >= 60 ? ["B","Good","നല്ലത്","mid"] : pct >= 40 ? ["C","Pass · revise more","ജയിച്ചു · ഇനിയും പഠിക്കുക","mid"] : ["D","Needs more study","കൂടുതൽ പഠിക്കണം","low"];
+  const d = new Date();
+  const when = d.toLocaleDateString("en-GB", {day:"2-digit", month:"short", year:"numeric"}) + ", " + d.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit"});
+  const hist = store.get("c7x-hist", []); hist.unshift({n:S.name, e:S.exam.id, s:right, t:n, d:d.toISOString()}); store.set("c7x-hist", hist.slice(0, 20));
+
+  syncResult({
+    id: "att_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6),
+    timestamp: d.toISOString(), dateStr: d.toLocaleDateString("en-GB"),
+    timeStr: d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}),
+    className: "Class 7 Revision – " + (S.exam.full ? "Ch 14-19 Full" : "Ch " + S.exam.id.slice(2)),
+    studentName: S.name, rollNumber: "", studentPhone: "", schoolName: S.parish, schoolCode: "", diocese: "",
+    score: right, totalQuestions: n, percentage: pct, status: pct >= 50 ? "PASS" : "FAIL",
+    timeTakenSeconds: used, durationStr: Math.floor(used/60) + "m " + (used%60) + "s"
+  });
+  let filter = "all";
+  const reviewHTML = () => S.items.map((it, j) => {
+    const a = S.ans[j], q = it.q, ok = a === 0, sk = a === null;
+    if (filter === "wrong" && ok) return "";
+    return `<div class="rv ${ok ? "" : sk ? "s" : "x"}">
+      <span class="tag ${ok ? "ok" : sk ? "skip" : "bad"}">${j+1} · ${ok ? bi("Correct","ശരി") : sk ? bi("Not answered","ഉത്തരം നൽകിയില്ല") : bi("Wrong","തെറ്റ്")} · ${bi("Chapter " + it.ch, " · പാഠം " + it.ch)}</span>
+      <div class="qt">${bi(q[0], q[1])}</div>
+      ${!ok && !sk ? `<div class="a" style="color:var(--bad)">${bi("Your answer: " + q[2][a][0], "നിങ്ങളുടെ ഉത്തരം: " + q[2][a][1])}</div>` : ""}
+      <div class="a" style="color:var(--ok)">${bi("Correct answer: " + q[2][0][0], "ശരിയുത്തരം: " + q[2][0][1])}</div>
+    </div>`;
+  }).join("");
+
+  $("#view").innerHTML = `
+    ${timeout ? `<div class="confirm">${bi("Time is up. Your exam was submitted automatically.", "സമയം കഴിഞ്ഞു. പരീക്ഷ സ്വയം സമർപ്പിച്ചു.")}</div>` : ""}
+    <div class="cert" id="cert">
+      <div class="top"><div class="e">Mar Gregorios Orthodox Syrian Church · Sunday School</div><div class="t">${bi("Exam Result", " · പരീക്ഷാഫലം")}</div></div>
+      <div class="bd">
+        <div class="ring" style="--p:${pct}"><div><div><b>${right}</b><small>/ ${n}</small></div></div></div>
+        <dl class="facts">
+          <dt>${bi("Name","പേര്")}</dt><dd>${esc(S.name)}</dd>
+          ${S.parish ? `<dt>${bi("Parish","ഇടവക")}</dt><dd>${esc(S.parish)}</dd>` : ""}
+          <dt>${bi("Exam","പരീക്ഷ")}</dt><dd>${bi(S.exam.en, S.exam.ml)}</dd>
+          <dt>${bi("Score","മാർക്ക്")}</dt><dd>${right}/${n} · ${pct}%</dd>
+          <dt>${bi("Grade","ഗ്രേഡ്")}</dt><dd><span class="grade ${g[3]}">${g[0]}</span> ${bi(g[1], " " + g[2])}</dd>
+          <dt>${bi("Time","സമയം")}</dt><dd>${fmt(used)}${skipped ? ` · ${skipped} ${bi("skipped","ഒഴിവാക്കി")}` : ""}</dd>
+          <dt>${bi("Date","തീയതി")}</dt><dd>${esc(when)}</dd>
+        </dl>
+      </div>
+      <div class="ft">${bi("Class VII · Galilee Division · Screenshot this card and send it to your teacher", "ഈ കാർഡിന്റെ സ്ക്രീൻഷോട്ട് ടീച്ചർക്ക് അയയ്ക്കുക")}</div>
+    </div>
+    <div class="btnrow">
+      <button type="button" class="btn" id="again">${bi("Take another exam", " · മറ്റൊരു പരീക്ഷ")}</button>
+    </div>
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <div class="sec-title"><h2>${bi("Answer review", " · ഉത്തരങ്ങൾ")}</h2>
+        <div class="seg filter" role="group"><button type="button" data-f="all" aria-pressed="true">${bi("All","എല്ലാം")}</button><button type="button" data-f="wrong" aria-pressed="false">${bi(`Mistakes (${n-right})`,`തെറ്റിയവ (${n-right})`)}</button></div>
+      </div>
+      <div class="review" id="review">${reviewHTML()}</div>
+    </section>`;
+  window.scrollTo({top:0});
+  $("#again").addEventListener("click", welcome);
+  document.querySelectorAll(".filter button").forEach(b => b.addEventListener("click", () => {
+    filter = b.dataset.f; document.querySelectorAll(".filter button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $("#review").innerHTML = reviewHTML();
+  }));
+}
+
+welcome();
+</script>
+
+</body>
+</html>

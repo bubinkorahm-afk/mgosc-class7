@@ -147,10 +147,10 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:0 16px calc(2
         <span class="d" id="practiceRange"></span>
         <span class="go"><span class="en">Start practising →</span><span class="ml"> · തുടങ്ങുക →</span></span>
       </a>
-      <a class="action" href="class7-revision-exam.html">
+      <a class="action" href="#revHead">
         <span class="ic" aria-hidden="true">📝</span>
-        <span class="t"><span class="en">Revision Exam</span><span class="ml">പുനരവലോകന പരീക്ഷ</span></span>
-        <span class="d"><span class="en">Chapters 1–4 · timed online test with a result card</span><span class="ml"> · പാഠം 1–4 · സമയബന്ധിത ഓൺലൈൻ പരീക്ഷ</span></span>
+        <span class="t"><span class="en">Revision Exams</span><span class="ml">പുനരവലോകന പരീക്ഷകൾ</span></span>
+        <span class="d"><span class="en">Chapters 1–4, 14–19 and 20–25 · timed online tests with a result card</span><span class="ml"> · പാഠം 1–4, 14–19, 20–25 · സമയബന്ധിത ഓൺലൈൻ പരീക്ഷകൾ</span></span>
         <span class="go" style="color:var(--accent)"><span class="en">Take the exam →</span><span class="ml"> · പരീക്ഷ എഴുതുക →</span></span>
       </a>
     </div>
@@ -174,6 +174,14 @@ footer{color:var(--muted);font-size:13px;text-align:center;padding:0 16px calc(2
     </div>
     <div class="grid" id="chapters"></div>
     <p class="empty" id="noCh" hidden><span class="en">No chapters match your search.</span><span class="ml"> · തിരയലിന് യോജിച്ച അധ്യായങ്ങളില്ല.</span></p>
+  </section>
+
+  <section aria-labelledby="revHead">
+    <div class="sec-head">
+      <h2 id="revHead"><span class="en">Revision Q&amp;A and exams</span><span class="ml">പുനരവലോകന ചോദ്യോത്തരങ്ങളും പരീക്ഷകളും</span></h2>
+    </div>
+    <div class="dl" id="revision"></div>
+    <p class="empty" id="noRev" hidden><span class="en">No revision pages match your search.</span><span class="ml"> · യോജിച്ച പേജുകളില്ല.</span></p>
   </section>
 
   <section aria-labelledby="dlHead">
@@ -213,8 +221,23 @@ const CHAPTERS = [
   {n:11, en:"Mar Ephrem’s Teachings (Memra)", ml:"മാർ അപ്രേമിന്റെ മെമ്രാ", practice:true},
   {n:12, en:"The Prayer ‘O our Father, who art in Heaven…’ (Third Hour)", ml:"മൂന്നാംമണി നമസ്കാരത്തിലെ ‘സ്വർഗ്ഗസ്ഥനായ ഞങ്ങളുടെ പിതാവേ…’", practice:true},
   {n:13, en:"The Prayer ‘O Lord, who sittest in the secret place of the Most High…’ (Compline)", ml:"സൂത്താറ നമസ്കാരത്തിലെ ‘മഹോന്നതന്റെ മറവിൽ ഇരിക്കുന്ന കർത്താവേ…’", practice:true},
-  {n:18, en:"The Promeyon and Sedra used in the Holy Eucharist", ml:"വിശുദ്ധ കുർബാനയിൽ ഉപയോഗിക്കുന്ന പ്രൊമിയോണും സെദ്രായും", video:"https://www.youtube.com/watch?v=jZt_POF58z8"},
-  {n:20, en:"Fasts and Fasting", ml:"നോമ്പും ഉപവാസവും", video:"https://www.youtube.com/watch?v=fRIAD7eS77s&t=358s"}
+  {n:14, en:"Intercessory Hymns to Mother Mary (Kukiliyon of the Mother of God)", ml:"ദൈവമാതാവിന്റെ കുക്കിലിയോൻ", practice:true},
+  {n:15, en:"Intercessory Hymns to Saints (Kukiliyon of Saints)", ml:"പരിശുദ്ധന്മാരുടെ കുക്കിലിയോൻ", practice:true},
+  {n:16, en:"Marthoman Heritage: The Oral Tradition", ml:"മാർത്തോമ്മൻ പാരമ്പര്യം: വാമൊഴികളിലൂടെ", practice:true},
+  {n:17, en:"Stories Connected with St. Thomas", ml:"മാർത്തോമ്മാ ശ്ലീഹായുമായി ബന്ധപ്പെട്ട സംഭവങ്ങൾ", practice:true},
+  {n:18, en:"The Promeyon and Sedra used in the Holy Eucharist", ml:"വിശുദ്ധ കുർബാനയിൽ ഉപയോഗിക്കുന്ന പ്രൊമിയോണും സെദ്രായും", practice:true, video:"https://www.youtube.com/watch?v=jZt_POF58z8"},
+  {n:19, en:"Blessing of the Censer in the Holy Qurbana", ml:"വി. കുർബ്ബാനയിലെ ധൂപക്കുറ്റിവാഴ്വ്", practice:true},
+  {n:20, en:"Fasts and Fasting", ml:"നോമ്പും ഉപവാസവും", practice:true, video:"https://www.youtube.com/watch?v=fRIAD7eS77s&t=358s"}
+];
+/* kind: "exam" = timed online test, "qa" = revision questions & answers */
+const REVISION = [
+  {href:"class7-revision-exam.html",       kind:"exam", range:"1–4"},
+  {href:"Class 7 Revision 5–8.html",       kind:"qa",   range:"5–8"},
+  {href:"class7-revision-9-13.html",       kind:"qa",   range:"9–13"},
+  {href:"class7-revision-14-19.html",      kind:"qa",   range:"14–19"},
+  {href:"class7-revision-exam-14-19.html", kind:"exam", range:"14–19"},
+  {href:"class7-revision-20-25.html",      kind:"qa",   range:"20–25"},
+  {href:"class7-revision-exam-20-25.html", kind:"exam", range:"20–25"}
 ];
 const DOWNLOADS = [
   {href:"Class 7 English.pdf", en:"Class 7 Textbook · English", ml:"ക്ലാസ് 7 പാഠപുസ്തകം · ഇംഗ്ലീഷ്", sub:"Textbook"},
@@ -267,6 +290,19 @@ $("#chapters").innerHTML = CHAPTERS.map(c => {
   </article>`;
 }).join("");
 
+/* ---------- REVISION PAGES ---------- */
+$("#revision").innerHTML = REVISION.map(r => {
+  const exam = r.kind === "exam";
+  const en = (exam ? "Revision Exam" : "Revision Q&A") + " · Chapters " + r.range;
+  const ml = (exam ? "പുനരവലോകന പരീക്ഷ" : "പുനരവലോകനം") + " · പാഠം " + r.range;
+  const sub = exam ? "Timed online test" : "Questions & answers";
+  return `
+  <a class="file" href="${encodeURI(r.href)}" data-search="${esc((en + " " + ml + " " + sub).toLowerCase())}">
+    <span class="badge" aria-hidden="true">${exam ? "📝" : "📖"}</span>
+    <span class="info"><b>${bi(en, ml)}</b><small>${esc(sub)}</small></span>
+  </a>`;
+}).join("");
+
 /* ---------- DOWNLOADS ---------- */
 $("#downloads").innerHTML = DOWNLOADS.map(d => `
   <a class="file" href="${encodeURI(d.href)}" target="_blank" rel="noopener" data-search="${esc((d.en + " " + d.ml + " " + d.sub).toLowerCase())}">
@@ -283,6 +319,7 @@ $("#q").addEventListener("input", e => {
     $(empty).hidden = shown > 0;
   };
   filter("#chapters .ch", "#noCh");
+  filter("#revision .file", "#noRev");
   filter("#downloads .file", "#noDl");
 });
 </script>
